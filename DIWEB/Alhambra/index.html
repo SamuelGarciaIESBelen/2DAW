@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alhambra</title>
+</head>
+<body>
+    <div id="header"></div>
+    <h2>¿Qué es la Alhambra de Granada?</h2>
+    <hr>
+    <p style="font-size: 20px;">
+        La Alhambra es una ciudad palatina andalusí situada en Granada, en la comunidad autónoma de Andalucía, España.
+        Consiste en un conjunto de palacios, jardines y fortaleza (alcázar o al-qasr)
+        que albergaba una verdadera ciudadela dentro de la propia ciudad
+        de Granada, que servía como alojamiento al monarca y a la corte del
+        Reino nazarí de Granada. Su verdadero atractivo, como en otras obras
+        musulmanas de la época, no solo radica en los interiores, cuya
+        decoración está entre las cumbres del arte andalusí, sino también en su
+        localización y adaptación, generando un paisaje nuevo pero totalmente
+        integrado con la naturaleza preexistente. En 2015 fue uno de los
+        monumentos más visitados de España, recibiendo la cifra histórica de 2
+        474 231 visitantes.
+    </p>
+
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+    </script>
+</body>
+</html>

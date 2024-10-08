@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+
+<body>
+    <div style="border: solid, 2px, grey; padding: 20px; width: 500px; margin: auto; align-self: center; margin-top: 200px;">
+    <form action="mailto:samuelgarciazorrilla@gmail.com" method="post">
+        <fieldset>
+            <legend>Datos personales</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="dni">DNI:</label>
+                        <input type="text" size="8px" name="dni" id="dni" maxlength="9">
+                        <br>
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" name="nombre" id="nombre" size="15px">
+                        <br>
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" name="apellidos" id="apellidos">
+                        <br>
+                    </td>
+                    <td style="padding-left: 100px;">
+                        <label for="sexo" id="sexo">Sexo:</label>
+                        <br>
+                        <input type="radio" name="sexo" id="hombre">
+                        <label for="sexo">Hombre</label>
+                        <br>
+                        <input type="radio" name="sexo" id="mujer">
+                        <label for="sexo">Mujer</label>
+                        <br>
+                        <input type="radio" name="sexo" id="otro">
+                        <label for="sexo">Otro</label>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>Dirección</legend>
+
+            <label for="calle">Calle/Avda.:</label>
+            <input type="text" name="calle" id="calle" size="40px">
+            <br>
+            <label for="ciudad">Población:</label>
+            <input type="text" id="ciudad" size="15px">
+            <label for="provincia" style="margin-left: 37px;">Provincia:</label>
+            <select name="provincia" id="provincia">
+                <option value="pred">Escoge una opción</option>
+                <option value="huelva">Huelva</option>
+                <option value="sevilla">Sevilla</option>
+                <option value="cordoba">Córdoba</option>
+                <option value="jaen">Jaén</option>
+                <option value="almeria">Almería</option>
+                <option value="granada">Granada</option>
+                <option value="malaga">Málaga</option>
+                <option value="cadiz">Cádiz</option>
+            </select>
+
+        </fieldset>
+        <fieldset>
+            <legend>Práctica en grupo</legend>
+            <label for="archivo">Archivo:</label>
+            <input type="text" size="35">
+            <input hidden id="btn" class="form-control text-center col-md-6"
+                    onChange="document.getElementById('tagsmall').innerText=document.getElementById('btn').files[0]['name'];"
+                    type="file" id="Archivo">
+            <button id='personalizado' onClick="document.getElementById('btn').click();">Browse...</button>
+            <small id='tagsmall'></small>
+            <br>
+            <input type="checkbox" name="archivos[]" id="comp">
+            <label for="comp">Archivos comprimidos</label>
+            <input type="checkbox" name="archivos[]" id="encr">
+            <label for="comp">Archivos encriptados</label>
+            <br><br>
+            <label for="description">Descripción de la práctica</label>
+            <br>
+            <textarea name="description" id="description" cols="50" rows="7"></textarea>
+        </fieldset>
+        <div style="margin: auto; text-align: center; margin-top: 10px;">
+            <button>Submit Query</button>
+        </div>
+    </form>
+    </div>
+</body>
+
+</html>

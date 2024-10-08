@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contacto</title>
+</head>
+
+<body>
+	<div id="header"></div>
+
+	<h2>Formulario para contactar con nosotros:</h2>
+
+	<form action="recibeform.html" method="GET" enctype="text/plain">
+		<label for="nombreInput">Nombre:</label>
+		<input type="text" name="nombreInput">
+		<br><br>
+		<label for="apellidosInput">Apellido:</label>
+		<input type="text" name="apellidosInput">
+		<br><br>
+		<label for="emailInput">Email:</label>
+		<input type="text" name="emailInput">
+		<br><br>
+		<input type="radio" name="Gender" value="1">
+		<label for="Gender">Hombre</label>
+		<br>
+		<input type="radio" name="Gender" value="2">
+		<label for="Gender">Mujer</label>
+		<br><br>
+		<label for="mensajeHere">Ingresa aquí tu mensaje</label>
+		<br>
+		<textarea name="mensajeHere" maxlength="244" id="" cols="56px" rows="5px"
+			placeholder="...Tus mensajes aquí..."></textarea>
+		<br><br>
+		<input type="checkbox">Deseo recibir publicidad futura en mi dirección de email.
+		<br><br>
+		<label for="Ciudad">Procedencia</label>
+		<select name="Ciudad" id="lang">
+			<option value="España">España</option>
+			<option value="EEUU">EEUU</option>
+			<option value="Inglaterra">Inglaterra</option>
+			<option value="Mexico">Mexico</option>
+			<option value="Colombia">Colombia</option>
+			<option value="Otro">Otro</option>
+		</select>
+		<br><br>
+		<label for="btn">Ingresa el archivo que quieras adjuntar:</label>
+		<input hidden id="btn" type="file"
+			onChange="document.querySelector('input[name=archivo]').value = this.files[0].name;">
+		<button type="button" id='personalizado' onClick="document.getElementById('btn').click();">Seleccionar
+			archivo</button>
+		<br><br>
+		<div style="margin-left: 100px;">
+			<input type="submit" value="Enviar">
+			<input type="reset" value="Borrar los datos">
+		</div>
+	</form>
+
+	<script>
+		fetch('header.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('header').innerHTML = data;
+			});
+	</script>
+</body>
+
+</html>

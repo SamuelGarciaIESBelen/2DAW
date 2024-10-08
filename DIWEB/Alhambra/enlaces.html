@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enlaces externos</title>
+</head>
+<body>
+    <div id="header"></div>
+    <h2>Lista de enlaces externos</h2>
+    <ul>
+        <li><a href="https://www.alhambra.org/" target="_blank">Web de la organización Alhambra</a></li>
+        <li><a href="https://www.alhambra.org/comprar-entradas-alhambra.html?_gl=1*179o9ds*_up*MQ..*_ga*MTQ2NDY5NTg3LjE3MjgzNzI0ODc.*_ga_J240YT7JB0*MTcyODM3MjQ4NC4xLjEuMTcyODM3MjQ5Mi4wLjAuMA.."
+                target="_blank">Enlace a la web de venta de entradas</a></li>
+        <li><a href="https://www.alhambra.org/visitas-guiadas-alhambra.html?_gl=1*zc8qk8*_up*MQ..*_ga*MTQ2NDY5NTg3LjE3MjgzNzI0ODc.*_ga_J240YT7JB0*MTcyODM3MjQ4NC4xLjAuMTcyODM3MjQ4NC4wLjAuMA.."
+                target="_blank">Enlace a las visitas guiadas</a></li>
+    </ul>
+    
+    <a href="https://www.granada.org/" target="_blank">
+        <img src="Imagenes/aytoGra.png" alt="Logo del Ayuntamiento de Granada" style="height: 125px; margin-left: 700px;">
+    </a>
+    
+    <ul>
+        <li>Haz click en la foto para ir a la web del ayuntamiento de Granada</li>
+    </ul>
+
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+    </script>
+</body>
+</html>
