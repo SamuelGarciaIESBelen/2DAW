@@ -1,14 +1,14 @@
 let libros = [
     {
-        "titulo": "Hijos de la mente",
+        "titulo": "Percy Jackson y el ladrón del rayo",
         "genero": [
-            "Ciencia ficción"
+            "Fantasía"
         ],
         "autor": [
-            "Orson Scott Card"
+            "Rick Riordan"
         ],
-        "pag": 370,
-        "fecha": "1996-08-01",
+        "pag": 377,
+        "fecha": "2005-07-01",
         "leido": true,
         "web": ""
     },
@@ -27,17 +27,17 @@ let libros = [
         "web": "www.patrickrothfuss.com"
     },
     {
-        "titulo": "Tokyo Blues",
+        "titulo": "One Piece",
         "genero": [
-            "Ficción",
-            "Romance"
+            "Manga",
+            "Fantasía"
         ],
         "autor": [
-            "Haruki Murakami"
+            "Eichiro Oda"
         ],
-        "pag": 384,
-        "fecha": "1987-09-04",
-        "leido": false,
+        "pag": 0,
+        "fecha": "",
+        "leido": true,
         "web": ""
     },
     {
@@ -79,42 +79,40 @@ let libros = [
     }
 ];
 
-   // 1. Name of each of the genres.
+// 1. Name of each of the genres.
 let generos = [];
-libros.map(e=>e.genero).forEach(e=>{
-    for (let gen of e){
-    if (!generos.includes(gen))
-        generos.push(gen);
-    }});
+libros.map(e => e.genero).forEach(e => {
+    for (let gen of e) {
+        if (!generos.includes(gen))
+            generos.push(gen);
+    }
+});
+console.log(generos);
+console.log("\n");
 
-    console.log(generos);
-    console.log("\n");
-   // 2. Title of books with more than 300 pages
-   libros.filter(e=>e.pag>300).forEach(e=>console.log(e.titulo, e.pag));
-   console.log("\n");
+// 2. Title of books with more than 300 pages
+libros.filter(e => e.pag > 300).forEach(e => console.log(e.titulo, e.pag));
+console.log("\n");
 
+// 3. Title of books published more than 2 years ago
+libros.filter(e => e.fecha < "2022").forEach(e => console.log(e.titulo, e.fecha));
+console.log("\n");
 
-   // 3. Title of books published more than 2 years ago
-   libros.filter(e=>e.fecha<"2022").forEach(e=>console.log(e.titulo, e.fecha));
-   console.log("\n");
+// 4. Name of the authors and number of books they have written.
+let autorNum = {};
 
-
-   // 4. Name of the authors and number of books they have written.
-    let autorNum = {};
-
-    libros.forEach(e => {
-        e.autor.forEach(a => {
-            if (autorNum[a]){
-                autorNum[a]++;
-            } else {
-                autorNum[a]=1;
-            }
-        });
+libros.forEach(e => {
+    e.autor.forEach(a => {
+        if (autorNum[a]) {
+            autorNum[a]++;
+        } else {
+            autorNum[a] = 1;
+        }
     });
-    console.log(autorNum);
-    console.log("\n");
+});
+console.log(autorNum);
+console.log("\n");
 
-
-   // 5. Title of the books read, ordered by date of publishing.
-   //Se usa el new Date, porque si no son cadenas de Texto, y no se pueden restar, entonces tenemos que darles un formato que sort pueda operar
-    libros.filter(e=> e.leido).sort((a,b)=>new Date(a.fecha) - new Date(b.fecha)).forEach(e=> console.log(e.titulo, e.leido, e.fecha));
+// 5. Title of the books read, ordered by date of publishing.
+// Se usa el new Date, porque si no son cadenas de Texto, y no se pueden restar, entonces tenemos que darles un formato que sort pueda operar
+libros.filter(e => e.leido).sort((a, b) => new Date(a.fecha) - new Date(b.fecha)).forEach(e => console.log(e.titulo, e.leido, e.fecha));

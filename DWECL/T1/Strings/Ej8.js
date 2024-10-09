@@ -7,4 +7,4 @@ let capitalize_Words = (cadena) => {
     });
     return nuevaCadena;
 };
-console.log(capitalize_Words('js string exercises'));
+console.log(capitalize_Words('samuel garcía zorrilla'));
