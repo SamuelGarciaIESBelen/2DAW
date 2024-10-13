@@ -789,9 +789,11 @@ Fabricante: Xiaomi
 			fabricantesDAOImpl.beginTransaction();
 	
 			List<Fabricante> listFab = fabricantesDAOImpl.findAll();
-
-			//TODO STREAMS
-
+			listFab.stream()
+					.map(fab-> "Fabricante: " + fab.getNombre() + "\n\t Productos:\n" + fab.getProductos().stream()
+							.map(p-> "\t\t" + p.getNombre())
+							.collect(joining("\n")) + "\n"
+					).forEach(System.out::println);
 		}
 		catch (RuntimeException e) {
 			fabricantesDAOImpl.rollbackTransaction();
@@ -848,7 +850,10 @@ Fabricante: Xiaomi
 			productosDAOImpl.beginTransaction();
 		
 			List<Producto> listProd = productosDAOImpl.findAll();
-
+			int fabricantes = (int)listProd.stream()
+					.map(Producto::getFabricante)
+					.count();
+			System.out.println("Hay un total de " + fabricantes + " fabricantes con productos");
 		}
 		catch (RuntimeException e) {
 			productosDAOImpl.rollbackTransaction();
@@ -870,7 +875,7 @@ Fabricante: Xiaomi
 			OptionalDouble media = listProd.stream()
 					.mapToDouble(Producto::getPrecio)
 					.average();
-			media.ifPresent(p -> System.out.println("El precio medio es " + p));
+			media.ifPresent(p -> System.out.println("El precio medio es de " + p + "€"));
 		}
 		catch (RuntimeException e) {
 			productosDAOImpl.rollbackTransaction();
@@ -891,7 +896,7 @@ Fabricante: Xiaomi
 			OptionalDouble min = listProd.stream()
 					.mapToDouble(Producto::getPrecio)
 					.min();
-			min.ifPresent(p -> System.out.println("El producto más barato es " + p));
+			min.ifPresent(p -> System.out.println("El producto más barato vale " + p + "€"));
 		}
 		catch (RuntimeException e) {
 			productosDAOImpl.rollbackTransaction();
@@ -909,9 +914,15 @@ Fabricante: Xiaomi
 			productosDAOImpl.beginTransaction();
 		
 			List<Producto> listProd = productosDAOImpl.findAll();
-
-			//TODO STREAMS
-
+			/*
+			System.out.println(listProd.stream()
+					.mapToDouble(Producto::getPrecio)
+					.sum());
+			*/
+			listProd.stream()
+					.map(Producto::getPrecio)
+					.reduce((acc, cur) -> acc + cur)
+					.ifPresent(System.out::println);
 		}
 		catch (RuntimeException e) {
 			productosDAOImpl.rollbackTransaction();
@@ -929,9 +940,10 @@ Fabricante: Xiaomi
 			productosDAOImpl.beginTransaction();
 		
 			List<Producto> listProd = productosDAOImpl.findAll();
-
-			//TODO STREAMS
-
+			System.out.println("Asus tiene " +
+					listProd.stream()
+					.filter(p -> "Asus".equals(p.getFabricante().getNombre()))
+					.count() + " productos");
 		}
 		catch (RuntimeException e) {
 			productosDAOImpl.rollbackTransaction();
@@ -940,7 +952,7 @@ Fabricante: Xiaomi
 	}
 	
 	/**
-	 * 36. Calcula la media del precio de todos los productosdel fabricante Asus.
+	 * 36. Calcula la media del precio de todos los productos del fabricante Asus.
 	 */
 	@Test
 	void test36() {
@@ -949,17 +961,19 @@ Fabricante: Xiaomi
 			productosDAOImpl.beginTransaction();
 		
 			List<Producto> listProd = productosDAOImpl.findAll();
-
-			//TODO STREAMS
-
+			System.out.print("El precio medio es ");
+			listProd.stream()
+					.filter(p -> "Asus".equals(p.getFabricante().getNombre()))
+					.mapToDouble(Producto::getPrecio)
+					.average()
+					.ifPresent(System.out::println);
 		}
 		catch (RuntimeException e) {
 			productosDAOImpl.rollbackTransaction();
 		    throw e; // or display error message
 		}
 	}
-	
-	
+
 	/**
 	 * 37. Muestra el precio máximo, precio mínimo, precio medio y el número total de productos que tiene el fabricante Crucial.
 	 *  Realízalo en 1 solo stream principal. Utiliza reduce con Double[] como "acumulador".
