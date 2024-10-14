@@ -792,8 +792,8 @@ Fabricante: Xiaomi
 			listFab.stream()
 					.map(fab-> "Fabricante: " + fab.getNombre() + "\n\t Productos:\n" + fab.getProductos().stream()
 							.map(p-> "\t\t" + p.getNombre())
-							.collect(joining("\n")) + "\n"
-					).forEach(System.out::println);
+							.collect(joining("\n")) + "\n")
+					.forEach(System.out::println);
 		}
 		catch (RuntimeException e) {
 			fabricantesDAOImpl.rollbackTransaction();
@@ -852,6 +852,7 @@ Fabricante: Xiaomi
 			List<Producto> listProd = productosDAOImpl.findAll();
 			int fabricantes = (int)listProd.stream()
 					.map(Producto::getFabricante)
+					.distinct()
 					.count();
 			System.out.println("Hay un total de " + fabricantes + " fabricantes con productos");
 		}
@@ -867,7 +868,6 @@ Fabricante: Xiaomi
 	@Test
 	void test32() {
 	
-
 		try {
 			productosDAOImpl.beginTransaction();
 		
@@ -893,10 +893,10 @@ Fabricante: Xiaomi
 			productosDAOImpl.beginTransaction();
 		
 			List<Producto> listProd = productosDAOImpl.findAll();
-			OptionalDouble min = listProd.stream()
+			listProd.stream()
 					.mapToDouble(Producto::getPrecio)
-					.min();
-			min.ifPresent(p -> System.out.println("El producto más barato vale " + p + "€"));
+					.min()
+					.ifPresent(p -> System.out.println("El producto más barato vale " + p + "€"));
 		}
 		catch (RuntimeException e) {
 			productosDAOImpl.rollbackTransaction();
@@ -1013,7 +1013,6 @@ Hewlett-Packard              2
        Gigabyte              1
          Huawei              0
          Xiaomi              0
-
 	 */
 	@Test
 	void test38() {
@@ -1022,9 +1021,11 @@ Hewlett-Packard              2
 			fabricantesDAOImpl.beginTransaction();
 				
 			List<Fabricante> listFab = fabricantesDAOImpl.findAll();
-
-			//TODO STREAMS
-
+			System.out.println(String.format("%-20s %-10s", "Fabricante", "#Productos"));
+			System.out.println("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+			listFab.stream()
+					.map(fab -> String.format("%-20s %-10s", fab.getNombre(), fab.getProductos().size()))
+					.forEach(System.out::println);
 		}
 		catch (RuntimeException e) {
 			fabricantesDAOImpl.rollbackTransaction();
@@ -1065,9 +1066,12 @@ Hewlett-Packard              2
 			fabricantesDAOImpl.beginTransaction();
 				
 			List<Fabricante> listFab = fabricantesDAOImpl.findAll();
-
-			//TODO STREAMS
-
+			listFab.stream()
+					.filter(f -> f.getProductos().stream().mapToDouble(Producto::getPrecio).average().orElse(0) > 200)
+					.map(f -> {
+						DoubleSummaryStatistics stats = f.getProductos().stream().collect(summarizingDouble(Producto::getPrecio));
+						return f.getIdFabricante() + " Stats: " + stats;
+					}).forEach(System.out::println);
 		}
 		catch (RuntimeException e) {
 			fabricantesDAOImpl.rollbackTransaction();
@@ -1085,9 +1089,11 @@ Hewlett-Packard              2
 			fabricantesDAOImpl.beginTransaction();
 				
 			List<Fabricante> listFab = fabricantesDAOImpl.findAll();
-
-			//TODO STREAMS
-
+			listFab.stream()
+					.filter(f -> f.getProductos().size() >= 2)
+					.map(Fabricante::getNombre)
+					.collect(toList())
+					.forEach(System.out::println);
 		}
 		catch (RuntimeException e) {
 			fabricantesDAOImpl.rollbackTransaction();
@@ -1106,9 +1112,10 @@ Hewlett-Packard              2
 			fabricantesDAOImpl.beginTransaction();
 				
 			List<Fabricante> listFab = fabricantesDAOImpl.findAll();
-
-			//TODO STREAMS
-
+			listFab.stream()
+					.map(f -> f.getNombre() + "\t" + f.getProductos().stream().filter(p -> p.getPrecio() >= 220).count())
+					.sorted((a, b) -> b.split("\t")[1].compareTo(a.split("\t")[1]))
+					.forEach(System.out::println);
 		}
 		catch (RuntimeException e) {
 			fabricantesDAOImpl.rollbackTransaction();
@@ -1126,9 +1133,10 @@ Hewlett-Packard              2
 			fabricantesDAOImpl.beginTransaction();
 				
 			List<Fabricante> listFab = fabricantesDAOImpl.findAll();
-
-			//TODO STREAMS
-
+			listFab.stream()
+					.filter(f -> f.getProductos().stream().mapToDouble(Producto::getPrecio).sum() > 1000) // No hay ninguno, bajar para comprobar
+					.map(Fabricante::getNombre)
+					.forEach(System.out::println);
 		}
 		catch (RuntimeException e) {
 			fabricantesDAOImpl.rollbackTransaction();
@@ -1147,9 +1155,11 @@ Hewlett-Packard              2
 			fabricantesDAOImpl.beginTransaction();
 				
 			List<Fabricante> listFab = fabricantesDAOImpl.findAll();
-
-			//TODO STREAMS
-
+			listFab.stream()
+					.filter(f -> f.getProductos().stream().mapToDouble(Producto::getPrecio).sum() > 1000) // No hay ninguno, bajar para comprobar
+					.map(f -> f.getNombre() + "\t" + f.getProductos().stream().mapToDouble(Producto::getPrecio).sum())
+					.sorted((a, b) -> a.split("\t")[1].compareTo(b.split("\t")[1]))
+					.forEach(System.out::println);
 		}
 		catch (RuntimeException e) {
 			fabricantesDAOImpl.rollbackTransaction();
@@ -1167,11 +1177,16 @@ Hewlett-Packard              2
 
 		try {
 			fabricantesDAOImpl.beginTransaction();
-				
-			List<Fabricante> listFab = fabricantesDAOImpl.findAll();
 
-			//TODO STREAMS
-			
+			List<Fabricante> listFab = fabricantesDAOImpl.findAll();
+			listFab.stream()
+					.map(fab-> fab.getProductos().stream()
+							.max(Comparator.comparing(Producto::getPrecio))
+							.map(p-> "Producto:\t" + p.getNombre() + "\t" + p.getPrecio()
+									+ " | Fabricante:\t" + p.getFabricante().getNombre())
+									.orElse(" | Fabricante:\t " + fab.getNombre() + " (sin productos)"))
+					.sorted((a,b)->a.split("Fabricante:\t")[1].compareTo(b.split("Fabricante:\t")[1]))
+					.forEach(System.out::println);
 		}
 		catch (RuntimeException e) {
 			fabricantesDAOImpl.rollbackTransaction();
