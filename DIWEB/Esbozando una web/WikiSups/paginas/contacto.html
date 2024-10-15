@@ -18,27 +18,27 @@
 				<div class="form">
 					<form action="contactojs.html" method="GET" enctype="text/plain">
 						<label for="nombreInput">Nombre:</label>
-						<input type="text" name="nombreInput" required>
+						<input type="text" id="nombreInput" name="nombreInput" required>
 						<br><br>
 						<label for="apellidosInput">Apellido:</label>
-						<input type="text" name="apellidosInput" required>
+						<input type="text" id="apellidosInput" name="apellidosInput" required>
 						<br><br>
 						<label for="emailInput">Email:</label>
-						<input type="text" name="emailInput" size="25" required>
+						<input type="text" id="emailInput" name="emailInput" size="25" required>
 						<br><br>
-						<input type="radio" name="Gender" value="1">
-						<label for="Gender">Hombre</label>
+						<input type="radio" id="genderM" name="gender" value="1">
+						<label for="genderM">Hombre</label>
 						<br>
-						<input type="radio" name="Gender" value="2">
-						<label for="Gender">Mujer</label>
+						<input type="radio" id="genderF" name="gender" value="2">
+						<label for="genderF">Mujer</label>
 						<br><br>
 						<label for="mensajeHere">Ingresa aquí tu mensaje</label>
 						<br>
-						<textarea name="mensajeHere" maxlength="244" id="" cols="56px" rows="5px"
+						<textarea id="mensajeHere" name="mensajeHere" maxlength="244" cols="56" rows="5"
 							placeholder="...Tus mensajes aquí..."></textarea>
 						<br><br>
-						<label for="Ciudad">Procedencia</label>
-						<select name="Ciudad" id="lang">
+						<label for="ciudad">Procedencia</label>
+						<select id="ciudad" name="ciudad">
 							<option value="España">España</option>
 							<option value="EEUU">EEUU</option>
 							<option value="Inglaterra">Inglaterra</option>
@@ -48,7 +48,7 @@
 						</select>
 						<br><br>
 						<label for="btn">Ingresa el archivo que quieras adjuntar:</label>
-						<input hidden id="btn" type="file"
+						<input hidden id="btn" name="btn" type="file"
 							onChange="document.querySelector('input[name=archivo]').value = this.files[0].name;">
 						<button type="button" id='personalizado'
 							onClick="document.getElementById('btn').click();">Seleccionar

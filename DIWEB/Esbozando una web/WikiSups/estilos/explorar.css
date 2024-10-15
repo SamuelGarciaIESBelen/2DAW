@@ -14,7 +14,41 @@ main {
     font-size: 20px;
     padding: 20px 50px;
 }
-h1 {
+.gif {
+    height: 500px;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.5);
+    margin-top: 15%;
+    margin-right: 50px;
+}
+.cuerpo {
+    display: flex;
+    justify-content: space-around;
+}
+h2.titulo {
     font-family: 'Franklin Gothic Medium';
     text-align: center;
+    color: whitesmoke;
+}
+.tablaVideo {
+    display: flex;
+    justify-content: space-evenly;
+}
+table {
+    width: 50%;
+}
+th {
+    font-size: 25px;
+}
+li {
+    margin: 5px 0;
+}
+a {
+    color: whitesmoke;
+}
+iframe {
+    border: none;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.5);
+    margin-bottom: 50px;
 }
