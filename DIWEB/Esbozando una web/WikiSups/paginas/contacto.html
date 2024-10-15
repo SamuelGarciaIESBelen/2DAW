@@ -1,11 +1,88 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contacto</title>
+	<link rel="stylesheet" href="../estilos/contacto.css">
 </head>
+
 <body>
-    
+	<div class="grid-container">
+		<div id="header"></div>
+
+		<main>
+			<div class="contacto">
+				<h2 class="primero">Formulario para contactar con nosotros:</h2>
+				<div class="form">
+					<form action="contactojs.html" method="GET" enctype="text/plain">
+						<label for="nombreInput">Nombre:</label>
+						<input type="text" name="nombreInput" required>
+						<br><br>
+						<label for="apellidosInput">Apellido:</label>
+						<input type="text" name="apellidosInput" required>
+						<br><br>
+						<label for="emailInput">Email:</label>
+						<input type="text" name="emailInput" size="25" required>
+						<br><br>
+						<input type="radio" name="Gender" value="1">
+						<label for="Gender">Hombre</label>
+						<br>
+						<input type="radio" name="Gender" value="2">
+						<label for="Gender">Mujer</label>
+						<br><br>
+						<label for="mensajeHere">Ingresa aquí tu mensaje</label>
+						<br>
+						<textarea name="mensajeHere" maxlength="244" id="" cols="56px" rows="5px"
+							placeholder="...Tus mensajes aquí..."></textarea>
+						<br><br>
+						<label for="Ciudad">Procedencia</label>
+						<select name="Ciudad" id="lang">
+							<option value="España">España</option>
+							<option value="EEUU">EEUU</option>
+							<option value="Inglaterra">Inglaterra</option>
+							<option value="Mexico">Mexico</option>
+							<option value="Colombia">Colombia</option>
+							<option value="Otro">Otro</option>
+						</select>
+						<br><br>
+						<label for="btn">Ingresa el archivo que quieras adjuntar:</label>
+						<input hidden id="btn" type="file"
+							onChange="document.querySelector('input[name=archivo]').value = this.files[0].name;">
+						<button type="button" id='personalizado'
+							onClick="document.getElementById('btn').click();">Seleccionar
+							archivo</button>
+						<br><br>
+						<div style="margin-left: 120px;">
+							<input type="submit" value="Enviar">
+							<input type="reset" value="Borrar los datos">
+						</div>
+					</form>
+				</div>
+				<h2 class="segundo">Si pasas el proceso de selección, podrás contribuir añadiendo información a la
+					página</h2>
+				</div>
+				<img class="oracle" src="../imagenes/Oracle.jpg" alt="Oráculo">
+		</main>
+
+		<div id="footer"></div>
+	</div>
+
+	<script>
+		fetch('header.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('header').innerHTML = data;
+			});
+	</script>
+	<script>
+		fetch('footer.html')
+			.then(response => response.text())
+			.then(data => {
+				document.getElementById('footer').innerHTML = data;
+			});
+	</script>
 </body>
+
 </html>

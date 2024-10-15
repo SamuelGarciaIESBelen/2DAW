@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorar</title>
+    <link rel="stylesheet" href="../estilos/explorar.css">
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <main>
+        <h1>BATMAN</h1>
+        Bruce Wayne se convierte en Batman como resultado de la trágica muerte de sus padres, Thomas y Martha Wayne,
+        en el famoso Callejón del Crimen de Gotham. <br>
+        Ese día su vida cambió radicalnmente y dedicó el resto de su
+        existencia a aprender diversas artes marciales, técnicas de espionaje, se formó como detective y forense
+        y estudió una gran cantidad de ciencias con el fin de convertirse en el mejor detective del mundo y acabar
+        con la criminalidad en la ciudad que tanto amaron sus padres.
+        <br><br>
+        <table>
+            <tr>
+                <th>Títulos:</th>
+            </tr>
+            <tr>
+                <td>
+                    <ul>
+                        <li>El mejor detective del mundo</li>
+                        <li>El cruzado enmascarado</li>
+                        <li>El murciélago</li>
+                        <li>El caballero oscuro</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </main>
+
+    <div id="footer"></div>
+
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+    </script>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+    </script>
+</body>
+
+</html>

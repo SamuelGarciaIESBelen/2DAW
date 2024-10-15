@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh; /* Asegura que ocupa toda la altura de la pantalla */
+}
+main {
+    background-color: #102C57;
+    overflow-y: auto; /* Permite que el contenido se desplace si es demasiado grande */
+    color: whitesmoke;
+    font-size: 20px;
+    padding: 20px 50px;
+}
+h1 {
+    font-family: 'Franklin Gothic Medium';
+    text-align: center;
+}

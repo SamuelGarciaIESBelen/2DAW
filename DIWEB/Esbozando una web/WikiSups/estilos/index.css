@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh; /* Asegura que ocupa toda la altura de la pantalla */
+}
+main {
+    background-color: #102C57;
+    overflow-y: auto; /* Permite que el contenido se desplace si es demasiado grande */
+    color: whitesmoke;
+    padding: 50px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+.main img {
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px 5px rgba(0,0,0,0.75);
+}
+.main p {
+    margin: auto 20px;
+}
+.bienvenida {
+    width: 30%;
+}

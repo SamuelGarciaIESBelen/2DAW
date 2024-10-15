@@ -1,33 +1,31 @@
-body {
+.header {
     background-color: wheat;
-}
-h1 {
-    font-size: 35px;
-    text-align: center;
     font-family: 'Franklin Gothic Medium';
+    padding: 1px 0 30px 0;
+}
+.titulo {
+    font-size: 50px;
+    text-align: center;
     color: #1E201E;
 }
 .capital-W {
-    font-size: 40px;
+    font-size: 55px;
 }
 .capital-S {
-    font-size: 40px;
+    font-size: 55px;
     color: #102C57;
 }
 .sups {
     color: #102C57;
 }
 .menu {
-    width: 50%;
     display: flex;
-    margin: auto;
-    margin-top: 50px;
+    justify-content: center;
 }
-a {
-    margin: 0px 10px 0px 10px;
-    font-size: 20px;
+.menu-option {
+    margin: 0px 10px;
+    font-size: 25px;
     font-weight: bold;
-    font-family: 'Franklin Gothic Medium';
     color: #102C57;
     text-decoration: none;
 }

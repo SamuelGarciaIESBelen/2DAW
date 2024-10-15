@@ -65,7 +65,7 @@ function p1(libros) {
         }
     });
 
-    document.querySelector("#uno").innerHTML = `<p>Genres are: ${generos} </p>`
+    document.querySelector("#uno").innerHTML = `<p>Genres are: ${generos}</p>`
 };
 //2
 let p2 = (libros) => {

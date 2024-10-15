@@ -1,0 +1,11 @@
+.footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: wheat;
+    font-family: 'Franklin Gothic Medium';
+    color: #102C57;
+    padding: 20px 0 10px 0;
+}
+.logo-inicio {
+    width: 150px;
+}
