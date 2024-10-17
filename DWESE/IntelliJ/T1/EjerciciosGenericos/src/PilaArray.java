@@ -19,14 +19,12 @@ public class PilaArray <T> implements ColeccionSimpleGenerica <T> {
         T elemento = null;
 
         if (!this.estaVacia()) {
+            elemento = pila[pila.length - 1];
             for (int i = 1; i < contador; i++) {
                 pila[i - 1] = pila[i];
             }
-
             pila = Arrays.copyOf(pila, --contador);
         }
-
-
         return elemento;
     }
 
@@ -45,9 +43,9 @@ public class PilaArray <T> implements ColeccionSimpleGenerica <T> {
     public String toString() {
         String mensaje = "[";
 
-        for(int i = 0; i < pila.length; i++) {
-            mensaje += " " + pila[i];
-        };
+        for (T t : pila) {
+            mensaje += " " + t;
+        }
         return mensaje + " ]";
     }
 }

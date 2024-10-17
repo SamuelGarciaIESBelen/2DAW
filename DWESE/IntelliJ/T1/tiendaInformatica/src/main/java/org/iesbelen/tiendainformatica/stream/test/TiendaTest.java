@@ -1045,9 +1045,18 @@ Hewlett-Packard              2
 			fabricantesDAOImpl.beginTransaction();
 				
 			List<Fabricante> listFab = fabricantesDAOImpl.findAll();
-
-			//TODO STREAMS
-
+			listFab.stream()
+					.map(f -> {
+						DoubleSummaryStatistics stats = f.getProductos().stream().mapToDouble(Producto::getPrecio).summaryStatistics();
+						String cadena = "";
+						if (stats.getCount() != 0) {
+							cadena = f.getNombre() + " - Precio mínimo: " + stats.getMin() + " - Precio medio: " + stats.getAverage() + " - Precio máximo: " + stats.getMax();
+						} else {
+							cadena = f.getNombre() + " - No hay productos";
+						}
+						return cadena;
+					})
+					.forEach(System.out::println);
 		}
 		catch (RuntimeException e) {
 			fabricantesDAOImpl.rollbackTransaction();

@@ -1,9 +1,10 @@
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 class PilaArrayTest {
 
     static PilaArray<Integer> pila;
+
     @BeforeAll
     static void setUp() {
          pila = new PilaArray<>();
@@ -16,18 +17,18 @@ class PilaArrayTest {
 
     @Test
     void estaVacia() {
-        pila.estaVacia();
+        assertTrue(pila.estaVacia());
     }
 
     @Test
     void extraer() {
-        pila.extraer();
+        pila.aniadir(5);
+        assertEquals(5, pila.extraer());
     }
 
     @Test
     void primero() {
         pila.primero();
     }
-
 
 }
