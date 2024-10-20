@@ -1,0 +1,28 @@
+.header {
+    background-color: red;
+    height: 200px;
+}
+
+.main {
+    border: 1px dashed grey;
+    margin: 5px 0 10px 0;
+}
+.lista {
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    margin-bottom: 10px;
+    height: 50px;
+}
+.lista li {
+    list-style: none;
+    border: 1px solid black;
+    color: white;
+    background-color: green;
+    display: inline;
+}
+
+.footer {
+    background-color: skyblue;
+    border: 1px solid blue;
+    height: 60px;
+}

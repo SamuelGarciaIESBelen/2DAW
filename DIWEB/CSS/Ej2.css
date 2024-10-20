@@ -1,0 +1,20 @@
+.div1 {
+    border: 1px solid red;
+    background-color: rgba(128, 128, 128, 0.37);
+    width: 200px;
+}
+p {
+    border: 1px dashed green;
+    width: 250px;
+}
+.div2 {
+    border: 1px dotted grey;
+    width: 250px;
+    margin: auto;
+}
+span {
+    border: 1px solid black;
+    color: white;
+    background-color: grey;
+    margin-right: 10px;
+}

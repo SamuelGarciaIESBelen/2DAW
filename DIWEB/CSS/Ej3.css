@@ -1,0 +1,44 @@
+h1 {
+    color: red;
+    font-weight: bold;
+    border-bottom: 5px solid red;
+}
+form {
+    border: 4px dashed red;
+    border-left: 2px dashed red;
+    border-bottom: 5px solid red;
+    color: red;
+    padding: 20px;
+    width: 250px;
+    margin-left: 20px;
+    font-family: Arial, sans-serif;
+}
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    color: red;
+}
+input[type="text"], input[type="password"], textarea {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 15px;
+    border: 1px dashed red;
+    color: green;
+}
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+input[type="radio"] {
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+input[type="button"] {
+    border: 1px dashed red;
+    background-color: rgba(128, 128, 128, 0.247);
+    color: green;
+    cursor: pointer;
+    margin-right: 10px;
+}
