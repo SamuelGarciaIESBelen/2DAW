@@ -6,12 +6,12 @@ function repeatsTillYear(date = "2024/09/15", dayWeek = 1, year = 2070) {
     while (day.getFullYear() <= year) {
         if (day.getDay() == dayWeek) {
             counter++;
-            yearString += day.getFullYear() + "\n";
+            yearString += day.getFullYear() + " ";
         }
         day.setFullYear(day.getFullYear() + 1);
     }
-    return counter;
+    yearString += ("| Total: " + counter + " years");
+    
+    return yearString;
 }
-
-console.log("This will happen " + repeatsTillYear() + " times till " + 2070);
-// console.log("These years are:\n" + yearString);
+console.log("These years are: " + repeatsTillYear());
