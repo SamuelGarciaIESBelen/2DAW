@@ -1,0 +1,24 @@
+body {
+    display: flex;
+    height: 100vh;
+}
+div {
+    margin: auto;
+    width: 180px;
+    height: 180px;
+    background-color: green;
+    padding: 10px;
+    transition: 1s;
+    text-align: center;
+    font-weight: bold;
+    line-height: 40px;
+}
+div:hover {
+    border: 1px solid black;
+    border-radius: 25px;
+    transform:
+        scale(1.5)
+        rotate(15deg)
+        translate(20px)
+        skew(10deg, 5deg);
+}

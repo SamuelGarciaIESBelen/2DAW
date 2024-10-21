@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    height: 100vh;
+    background-color: rgba(128, 128, 128, 0.5);
+}
+div {
+    margin: auto;
+    width: 180px;
+    height: 180px;
+    background-color: aqua;
+    font-size: 15px;
+    color: red;
+    line-height: 5em;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
+    opacity: 1;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    padding: 10px;
+    transition: 0.5s;
+}
+div:hover {
+    background-color: greenyellow;
+    font-size: 20px;
+    color: blue;
+    line-height: 2em;
+    border-radius: 50px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.8);
+    opacity: 0.5;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 3px;
+    padding: 20px;
+    transform: rotate(45deg);
+}
+p:hover {
+    transform: rotate(-45deg);
+}
