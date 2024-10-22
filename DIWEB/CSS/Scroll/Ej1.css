@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    font-family: 'Franklin Gothic Medium';
+    height: 100vh;
+    scroll-behavior: smooth;
+}
+.container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+.section {
+    height: 100vh;
+    display: flex;
+    color: whitesmoke;
+    scroll-snap-align: start;
+}
+#s1 {
+    background-color: rgb(26, 188, 156);
+}
+#s2 {
+    background-color: rgb(231, 76, 60);
+}
+#s3 {
+    background-color: rgb(49, 206, 49);
+}
+h1 {
+    font-size: 50px;
+    margin: auto;
+}
