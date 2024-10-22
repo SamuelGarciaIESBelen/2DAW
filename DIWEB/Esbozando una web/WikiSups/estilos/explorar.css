@@ -25,10 +25,19 @@ main {
     display: flex;
     justify-content: space-around;
 }
+.cuerpo p {
+    transform: translateX(-100%);
+    opacity: 0;
+    animation: 2s slidein-left ease-in-out 0.5s forwards; /* forwards es para que se mantenga el cambio tras la animación */
+}
 h2.titulo {
     font-family: 'Franklin Gothic Medium';
     text-align: center;
     color: whitesmoke;
+    transition: 0.5s;
+}
+h2.titulo:hover {
+    transform: skew(-10deg);
 }
 .tablaVideo {
     display: flex;
@@ -36,6 +45,9 @@ h2.titulo {
 }
 table {
     width: 50%;
+    transform: translateX(100%);
+    opacity: 0;
+    animation: 2s slidein-right ease-in-out 0.5s forwards; /* forwards es para que se mantenga el cambio tras la animación */
 }
 th {
     font-size: 25px;
@@ -51,4 +63,28 @@ iframe {
     border-radius: 25px;
     box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.5);
     margin-bottom: 50px;
+    transition: 1s;
+}
+iframe:hover {
+    transform: scale(0.75);
+    opacity: 0.75;
+}
+
+@keyframes slidein-left {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    } to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes slidein-right {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    } to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
