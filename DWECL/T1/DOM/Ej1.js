@@ -7,6 +7,7 @@ console.log("Number of links: " + links.length);
 // 2. Address to which the penultimate link links to
 let penultimate = links[links.length - 2];
 console.log("The penultimate link goes to: " + penultimate.href);
+console.log("The penultimate link goes to: " + penultimate.getAttribute("href"));
 
 // 3. Number of links linking to the institute's website
 let iesbelen = (links) => {
