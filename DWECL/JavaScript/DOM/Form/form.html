@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Formulario</title>
+	<style>
+		body {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		h1 {
+			text-align: center;
+		}
+
+		label {
+			font-weight: bold;
+		}
+
+		div.form {
+			margin: auto;
+			border: 2px solid black;
+			border-radius: 15px;
+			width: 15%;
+			padding: 20px;
+		}
+		div.btn {
+			display: flex;
+			justify-content: space-evenly;
+			margin-top: 20px;
+		}
+		button {
+			padding: 5px 10px;
+		}
+	</style>
+</head>
+<body>
+	<h1>FORM</h1>
+	<div class="form">
+		<form action="">
+			<label for="name">User:</label>
+			<input type="text" name="name" id="name" required>
+			<br><br>
+			<label for="passwd">Password:</label>
+			<input type="password" name="passwd" id="passwd" required>
+			<br><br>
+			<label for="email">Email:</label>
+			<input type="email" name="email" id="email" required>
+			<br><br>
+			<label for="js">Knowledge:</label> <!-- No sé ponerle required a las checkbox ni a los radio -->
+			<input type="checkbox" name="js" id="js">JavaScript
+			<input type="checkbox" name="java" id="java">Java
+			<br><br>
+			<label for="gender">Gender:</label>
+			<input type="radio" name="gender" id="m">Male
+			<input type="radio" name="gender" id="f">Female
+			<br><br>
+			<label for="date">Date:</label>
+			<input type="date" name="date" id="date" required>
+			<br><br>
+			<label for="msg">Message:</label>
+			<br>
+			<textarea name="msg" id="msg" cols="30" rows="5" required></textarea>
+			<br><br>
+			<label for="country">Country:</label>
+			<select name="country" id="country" required>
+				<option value="pred">Choose a country</option>
+				<option value="sp">Spain</option>
+				<option value="en">England</option>
+				<option value="usa">USA</option>
+				<option value="ge">Germany</option>
+				<option value="it">Italy</option>
+			</select>
+			<br><br>
+			<label for="browser">Browser:</label>
+			<input list="browsers" id="browser" name="browser" required/>
+			<datalist id="browsers">
+				<option value="Chrome"></option>
+				<option value="Firefox"></option>
+				<option value="Edge"></option>
+				<option value="Brave"></option>
+				<option value="Opera"></option>
+				<option value="Safari"></option>
+			</datalist>
+			<div class="btn">
+				<button type="submit">Submit</button>
+				<button type="reset">Reset</button>
+			</div>
+		</form>
+	</div>
+
+	<script src="form.js"></script>
+</body>
+</html>
