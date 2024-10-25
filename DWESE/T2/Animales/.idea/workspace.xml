@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
+      <artifact name="Animales:war" />
       <artifact name="Animales:war exploded" />
     </artifacts-to-build>
   </component>
@@ -10,36 +11,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="444f3484-4004-4d30-b08a-9b2d8a3af995" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/beans.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/beans.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/ballena.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/ballena.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/caballito-mar.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/caballito-mar.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/camello.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/camello.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/cebra.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/cebra.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/elefante.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/elefante.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/hipopotamo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/hipopotamo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/jirafa.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/jirafa.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/leon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/leon.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/leopardo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/leopardo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/medusa.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/medusa.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/mono.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/mono.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/oso-blanco.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/oso-blanco.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/oso.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/oso.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/pajaro.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/pajaro.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/pinguino.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/pinguino.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/rinoceronte.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/rinoceronte.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/serpiente.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/serpiente.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/tigre.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/tigre.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/tortuga-marina.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/tortuga-marina.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/images/tortuga.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/tortuga.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dados/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Dados/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Prueba/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Prueba/.idea/vcs.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,10 +50,12 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 11.0.0.executor&quot;: &quot;Run&quot;,
     &quot;Tomcat Server.Tomcat 11.0.01.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Samuel/Desktop/2DAW/DWESE/T2/Dados&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -93,11 +70,17 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Tomcat 11.0.01" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 11.0.01" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="Tomcat 11.0.0" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 11.0.0" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="hot-swap-classes" />
       <deployment>
         <artifact name="Animales:war exploded">
           <settings>
             <option name="CONTEXT_PATH" value="/Animales_war_exploded" />
+          </settings>
+        </artifact>
+        <artifact name="Animales:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/Animales_war" />
           </settings>
         </artifact>
       </deployment>
@@ -109,6 +92,54 @@
       <predefined_log_file id="Tomcat Manager" />
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="62089" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
@@ -128,6 +159,7 @@
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
           <artifact name="Animales:war exploded" />
+          <artifact name="Animales:war" />
         </option>
       </method>
     </configuration>
@@ -135,8 +167,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
       </set>
     </attachedChunks>
   </component>
@@ -150,6 +182,11 @@
       <updated>1729779308683</updated>
       <workItem from="1729779309782" duration="1369000" />
       <workItem from="1729781648483" duration="30000" />
+      <workItem from="1729846860334" duration="2000" />
+      <workItem from="1729846882710" duration="88000" />
+      <workItem from="1729847394791" duration="89000" />
+      <workItem from="1729850151200" duration="1288000" />
+      <workItem from="1729858422733" duration="202000" />
     </task>
     <servers />
   </component>
