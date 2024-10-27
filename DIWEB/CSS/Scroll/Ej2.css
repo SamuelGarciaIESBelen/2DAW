@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+h1 {
+    text-align: center;
+}
+.container {
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 20px;
+    font-size: 20px;
+    display: flex;
+    scroll-snap-type: x mandatory;
+    width: 250px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.producto {
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-right: 100px;
+}
+img {
+    height: 200px;
+}
+button {
+    color: white;
+    font-size: 17.5px;
+    background-color: grey;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 10px;
+    width: 150px;
+    margin: auto;
+}
