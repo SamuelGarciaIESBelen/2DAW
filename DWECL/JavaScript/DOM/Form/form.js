@@ -4,18 +4,30 @@ submitButton.addEventListener('click', (event) => {
 	const form = document.querySelector("form");
 	const labels = form.getElementsByTagName("label");
 	const inputs = form.getElementsByTagName("input");
+	// const inputs = form.querySelectorAll("input, textarea, select, datalist");
 	let counter = 0;
+	let res = "";
 
-	let full = true;
-	for (let i = 0; i < inputs.length || full; i++) {
-		if (inputs[i].value.trim() == "") {
-			full = false;
+	/* inputs.forEach(i => {
+		let value;
+
+		if (i.type == "checkbox" || i.type == "radio") {
+			value = i.checked ? i.textContent : "";
+		} else if (i.tagName == "select" || i.tagName == "datalist") {
+			value = i.options[counter].textContent;
+		} else {
+			value = i.value;
 		}
-	}
-	if (!full) {
-		alert("All fields must be filled");
-	}
+
+		if (value) {
+			res += `<p><b>${labels[counter].textContent}</b>${inputs[counter].value}</p>`
+		}
+		counter++;
+	}) */
+	
 	while (counter < inputs.length) {
-		document.querySelector(".res").innerHTML += "<p><b>" + labels[counter].textContent + "</b> " + inputs[counter++].value + "</p>";
+		res += `<p><b>${labels[counter].textContent}</b>${inputs[counter++].value}</p>`
 	}
+
+	document.querySelector(".res").innerHTML = res;
 })

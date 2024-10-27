@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+</head>
+<body>
+    <label for="element">Introduce an item in the list: </label>
+    <input type="text" name="element" id="element">
+    <br>
+    <button>Add</button>
+    <ol>
+
+    </ol>
+    <script>
+        let add = () => {
+            let input = document.querySelector("input").value;
+            if (document.querySelector("ol") && input != "") {
+                let newItem = document.createElement("li");
+                newItem.textContent = input;
+                document.querySelector("ol").prepend(newItem);
+            }
+        }
+        document.querySelector("button").addEventListener("click", add);
+    </script>
+</body>
+</html>
