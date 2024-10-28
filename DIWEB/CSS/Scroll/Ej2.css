@@ -2,6 +2,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    scroll-behavior: smooth;
 }
 h1 {
     text-align: center;
@@ -13,10 +14,10 @@ h1 {
     padding: 20px;
     font-size: 20px;
     display: flex;
+    overflow: hidden;
     scroll-snap-type: x mandatory;
     width: 250px;
     overflow-x: scroll;
-    overflow-y: hidden;
 }
 .producto {
     scroll-snap-align: center;
@@ -38,4 +39,7 @@ button {
     padding: 10px;
     width: 150px;
     margin: auto;
+}
+button:hover {
+    cursor: pointer;
 }
