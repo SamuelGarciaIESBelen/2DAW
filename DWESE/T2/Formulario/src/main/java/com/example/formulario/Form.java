@@ -9,44 +9,34 @@ import jakarta.servlet.annotation.*;
 
 @WebServlet(name = "form", value = "/form")
 public class Form extends HttpServlet {
-    List<String> formInd = new ArrayList<>();
-    List<String[]> formArr = new ArrayList<>();
+    List<String> form = new ArrayList<>();
+    String[] aficiones;
 
     public void init() {}
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
 
-        formInd.add(request.getParameter("nombre"));
-        formInd.add(request.getParameter("apellidos"));
-        formInd.add(request.getParameter("edad"));
-        formInd.add(request.getParameter("peso"));
-        formArr.add(request.getParameterValues("sexo"));
-        formArr.add(request.getParameterValues("estadoCivil"));
-        formArr.add(request.getParameterValues("aficiones"));
+        form.add(request.getParameter("nombre"));
+        form.add(request.getParameter("apellidos"));
+        form.add(request.getParameter("edad"));
+        form.add(request.getParameter("peso"));
+        form.add(request.getParameter("sexo"));
+        form.add(request.getParameter("estadoCivil"));
+        aficiones = request.getParameterValues("aficiones");
 
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         out.println("<h1>Datos formulario</h1>");
-        out.println("<h2>Nombre completo: " + formInd.getFirst() + " " + formInd.get(1) + "</h2>");
-        out.println("<h2>Edad: " + formInd.get(2) + " años</h2>");
-        out.println("<h2>Peso: " + formInd.get(3) + " kg</h2>");
-        out.println("<h2>Sexo: ");
-        for (int i = 0; i < formArr.getFirst().length; i++) {
-            if (formArr.getFirst()[i] != null) {
-                out.println(formArr.getFirst()[i] + "</h2>");
-            }
-        }
-        out.println("<h2>Estado civil: ");
-        for (int i = 0; i < formArr.get(1).length; i++) {
-            if (formArr.get(1)[i] != null) {
-                out.println(formArr.get(1)[i] + "</h2>");
-            }
-        }
+        out.println("<h2>Nombre completo: " + form.getFirst() + " " + form.get(1) + "</h2>");
+        out.println("<h2>Edad: " + form.get(2) + " años</h2>");
+        out.println("<h2>Peso: " + form.get(3) + " kg</h2>");
+        out.println("<h2>Sexo: " + form.get(4));
+        out.println("<h2>Estado civil: " + form.get(5));
         out.println("<h2>Aficiones:</h2>");
-        for (int i = 0; i < formArr.get(2).length; i++) {
-            if (formArr.get(2)[i] != null) {
-                out.println("<h3>&ensp;&ensp;" + formArr.get(2)[i] + "</h3>");
+        for (String af : aficiones) {
+            if (af != null) {
+                out.println("<h3>&ensp;&ensp;" + af + "</h3>");
             }
         }
         out.println("</body></html>");
