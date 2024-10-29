@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ejercicio 8</title>
+	<style>
+		table {
+			text-align: center;
+			border: 2px solid black;
+		}
+		td {
+			height: 50px;
+			width: 50px;
+		}
+		td#core {
+			font-size: 20px;
+			font-weight: bold;
+			background-color: black;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<button class="rowStart">Add a row at the beggining</button>
+	<button class="rowEnd">Add a row at the end</button>
+	<br><br>
+	<button class="colStart">Add a column at the beggining</button>
+	<button class="colEnd">Add a column at the end</button>
+	<br><br>
+
+	<table border="1">
+		<tr>
+			<td id="core">Core</td>
+		</tr>
+	</table>
+	
+	<script>
+		function rowStart() {
+			let table = document.querySelector("table");
+			let cells = document.querySelector("tr").querySelectorAll("td").length;
+			let tr = document.createElement("tr");
+			
+			for (let i = 0; i < cells; i++) {
+				let td = document.createElement("td");
+				td.textContent = "Top";
+				td.style.backgroundColor = "springgreen";
+				tr.appendChild(td);
+			}
+			table.prepend(tr);
+		}
+		function rowEnd() {
+			let table = document.querySelector("table");
+			let cells = document.querySelector("tr").querySelectorAll("td").length;
+			let tr = document.createElement("tr");
+			
+			for (let i = 0; i < cells; i++) {
+				let td = document.createElement("td");
+				td.textContent = "Bottom";
+				td.style.backgroundColor = "aquamarine";
+				tr.appendChild(td);
+			}
+			table.appendChild(tr);
+		}
+		function colStart() {
+			let table = document.querySelector("table");
+			let rows = document.querySelectorAll("tr");
+			
+			for (let i = 0; i < rows.length; i++) {
+				let td = document.createElement("td");
+				td.textContent = "Start";
+				td.style.backgroundColor = "gold";
+				rows[i].prepend(td);
+			}
+		}
+		function colEnd() {
+			let table = document.querySelector("table");
+			let rows = document.querySelectorAll("tr");
+			
+			for (let i = 0; i < rows.length; i++) {
+				let td = document.createElement("td");
+				td.textContent = "End";
+				td.style.backgroundColor = "violet";
+				rows[i].appendChild(td);
+			}
+		}
+		
+		document.querySelector(".rowStart").addEventListener("click", rowStart);
+		document.querySelector(".rowEnd").addEventListener("click", rowEnd);
+		document.querySelector(".colStart").addEventListener("click", colStart);
+		document.querySelector(".colEnd").addEventListener("click", colEnd);
+	</script>
+</body>
+</html>
