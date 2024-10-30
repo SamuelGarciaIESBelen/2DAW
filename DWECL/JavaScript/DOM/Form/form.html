@@ -112,5 +112,22 @@
 	<div class="res"></div>
 
 	<script src="form.js"></script>
+
+	<!-- Juan -->
+	<!-- <script>
+        let submit = document.querySelector("button");
+        submit.addEventListener("click", function(event) {
+            event.preventDefault();
+            let inputs = document.querySelectorAll("input, select, textarea");
+            let mostrar = document.querySelector("#mostrar");
+            for (let input of inputs) {
+                console.log(input);
+                if (!input.value){
+                    input.classList.add("is-invalid");
+                }
+                mostrar.innerHTML+= `<p> name: ${input.name} id: ${input.id} value: ${input.value} </p>`;
+            }
+        });
+    </script> -->
 </body>
 </html>

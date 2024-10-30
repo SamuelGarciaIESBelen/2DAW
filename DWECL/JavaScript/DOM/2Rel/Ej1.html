@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ejercicio 1</title>
+</head>
+<body>
+	<div id="grandfather">
+		<h2>Grandfather</h2>
+		<div id="father1">
+			<h3>Father1</h3>
+			<div id="child1">
+				<h4>Child 1</h4>
+			</div>
+			<div id="child2">
+				<h4>Child 2</h4>
+				<div id="grandchild1">
+					<h5>Grandchild 1</h5>
+				</div>
+				<div id="grandchild2">
+					<h5>Grandchild 2</h5>
+				</div>
+			</div>
+		</div>
+		<div id="faher2">
+			<h3>Father2</h3>
+			<div id="child3">
+				<h4>Child 3</h4>
+			</div>
+		</div>
+	</div>
+	<table>
+		<tr id="header">
+			<th>Name</th>
+			<th>Address</th>
+			<th>Age</th>
+		</tr>
+		<tr id="person1">
+			<td>Jon</td>
+			<td>Dover</td>
+			<td>2</td>
+		</tr>
+		<tr id="person2">
+			<td>Mike</td>
+			<td>Manchester</td>
+			<td>33</td>
+		</tr>
+		<tr id="person3">
+			<td>Tom</td>
+			<td>London</td>
+			<td>6</td>
+		</tr>
+		<tr id="person4">
+			<td>Jerry</td>
+			<td>Dalkey</td>
+			<td>6</td>
+		</tr>
+	</table>
+
+	<script>
+		function tree(e) {
+			const father = e.target.parentElement;
+			const grandfather = father.parentElement;
+			const siblings = father.children;
+
+			console.log(
+				`
+Target: ${showNode(e.target, "target")}
+The father: ${showNode(e.target.parentElement, "father")}
+All the siblings: ${showNodes(e.target.parentElement.children, "siblings")}
+The previous sibling: ${showNode(e.target.previousElementSibling, "previous sibling")}
+The next sibling: ${showNode(e.target.nextElementSibling, "next sibling")}
+The grandfather: ${showNode(e.target.parentElement.parentElement, "grandfather")}
+Grandfather's siblings: 
+Father's siblings: 
+Cousins: 
+Children: 
+Grandchildren: 
+				`
+			);
+		}
+
+		function showNode(e, name) {
+			let res;
+			
+			if (e) {
+				res = `Node name: ${e.tagName} - ID: ${e.id ? e.id : "No ID"}`;
+			} else {
+				res = "There is no ${name}"
+			}
+			return res;
+		}
+
+		function showNodes(e, name) {
+			let res;
+
+			if (e && e.length > 0) {
+				for (sibling of e) {
+					res += `
+						Node name: ${e.tagName} - ID: ${e.id ? e.id : "No ID"}`;
+				}
+			} else {
+				res = "There are no ${name}";
+			}
+			return res;
+		}
+
+		document.querySelector("#child2").addEventListener("click", tree);
+	</script>
+</body>
+</html>
