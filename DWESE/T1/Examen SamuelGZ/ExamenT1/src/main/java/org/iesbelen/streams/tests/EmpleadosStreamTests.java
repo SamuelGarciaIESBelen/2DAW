@@ -250,9 +250,9 @@ class EmpleadosStreamTests {
 			List<Departamento> listDep = depHome.findAll();
 
 			listDep.stream()
-					.map(d -> d.getNombre() + "\t" + d.getPresupuesto())
-					.sorted((a, b) -> b.split("\t")[1].compareTo(a.split("\t")[1]))
+					.sorted(comparing(Departamento::getPresupuesto).reversed())
 					.limit(3)
+					.map(d -> d.getNombre() + "\t" + d.getPresupuesto())
 					.forEach(System.out::println);
 		}
 		catch (RuntimeException e) {
