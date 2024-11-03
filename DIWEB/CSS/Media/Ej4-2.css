@@ -1,0 +1,50 @@
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	padding-top: 50px;
+}
+.card {
+	padding: 20px;
+	margin-top: 50px;
+}
+.card-shadow {
+	margin: auto;
+	width: 300px;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+	border: 1px solid grey;
+	border-radius: 10px;
+}
+.card-gradient {
+	background: linear-gradient(#3498db, #1f587d);
+	color: white;
+}
+img {
+	width: 500px;
+	margin-inline: 50px;
+}
+.filtered-image {
+	filter:
+		brightness(0.8)
+		contrast(1.2);
+}
+.tooltip-container {
+	width: 300px;
+	margin: auto;
+	margin-bottom: 50px;
+}
+.tooltip-text {
+	visibility: hidden;
+	background-color: brown;
+	color: white;
+	width: 120px;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px;
+	top: 125%;
+	transition: visibility 0.3s ease-in-out;
+}
+.tooltip-container:hover .tooltip-text {
+	visibility: visible;
+}
