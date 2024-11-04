@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ejercicio 2</title>
+	<style>
+		body {
+			padding: 50px;
+			font-size: 20px;
+		}
+		.links {
+			display: flex;
+			flex-direction: column;
+			line-height: 30px;
+			width: 150px;
+		}
+		a {
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="links">
+		<a href="Ej2/bla.doc">Document</a>
+		<a href="Ej2/bla.pdf">PDF</a>
+		<a href="Ej2/bla.iso">ISO</a>
+		<a href="Ej2/bla.gif">GIF</a>
+		<a href="Ej2/bla.pdf">PDF</a>
+		<a href="Ej2/bla.txt">TXT</a>
+		<a href="Ej2/bla.doc">Document</a>
+		<a href="Ej2/bla.gif">GIF</a>
+		<a href="Ej2/bla.iso">ISO</a>
+	</div>
+	
+	<script>
+		const images = {
+			"iso": "iso.png",
+			"pdf": "pdf.png",
+			"doc": "doc.png",
+			"gif": "gif.png",
+			"undefined": "und.png"
+		};
+
+		const linkImages = (link, type, path) => {
+			let div = document.createElement("div");
+			let img = document.createElement("img");
+
+			div.appendChild(img);
+			div.appendChild(link);
+
+			img.setAttribute("src", path + images[type]);
+			img.style.width = "30px";
+
+			document.querySelector(".links").appendChild(div);
+		};
+
+		const links = document.querySelectorAll("a");
+		for (let l of links) {
+			let path = l.href.split(".");
+			let type = path[path.length - 1];
+			// console.log(type);
+			
+			if (!images[type]) {
+				linkImages(l, "undefined", "Ej2/");
+			} else {
+				linkImages(l, type, "Ej2/");
+			}
+		}
+	</script>
+</body>
+</html>

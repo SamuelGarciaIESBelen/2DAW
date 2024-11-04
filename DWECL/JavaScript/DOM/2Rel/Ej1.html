@@ -63,20 +63,21 @@
 			const father = e.target.parentElement;
 			const grandfather = father.parentElement;
 			const siblings = father.children;
+			const children = e.target.children;
 
 			console.log(
 				`
 Target: ${showNode(e.target, "target")}
-The father: ${showNode(e.target.parentElement, "father")}
-All the siblings: ${showNodes(e.target.parentElement.children, "siblings")}
+The father: ${showNode(father, "father")}
+All the siblings: ${showNodes(siblings, "siblings")}
 The previous sibling: ${showNode(e.target.previousElementSibling, "previous sibling")}
 The next sibling: ${showNode(e.target.nextElementSibling, "next sibling")}
-The grandfather: ${showNode(e.target.parentElement.parentElement, "grandfather")}
-Grandfather's siblings: 
-Father's siblings: 
-Cousins: 
-Children: 
-Grandchildren: 
+The grandfather: ${showNode(grandfather, "grandfather")}
+Grandfather's siblings: ${showNodes(grandfather.parentElement.children, "grandfather's siblings")}
+Father's siblings: ${showNodes(grandfather.children, "father siblings")}
+Cousins: ${showNodes(grandfather.children.children, "cousins")}
+Children: ${showNodes(children, "children")}
+Grandchildren: ${showNodes(children.children, "grandchildren")}
 				`
 			);
 		}
@@ -87,7 +88,7 @@ Grandchildren:
 			if (e) {
 				res = `Node name: ${e.tagName} - ID: ${e.id ? e.id : "No ID"}`;
 			} else {
-				res = "There is no ${name}"
+				res = `There is no ${name}`
 			}
 			return res;
 		}
@@ -98,15 +99,17 @@ Grandchildren:
 			if (e && e.length > 0) {
 				for (sibling of e) {
 					res += `
-						Node name: ${e.tagName} - ID: ${e.id ? e.id : "No ID"}`;
+				Node name: ${sibling.tagName} - ID: ${sibling.id ? sibling.id : "No ID"}`;
 				}
 			} else {
-				res = "There are no ${name}";
+				res = `There are no ${name}`;
 			}
 			return res;
 		}
 
 		document.querySelector("#child2").addEventListener("click", tree);
+		document.querySelector("#child3 h4").addEventListener("click", tree);
+		document.querySelector("#person1").firstElementChild.addEventListener("click", tree);
 	</script>
 </body>
 </html>

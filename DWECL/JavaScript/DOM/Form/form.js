@@ -1,33 +1,18 @@
 submitButton.addEventListener('click', (event) => {
 	event.preventDefault();
 
-	const form = document.querySelector("form");
-	const labels = form.getElementsByTagName("label");
-	const inputs = form.getElementsByTagName("input");
-	// const inputs = form.querySelectorAll("input, textarea, select, datalist");
+	const labels = document.getElementsByTagName("label");
+	// const inputs = document.getElementsByTagName("input");
+	const inputs = document.querySelectorAll("input, textarea, select, datalist");
+	let res = document.querySelector(".res");
 	let counter = 0;
-	let res = "";
 
-	/* inputs.forEach(i => {
-		let value;
-
-		if (i.type == "checkbox" || i.type == "radio") {
-			value = i.checked ? i.textContent : "";
-		} else if (i.tagName == "select" || i.tagName == "datalist") {
-			value = i.options[counter].textContent;
-		} else {
-			value = i.value;
-		}
-
-		if (value) {
-			res += `<p><b>${labels[counter].textContent}</b>${inputs[counter].value}</p>`
-		}
-		counter++;
-	}) */
-	
 	while (counter < inputs.length) {
-		res += `<p><b>${labels[counter].textContent}</b>${inputs[counter++].value}</p>`
+		if (inputs[counter].type == "radio" || inputs[counter].type == "checkbox") {
+			if (inputs[counter].checked) {
+				res.innerHTML += `<p><b>${labels[counter].textContent}</b>${inputs[counter++].value}</p>`
+			}
+		}
+		res.innerHTML += `<p><b>${labels[counter].textContent}</b>${inputs[counter++].value}</p>`
 	}
-
-	document.querySelector(".res").innerHTML = res;
 })
