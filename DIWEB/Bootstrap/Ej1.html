@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Ejercicio 1</title>
+    <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
+	<style>
+		body {
+			padding: 20px;
+		}
+		.row:first-child {
+			background-color: aquamarine;
+		}
+		.row div {
+			background-color: rgb(255, 117, 117);
+		}
+	</style>
+</head>
+<body>
+	<h1>My First Bootstrap Page</h1>
+	<p>Resize this responsive page to see the effect!</p>
+	
+	<div class="container">
+		<div class="row mb-5 pb-2 pb-lg-5">
+			<div class="col-4 px-4 py-5 border border-danger">
+				<h5>Column 1</h5>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+					<br><br>
+					Maecenas non tellus id purus tempus rutrum. Nulla
+					pharetra mi risus, nec fermentum justo consequat non...
+				</p>
+			</div>
+			<div class="col-4 px-4 py-5 border border-danger">
+				<h5>Column 2</h5>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+					<br><br>
+					Maecenas non tellus id purus tempus rutrum. Nulla
+					pharetra mi risus, nec fermentum justo consequat non...
+				</p>
+			</div>
+			<div class="col-4 px-4 py-5 border border-danger">
+				<h5>Column 3</h5>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+					<br><br>
+					Maecenas non tellus id purus tempus rutrum. Nulla
+					pharetra mi risus, nec fermentum justo consequat non...
+				</p>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-2 px-4 py-5 border border-danger">
+				<h5>Column 1</h5>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+					<br><br>
+					Maecenas non tellus id purus tempus rutrum. Nulla
+					pharetra mi risus, nec fermentum justo consequat non...
+				</p>
+			</div>
+			<div class="col-4 px-4 py-5 border border-danger align-self-end">
+				<h5>Column 2</h5>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+					<br><br>
+					Maecenas non tellus id purus tempus rutrum. Nulla
+					pharetra mi risus, nec fermentum justo consequat non...
+				</p>
+			</div>
+			<div class="col-6 px-4 py-5 border border-danger align-self-start d-none d-lg-block">
+				<h5>Column 3</h5>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+					<br><br>
+					Maecenas non tellus id purus tempus rutrum. Nulla
+					pharetra mi risus, nec fermentum justo consequat non...
+				</p>
+			</div>
+		</div>
+	</div>
+	
+	<script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
