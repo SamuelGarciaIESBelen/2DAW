@@ -28,15 +28,15 @@ public class FabricanteDAOImpl extends AbstractDAOImpl implements FabricanteDAO{
         	conn = connectDB();
 
 
-        	//1 alternativas comentadas:       
+        	//1 alternativas comentadas:
         	//ps = conn.prepareStatement("INSERT INTO fabricantes (nombre) VALUES (?)", new String[] {"codigo"});
         	//Ver también, AbstractDAOImpl.executeInsert ...
         	//Columna fabricante.codigo es clave primaria auto_increment, por ese motivo se omite de la sentencia SQL INSERT siguiente. 
         	ps = conn.prepareStatement("INSERT INTO fabricantes (nombre) VALUES (?)", Statement.RETURN_GENERATED_KEYS);
-            
+
             int idx = 1;
             ps.setString(idx++, fabricante.getNombre());
-                   
+
             int rows = ps.executeUpdate();
             if (rows == 0) 
             	System.out.println("INSERT de fabricante con 0 filas insertadas.");
@@ -180,7 +180,7 @@ public class FabricanteDAOImpl extends AbstractDAOImpl implements FabricanteDAO{
         	conn = connectDB();
         	
         	ps = conn.prepareStatement("DELETE FROM fabricantes WHERE idFabricante = ?");
-        	int idx = 1;        	
+        	int idx = 1;
         	ps.setInt(idx, id);
         	
         	int rows = ps.executeUpdate();

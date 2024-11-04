@@ -42,7 +42,7 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO{
             rsGenKeys = ps.getGeneratedKeys();
             if (rsGenKeys.next()) 
             	producto.setIdProducto(rsGenKeys.getInt(1));
-                      
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -53,7 +53,7 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO{
 	}
 
 	/**
-	 * Devuelve lista con todos loa fabricantes.
+	 * Devuelve lista con todos los fabricantes.
 	 */
 	@Override
 	public List<Producto> getAll() {
