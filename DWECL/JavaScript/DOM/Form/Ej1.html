@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Formulario</title>
+	<title>Form 1</title>
 	<style>
 		body {
 			display: flex;
@@ -43,45 +43,45 @@
 	<div class="form">
 		<form action="">
 			<label for="name">User:</label>
-			<input type="text" name="name" id="name" required>
+			<input type="text" name="Name" id="name" required>
 			
 			<br><br>
 			
 			<label for="passwd">Password:</label>
-			<input type="password" name="passwd" id="passwd" required>
+			<input type="password" name="Password" id="passwd" required>
 			
 			<br><br>
 			
 			<label for="email">Email:</label>
-			<input type="email" name="email" id="email" required>
+			<input type="email" name="Email" id="email" required>
 			
 			<br><br>
 			
 			<label for="js">Knowledge:</label> <!-- No sé ponerle required a las checkbox ni a los radio -->
-			<input type="checkbox" name="js" id="js">JavaScript
-			<input type="checkbox" name="java" id="java">Java
+			<input type="checkbox" name="Knowledge" id="js" value="JavaScript" required>JavaScript
+			<input type="checkbox" name="Knowledge" id="java" value="Java">Java
 			
 			<br><br>
 			
 			<label for="gender">Gender:</label>
-			<input type="radio" name="gender" id="m">Male
-			<input type="radio" name="gender" id="f">Female
+			<input type="radio" name="Gender" id="m" value="Male" required>Male
+			<input type="radio" name="Gender" id="f" value="Female">Female
 			
 			<br><br>
 			
 			<label for="date">Date:</label>
-			<input type="date" name="date" id="date" required>
+			<input type="date" name="Date" id="date" required>
 			
 			<br><br>
 			
 			<label for="msg">Message:</label>
 			<br>
-			<textarea name="msg" id="msg" cols="30" rows="5" placeholder="Write your message here..." required></textarea>
+			<textarea name="Message" id="msg" cols="30" rows="5" placeholder="Write your message here..." required></textarea>
 			
 			<br><br>
 			
 			<label for="country">Country:</label>
-			<select name="country" id="country" required>
+			<select name="Country" id="country" required>
 				<option value="pred">Choose a country</option>
 				<option value="sp">Spain</option>
 				<option value="en">England</option>
@@ -93,7 +93,7 @@
 			<br><br>
 			
 			<label for="browser">Browser:</label>
-			<input list="browsers" id="browser" name="browser" required/>
+			<input list="browsers" id="browser" name="Browser" required/>
 			<datalist id="browsers">
 				<option value="Chrome"></option>
 				<option value="Firefox"></option>
@@ -104,30 +104,13 @@
 			</datalist>
 			
 			<div class="btn">
-				<button type="submit" id="submitButton">Submit</button>
-				<button type="reset">Reset</button>
+				<button type="submit" id="submitBtn">Submit</button>
+				<button type="reset" id="resetBtn">Reset</button>
 			</div>
 		</form>
 	</div>
 	<div class="res"></div>
 
-	<script src="form.js"></script>
-
-	<!-- Juan -->
-	<!-- <script>
-        let submit = document.querySelector("button");
-        submit.addEventListener("click", function(event) {
-            event.preventDefault();
-            let inputs = document.querySelectorAll("input, select, textarea");
-            let mostrar = document.querySelector("#mostrar");
-            for (let input of inputs) {
-                console.log(input);
-                if (!input.value){
-                    input.classList.add("is-invalid");
-                }
-                mostrar.innerHTML+= `<p> name: ${input.name} id: ${input.id} value: ${input.value} </p>`;
-            }
-        });
-    </script> -->
+	<script src="Ej1.js"></script>
 </body>
 </html>
