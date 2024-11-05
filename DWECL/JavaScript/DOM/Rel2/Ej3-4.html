@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DOM Rel2 3-4</title>
+	<style>
+		body {
+			display: flex;
+			flex-direction: column;
+		}
+		div {
+			margin: auto;
+			width: 500px;
+		}
+		p {
+			font-size: 20px;
+		}
+		b {
+			color: blueviolet;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<p>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur accusantium quaerat sequi, harum nesciunt
+			totam ea fugit eos SEX quis asperiores temporibus mollitia inventore, laborum PORN eum quia corporis dolor fugiat libero?
+		</p>
+		<p>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur dignissimos reiciendis magni, unde temporibus
+			quisquam eveniet voluptatum aliquid nam omnis numquam DRUGS placeat, a fugit accusamus quasi! Ipsum earum libero
+			pariatur?
+		</p>
+		<p>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. DEAD Optio, quae a aspernatur sed eligendi quam dolore
+			dignissimos tempore delectus illum vero repellendus molestias debitis. Consectetur dolores blanditiis repellat
+			illo nam?
+		</p>
+		<p>
+			Lorem ipsum dolor sit amet consectetur DEATH adipisicing elit. Facere iste at quos molestiae eaque aliquam esse
+			reiciendis ipsa exercitationem corrupti dolore iusto consequuntur BLOOD dolorem, cumque nihil architecto voluptate
+			officia. Exercitationem.
+		</p>
+	</div>
+	
+	<script>
+		const taboo = ["sex", "porn", "drugs", "blood", "death"];
+		
+		let findTabooWords = (node) => {
+			for (let cn of node.childNodes) {
+				if (cn instanceof Text) {
+					censor(cn);
+				} else {
+					findTabooWords(cn);
+				}
+			}
+		}
+
+		let censor = (textNode) => {
+			for (let t of taboo) {
+				let text = textNode.textContent.toLowerCase();
+				
+				if (text.includes(t)) {
+					let cens = "Blocked content";
+					let bold = document.createElement("b");
+					bold.append(cens);
+					textNode.replaceWith(bold);
+				}
+			}
+		}
+
+		findTabooWords(document.body);
+	</script>
+</body>
+</html>

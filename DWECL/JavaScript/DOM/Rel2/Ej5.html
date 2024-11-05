@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DOM Rel2 5</title>
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+		}
+		.images {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			margin-top: 100px;
+		}
+		.buttons {
+			margin-top: 20px;
+			display: flex;
+			justify-content: space-between;
+		}
+		button {
+			padding: 5px 10px;
+			border-radius: 15px;
+			font-weight: bold;
+		}
+		button:hover {
+			cursor: pointer;
+			background-color: rgb(215, 215, 215);
+		}
+		img {
+			height: 600px;
+			border-radius: 25px;
+		}
+	</style>
+</head>
+<body>
+	<div class="images">
+		<div>
+			<img class="now" src="Images Ej5/Batman.jpg">
+		</div>
+		<div class="buttons">
+			<button class="previous">Previous</button>
+			<button class="next">Next</button>
+		</div>
+	</div>
+
+	<script>
+		const images = ["Images Ej5/Batman.jpg", "Images Ej5/Batman2.jpg", "Images Ej5/Batman3.jpg",
+					"Images Ej5/Nightwing.jpg", "Images Ej5/Superman.jpg", "Images Ej5/BatySup.jpg"];
+		let pos = 0;
+
+		let previous = () => {
+			if (pos > 0) {
+				document.querySelector(".now").src = images[--pos];
+			}
+		}
+		
+		let next = () => {
+			if (pos < images.length - 1) {
+				document.querySelector(".now").src = images[++pos];
+			}
+		}
+
+		document.querySelector(".previous").addEventListener("click", previous);
+		document.querySelector(".next").addEventListener("click", next);
+	</script>
+</body>
+</html>
