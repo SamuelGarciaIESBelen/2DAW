@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Form 1</title>
+	<title>Forms 1</title>
 	<style>
 		body {
 			display: flex;
@@ -111,6 +111,25 @@
 	</div>
 	<div class="res"></div>
 
-	<script src="Ej1.js"></script>
+	<script>
+		submitBtn.addEventListener('click', (event) => {
+			event.preventDefault();
+
+			const inputs = document.querySelectorAll("input, textarea, select, datalist");
+			let res = document.querySelector(".res");	
+			res.innerHTML = "";
+
+			for (let i = 0; i < inputs.length - 1; i++) {
+				if ((["radio", "checkbox"].includes(inputs[i].type) && inputs[i].checked) || !["radio", "checkbox"].includes(inputs[i].type)) {
+					res.innerHTML += `<p><b>${inputs[i].name}:</b> ${inputs[i].value}</p>`
+				}
+			}
+		})
+
+		resetBtn.addEventListener("click", (event) => {
+			let res = document.querySelector(".res");
+			res.innerHTML = "";
+		})
+	</script>
 </body>
 </html>
