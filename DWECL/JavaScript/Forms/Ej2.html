@@ -8,33 +8,61 @@
 		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-	<div class="container mt-5 d-flex flex-column justify.content-center border">
-		<h2 class="text-center mb-4">Payment Form</h2>
-		<img src="Batcard.png" alt="Credit Card" width="500px" class="align-self-center mb-5">
-		<form id="paymentForm">
-			<div class="row justify-content-center">
-				<div class="col-2 pe-0 mb-3">
-					<label for="cardNumber" class="form-label mb-0 ms-2">Card number</label>
-					<input type="text" class="form-control rounded-0" id="cardNumber" maxlength="19" required>
-				</div>
-				<div class="col-3 ps-0 mb-3">
-					<label for="name" class="form-label mb-0 ms-2">Full name</label>
-					<input type="text" class="form-control rounded-0" id="name" required>
-				</div>
+	<div class="container-md">
+		<div class="row justify-content-center">
+			<div class="col-lg-5 col-md-8 col-12">
+				<form class="mt-5 p-4 shadow rounded-5 border bg-light needs-validation">
+					<div class="row justify-content-center mb-4">
+						<img src="Batcard.png">
+					</div>
+					<div class="row">
+						<div class="form-group col-6 mt-3">
+							<label class="ms-2">Amount:</label>
+							<div class="input-group has-validation">
+								<input type="text" class="form-control rounded-end-0" placeholder="0" id="amount">
+								<span class="input-group-text">€</span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6 m-2"  id="validator-amount"> </div>
+					</div>
+					<div class="row">
+						<div class="mt-3 ms-2 form-text">Start typing in here to take over and try it out</div>
+						<div class="col-12">
+							<div class="input-group has-validation">
+								<input type="text" class="form-control rounded-end-0" placeholder="XXXX-XXXX-XXXX-XXXX"
+									id="creditCard">
+								<input type="text" class="form-control" placeholder="Bruce Wayne" id="fullName">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="mt-3 col-5 m-2" id="validator-creditCard"> 
+						</div>
+						<div class="mt-3 col-5 m-2" id="validator-fullName">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-6 mt-3 pe-0">
+							<div class="input-group has-validation">
+								<input type="text" class="form-control rounded-end-0" placeholder="12/34" id="expiration">
+								<input type="text" class="form-control rounded-end-0" placeholder="123" id="csv">
+							</div>
+						</div>
+						<div class="text-center mt-3 col-6 m-0 ps-0">
+							<button type="submit" class="btn btn-primary w-100 rounded-start-0">Refresh</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="mb-3 col-4 m-2" id="validator-expiration">
+						</div>
+						<div class="mb-3 col-4 m-2" id="validator-csv">
+						</div>
+					</div>
+				</form>
 			</div>
-			<div class="row justify-content-center">
-				<div class="col-1"><label for="securityCode" class="form-label mb-0 ms-2">CVV</label></div>
-				<div class="col-1"><label for="expirationDate" class="form-label mb-0 ms-2">MM/YY</label></div>
-				<div class="col-1"><label for="amount" class="form-label mb-0 ms-2">Amount</label></div>
-				<div class="col-1"></div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-1"><input type="text" class="form-control rounded-0" id="securityCode" maxlength="3" required></div>
-				<div class="col-1"><input type="text" class="form-control rounded-0" id="expirationDate" maxlength="5" required></div>
-				<div class="col-1"><input type="text" class="form-control rounded-0" id="amount" required></div>
-				<div class="col-1"><button type="button" class="btn btn-primary rounded-0 align-self-end fw-bold">Enviar</button></div>
-			</div>
-		</form>
+		</div>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -42,7 +70,7 @@
 		crossorigin="anonymous"></script>
 	
 	<script>
-
+		
 	</script>
 </body>
 </html>
