@@ -11,43 +11,41 @@
 	<div class="container-md">
 		<div class="row justify-content-center">
 			<div class="col-lg-5 col-md-8 col-12">
-				<form class="mt-5 p-4 shadow rounded-5 border bg-light needs-validation">
+				<form class="mt-5 p-4 rounded-5 border shadow bg-light">
 					<div class="row justify-content-center mb-4">
 						<img src="Batcard.png">
 					</div>
 					<div class="row">
 						<div class="form-group col-6 mt-3">
 							<label class="ms-2">Amount:</label>
-							<div class="input-group has-validation">
-								<input type="text" class="form-control rounded-end-0" placeholder="0" id="amount">
+							<div class="input-group">
+								<input type="text" class="form-control rounded-end-0" placeholder="0" id="amount" required>
 								<span class="input-group-text">€</span>
 							</div>
+							<div class="col-6 m-2 invalid-feedback" id="amountError">The amount is not correct</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-6 m-2"  id="validator-amount"> </div>
 					</div>
 					<div class="row">
 						<div class="mt-3 ms-2 form-text">Start typing in here to take over and try it out</div>
 						<div class="col-12">
-							<div class="input-group has-validation">
+							<div class="input-group">
 								<input type="text" class="form-control rounded-end-0" placeholder="XXXX-XXXX-XXXX-XXXX"
-									id="creditCard">
-								<input type="text" class="form-control" placeholder="Bruce Wayne" id="fullName">
+									id="card" required>
+								<input type="text" class="form-control" placeholder="Bruce Wayne" id="name" required>
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="mt-3 col-5 m-2" id="validator-creditCard"> 
-						</div>
-						<div class="mt-3 col-5 m-2" id="validator-fullName">
-						</div>
+						<div class="mt-3 col-5 m-2 invalid-feedback" id="cardError">The card number must follow the format XXXX-XXXX-XXXX-XXXX</div>
+						<div class="mt-3 col-5 m-2 invalid-feedback" id="nameError">The name can't be shorter than 7 characters</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6 col-6 mt-3 pe-0">
-							<div class="input-group has-validation">
-								<input type="text" class="form-control rounded-end-0" placeholder="12/34" id="expiration">
-								<input type="text" class="form-control rounded-end-0" placeholder="123" id="csv">
+							<div class="input-group">
+								<input type="text" class="form-control rounded-end-0" placeholder="12/34" id="expiration" required>
+								<input type="text" class="form-control rounded-end-0" placeholder="123" id="csv" required>
 							</div>
 						</div>
 						<div class="text-center mt-3 col-6 m-0 ps-0">
@@ -55,10 +53,8 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="mb-3 col-4 m-2" id="validator-expiration">
-						</div>
-						<div class="mb-3 col-4 m-2" id="validator-csv">
-						</div>
+						<div class="mb-3 col-4 m-2 invalid-feedback" id="expirationError">Date has to be valid and after today</div>
+						<div class="mb-3 col-4 m-2 invalid-feedback" id="csvError">CSV has only 3 digits</div>
 					</div>
 				</form>
 			</div>
@@ -70,7 +66,81 @@
 		crossorigin="anonymous"></script>
 	
 	<script>
-		
+		const validations = {
+			"amount": {
+				keyPress: /\d|\./,
+				pattern: /[1-9]\d+(\.\d{2})?/
+			},
+			"card": {
+				keyPress: /\d|\s/,
+				pattern: /\d{4}\s\d{4}\s\d{4}\s\d{4}/,
+				max: 19, 
+				autocomplete: function (event) {
+					if (!["deleteContentBackward", "deleteContentForward"].includes(event.inputType) &&
+						[4, 9, 14].includes(event.target.value.length)) { event.target.value += " "; }
+				}
+			},
+			"name": {
+				keyPress: /[A-Za-z]|\s/,
+				pattern: /[A-Za-z]{3,}\s[A-Za-z]{3,}/,
+			},
+			"expiration": {
+				keyPress: /\d|\//,
+				pattern: /[0-3]\d\/[0,1]\d/,
+				max: 5,
+				autocomplete: function (event) {
+					if (!["deleteContentBackward", "deleteContentForward"].includes(event.inputType) &&
+						event.target.value.length == 2) { event.target.value += "/"; }
+				}
+			},
+			"csv": {
+				keyPress: /\d/,
+				pattern: /\d{3}/,
+				max: 3
+			},
+		}
+
+		const keyValidation = (event) => {
+			const val = validations[event.target.id];
+			
+			// Comprueba cada input con el keyPress, si no coincide o supera el máximo, hace un slice del texto actual quitándole el último carácter
+			if (!val.keyPress.test(event.target.value[event.target.value.length - 1]) ||
+            	(val.max && (event.target.value.length > val.max))) {
+					event.target.value = event.target.value.slice(0, -1);
+			}
+			if (val.autocomplete) {
+				val.autocomplete(event);
+			}
+		}
+
+		const patternValidation = (event) => {
+			const val = validations[event.target.id];
+			let div = document.querySelector("#" + event.target.id + "Error");
+			div.classList.add("border", "rounded");
+			
+			if (!val.pattern.test(event.target.value) ||
+				((event.target.id == "expiration") && !checkExpirationDate(event.target.value))) {
+					event.target.classList.remove("is-valid");
+					event.target.classList.add("is-invalid");
+			} else {
+				event.target.classList.remove("is-invalid");
+				event.target.classList.add("is-valid");
+			}
+		}
+
+		const checkExpirationDate = (value) => {
+			let fecha = value.split("/");
+			const today = new Date();
+			if (fecha[1] < (today.getYear() - 100) ||
+				fecha[1] < (today.getYear() - 100) &&
+				fecha[0] < (today.getMonth() + 1)) { return false; }
+			else { return true; }
+		}
+
+		document.querySelectorAll("input").forEach((input) => {
+			input.addEventListener("input", keyValidation);
+			input.addEventListener("blur", patternValidation);
+		})
 	</script>
 </body>
 </html>
