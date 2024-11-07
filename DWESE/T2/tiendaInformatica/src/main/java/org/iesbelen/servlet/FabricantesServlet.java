@@ -1,6 +1,8 @@
 package org.iesbelen.servlet;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -12,6 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.iesbelen.dao.FabricanteDAO;
 import org.iesbelen.dao.FabricanteDAOImpl;
 import org.iesbelen.model.Fabricante;
+import org.iesbelen.model.FabricanteDTO;
 
 @WebServlet(name = "fabricantesServlet", value = "/tienda/fabricantes/*")
 public class FabricantesServlet extends HttpServlet {
@@ -40,10 +43,16 @@ public class FabricantesServlet extends HttpServlet {
 			//GET 
 			//	/fabricantes/
 			//	/fabricantes
-			
-			request.setAttribute("listaFabricantes", fabDAO.getAll());		
+
+			List<Fabricante> listaFabricantes = fabDAO.getAll();
+			List<FabricanteDTO> listaFabricantesDTO = listaFabricantes.stream()
+					.map(fab -> new FabricanteDTO(fab, fabDAO.getCountProductos(fab.getIdFabricante()).orElse(0)))
+					.toList();
+
+			// request.setAttribute("listaFabricantes", fabDAO.getAll());
+			request.setAttribute("listaFabricantesDTO", listaFabricantesDTO);
 			dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/fabricantes/fabricantes.jsp");
-			        		       
+
 		} else {
 			// GET
 			// 		/fabricantes/{id}
@@ -67,7 +76,11 @@ public class FabricantesServlet extends HttpServlet {
 				// GET
 				// /fabricantes/{id}
 				try {
-					request.setAttribute("fabricante",fabDAO.find(Integer.parseInt(pathParts[1])));
+					int id = Integer.parseInt(pathParts[1]);
+					Optional<Fabricante> fab = fabDAO.find(id);
+					Optional<FabricanteDTO> fabDTO = fab.map(f -> new FabricanteDTO(f, fabDAO.getCountProductos(id).orElse(0)));
+
+					request.setAttribute("fabricante", fabDTO);
 					dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/fabricantes/detalle-fabricante.jsp");
 
 				} catch (NumberFormatException nfe) {

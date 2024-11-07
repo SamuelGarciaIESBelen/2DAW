@@ -34,13 +34,13 @@ public class ProductosServlet extends HttpServlet {
 		String pathInfo = request.getPathInfo(); //
 			
 		if (pathInfo == null || "/".equals(pathInfo)) {
-			ProductoDAO fabDAO = new ProductoDAOImpl();
+			ProductoDAO prodDAO = new ProductoDAOImpl();
 			
 			//GET 
 			//	/productos/
 			//	/productos
 			
-			request.setAttribute("listaProductos", fabDAO.getAll());
+			request.setAttribute("listaProductos", prodDAO.getAll());
 			dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/productos/productos.jsp");
 			        		       
 		} else {
@@ -63,11 +63,11 @@ public class ProductosServlet extends HttpServlet {
         												
 			
 			} else if (pathParts.length == 2) {
-				ProductoDAO fabDAO = new ProductoDAOImpl();
+				ProductoDAO prodDAO = new ProductoDAOImpl();
 				// GET
 				// /productos/{id}
 				try {
-					request.setAttribute("producto",fabDAO.find(Integer.parseInt(pathParts[1])));
+					request.setAttribute("producto",prodDAO.find(Integer.parseInt(pathParts[1])));
 					dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/detalle-producto.jsp");
 
 				} catch (NumberFormatException nfe) {
@@ -76,12 +76,12 @@ public class ProductosServlet extends HttpServlet {
 				}
 				
 			} else if (pathParts.length == 3 && "editar".equals(pathParts[1]) ) {
-				ProductoDAO fabDAO = new ProductoDAOImpl();
+				ProductoDAO prodDAO = new ProductoDAOImpl();
 				
 				// GET
 				// /productos/editar/{id}
 				try {
-					request.setAttribute("producto",fabDAO.find(Integer.parseInt(pathParts[2])));
+					request.setAttribute("producto",prodDAO.find(Integer.parseInt(pathParts[2])));
 					dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/editar-producto.jsp");
 					        								
 				} catch (NumberFormatException nfe) {
@@ -112,12 +112,12 @@ public class ProductosServlet extends HttpServlet {
 		
 		if (__method__ == null) {
 			// Crear uno nuevo
-			ProductoDAO fabDAO = new ProductoDAOImpl();
+			ProductoDAO prodDAO = new ProductoDAOImpl();
 			
 			String nombre = request.getParameter("nombre");
-			Producto nuevoFab = new Producto();
-			nuevoFab.setNombre(nombre);
-			fabDAO.create(nuevoFab);			
+			Producto nuevoProd = new Producto();
+			nuevoProd.setNombre(nombre);
+			prodDAO.create(nuevoProd);
 			
 		} else if (__method__ != null && "put".equalsIgnoreCase(__method__)) {			
 			// Actualizar uno existente
@@ -142,17 +142,17 @@ public class ProductosServlet extends HttpServlet {
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		ProductoDAO fabDAO = new ProductoDAOImpl();
+		ProductoDAO prodDAO = new ProductoDAOImpl();
 		String codigo = request.getParameter("codigo");
 		String nombre = request.getParameter("nombre");
-		Producto fab = new Producto();
+		Producto prod = new Producto();
 		
 		try {
 			
 			int id = Integer.parseInt(codigo);
-			fab.setIdProducto(id);
-			fab.setNombre(nombre);
-			fabDAO.update(fab);
+			prod.setIdProducto(id);
+			prod.setNombre(nombre);
+			prodDAO.update(prod);
 			
 		} catch (NumberFormatException nfe) {
 			nfe.printStackTrace();
@@ -164,14 +164,14 @@ public class ProductosServlet extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
 	{
 		RequestDispatcher dispatcher;
-		ProductoDAO fabDAO = new ProductoDAOImpl();
+		ProductoDAO prodDAO = new ProductoDAOImpl();
 		String codigo = request.getParameter("codigo");
 		
 		try {
 			
 			int id = Integer.parseInt(codigo);
 		
-		fabDAO.delete(id);
+		prodDAO.delete(id);
 			
 		} catch (NumberFormatException nfe) {
 			nfe.printStackTrace();
