@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <title>Form</title>
+
+</head>
+
+<body>
+    <div class="container-md">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-8 col-12">
+                <form class="mt-5 p-4 shadow rounded border bg-light needs-validation">
+                    <div class="row">
+                        <div class="form-group col-6 mt-3">
+                            <label>amount:</label>
+                            <div class="input-group has-validation">
+                                <input type="text" class="form-control" placeholder="0" id="amount">
+                                <span class="input-group-text">€</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 m-2"  id="validator-amount"> </div>
+                    </div>
+                    <div class="row">
+                        <div class="mt-3 form-text">Start typing in here to take over and try it out</div>
+                        <div class="col-12">
+                            <div class="input-group has-validation">
+                                <input type="text" class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX"
+                                    id="creditCard">
+                                <input type="text" class="form-control" placeholder="Pepito Perez" id="fullName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mt-3 col-5 m-2" id="validator-creditCard"> 
+                        </div>
+                        <div class="mt-3 col-5 m-2" id="validator-fullName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-6 mt-3 pe-0">
+                            <div class="input-group has-validation">
+                                <input type="text" class="form-control" placeholder="11/11" id="expiration">
+                                <input type="text" class="form-control" placeholder="999" id="csv">
+                            </div>
+                        </div>
+                        <div class="text-center mt-3 col-6 m-0 ps-0">
+                            <button type="submit" class="btn btn-primary w-100">Refresh</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-4 m-2" id="validator-expiration">
+                        </div>
+                        <div class="mb-3 col-4 m-2" id="validator-csv">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    //control de entrada con regulares: /(expresion)/ /^[]+$/;
+    const patterns = {
+        "expiration": {
+            name: "Expiration Date",
+            keyPress: /^[\d]+$/,
+            validation: /^(0[1-9]|1[0-2])\/\d{2}$/,
+            max: 5,
+            errorMessage: "Expiration day must be a valid date and before current month",
+            autoComplete: function (event) {
+                if (!["deleteContentBackward", "deleteContentForward"].includes(event.inputType) &&
+                    event.target.value.length == 2) event.target.value += "/";
+            }
+        },
+        "fullName": {
+            name: "Full Name",
+            keyPress: /^[A-Za-z\sñÑáéíóúÁÉÍÓÚ]+$/,
+            validation: /^[A-Za-z\sñÑáéíóúÁÉÍÓÚ]{7,}$/,
+            errorMessage: "The name must contain at least 7 characters (only letters)",
+        },
+        "csv": {
+            name: "Csv",
+            keyPress: /^[\d]+$/,
+            validation: /^\d{3}$/,
+            max: 3,
+            errorMessage: "The csv must contain exactly 3 numbers (it's in the back of your card by the way)",
+        },
+        "creditCard": {
+            name: "Credit Card",
+            keyPress: /^[\d]+$/,
+            validation: /^\d{4}\s\d{4}\s\d{4}\s\d{4}$/,
+            max: 19,
+            errorMessage: "Credit card number must be in XXXX XXXX XXXX XXXX format.",
+            autoComplete: function (event) {
+                if (!["deleteContentBackward", "deleteContentForward"].includes(event.inputType) &&
+                    [4, 9, 14].includes(event.target.value.length)) event.target.value += " ";
+            }
+        },
+        "amount": {
+            name: "amount",
+            keyPress: /^[\d]+$/,
+            validation: /^[\d]+$/,
+            errorMessage: "Amount must be a valid number.",
+        }
+    };
+    const keyValidation = (event) => {
+        const pattern = patterns[event.target.id];
+        if (!pattern.keyPress.test(event.target.value[event.target.value.length - 1]) ||
+            (pattern.max && (event.target.value.length > pattern.max))) {
+            event.target.value = event.target.value.slice(0, -1);
+        }
+        if (pattern.autoComplete) {
+            pattern.autoComplete(event);
+        }
+    }
+    const validationFinal = (event) => {
+        const pattern = patterns[event.target.id];
+       let div =document.querySelector(("#validator-"+event.target.id));
+        div.classList.add("border", "rounded");
+
+
+        if (!pattern.validation.test(event.target.value) ||
+            ((event.target.id == "expiration") && !checkExpirationDate(event.target.value))) {
+            div.classList.add("invalid", "badge", "text-bg-danger");
+            div.classList.remove("valid", "badge", "text-bg-success");
+            event.target.classList.remove("is-valid");
+            event.target.classList.add("is-invalid");
+            event.target.classList.remove("is-valid");
+            div.textContent = pattern.errorMessage;
+        } else {
+            div.classList.add("valid", "badge", "text-bg-success");
+            div.classList.remove("invalid", "badge", "text-bg-danger");
+            event.target.classList.remove("is-invalid");
+            event.target.classList.add("is-valid");
+            div.textContent = pattern.name + " is valid";
+        }
+    }
+
+    const checkExpirationDate = (value) => {
+        let fecha = value.split("/");
+        const today = new Date();
+        if (fecha[1] < (today.getYear() - 100) ||
+            fecha[1] < (today.getYear() - 100) && fecha[0] < (today.getMonth() + 1)) {
+            return false;
+        } else {
+            return true;
+        }
+
+
+
+    }
+    document.querySelectorAll("input").forEach((input) => {
+        input.addEventListener("input", keyValidation);
+        input.addEventListener("blur", validationFinal);
+    })
+
+    //Validación:
+
+    //Autocompletar:
+
+
+
+</script>
+
+</html>
