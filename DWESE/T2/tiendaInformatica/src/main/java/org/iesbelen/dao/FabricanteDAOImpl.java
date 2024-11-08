@@ -214,6 +214,7 @@ public class FabricanteDAOImpl extends AbstractDAOImpl implements FabricanteDAO{
 
 			rs = ps.executeQuery();
 
+			// Esto lo hacemos por seguridad y mantener el formato, pero podríamos poner 1 directamente
 			if (rs.next()) {
 				idx = 1;
 
@@ -221,8 +222,8 @@ public class FabricanteDAOImpl extends AbstractDAOImpl implements FabricanteDAO{
 			}
 
 		} catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
+			e.printStackTrace();
+		} finally {
 			closeDb(conn, ps, rs);
 		}
 
