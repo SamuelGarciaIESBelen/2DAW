@@ -6,7 +6,8 @@ public class FabricanteDTO extends Fabricante {
     public FabricanteDTO() {}
 
     public FabricanteDTO(int id, String nombre, int numProductos) {
-        super();
+        setIdFabricante(id);
+        setNombre(nombre);
         this.numProductos = numProductos;
     }
 

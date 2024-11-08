@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.iesbelen.model.Fabricante;
+import org.iesbelen.model.FabricanteDTO;
 
 public class FabricanteDAOImpl extends AbstractDAOImpl implements FabricanteDAO{
 
@@ -229,4 +230,40 @@ public class FabricanteDAOImpl extends AbstractDAOImpl implements FabricanteDAO{
 
 		return numProductos;
     }
+
+	@Override
+	public List<FabricanteDTO> getAllDTOPlusCountProductos() {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<FabricanteDTO> fabs = new ArrayList<>();
+
+		try {
+			conn = connectDB();
+
+			String query = "select f.idFabricante, f.nombre, count(idProducto) " +
+					"from fabricantes f left join productos p using (idFabricante) " +
+					"group by idFabricante";
+
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+
+			int idx;
+
+			while (rs.next()) {
+				idx = 1;
+				int idFab = rs.getInt(idx++);
+				String nombre = rs.getString(idx++);
+				int countProd = rs.getInt(idx);
+
+				fabs.add(new FabricanteDTO(idFab, nombre, countProd));
+			}
+
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			closeDb(conn, ps, rs);
+		}
+		return fabs;
+	}
 }
