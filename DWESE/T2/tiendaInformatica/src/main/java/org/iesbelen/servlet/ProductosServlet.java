@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.iesbelen.dao.FabricanteDAOImpl;
 import org.iesbelen.dao.ProductoDAO;
 import org.iesbelen.dao.ProductoDAOImpl;
 import org.iesbelen.model.Producto;
@@ -56,9 +57,12 @@ public class ProductosServlet extends HttpServlet {
 			String[] pathParts = pathInfo.split("/");
 			
 			if (pathParts.length == 2 && "crear".equals(pathParts[1])) {
-				
+				FabricanteDAOImpl fabDAO = new FabricanteDAOImpl();
+
 				// GET
 				// /productos/crear
+
+				request.setAttribute("listaFabricantes", fabDAO.getAllDTOPlusCountProductos());
 				dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/productos/crear-producto.jsp");
         												
 			
@@ -77,11 +81,14 @@ public class ProductosServlet extends HttpServlet {
 				
 			} else if (pathParts.length == 3 && "editar".equals(pathParts[1]) ) {
 				ProductoDAO prodDAO = new ProductoDAOImpl();
-				
+				FabricanteDAOImpl fabDAO = new FabricanteDAOImpl();
+
 				// GET
 				// /productos/editar/{id}
+
 				try {
 					request.setAttribute("producto",prodDAO.find(Integer.parseInt(pathParts[2])));
+					request.setAttribute("listaFabricantes", fabDAO.getAllDTOPlusCountProductos());
 					dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/productos/editar-producto.jsp");
 					        								
 				} catch (NumberFormatException nfe) {
@@ -115,8 +122,14 @@ public class ProductosServlet extends HttpServlet {
 			ProductoDAO prodDAO = new ProductoDAOImpl();
 			
 			String nombre = request.getParameter("nombre");
+			String precio = request.getParameter("precio");
+			String codFab = request.getParameter("codFab");
+
 			Producto nuevoProd = new Producto();
 			nuevoProd.setNombre(nombre);
+			nuevoProd.setPrecio(Double.parseDouble(precio));
+			nuevoProd.setCodigo_fabricante(Integer.parseInt(codFab));
+
 			prodDAO.create(nuevoProd);
 			
 		} else if (__method__ != null && "put".equalsIgnoreCase(__method__)) {			

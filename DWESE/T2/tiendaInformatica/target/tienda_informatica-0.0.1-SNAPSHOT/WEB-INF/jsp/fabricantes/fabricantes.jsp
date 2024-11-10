@@ -52,7 +52,6 @@
             
             for (FabricanteDTO fab : listaFabricanteDTO) {
     %>
-
 		<div style="margin-top: 6px;" class="clearfix">
 			<div style="float: left;width: 25%"><%= fab.getIdFabricante()%></div>
 			<div style="float: left;width: 25%"><%= fab.getNombre()%></div>
