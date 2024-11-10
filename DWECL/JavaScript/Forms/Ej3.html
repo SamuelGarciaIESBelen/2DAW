@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Enrollment form</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container mt-4">
+		<form>
+			<h2>Datos de matrícula</h2>
+			<hr>
+			<div class="px-5 pt-3 pb-5">
+				<h4>Localidad del asistente</h4>
+				<hr>
+				<div class="row gx-5">
+					<div class="col">
+						<label class="ms-2" for="comunidad">Comunidad</label>
+						<select class="form-select" name="comunidad" id="comunidad">
+							<option value="pred">Seleccione una Comunidad Autónoma</option>
+						</select>
+					</div>
+					<div class="col">
+						<label class="ms-2" for="provincia">Provincia</label>
+						<select class="form-select" name="provincia" id="provincia" disabled>
+							<option value="pred">Seleccione una provincia</option>
+						</select>
+					</div>
+					<div class="col">
+						<label class="ms-2" for="localidad">Localidad</label>
+						<select class="form-select" name="localidad" id="localidad" disabled>
+							<option value="pred">Seleccione una localidad</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<form>
+			<h2>Personas autorizadas para recoger a su hijo/a durante el curso 2020/2021</h2>
+			<div class="p-2">
+				<div class="border rounded-4 p-4">
+					<div class="row">
+						<div class="col-11">
+							<h4>Datos de las personas autorizadas</h4>
+						</div>
+						<div class="col-1">
+							<button class="btn btn-success" id="add">+</button>
+						</div>
+					</div>
+					<hr>
+					<div class="row gx-5 mt-4 mb-4">
+						<div class="col">
+							<label class="ps-2" for="name">Nombre</label>
+							<input class="form-control" type="text" name="name" id="name" placeholder="Nombre" required>
+						</div>
+						<div class="col">
+							<label class="ps-2" for="apellido1">Primer apellido</label>
+							<input class="form-control" type="text" name="apellido1" id="apellido1" placeholder="Primer apellido" required>
+						</div>
+						<div class="col">
+							<label class="ps-2" for="apellido2">Segundo apellido</label>
+							<input class="form-control" type="text" name="apellido2" id="apellido2" placeholder="Segundo apellido">
+						</div>
+					</div>
+
+					<div class="row gx-5">
+						<div class="col">
+							<label class="ps-2" for="tipoDoc">Tipo de documentación</label>
+							<select class="form-select" name="tipoDoc" id="tipoDoc" disabled>
+								<option value="pred">Tipo de documentación</option>
+								<option value="nif" selected>NIF</option>
+								<option value="nie">NIE</option>
+								<option value="pasaporte">Pasaporte</option>
+							</select>
+						</div>
+						<div class="col">
+							<label class="ps-2" for="doc">NIF / NIE / Pasaporte</label>
+							<input class="form-control" type="text" name="doc" id="doc" placeholder="NIF / NIE / Pasaporte">
+						</div>
+						<div class="col">
+							<label class="ps-2" for="tlf">Teléfono</label>
+							<input class="form-control" type="text" name="tlf" id="tlf" placeholder="Teléfono">
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div id="auth"></div>
+	</div>
+	
+	<script src="provincias.js"></script>
+	<script src="Ej3.js"></script>
+</body>
+</html>
