@@ -6,9 +6,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.iesbelen.dao.FabricanteDAO;
 import org.iesbelen.dao.FabricanteDAOImpl;
 import org.iesbelen.dao.ProductoDAO;
 import org.iesbelen.dao.ProductoDAOImpl;
+import org.iesbelen.model.Fabricante;
 import org.iesbelen.model.Producto;
 
 import java.io.IOException;
@@ -36,7 +38,7 @@ public class ProductosServlet extends HttpServlet {
 			
 		if (pathInfo == null || "/".equals(pathInfo)) {
 			ProductoDAO prodDAO = new ProductoDAOImpl();
-			
+
 			//GET 
 			//	/productos/
 			//	/productos
@@ -115,7 +117,7 @@ public class ProductosServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		RequestDispatcher dispatcher;
-		String __method__ = request.getMethod();
+		String __method__ = request.getParameter("__method__");
 		
 		if (__method__ == null) {
 			// Crear uno nuevo
@@ -158,6 +160,8 @@ public class ProductosServlet extends HttpServlet {
 		ProductoDAO prodDAO = new ProductoDAOImpl();
 		String codigo = request.getParameter("codigo");
 		String nombre = request.getParameter("nombre");
+		String precio = request.getParameter("precio");
+		String codFab = request.getParameter("codFab");
 		Producto prod = new Producto();
 		
 		try {
@@ -165,6 +169,8 @@ public class ProductosServlet extends HttpServlet {
 			int id = Integer.parseInt(codigo);
 			prod.setIdProducto(id);
 			prod.setNombre(nombre);
+			prod.setPrecio(Double.parseDouble(precio));
+			prod.setCodigo_fabricante(Integer.parseInt(codFab));
 			prodDAO.update(prod);
 			
 		} catch (NumberFormatException nfe) {

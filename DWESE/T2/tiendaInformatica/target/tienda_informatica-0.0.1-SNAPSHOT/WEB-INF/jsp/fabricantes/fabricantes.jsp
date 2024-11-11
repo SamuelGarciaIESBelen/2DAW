@@ -19,7 +19,7 @@
 <body>
 <body>
 
-	<div id="contenedora" style="float:none; margin: 0 auto;width: 900px;" >
+	<div id="contenedora" style="float:none; margin: 0 auto; width: 900px;" >
 		<div class="clearfix">
 			<div style="float: left; width: 50%">
 				<h1>Fabricantes</h1>
@@ -27,7 +27,7 @@
 			<div style="float: none;width: auto;overflow: hidden;min-height: 80px;position: relative;">
 				<div style="position: absolute; left: 39%; top : 39%;">
 					
-					<form action="${pageContext.request.contextPath}/tienda/fabricantes/crear">
+					<form style="margin-bottom: 5px" action="${pageContext.request.contextPath}/tienda/fabricantes/crear">
 						<input type="submit" value="Crear">
 					</form>
 				</div>
@@ -78,6 +78,19 @@
     %>
 		No hay registros de fabricante
 	<% } %>
+	</div>
+	<div style="margin-left: 60%; margin-top: 75px">
+		<form action="${pageContext.request.contextPath}/tienda/fabricantes">
+			<select name="ordenar-por">
+				<option value="codigo">Código</option>
+				<option value="nombre">Nombre</option>
+			</select>
+			<select style="margin-left: 5px" name="modo-ordenar">
+				<option value="asc">Ascendente</option>
+				<option value="desc">Descendente</option>
+			</select>
+			<input style="margin-left: 5px" type="submit" value="Ordenar">
+		</form>
 	</div>
 </body>
 </body>

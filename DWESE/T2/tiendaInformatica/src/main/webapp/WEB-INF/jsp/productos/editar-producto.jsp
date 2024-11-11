@@ -65,7 +65,7 @@
                 <label>Precio</label>
             </div>
             <div style="float: none;width: auto;overflow: hidden;">
-                <input name="nombre" value="<%= optFab.get().getPrecio() %>"/>
+                <input name="precio" value="<%= optFab.get().getPrecio() %>"/>
             </div>
         </div>
         <div style="margin-top: 6px;" class="clearfix">

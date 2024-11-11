@@ -2,11 +2,13 @@
          pageEncoding="UTF-8"%>
 <%@page import="org.iesbelen.model.Producto"%>
 <%@page import="java.util.Optional"%>
+<%@ page import="org.iesbelen.model.FabricanteDTO" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Detalle Producto</title>
+    <title>Editar Producto</title>
     <style>
         .clearfix::after {
             content: "";
@@ -63,7 +65,7 @@
                 <label>Precio</label>
             </div>
             <div style="float: none;width: auto;overflow: hidden;">
-                <input name="nombre" value="<%= optFab.get().getPrecio() %>"/>
+                <input name="precio" value="<%= optFab.get().getPrecio() %>"/>
             </div>
         </div>
         <div style="margin-top: 6px;" class="clearfix">
@@ -71,7 +73,15 @@
                 <label>Fabricante</label>
             </div>
             <div style="float: none;width: auto;overflow: hidden;">
-                <input name="nombre" value="<%= optFab.get().getCodigo_fabricante() %>"/>
+                <select name="codFab">
+                    <%
+                        if (request.getAttribute("listaFabricantes") != null) {
+                            List<FabricanteDTO> listaFabricantes = (List<FabricanteDTO>) request.getAttribute("listaFabricantes");
+                            for (FabricanteDTO fab : listaFabricantes) {
+                    %>
+                    <option value="<%= fab.getIdFabricante() %>"><%= fab.getNombre() %></option>
+                    <% } } %>
+                </select>
             </div>
         </div>
 

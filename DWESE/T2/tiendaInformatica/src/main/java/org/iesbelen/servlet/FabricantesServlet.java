@@ -1,6 +1,8 @@
 package org.iesbelen.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +17,7 @@ import org.iesbelen.dao.FabricanteDAO;
 import org.iesbelen.dao.FabricanteDAOImpl;
 import org.iesbelen.model.Fabricante;
 import org.iesbelen.model.FabricanteDTO;
+import org.iesbelen.model.Producto;
 
 @WebServlet(name = "fabricantesServlet", value = "/tienda/fabricantes/*")
 public class FabricantesServlet extends HttpServlet {
@@ -50,6 +53,30 @@ public class FabricantesServlet extends HttpServlet {
 					.toList();*/
 
 			List<FabricanteDTO> listaFabricantesDTO = fabDAO.getAllDTOPlusCountProductos();
+			String orden = request.getParameter("ordenar-por");
+			String modo = request.getParameter("modo-ordenar");
+
+			if ("codigo".equals(orden)) {
+				if ("asc".equals(modo)) {
+					listaFabricantesDTO = listaFabricantesDTO.stream()
+							.sorted(Comparator.comparing(Fabricante::getIdFabricante))
+							.toList();
+				} else if ("desc".equals(modo)) {
+					listaFabricantesDTO = listaFabricantesDTO.stream()
+							.sorted(Comparator.comparing(Fabricante::getIdFabricante).reversed())
+							.toList();
+				}
+			} else if ("nombre".equals(orden)) {
+				if ("asc".equals(modo)) {
+					listaFabricantesDTO = listaFabricantesDTO.stream()
+							.sorted(Comparator.comparing(Fabricante::getNombre))
+							.toList();
+				} else if ("desc".equals(modo)) {
+					listaFabricantesDTO = listaFabricantesDTO.stream()
+							.sorted(Comparator.comparing(Fabricante::getNombre).reversed())
+							.toList();
+				}
+			}
 
 			// request.setAttribute("listaFabricantes", fabDAO.getAll());
 			request.setAttribute("listaFabricantesDTO", listaFabricantesDTO);

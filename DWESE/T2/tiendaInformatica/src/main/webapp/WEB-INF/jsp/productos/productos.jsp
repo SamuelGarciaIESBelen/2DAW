@@ -3,6 +3,7 @@
 <%@page import="org.iesbelen.model.Fabricante"%>
 <%@page import="java.util.List"%>
 <%@ page import="org.iesbelen.model.Producto" %>
+<%@ page import="org.iesbelen.dao.FabricanteDAOImpl" %>
 
 <!DOCTYPE html>
 <html>
@@ -51,8 +52,8 @@
 		</div>
 	<% 
         if (request.getAttribute("listaProductos") != null) {
-            List<Producto> listaProducto= (List<Producto>)request.getAttribute("listaProductos");
-            
+            List<Producto> listaProducto = (List<Producto>)request.getAttribute("listaProductos");
+
             for (Producto producto : listaProducto) {
     %>
 
