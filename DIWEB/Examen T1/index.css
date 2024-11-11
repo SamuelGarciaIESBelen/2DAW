@@ -1,0 +1,148 @@
+@font-face {
+	font-family: Montserrat;
+	src: url(./Montserrat/static/Montserrat-Light.ttf);
+}
+
+:root {
+	--main-green: #136f63;
+	--dark-green: #0b3d33;
+	--background-pale: #e4f9f5;
+	--highlight-orange: #ffa726;
+}
+
+body {
+	margin: 0;
+	font-family: Montserrat;
+	background-color: var(--background-pale);
+	display: flex;
+	flex-direction: column;
+}
+
+/* Header */
+header {
+	background: linear-gradient(90deg, var(--highlight-orange), var(--dark-green));
+	padding: 30px;
+	display: flex;
+	justify-content: space-between;
+	height: auto;
+}
+header img {
+	height: 50px;
+	transition: 0.3s ease-in-out;
+}
+header div {
+	display: flex;
+}
+header li {
+	list-style: none;
+	display: inline;
+	margin-inline: 10px;
+}
+header a {
+	text-decoration: none;
+	color: var(--highlight-orange);
+}
+header button {
+	visibility: hidden;
+	border: none;
+	background-color: unset;
+}
+
+/* Main */
+main {
+	display: flex;
+	text-align: center;
+	color: var(--dark-green);
+}
+main div:first-child {
+	margin: auto;
+	margin-top: 5%;
+}
+main h1 {
+	text-shadow: 6px 3px 4px var(--highlight-orange);
+}
+main p {
+	font-weight: bold;
+}
+main button {
+	margin-top: 15px;
+}
+main div div {
+	margin-top: 20px;
+}
+main input {
+	transition: 0.2s ease-in-out;
+}
+main div div input {
+	margin-right: 10px;
+}
+main button, input {
+	border: 2px solid var(--dark-green);
+	border-radius: 5px;
+	padding: 7.5px;
+}
+
+/* Footer */
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background: linear-gradient(90deg, var(--highlight-orange), var(--dark-green), var(--highlight-orange));
+	display: flex;
+	justify-content: center;
+	color: var(--highlight-orange);
+}
+footer p {
+	margin-inline: 10px;
+}
+
+/* Interactividad con hover */
+header a:hover {
+	color: var(--background-pale);
+}
+header button:hover {
+	color: var(--background-pale);
+}
+main button:hover, input:hover {
+	background-color: var(--highlight-orange);
+	cursor: pointer;
+}
+footer p:hover {
+	color: var(--background-pale);
+	cursor: pointer;
+}
+
+
+/* Pantalla pequeña */
+@media (max-width: 600px) {
+	header ul {
+		visibility: hidden;
+	}
+	header button {
+		visibility: visible;
+		color: var(--highlight-orange);
+		font-size: 20px;
+	}
+	header button:hover {
+		cursor: pointer;
+	}
+	/* No funciona, no puedo mostrar el menú desplegable */
+	header button:hover ul {
+		visibility: visible;
+		float: none;
+	}
+	main div:first-child {
+		margin-top: 15%;
+	}
+}
+
+/* Transformaciones */
+header img:hover {
+	transform: rotate(360deg);
+}
+main input:hover {
+	transform: scale(1.05);
+}
+main div div button:hover {
+	transform: scale(1.15);
+}
