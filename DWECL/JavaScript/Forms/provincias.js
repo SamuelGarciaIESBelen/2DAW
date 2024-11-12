@@ -1,4 +1,4 @@
-const cities = [
+const provincias = [
 	{
 		"parent_code": "0",
 		"label": "Andalucía",

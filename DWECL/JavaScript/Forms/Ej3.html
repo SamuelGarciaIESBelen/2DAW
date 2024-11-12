@@ -24,13 +24,13 @@
 					</div>
 					<div class="col">
 						<label class="ms-2" for="provincia">Provincia</label>
-						<select class="form-select" name="provincia" id="provincia" disabled>
+						<select class="form-select" name="provincia" id="provincia">
 							<option value="pred">Seleccione una provincia</option>
 						</select>
 					</div>
 					<div class="col">
 						<label class="ms-2" for="localidad">Localidad</label>
-						<select class="form-select" name="localidad" id="localidad" disabled>
+						<select class="form-select" name="localidad" id="localidad">
 							<option value="pred">Seleccione una localidad</option>
 						</select>
 					</div>
@@ -44,7 +44,7 @@
 				<div class="border rounded-4 p-4">
 					<div class="row">
 						<div class="col-11">
-							<h4>Datos de las personas autorizadas</h4>
+							<h4><span id="counter">0</span> personas autorizadas</h4>
 						</div>
 						<div class="col-1">
 							<button class="btn btn-success" id="add">+</button>
@@ -53,8 +53,8 @@
 					<hr>
 					<div class="row gx-5 mt-4 mb-4">
 						<div class="col">
-							<label class="ps-2" for="name">Nombre</label>
-							<input class="form-control" type="text" name="name" id="name" placeholder="Nombre" required>
+							<label class="ps-2" for="nombre">Nombre</label>
+							<input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre" required>
 						</div>
 						<div class="col">
 							<label class="ps-2" for="apellido1">Primer apellido</label>
@@ -71,14 +71,14 @@
 							<label class="ps-2" for="tipoDoc">Tipo de documentación</label>
 							<select class="form-select" name="tipoDoc" id="tipoDoc" disabled>
 								<option value="pred">Tipo de documentación</option>
-								<option value="nif" selected>NIF</option>
+								<option value="dni" selected>NIF</option>
 								<option value="nie">NIE</option>
 								<option value="pasaporte">Pasaporte</option>
 							</select>
 						</div>
 						<div class="col">
-							<label class="ps-2" for="doc">NIF / NIE / Pasaporte</label>
-							<input class="form-control" type="text" name="doc" id="doc" placeholder="NIF / NIE / Pasaporte">
+							<label class="ps-2" for="dni">NIF / NIE / Pasaporte</label>
+							<input class="form-control" type="text" name="dni" id="dni" placeholder="NIF / NIE / Pasaporte">
 						</div>
 						<div class="col">
 							<label class="ps-2" for="tlf">Teléfono</label>
@@ -88,10 +88,11 @@
 				</div>
 			</div>
 		</form>
-		<div id="auth"></div>
+		<div class="row gx-3" id="auth"></div>
 	</div>
 	
 	<script src="provincias.js"></script>
-	<script src="Ej3.js"></script>
+	<script src="Ej3localidad.js"></script>
+	<script src="Ej3personas.js"></script>
 </body>
 </html>
