@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -263,6 +264,130 @@ public class FabricanteDAOImpl extends AbstractDAOImpl implements FabricanteDAO{
 			e.printStackTrace();
 		} finally {
 			closeDb(conn, ps, rs);
+		}
+		return fabs;
+	}
+
+	@Override
+	public List<FabricanteDTO> getAllDTOrderedByIdDesc() {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<FabricanteDTO> fabs = new ArrayList<>();
+
+		try {
+			conn = connectDB();
+
+			String query = "SELECT f.idFabricante, f.nombre, count(idProducto)" +
+					"FROM fabricantes f LEFT JOIN productos p USING (idFabricante)" +
+					"GROUP BY idFabricante ORDER BY idFabricante DESC";
+
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+
+			int idx;
+
+			while (rs.next()) {
+				idx = 1;
+				int idFab = rs.getInt(idx++);
+				String nombre = rs.getString(idx++);
+				int countProd = rs.getInt(idx);
+
+				fabs.add(new FabricanteDTO(idFab, nombre, countProd));
+			}
+
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			closeDb(conn, ps, rs);
+		}
+		return fabs;
+	}
+
+	@Override
+	public List<FabricanteDTO> getAllDTOrderedByNameAsc() {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<FabricanteDTO> fabs = new ArrayList<>();
+
+		try {
+			conn = connectDB();
+
+			String query = "SELECT f.idFabricante, f.nombre, count(idProducto)" +
+					"FROM fabricantes f LEFT JOIN productos p USING (idFabricante)" +
+					"GROUP BY idFabricante ORDER BY f.nombre";
+
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+
+			int idx;
+
+			while (rs.next()) {
+				idx = 1;
+				int idFab = rs.getInt(idx++);
+				String nombre = rs.getString(idx++);
+				int countProd = rs.getInt(idx);
+
+				fabs.add(new FabricanteDTO(idFab, nombre, countProd));
+			}
+
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			closeDb(conn, ps, rs);
+		}
+		return fabs;
+	}
+
+	@Override
+	public List<FabricanteDTO> getAllDTOrderedByNameDesc() {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<FabricanteDTO> fabs = new ArrayList<>();
+
+		try {
+			conn = connectDB();
+
+			String query = "SELECT f.idFabricante, f.nombre, count(idProducto)" +
+					"FROM fabricantes f LEFT JOIN productos p USING (idFabricante)" +
+					"GROUP BY idFabricante ORDER BY f.nombre DESC";
+
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+
+			int idx;
+
+			while (rs.next()) {
+				idx = 1;
+				int idFab = rs.getInt(idx++);
+				String nombre = rs.getString(idx++);
+				int countProd = rs.getInt(idx);
+
+				fabs.add(new FabricanteDTO(idFab, nombre, countProd));
+			}
+
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			closeDb(conn, ps, rs);
+		}
+		return fabs;
+	}
+
+	@Override
+	public List<FabricanteDTO> getAllDTOrdered(String orden, String modo) {
+		List<FabricanteDTO> fabs = new ArrayList<>();
+
+		if ("codigo".equals(orden)) {
+			if ("asc".equals(modo)) { fabs = getAllDTOPlusCountProductos(); }
+			if ("desc".equals(modo)) { fabs = getAllDTOrderedByIdDesc(); }
+		} else if ("nombre".equals(orden)) {
+			if ("asc".equals(modo)) { fabs = getAllDTOrderedByNameAsc(); }
+			if ("desc".equals(modo)) { fabs = getAllDTOrderedByNameDesc(); }
+		} else {
+			fabs = getAllDTOPlusCountProductos();
 		}
 		return fabs;
 	}

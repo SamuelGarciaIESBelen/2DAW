@@ -52,31 +52,10 @@ public class FabricantesServlet extends HttpServlet {
 					.map(fab -> new FabricanteDTO(fab, fabDAO.getCountProductos(fab.getIdFabricante()).orElse(0)))
 					.toList();*/
 
-			List<FabricanteDTO> listaFabricantesDTO = fabDAO.getAllDTOPlusCountProductos();
 			String orden = request.getParameter("ordenar-por");
 			String modo = request.getParameter("modo-ordenar");
 
-			if ("codigo".equals(orden)) {
-				if ("asc".equals(modo)) {
-					listaFabricantesDTO = listaFabricantesDTO.stream()
-							.sorted(Comparator.comparing(Fabricante::getIdFabricante))
-							.toList();
-				} else if ("desc".equals(modo)) {
-					listaFabricantesDTO = listaFabricantesDTO.stream()
-							.sorted(Comparator.comparing(Fabricante::getIdFabricante).reversed())
-							.toList();
-				}
-			} else if ("nombre".equals(orden)) {
-				if ("asc".equals(modo)) {
-					listaFabricantesDTO = listaFabricantesDTO.stream()
-							.sorted(Comparator.comparing(Fabricante::getNombre))
-							.toList();
-				} else if ("desc".equals(modo)) {
-					listaFabricantesDTO = listaFabricantesDTO.stream()
-							.sorted(Comparator.comparing(Fabricante::getNombre).reversed())
-							.toList();
-				}
-			}
+			List<FabricanteDTO> listaFabricantesDTO = fabDAO.getAllDTOrdered(orden, modo);
 
 			// request.setAttribute("listaFabricantes", fabDAO.getAll());
 			request.setAttribute("listaFabricantesDTO", listaFabricantesDTO);
