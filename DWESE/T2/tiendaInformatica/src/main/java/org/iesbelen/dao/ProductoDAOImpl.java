@@ -1,5 +1,6 @@
 package org.iesbelen.dao;
 
+import org.iesbelen.model.FabricanteDTO;
 import org.iesbelen.model.Producto;
 
 import java.sql.*;
@@ -69,7 +70,7 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO{
 
         	// Se utiliza un objeto Statement dado que no hay parámetros en la consulta.
         	s = conn.createStatement();
-            		
+
         	rs = s.executeQuery("SELECT * FROM productos");
             while (rs.next()) {
             	Producto prod = new Producto();
@@ -80,7 +81,7 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO{
 				prod.setCodigo_fabricante(rs.getInt(idx));
             	listProd.add(prod);
             }
-          
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -198,6 +199,44 @@ public class ProductoDAOImpl extends AbstractDAOImpl implements ProductoDAO{
             closeDb(conn, ps, rs);
         }
 		
+	}
+
+	@Override
+	public List<Producto> filterName(String filter) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Producto> prods = new ArrayList<>();
+
+		try {
+			conn = connectDB();
+
+			String query = "SELECT * FROM productos WHERE nombre LIKE ?";
+
+			int idx = 1;
+
+			ps = conn.prepareStatement(query);
+			ps.setString(idx, "%" + filter + "%");
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Producto prod = new Producto();
+				idx = 1;
+
+				prod.setIdProducto(rs.getInt(idx++));
+				prod.setNombre(rs.getString(idx++));
+				prod.setPrecio(rs.getDouble(idx++));
+				prod.setCodigo_fabricante(rs.getInt(idx));
+
+				prods.add(prod);
+			}
+
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			closeDb(conn, ps, rs);
+		}
+		return prods;
 	}
 
 }

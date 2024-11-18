@@ -14,6 +14,8 @@ import org.iesbelen.model.Fabricante;
 import org.iesbelen.model.Producto;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "productosServlet", value = "/tienda/productos/*")
 public class ProductosServlet extends HttpServlet {
@@ -42,8 +44,17 @@ public class ProductosServlet extends HttpServlet {
 			//GET 
 			//	/productos/
 			//	/productos
-			
-			request.setAttribute("listaProductos", prodDAO.getAll());
+
+			String filter = request.getParameter("filter");
+			List<Producto> productosFiltrados;
+
+			if (filter != null && !filter.trim().isEmpty()) {
+				productosFiltrados = prodDAO.filterName(filter);
+				request.setAttribute("productosFiltrados", productosFiltrados);
+				System.out.println(productosFiltrados);
+			} else {
+				request.setAttribute("listaProductos", prodDAO.getAll());
+			}
 			dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/productos/productos.jsp");
 			        		       
 		} else {
@@ -74,7 +85,7 @@ public class ProductosServlet extends HttpServlet {
 				// /productos/{id}
 				try {
 					request.setAttribute("producto",prodDAO.find(Integer.parseInt(pathParts[1])));
-					dispatcher = request.getRequestDispatcher("/WEB-INF/jsp//productos/detalle-producto.jsp");
+					dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/productos/detalle-producto.jsp");
 
 				} catch (NumberFormatException nfe) {
 					nfe.printStackTrace();

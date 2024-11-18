@@ -382,10 +382,12 @@ public class FabricanteDAOImpl extends AbstractDAOImpl implements FabricanteDAO{
 
 		if ("codigo".equals(orden)) {
 			if ("asc".equals(modo)) { fabs = getAllDTOPlusCountProductos(); }
-			if ("desc".equals(modo)) { fabs = getAllDTOrderedByIdDesc(); }
+			else if ("desc".equals(modo)) { fabs = getAllDTOrderedByIdDesc(); }
+			else { fabs = getAllDTOPlusCountProductos(); }
 		} else if ("nombre".equals(orden)) {
 			if ("asc".equals(modo)) { fabs = getAllDTOrderedByNameAsc(); }
-			if ("desc".equals(modo)) { fabs = getAllDTOrderedByNameDesc(); }
+			else if ("desc".equals(modo)) { fabs = getAllDTOrderedByNameDesc(); }
+			else { fabs = getAllDTOPlusCountProductos(); }
 		} else {
 			fabs = getAllDTOPlusCountProductos();
 		}

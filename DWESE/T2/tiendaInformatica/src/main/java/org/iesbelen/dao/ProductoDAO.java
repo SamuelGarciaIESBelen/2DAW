@@ -13,4 +13,6 @@ public interface ProductoDAO {
 	public void update(Producto producto);
 	public void delete(int id);
 
+	// Ampliación
+	public List<Producto> filterName(String filter);
 }
