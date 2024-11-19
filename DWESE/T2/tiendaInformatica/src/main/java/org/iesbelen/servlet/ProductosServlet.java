@@ -46,12 +46,10 @@ public class ProductosServlet extends HttpServlet {
 			//	/productos
 
 			String filter = request.getParameter("filter");
-			List<Producto> productosFiltrados;
 
 			if (filter != null && !filter.trim().isEmpty()) {
-				productosFiltrados = prodDAO.filterName(filter);
-				request.setAttribute("productosFiltrados", productosFiltrados);
-				System.out.println(productosFiltrados);
+				List<Producto> productosFiltrados = prodDAO.filterName(filter);
+				request.setAttribute("listaProductos", productosFiltrados);
 			} else {
 				request.setAttribute("listaProductos", prodDAO.getAll());
 			}
