@@ -3,12 +3,18 @@
 <%@page import="org.iesbelen.model.FabricanteDTO"%>
 <%@page import="java.util.List"%>
 
+<%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
+<%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>Fabricantes</title>
 	<style>
+		body {
+			padding: 0;
+			background-color: lightcyan;
+		}
 		.clearfix::after {
 			content: "";
 			display: block;
@@ -95,3 +101,4 @@
 </body>
 </body>
 </html>
+<%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>

@@ -2,17 +2,24 @@
     pageEncoding="UTF-8"%>
 <%@page import="org.iesbelen.model.FabricanteDTO"%>
 <%@page import="java.util.Optional"%>
+
+<%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
+<%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Detalle Fabricante</title>
 <style>
-.clearfix::after {
-	content: "";
-	display: block;
-	clear: both;
-}
+	body {
+		padding: 0;
+		background-color: lightcyan;
+	}
+	.clearfix::after {
+		content: "";
+		display: block;
+		clear: both;
+	}
 
 </style>
 </head>
@@ -78,3 +85,4 @@
 
 </body>
 </html>
+<%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>

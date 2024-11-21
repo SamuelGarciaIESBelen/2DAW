@@ -5,12 +5,18 @@
 <%@ page import="org.iesbelen.model.Producto" %>
 <%@ page import="org.iesbelen.dao.FabricanteDAOImpl" %>
 
+<%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
+<%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Productos</title>
     <style>
+        body {
+            padding: 0;
+            background-color: lightcyan;
+        }
         .clearfix::after {
             content: "";
             display: block;
@@ -18,7 +24,6 @@
         }
     </style>
 </head>
-<body>
 <body>
 
 <div id="contenedora" style="float:none; margin: 0 auto;width: 900px;">
@@ -30,7 +35,7 @@
 
             <div style="position: absolute; left: 39%; top : 39%; display: flex">
                 <form style="margin-right: 35px" action="${pageContext.request.contextPath}/tienda/productos/">
-                    <input type="text" name="filter" size="10">
+                    <input type="text" name="filter" size="10" placeholder="Por nombre...">
                     <input type="submit" value="Filtrar">
                 </form>
 
@@ -94,6 +99,8 @@
     No hay registros de producto
     <% } %>
 </div>
-</body>
+
+    <%@include file="../../../boostrap.jspf"%>
 </body>
 </html>
+<%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>

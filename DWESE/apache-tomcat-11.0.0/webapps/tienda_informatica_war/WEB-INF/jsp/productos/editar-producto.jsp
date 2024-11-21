@@ -4,12 +4,19 @@
 <%@page import="java.util.Optional"%>
 <%@ page import="org.iesbelen.model.FabricanteDTO" %>
 <%@ page import="java.util.List" %>
+
+<%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
+<%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Editar Producto</title>
     <style>
+        body {
+            padding: 0;
+            background-color: lightcyan;
+        }
         .clearfix::after {
             content: "";
             display: block;
@@ -95,3 +102,4 @@
 
 </body>
 </html>
+<%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>

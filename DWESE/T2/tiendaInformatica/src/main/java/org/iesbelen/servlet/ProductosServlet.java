@@ -46,13 +46,15 @@ public class ProductosServlet extends HttpServlet {
 			//	/productos
 
 			String filter = request.getParameter("filter");
+			List<Producto> listaProds = null;
 
 			if (filter != null && !filter.trim().isEmpty()) {
-				List<Producto> productosFiltrados = prodDAO.filterName(filter);
-				request.setAttribute("listaProductos", productosFiltrados);
+				listaProds = prodDAO.filterName(filter);
 			} else {
-				request.setAttribute("listaProductos", prodDAO.getAll());
+				listaProds = prodDAO.getAll();
 			}
+
+			request.setAttribute("listaProductos", listaProds);
 			dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/productos/productos.jsp");
 			        		       
 		} else {
