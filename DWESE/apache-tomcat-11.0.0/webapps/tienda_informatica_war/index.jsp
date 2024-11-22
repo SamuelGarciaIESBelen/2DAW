@@ -1,5 +1,3 @@
-<%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
-<%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,16 +23,19 @@
             margin-top: 45%;
             font-size: 20px;
         }
+        <%@ include file="/WEB-INF/jsp/fragmentos/estilos.jspf" %>
     </style>
 </head>
 <body>
+    <%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
+    <%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
     <main>
         <div>
             <p>En este lugar va a mostrarse el contenido de la web tras redirigirse</p>
         </div>
     </main>
 
-    <%@include file="boostrap.jspf"%>
+<%@include file="boostrap.jspf"%>
+<%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>
 </body>
 </html>
-<%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>

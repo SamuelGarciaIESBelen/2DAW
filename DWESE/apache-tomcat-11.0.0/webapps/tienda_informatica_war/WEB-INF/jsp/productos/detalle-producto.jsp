@@ -3,8 +3,6 @@
 <%@page import="org.iesbelen.model.Producto"%>
 <%@page import="java.util.Optional"%>
 
-<%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
-<%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,10 +18,12 @@
             display: block;
             clear: both;
         }
-
+        <%@ include file="/WEB-INF/jsp/fragmentos/estilos.jspf" %>
     </style>
 </head>
 <body>
+<%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
+<%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
 
 <div id="contenedora" style="float:none; margin: 0 auto;width: 900px;" >
     <div class="clearfix">
@@ -91,6 +91,6 @@
 
 </div>
 
+<%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>
 </body>
 </html>
-<%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>

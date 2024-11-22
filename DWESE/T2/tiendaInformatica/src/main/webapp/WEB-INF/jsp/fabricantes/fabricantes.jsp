@@ -3,8 +3,6 @@
 <%@page import="org.iesbelen.model.FabricanteDTO"%>
 <%@page import="java.util.List"%>
 
-<%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
-<%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,10 +18,12 @@
 			display: block;
 			clear: both;
 		}
+		<%@ include file="/WEB-INF/jsp/fragmentos/estilos.jspf" %>
 	</style>
 </head>
 <body>
-<body>
+<%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
+<%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
 
 	<div id="contenedora" style="float:none; margin: 0 auto; width: 900px;" >
 		<div class="clearfix">
@@ -98,7 +98,6 @@
 			<input style="margin-left: 5px" type="submit" value="Ordenar">
 		</form>
 	</div>
-</body>
+<%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>
 </body>
 </html>
-<%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>

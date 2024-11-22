@@ -1,51 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Samuel
-  Date: 21/11/2024
-  Time: 13:03
-  To change this template use File | Settings | File Templates.
---%>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        nav {
-            display: flex;
-            padding-right: 30px;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 25px;
-            background-color: lightsteelblue;
-            height: 100px;
-        }
-        nav a {
-            text-decoration: none;
-            color: midnightblue;
-        }
-        nav ul {
-            margin: 0;
-        }
-        nav li {
-            list-style: none;
-            display: inline;
-            margin-inline: 10px;
-        }
-        nav button {
-            background-color: unset;
-            border: none;
-        }
-    </style>
-</head>
-<body>
 <nav>
     <ul>
-        <li><a href="http://localhost:8080/tienda_informatica_war/">HOME</a></li>
+        <li><a href="<%=application.getContextPath()%>">HOME</a></li>
         <li><a href="<%=application.getContextPath()%>/tienda/fabricantes">Fabricantes</a></li>
         <li><a href="<%=application.getContextPath()%>/tienda/productos">Productos</a></li>
+        <li><a href="<%=application.getContextPath()%>/tienda/usuarios">Usuarios</a></li>
     </ul>
     <a href="#">LOGIN</a>
 </nav>
-</body>
-</html>
