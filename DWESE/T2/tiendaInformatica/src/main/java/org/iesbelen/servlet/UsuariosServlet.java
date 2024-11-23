@@ -90,7 +90,6 @@ public class UsuariosServlet extends HttpServlet {
 
                 try {
                     request.setAttribute("usuario",usuarioDAO.find(Integer.parseInt(pathParts[2])));
-                    request.setAttribute("listaUsuarios", usuarioDAO.getAll());
                     dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuarios/editar-usuario.jsp");
 
                 } catch (NumberFormatException nfe) {
