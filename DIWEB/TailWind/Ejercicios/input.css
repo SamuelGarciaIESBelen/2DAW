@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* npx tailwindcss -i .\Ejercicios\input.css -o .\Ejercicios\output.css --watch */
+
+@Layer components {
+    .caja {
+        @apply w-48 h-48 bg-green-500 place-content-center text-red-500 font-bold text-4xl text-center rounded-lg border-4 border-sky-600 mb-5;
+    }
+}
