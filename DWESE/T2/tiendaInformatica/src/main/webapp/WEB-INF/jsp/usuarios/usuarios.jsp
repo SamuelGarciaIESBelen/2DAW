@@ -46,8 +46,8 @@
   </div>
   <div class="clearfix">
     <div style="float: left;width: 10%">Código</div>
-    <div style="float: left;width: 15%">Nombre</div>
-    <div style="float: left;width: 25%">Password</div>
+    <div style="float: left;width: 30%">Nombre</div>
+    <div style="float: left;width: 15%">Password</div>
     <div style="float: left;width: 20%">Rol</div>
     <div style="float: left;width: 20%;overflow: hidden;">Acción</div>
   </div>
@@ -63,8 +63,8 @@
 
   <div style="margin-top: 6px;" class="clearfix">
     <div style="float: left;width: 10%"> <%= usuario.getIdUsuario()%> </div>
-    <div style="float: left;width: 15%"> <%= usuario.getNombre()%> </div>
-    <div style="float: left;width: 25%"> <%= usuario.getPassword()%> </div>
+    <div style="float: left;width: 30%"> <%= usuario.getNombre()%> </div>
+    <div style="float: left;width: 15%"> <%= usuario.getPassword().substring(0, 8) + "..."%> </div>
     <div style="float: left;width: 20%"> <%= usuario.getRol()%> </div>
     <div style="float: none;width: auto;overflow: hidden;">
       <form action="${pageContext.request.contextPath}/tienda/usuarios/<%= usuario.getIdUsuario()%>"

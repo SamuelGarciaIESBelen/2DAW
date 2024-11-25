@@ -64,7 +64,11 @@
                 Rol
             </div>
             <div style="float: none;width: auto;overflow: hidden;">
-                <input name="rol"/>
+                <select name="rol">
+                    <option value="Cliente">Cliente</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Vendedor">Vendedor</option>
+                </select>
             </div>
         </div>
 

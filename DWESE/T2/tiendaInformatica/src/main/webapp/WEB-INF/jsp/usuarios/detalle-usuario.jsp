@@ -71,7 +71,7 @@
             <label>Password</label>
         </div>
         <div style="float: none;width: auto;overflow: hidden;">
-            <input value="<%= optUsuario.get().getPassword() %>" readonly="readonly"/>
+            <input value="<%= "..." + optUsuario.get().getPassword().substring(0, 8) + "..."%>" readonly="readonly"/>
         </div>
     </div>
     <div style="margin-top: 6px;" class="clearfix">

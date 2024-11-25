@@ -10,9 +10,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.iesbelen.model.Usuario;
 import org.iesbelen.dao.UsuarioDAO;
 import org.iesbelen.dao.UsuarioDAOImpl;
+import org.iesbelen.utilities.Utilidades;
 
 import java.io.IOException;
-import java.util.List;
+import java.security.NoSuchAlgorithmException;
 
 @WebServlet(name = "usuariosServlet", value = "/tienda/usuarios/*")
 public class UsuariosServlet extends HttpServlet {
@@ -42,9 +43,7 @@ public class UsuariosServlet extends HttpServlet {
             //	/usuarios/
             //	/usuarios
 
-            List<Usuario> listaUsuarios = usuarioDAO.getAll();
-
-            request.setAttribute("listaUsuarios", listaUsuarios);
+            request.setAttribute("listaUsuarios", usuarioDAO.getAll());
             dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuarios/usuarios.jsp");
 
         } else {
@@ -125,10 +124,17 @@ public class UsuariosServlet extends HttpServlet {
             String nombre = request.getParameter("nombre");
             String password = request.getParameter("password");
             String rol = request.getParameter("rol");
+            if (rol.isBlank() && (!"Administrador".equals(rol) || !"Vendedor".equals(rol))) {
+                rol = "Cliente";
+            }
 
             Usuario nuevoUsuario = new Usuario();
             nuevoUsuario.setNombre(nombre);
-            nuevoUsuario.setPassword(password);
+            try {
+                nuevoUsuario.setPassword(Utilidades.hashPassword(password));
+            } catch (NoSuchAlgorithmException e) {
+                throw new RuntimeException(e);
+            }
             nuevoUsuario.setRol(rol);
 
             usuarioDAO.create(nuevoUsuario);
@@ -161,6 +167,9 @@ public class UsuariosServlet extends HttpServlet {
         String nombre = request.getParameter("nombre");
         String password = request.getParameter("password");
         String rol = request.getParameter("rol");
+        if (rol.isBlank() && (!"Administrador".equals(rol) || !"Vendedor".equals(rol))) {
+            rol = "Cliente";
+        }
 
         Usuario usuario = new Usuario();
 
@@ -169,13 +178,15 @@ public class UsuariosServlet extends HttpServlet {
             int id = Integer.parseInt(codigo);
             usuario.setIdUsuario(id);
             usuario.setNombre(nombre);
-            usuario.setPassword(password);
+            usuario.setPassword(Utilidades.hashPassword(password));
             usuario.setRol(rol);
 
             usuarioDAO.update(usuario);
 
         } catch (NumberFormatException nfe) {
             nfe.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
         }
 
     }

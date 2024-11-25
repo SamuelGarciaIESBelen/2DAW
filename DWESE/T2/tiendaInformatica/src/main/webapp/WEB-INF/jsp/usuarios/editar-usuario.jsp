@@ -70,7 +70,7 @@
                 <label>Password</label>
             </div>
             <div style="float: none;width: auto;overflow: hidden;">
-                <input name="password" value="<%= optUsuario.get().getPassword() %>"/>
+                <input name="password" value="<%= "..." + optUsuario.get().getPassword().substring(0, 8) + "..."%>"/>
             </div>
         </div>
         <div style="margin-top: 6px;" class="clearfix">
@@ -78,7 +78,11 @@
                 <label>Rol</label>
             </div>
             <div style="float: none;width: auto;overflow: hidden;">
-                <input name="rol" value="<%= optUsuario.get().getRol() %>"/>
+                <select name="rol">
+                    <option value="Cliente">Cliente</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Vendedor">Vendedor</option>
+                </select>
             </div>
         </div>
 

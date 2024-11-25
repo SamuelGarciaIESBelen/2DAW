@@ -30,8 +30,7 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO{
 
             int idx = 1;
             ps.setString(idx++, usuario.getNombre());
-            // ps.setString(idx++, usuario.getPassword());
-            ps.setString(idx++, Utilidades.hashPassword(usuario.getPassword()));
+            ps.setString(idx++, usuario.getPassword());
             ps.setString(idx, usuario.getRol());
 
             int rows = ps.executeUpdate();
@@ -45,8 +44,6 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO{
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
         } finally {
             closeDb(conn, ps, rs);
         }
@@ -70,10 +67,12 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO{
             while (rs.next()) {
                 Usuario user = new Usuario();
                 int idx = 1;
+
                 user.setIdUsuario(rs.getInt(idx++));
                 user.setNombre(rs.getString(idx++));
                 user.setPassword(rs.getString(idx++));
                 user.setRol(rs.getString(idx));
+
                 listUsers.add(user);
             }
 
@@ -106,6 +105,7 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO{
             if (rs.next()) {
                 Usuario user = new Usuario();
                 idx = 1;
+
                 user.setIdUsuario(rs.getInt(idx++));
                 user.setNombre(rs.getString(idx++));
                 user.setPassword(rs.getString(idx++));
@@ -137,9 +137,9 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO{
             ps = conn.prepareStatement("UPDATE usuarios SET nombre = ?, password = ?, rol = ?  WHERE idUsuario = ?");
 
             int idx = 1;
+
             ps.setString(idx++, usuario.getNombre());
-            // ps.setString(idx++, usuario.getPassword());
-            ps.setString(idx++, Utilidades.hashPassword(usuario.getPassword()));
+            ps.setString(idx++, usuario.getPassword());
             ps.setString(idx++, usuario.getRol());
             ps.setInt(idx, usuario.getIdUsuario());
 
@@ -151,8 +151,6 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO{
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
         } finally {
             closeDb(conn, ps, rs);
         }
