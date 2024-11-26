@@ -11,7 +11,11 @@ module.exports = {
       },
       width: {
         "39": "150px",
-      }
+        "form": "800px",
+      },
+      screens: {
+        tablet: "900px",
+      },
     },
   },
   plugins: [],
