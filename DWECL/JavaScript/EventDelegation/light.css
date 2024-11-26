@@ -1,0 +1,19 @@
+
+* {
+    background-color: rgb(222, 234, 237) !important;
+    color: rgb(20, 20, 20);
+}
+select {
+    color: rgb(0, 0, 0) !important;
+    background-color: rgb(255, 255, 255) !important;
+}
+.card {
+    background-color: rgb(30, 16, 62) ;
+    color: rgb(0, 0, 0);
+}
+.btn-primary {
+    background-color: rgb(133, 196, 217) !important;
+}
+img {
+    filter: invert(100%);
+}

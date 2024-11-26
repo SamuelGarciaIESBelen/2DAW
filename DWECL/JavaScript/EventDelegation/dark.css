@@ -1,0 +1,16 @@
+
+* {
+    background-color: rgb(40, 39, 39) !important;
+    color: beige;
+}
+select {
+    color: aliceblue !important;
+    background-color: black !important;
+}
+.card {
+    background-color: rgb(76, 0, 255) ;
+    color: beige;
+}
+.btn-primary {
+    background-color: rgb(22, 4, 42) !important;
+}
