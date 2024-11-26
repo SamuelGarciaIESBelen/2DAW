@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import jakarta.servlet.http.HttpSession;
 import org.iesbelen.model.Usuario;
 import org.iesbelen.dao.UsuarioDAO;
 import org.iesbelen.dao.UsuarioDAOImpl;
@@ -27,6 +28,7 @@ public class UsuariosServlet extends HttpServlet {
      * 		/usuarios/{id}
      * 		/usuarios/editar{id}
      * 		/usuarios/crear
+     * 		/usuarios/login
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -54,6 +56,7 @@ public class UsuariosServlet extends HttpServlet {
             // 		/usuarios/edit/{id}/
             // 		/usuarios/crear
             // 		/usuarios/crear/
+            // 		/usuarios/login/
 
             pathInfo = pathInfo.replaceAll("/$", "");
             String[] pathParts = pathInfo.split("/");
@@ -65,6 +68,12 @@ public class UsuariosServlet extends HttpServlet {
 
                 dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuarios/crear-usuario.jsp");
 
+            } else if (pathParts.length == 2 && "login".equals(pathParts[1])) {
+
+                // GET
+                // /usuarios/login
+
+                dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuarios/login.jsp");
 
             } else if (pathParts.length == 2) {
                 UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
@@ -124,9 +133,6 @@ public class UsuariosServlet extends HttpServlet {
             String nombre = request.getParameter("nombre");
             String password = request.getParameter("password");
             String rol = request.getParameter("rol");
-            if (rol.isBlank() && (!"Administrador".equals(rol) || !"Vendedor".equals(rol))) {
-                rol = "Cliente";
-            }
 
             Usuario nuevoUsuario = new Usuario();
             nuevoUsuario.setNombre(nombre);
@@ -138,6 +144,18 @@ public class UsuariosServlet extends HttpServlet {
             nuevoUsuario.setRol(rol);
 
             usuarioDAO.create(nuevoUsuario);
+
+        } else if (__method__ != null && "login".equalsIgnoreCase(__method__)) {
+            UsuarioDAO usuario = new UsuarioDAOImpl();
+
+            usuario.login(request.getParameter("nombre"), request.getParameter("password"));
+            if (usuario != null) {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("user-login", usuario);
+            } else {
+                System.out.println("El usuario no existe o es incorrecto");
+            }
+            // No sé hacer que me lleve al index
 
         } else if (__method__ != null && "put".equalsIgnoreCase(__method__)) {
             // Actualizar uno existente
@@ -167,9 +185,6 @@ public class UsuariosServlet extends HttpServlet {
         String nombre = request.getParameter("nombre");
         String password = request.getParameter("password");
         String rol = request.getParameter("rol");
-        if (rol.isBlank() && (!"Administrador".equals(rol) || !"Vendedor".equals(rol))) {
-            rol = "Cliente";
-        }
 
         Usuario usuario = new Usuario();
 
