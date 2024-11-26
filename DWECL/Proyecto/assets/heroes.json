@@ -1,0 +1,38 @@
+[
+	{
+		"id": 1,
+		"heroName": "Batman",
+		"secretId": "Bruce Wayne",
+		"height": "188 cm",
+		"powers": false,
+		"invented": false,
+		"description": "Batman es un vigilante de Gotham City conocido por su intelecto, habilidades de combate y el uso de tecnología avanzada. Actúa desde las sombras para luchar contra el crimen."
+	},
+	{
+		"id": 2,
+		"heroName": "Superman",
+		"secretId": "Clark Kent / Kal-El",
+		"height": "191 cm",
+		"powers": true,
+		"invented": false,
+		"description": "Superman es el último kryptoniano, con habilidades sobrehumanas como vuelo, fuerza, invulnerabilidad, aliento gélido y visión láser. Es un símbolo de esperanza y justicia."
+	},
+	{
+		"id": 3,
+		"heroName": "Nightwing",
+		"secretId": "Dick Grayson",
+		"height": "178 cm",
+		"powers": false,
+		"invented": false,
+		"description": "Nightwing, anteriormente Robin, es un maestro acróbata y combatiente. Actúa como protector de Blüdhaven, llevando adelante el legado de Batman de forma independiente."
+	},
+	{
+		"id": 4,
+		"heroName": "Raven",
+		"secretId": "Rachel Roth",
+		"height": "165 cm",
+		"powers": true,
+		"invented": false,
+		"description": "Raven, una extraordinaria maga, hija del poderoso demonio Trigon, mantiene una lucha constante entre su humanidad y sus oscuros poderes. Demonios enviados por su padre intentan siempre devolverla al infierno pero ella combate del lado del bien junto a sus compañeros."
+	}
+]
