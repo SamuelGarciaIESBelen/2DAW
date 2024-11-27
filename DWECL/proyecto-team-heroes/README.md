@@ -1,3 +1,8 @@
+This project is going to be a sort of encyclopedia of superheroes and the different teams they belong to.<br>
+There will be data of the most famous ones but it's also a creative way to invent new ones and make them "interact" with your favourites.<br>
+Have fun and hope you learn something about them!<br>
+
+<br>This is the project structure:<br>
 proyecto-team-heroes/<br>
 ── src/<br>
 │ ├── team/<br>
@@ -26,7 +31,3 @@ proyecto-team-heroes/<br>
 │<br>
 ├── package.json # Información y dependencias del proyecto<br>
 └── README.md # Documentación del proyecto<br>
-<br>
-This project is going to be a sort of encyclopedia of superheroes and the different teams they belong to.<br>
-There will be data of the most famous ones but it's also a creative way to invent new ones and make them "interact" with your favourites.<br>
-Have fun and hope you learn something about them!
