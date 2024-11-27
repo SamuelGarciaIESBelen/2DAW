@@ -3,36 +3,90 @@
 		"id": 1,
 		"heroName": "Batman",
 		"secretId": "Bruce Wayne",
-		"height": "188 cm",
+		"gender": "Hombre",
+		"height": 188,
 		"powers": false,
-		"invented": false,
-		"description": "Batman es un vigilante de Gotham City conocido por su intelecto, habilidades de combate y el uso de tecnología avanzada. Actúa desde las sombras para luchar contra el crimen."
+		"team": 1
 	},
 	{
 		"id": 2,
 		"heroName": "Superman",
 		"secretId": "Clark Kent / Kal-El",
-		"height": "191 cm",
+		"gender": "Hombre",
+		"height": 191,
 		"powers": true,
-		"invented": false,
-		"description": "Superman es el último kryptoniano, con habilidades sobrehumanas como vuelo, fuerza, invulnerabilidad, aliento gélido y visión láser. Es un símbolo de esperanza y justicia."
+		"team": 1
 	},
 	{
 		"id": 3,
 		"heroName": "Nightwing",
 		"secretId": "Dick Grayson",
-		"height": "178 cm",
+		"gender": "Hombre",
+		"height": 178,
 		"powers": false,
-		"invented": false,
-		"description": "Nightwing, anteriormente Robin, es un maestro acróbata y combatiente. Actúa como protector de Blüdhaven, llevando adelante el legado de Batman de forma independiente."
+		"team": 3
 	},
 	{
 		"id": 4,
 		"heroName": "Raven",
 		"secretId": "Rachel Roth",
-		"height": "165 cm",
+		"gender": "Mujer",
+		"height": 165,
 		"powers": true,
-		"invented": false,
-		"description": "Raven, una extraordinaria maga, hija del poderoso demonio Trigon, mantiene una lucha constante entre su humanidad y sus oscuros poderes. Demonios enviados por su padre intentan siempre devolverla al infierno pero ella combate del lado del bien junto a sus compañeros."
+		"team": 3
+	},
+	{
+		"id": 5,
+		"heroName": "Capitán América",
+		"secretId": "Steve Rogers",
+		"gender": "Hombre",
+		"height": 188,
+		"powers": true,
+		"team": 2
+	},
+	{
+		"id": 6,
+		"heroName": "Spiderman",
+		"secretId": "Peter Parker",
+		"gender": "Hombre",
+		"height": 173,
+		"powers": true,
+		"team": 2
+	},
+	{
+		"id": 7,
+		"heroName": "Wolverine",
+		"secretId": "James Howlett",
+		"gender": "Hombre",
+		"height": 160,
+		"powers": true,
+		"team": 4
+	},
+	{
+		"id": 8,
+		"heroName": "Cyclops",
+		"secretId": "Scott Summers",
+		"gender": "Hombre",
+		"height": 191,
+		"powers": true,
+		"team": 4
+	},
+	{
+		"id": 9,
+		"heroName": "Mr. Fantastic",
+		"secretId": "Reed Richards",
+		"gender": "Hombre",
+		"height": 182,
+		"powers": true,
+		"team": 5
+	},
+	{
+		"id": 10,
+		"heroName": "Antorcha Humana",
+		"secretId": "Jhonny Storm",
+		"gender": "Hombre",
+		"height": 178,
+		"powers": true,
+		"team": 5
 	}
 ]

@@ -1,26 +1,57 @@
 [
 	{
 		"id": 1,
-		"team": "Justice League of America",
+		"teamName": "Justice League",
 		"leader": "Superman",
 		"location": {
-			"latitud": 40.7128,
-			"longitud": -74.0060
+			"lat": 40.7128,
+			"lon": -74.0060
 		},
-		"operativo": true,
-		"invented": false,
-		"description": "La Liga de la Justicia es un grupo de los héroes más poderosos de la Tierra, unidos para proteger al mundo de amenazas globales y cósmicas. Su base principal es la Atalaya en órbita terrestre o en diferentes ubicaciones estratégicas."
+		"active": true,
+		"heroes": [ 1, 2 ]
 	},
 	{
 		"id": 2,
-		"team": "Teen Titans",
+		"teamName": "Vengadores",
+		"leader": "Capitán América",
+		"location": {
+			"lat": 40.71,
+			"lon": -74
+		},
+		"active": true,
+		"heroes": [ 5, 6 ]
+	},
+	{
+		"id": 3,
+		"teamName": "Teen Titans",
 		"leader": "Nightwing",
 		"location": {
-			"latitud": 37.7749,
-			"longitud": -122.4194
+			"lat": 37.77,
+			"lon": -122.41
 		},
-		"operativo": true,
-		"invented": false,
-		"description": "Los Teen Titans son un equipo de jóvenes héroes que trabajan juntos para enfrentarse a amenazas sobrenaturales y humanas, mientras aprenden a colaborar y crecer como personas."
+		"active": true,
+		"heroes": [ 3, 4 ]
+	},
+	{
+		"id": 4,
+		"teamName": "X-Men",
+		"leader": "Cyclops",
+		"location": {
+			"lat": 41.15,
+			"lon": -73.77
+		},
+		"active": true,
+		"heroes": [ 7, 8 ]
+	},
+	{
+		"id": 5,
+		"teamName": "4 Fantásticos",
+		"leader": "Cyclops",
+		"location": {
+			"lat": 40.75,
+			"lon": -73.98
+		},
+		"active": true,
+		"heroes": [ 9, 10 ]
 	}
 ]

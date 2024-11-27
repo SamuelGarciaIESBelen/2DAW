@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Editar Héroe</title>
+	<link rel="stylesheet" href="../../css/main.css">
+	<link rel="stylesheet" href="hero.css">
+</head>
+<body>
+	<div class="grid-container">
+		<header>
+			<h1 class="titulo"><span class="capW">W</span>IKI<span class="capS">S</span><span class="ups">UPS</span></h1>
+			<nav>
+				<ul>
+					<li><a href="../../index.html">Inicio</a></li>
+					<li><a href="../team/teamsList.html">Equipos</a></li>
+					<li><a href="./heroesList.html">Héroes</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<main>
+			<h1>Editar un héroe</h1>
+			<form class="create-form">
+                <input type="text" hidden name="type-form" id="type-form" value="edit">
+				<div>
+					<label for="heroName">Nombre de héroe</label>
+					<input type="text" name="heroName" id="heroName" placeholder="Batman">
+				</div>
+				
+				<div>
+					<label for="secretId">Nombre real</label>
+					<input type="text" name="secretId" id="secretId" placeholder="Bruce Wayne">
+				</div>
+				
+				<div>
+					<label for="gender">Sexo</label>
+					<input type="radio" name="gender" id="male" value="Hombre">Hombre
+					<input type="radio" name="gender" id="female" value="Mujer">Mujer
+				</div>
+				
+				<div>
+					<label for="height">Altura</label>
+					<input type="number" name="height" id="height" placeholder="En cm">
+				</div>
+
+				<div>
+					<label for="powers">Poderes</label>
+					<input type="radio" name="powers" id="hasPowers" value="true">Tiene
+					<input type="radio" name="powers" id="HasNoPowers" value="false">No tiene
+				</div>
+
+				<div>
+					<label for="team">Equipo</label>
+					<select name="team" id="team">
+						<option value="">No tiene</option>
+						<option value="1">Justice League</option>
+						<option value="2">Avengers</option>
+						<option value="3">Teen Titans</option>
+						<option value="4">X-Men</option>
+					</select>
+				</div>
+
+				<button type="submit" class="create-btn"><a href="./heroesList.html">Editar</a></button>
+			</form>
+		</main>
+		
+		<footer>
+			<h2>Desarrollo Web Entorno Cliente</h2>
+			<h2>Samuel García Zorrilla</h2>
+			<a href="../../index.html"><img class="bat" src="../../images/logos/TDKLogo.png" alt="Logo The Dark Knight para volver al inicio"></a>
+		</footer>
+	</div>
+</body>
+</html>

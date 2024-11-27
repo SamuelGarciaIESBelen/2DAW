@@ -1,5 +1,6 @@
 body {
 	margin: 0;
+	padding: 0;
 	font-family: 'Franklin Gothic Medium';
 	background-color: wheat;
 	color: whitesmoke;
@@ -12,14 +13,15 @@ body {
 
 /* INICIO HEADER */
 header {
-	grid-row: 1 / 2;
-	
-	padding-bottom: 30px;
+	grid-row: 1 / 2;	
+	padding-bottom: 20px;
 }
 .titulo {
 	font-size: 50px;
 	text-align: center;
 	color: #1E201E;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 .capW {
 	font-size: 55px;
@@ -47,7 +49,7 @@ nav a {
 	font-size: 25px;
 	font-weight: bold;
 	color: #102C57;
-	text-decoration: none
+	text-decoration: none;
 }
 /* FIN HEADER */
 
@@ -55,11 +57,35 @@ nav a {
 main {
 	grid-row: 2 / 3;
 	background-color: #102C57;
-	padding: 50px;
+	padding: 100px;
 	font-size: 20px;
+	background: linear-gradient(45deg, #1E201E 45%, #102C57);
+	display: flex;
 }
 main p {
 	width: 500px;
+}
+main table {
+	margin-top: 150px;
+}
+main td {
+	padding-top: 10px;
+	padding-right: 20px;
+}
+.numHeroes, .numTeams {
+	font-size: 25px;
+	font-weight: bold;
+	color: gold;
+}
+.logos {
+	display: flex;
+	justify-content: center;
+}
+.logos img {
+	margin-left: 30px;
+}
+.glLogo, .flashLogo {
+	align-self: end;
 }
 /* FIN MAIN */
 

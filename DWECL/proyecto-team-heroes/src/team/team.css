@@ -1,0 +1,129 @@
+main {
+	flex-direction: column;
+	padding: 10px 0;
+	color: whitesmoke;
+}
+main h1 {
+	text-align: center;
+	font-weight: lighter;
+}
+
+/* INICIO TEAMS LIST */
+.create-btn {
+	margin: auto;
+	width: 80px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 2px solid gold;
+	border-radius: 15px;
+	background-color: rgb(85, 85, 85);
+}
+.create-btn a {
+	text-decoration: none;
+	font-size: 18px;
+	color: #1E201E;
+	font-weight: bold;
+}
+
+.teams-list {
+	display: grid;
+	grid-template-columns: repeat(4, auto);
+	justify-content: center;
+	gap: 30px;
+	margin: 20px 0;
+	color: #1E201E;
+}
+
+.card {
+	background-color: rgb(210, 210, 210);
+	border-radius: 25px;
+	width: 295px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	transition: transform 0.2s;
+}
+.card:hover {
+	transform: scale(1.05);
+}
+.card h2 {
+	text-align: center;
+	font-size: 30px;
+	margin: 0;
+}
+.card p {
+	margin: 5px 0;
+}
+.card ul {
+    margin-top: 0;
+    list-style: none;
+}
+.card .btn-container {
+    margin-top: auto;
+	display: flex;
+	justify-content: space-between;
+}
+.card button {
+	padding: 10px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 18px;
+}
+.card .edit-btn {
+	background-color: #007bff;
+}
+.card a {
+	color: white;
+	text-decoration: none;
+}
+.card .edit-btn:hover {
+	background-color: #0056b3;
+}
+.card .delete-btn {
+	background-color: #dc3545;
+	color: white;
+}
+.card .delete-btn:hover {
+	background-color: #a71d2a;
+}
+/* FIN TEAMS LIST */
+
+/* INICIO CREATE TEAM */
+.create-form {
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	width: 20%;
+	background-color: rgb(210, 210, 210);
+	border: 2px solid gold;
+	border-radius: 25px;
+	padding: 20px 20px 0 20px;
+	color: #1E201E;
+	
+}
+.create-form div {
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+.create-form label {
+	font-weight: bold;
+}
+.create-form input, select, option {
+	border: 1px solid gold;
+	border-radius: 10px;
+	padding: 7.5px;
+	color: #1E201E;
+	font-weight: bold;
+	outline: none;
+}
+.create-form input[type=number] {
+	width: 100px;
+}
+.create-form button {
+	margin-top: 20px;
+}
+/* FIN CREATE TEAM */
