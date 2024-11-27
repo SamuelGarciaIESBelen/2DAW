@@ -1,13 +1,14 @@
+# JavaScript Project
+A JavaSript project for DWECL
+
 This project is going to be a sort of encyclopedia of superheroes and the different teams they belong to.<br>
 There will be data of the most famous ones but it's also a creative way to invent new ones and make them "interact" with your favourites.<br>
 Have fun and hope you learn something about them!
 <br><br>
 This is the project structure:<br>
-=======
 Have fun and hope you learn something about them!<br>
 
 <br>This is the project structure:<br><br>
->>>>>>> f996ec65098e3e1f66de5c1cc04813a6212d22c4
 proyecto-team-heroes/<br>
 ── src/<br>
 │ ├── team/<br>
