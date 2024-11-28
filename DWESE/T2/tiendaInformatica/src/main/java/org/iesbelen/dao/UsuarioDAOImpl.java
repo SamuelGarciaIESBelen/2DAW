@@ -207,7 +207,7 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO{
                 user.setPassword(rs.getString(idx++));
                 user.setRol(rs.getString(idx));
 
-                if (password.equals(user.getPassword())) {
+                if (Utilidades.hashPassword(password).equals(user.getPassword())) {
                     return Optional.of(user);
                 }
                 else {
@@ -218,6 +218,8 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO{
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
         } finally {
             closeDb(conn, ps, rs);
         }
