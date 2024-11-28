@@ -182,6 +182,7 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO{
         }
     }
 
+    // ES MEJOR HACER ESTO EN EL SERVLET
     @Override
     public Optional<Usuario> login(String usuario, String password) {
         Connection conn = null;

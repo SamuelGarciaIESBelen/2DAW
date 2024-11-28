@@ -15,6 +15,7 @@ import org.iesbelen.utilities.Utilidades;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Optional;
 
 @WebServlet(name = "usuariosServlet", value = "/tienda/usuarios/*")
 public class UsuariosServlet extends HttpServlet {
@@ -145,24 +146,27 @@ public class UsuariosServlet extends HttpServlet {
 
             usuarioDAO.create(nuevoUsuario);
 
-        } else if (__method__ != null && "login".equalsIgnoreCase(__method__)) {
-            UsuarioDAO usuario = new UsuarioDAOImpl();
+        } else if ("login".equalsIgnoreCase(__method__)) {
+            UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
+            Optional<Usuario> usuarioLogin = usuarioDAO.login(request.getParameter("nombre"), request.getParameter("password"));
 
-            usuario.login(request.getParameter("nombre"), request.getParameter("password"));
-            if (usuario != null) {
+            if (usuarioLogin.isPresent()) {
                 HttpSession session = request.getSession(true);
-                session.setAttribute("user-login", usuario);
+                session.setAttribute("user-login", usuarioLogin);
+                response.sendRedirect(request.getContextPath());
             } else {
-                System.out.println("El usuario no existe o es incorrecto");
+                request.setAttribute("error", "Usuario o contraseña incorrecto");
+                dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuarios/login.jsp");
+                dispatcher.forward(request, response);
             }
-            // No sé hacer que me lleve al index
+            return;
 
-        } else if (__method__ != null && "put".equalsIgnoreCase(__method__)) {
+        } else if ("put".equalsIgnoreCase(__method__)) {
             // Actualizar uno existente
             // Dado que los forms de html sólo soportan method GET y POST utilizo parámetro oculto para indicar la operación de actulización PUT.
             doPut(request, response);
 
-        } else if (__method__ != null && "delete".equalsIgnoreCase(__method__)) {
+        } else if ("delete".equalsIgnoreCase(__method__)) {
             // Actualizar uno existente
             // Dado que los forms de html sólo soportan method GET y POST utilizo parámetro oculto para indicar la operación de actulización DELETE.
             doDelete(request, response);

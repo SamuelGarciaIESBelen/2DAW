@@ -1,3 +1,6 @@
+<%@ page import="org.iesbelen.model.Usuario" %>
+<%@ page import="java.util.Optional" %>
+
 <nav>
     <ul>
         <li><a href="<%=application.getContextPath()%>">HOME</a></li>
@@ -5,5 +8,20 @@
         <li><a href="<%=application.getContextPath()%>/tienda/productos">Productos</a></li>
         <li><a href="<%=application.getContextPath()%>/tienda/usuarios">Usuarios</a></li>
     </ul>
+    <% 	Optional<Usuario> userLogin = (Optional<Usuario>) session.getAttribute("user-login");
+        if (userLogin != null && userLogin.isPresent()) {
+    %>
+
+    <h4 style="text-align: end"><%= userLogin.get().getNombre() %></h4>
+    <a href="<%=application.getContextPath()%>">LOGOUT</a>
+
+    <%
+        } else {
+    %>
+
     <a href="<%=application.getContextPath()%>/tienda/usuarios/login">LOGIN</a>
+
+    <%
+        }
+    %>
 </nav>

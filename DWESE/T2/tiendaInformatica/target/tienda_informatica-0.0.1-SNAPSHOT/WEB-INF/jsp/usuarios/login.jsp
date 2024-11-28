@@ -49,7 +49,7 @@
                 Nombre
             </div>
             <div style="float: none;width: auto;overflow: hidden;">
-                <input name="nombre"/>
+                <input type="text" name="nombre" required/>
             </div>
         </div>
 
@@ -58,12 +58,17 @@
                 Password
             </div>
             <div style="float: none;width: auto;overflow: hidden;">
-                <input name="password"/>
+                <input type="password" name="password" required/>
             </div>
         </div>
-
     </form>
 </div>
+    <%
+        String error = (String)request.getAttribute("error");
+        if (error != null) {
+    %>
+    <p style="color: red; text-align: center"><%= error %></p>
+    <% } %>
 
 <%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>
 </body>
