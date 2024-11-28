@@ -7,6 +7,7 @@
         body {
             padding: 0;
             background-color: lightcyan;
+            font-family: "Bookman Old Style";
         }
         main {
             display: flex;

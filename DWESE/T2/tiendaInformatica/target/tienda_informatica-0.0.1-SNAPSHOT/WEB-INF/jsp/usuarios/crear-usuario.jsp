@@ -10,6 +10,7 @@
         body {
             padding: 0;
             background-color: lightcyan;
+            font-family: "Bookman Old Style";
         }
 
         .clearfix::after {
@@ -56,7 +57,7 @@
                 Password
             </div>
             <div style="float: none;width: auto;overflow: hidden;">
-                <input name="password"/>
+                <input type="password" name="password"/>
             </div>
         </div>
         <div style="margin-top: 6px;" class="clearfix">

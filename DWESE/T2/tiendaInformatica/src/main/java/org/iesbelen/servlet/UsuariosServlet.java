@@ -37,7 +37,7 @@ public class UsuariosServlet extends HttpServlet {
 
         RequestDispatcher dispatcher;
 
-        String pathInfo = request.getPathInfo(); //
+        String pathInfo = request.getPathInfo();
 
         if (pathInfo == null || "/".equals(pathInfo)) {
             UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
@@ -127,8 +127,13 @@ public class UsuariosServlet extends HttpServlet {
         RequestDispatcher dispatcher;
         String __method__ = request.getParameter("__method__");
 
+        String pathInfo = request.getPathInfo();
+        pathInfo = pathInfo.replaceAll("/$", "");
+        String[] pathParts = pathInfo.split("/");
+
         if (__method__ == null) {
-            // Crear uno nuevo
+            // POST
+            // /usuarios/crear/
             UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
 
             String nombre = request.getParameter("nombre");
@@ -146,14 +151,29 @@ public class UsuariosServlet extends HttpServlet {
 
             usuarioDAO.create(nuevoUsuario);
 
-        } else if ("login".equalsIgnoreCase(__method__)) {
-            UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
-            Optional<Usuario> usuarioLogin = usuarioDAO.login(request.getParameter("nombre"), request.getParameter("password"));
+        } else if (pathParts.length == 2 && "login".equals(pathParts[1])) {
+            // POST
+            // /usuarios/login/
 
-            if (usuarioLogin.isPresent()) {
-                HttpSession session = request.getSession(true);
-                session.setAttribute("user-login", usuarioLogin);
-                response.sendRedirect(request.getContextPath());
+            UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
+            Optional<Usuario> optUsuarioLogin = usuarioDAO.findName(request.getParameter("nombre"));
+
+            if (optUsuarioLogin.isPresent()) {
+                Usuario usuarioLogin = optUsuarioLogin.get();
+
+                try {
+                    if (usuarioLogin.getPassword().equals(Utilidades.hashPassword(request.getParameter("password")))) {
+                        HttpSession session = request.getSession(true);
+                        session.setAttribute("user-login", usuarioLogin);
+                        response.sendRedirect(request.getContextPath());
+                    } else {
+                        request.setAttribute("error", "Usuario o contraseña incorrecto");
+                        dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuarios/login.jsp");
+                        dispatcher.forward(request, response);
+                    }
+                } catch (NoSuchAlgorithmException e) {
+                    throw new RuntimeException(e);
+                }
             } else {
                 request.setAttribute("error", "Usuario o contraseña incorrecto");
                 dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuarios/login.jsp");
@@ -161,13 +181,23 @@ public class UsuariosServlet extends HttpServlet {
             }
             return;
 
+        } else if (pathParts.length == 2 && "logout".equals(pathParts[1])) {
+            // NO SÉ LLEGAR AQUÍ POR POST
+            HttpSession session=request.getSession();
+            session.invalidate();
+
+            response.sendRedirect(request.getContextPath());
+            return;
+
         } else if ("put".equalsIgnoreCase(__method__)) {
-            // Actualizar uno existente
+            // POST
+            // /usuarios/editar/{id}
+
             // Dado que los forms de html sólo soportan method GET y POST utilizo parámetro oculto para indicar la operación de actulización PUT.
             doPut(request, response);
 
         } else if ("delete".equalsIgnoreCase(__method__)) {
-            // Actualizar uno existente
+            // Eliminar
             // Dado que los forms de html sólo soportan method GET y POST utilizo parámetro oculto para indicar la operación de actulización DELETE.
             doDelete(request, response);
 
@@ -178,7 +208,6 @@ public class UsuariosServlet extends HttpServlet {
         //response.sendRedirect("../../../tienda/usuarios");
         response.sendRedirect(request.getContextPath() + "/tienda/usuarios");
     }
-
 
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response)

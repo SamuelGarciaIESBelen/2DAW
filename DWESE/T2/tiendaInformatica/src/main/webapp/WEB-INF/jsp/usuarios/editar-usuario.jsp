@@ -12,6 +12,7 @@
         body {
             padding: 0;
             background-color: lightcyan;
+            font-family: "Bookman Old Style";
         }
         .clearfix::after {
             content: "";
@@ -70,7 +71,7 @@
                 <label>Password</label>
             </div>
             <div style="float: none;width: auto;overflow: hidden;">
-                <input name="password" value="<%= "..." + optUsuario.get().getPassword().substring(0, 8) + "..."%>"/>
+                <input type="password" name="password" value="<%= "..." + optUsuario.get().getPassword().substring(0, 8) + "..."%>"/>
             </div>
         </div>
         <div style="margin-top: 6px;" class="clearfix">

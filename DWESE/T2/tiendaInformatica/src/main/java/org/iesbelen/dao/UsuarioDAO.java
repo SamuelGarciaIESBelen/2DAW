@@ -11,5 +11,5 @@ public interface UsuarioDAO {
     public void update(Usuario usuario);
     public void delete(int id);
 
-    public Optional<Usuario> login (String usuario, String password);
+    public Optional<Usuario> findName (String nombre);
 }

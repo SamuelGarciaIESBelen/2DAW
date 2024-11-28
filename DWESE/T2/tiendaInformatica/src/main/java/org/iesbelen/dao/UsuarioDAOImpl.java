@@ -182,9 +182,8 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO{
         }
     }
 
-    // ES MEJOR HACER ESTO EN EL SERVLET
     @Override
-    public Optional<Usuario> login(String usuario, String password) {
+    public Optional<Usuario> findName(String nombre) {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -195,7 +194,7 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO{
             ps = conn.prepareStatement("SELECT * FROM usuarios WHERE nombre = ?");
 
             int idx =  1;
-            ps.setString(idx, usuario);
+            ps.setString(idx, nombre);
 
             rs = ps.executeQuery();
 
@@ -208,23 +207,19 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO{
                 user.setPassword(rs.getString(idx++));
                 user.setRol(rs.getString(idx));
 
-                if (Utilidades.hashPassword(password).equals(user.getPassword())) {
-                    return Optional.of(user);
-                }
-                else {
-                    return Optional.empty();
-                }
+                return Optional.of(user);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
         } finally {
             closeDb(conn, ps, rs);
         }
 
         return Optional.empty();
     }
+
+
 }

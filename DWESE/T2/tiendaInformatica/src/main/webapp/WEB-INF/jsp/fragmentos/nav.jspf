@@ -8,12 +8,13 @@
         <li><a href="<%=application.getContextPath()%>/tienda/productos">Productos</a></li>
         <li><a href="<%=application.getContextPath()%>/tienda/usuarios">Usuarios</a></li>
     </ul>
-    <% 	Optional<Usuario> userLogin = (Optional<Usuario>) session.getAttribute("user-login");
-        if (userLogin != null && userLogin.isPresent()) {
+    <% 	Usuario userLogin = (Usuario)session.getAttribute("user-login");
+        if (userLogin != null) {
     %>
-
-    <h4 style="text-align: end"><%= userLogin.get().getNombre() %></h4>
-    <a href="<%=application.getContextPath()%>">LOGOUT</a>
+    <div style="display: flex">
+        <h4 style="margin: auto; margin-right: 30px">Hola, <%= userLogin.getNombre() %></h4>
+        <a href="<%=application.getContextPath()%>">LOGOUT</a>
+    </div>
 
     <%
         } else {
