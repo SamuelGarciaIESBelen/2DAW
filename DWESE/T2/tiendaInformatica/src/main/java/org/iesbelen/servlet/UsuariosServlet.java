@@ -25,11 +25,11 @@ public class UsuariosServlet extends HttpServlet {
     /**
      * HTTP Method: GET
      * Paths:
-     * 		/usuarios/
-     * 		/usuarios/{id}
-     * 		/usuarios/editar{id}
-     * 		/usuarios/crear
-     * 		/usuarios/login
+     * /usuarios/
+     * /usuarios/{id}
+     * /usuarios/editar{id}
+     * /usuarios/crear
+     * /usuarios/login
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -83,7 +83,7 @@ public class UsuariosServlet extends HttpServlet {
                 // /usuarios/{id}
 
                 try {
-                    request.setAttribute("usuario",usuarioDAO.find(Integer.parseInt(pathParts[1])));
+                    request.setAttribute("usuario", usuarioDAO.find(Integer.parseInt(pathParts[1])));
                     dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuarios/detalle-usuario.jsp");
 
                 } catch (NumberFormatException nfe) {
@@ -91,14 +91,14 @@ public class UsuariosServlet extends HttpServlet {
                     dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuarios/usuarios.jsp");
                 }
 
-            } else if (pathParts.length == 3 && "editar".equals(pathParts[1]) ) {
+            } else if (pathParts.length == 3 && "editar".equals(pathParts[1])) {
                 UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
 
                 // GET
                 // /usuarios/editar/{id}
 
                 try {
-                    request.setAttribute("usuario",usuarioDAO.find(Integer.parseInt(pathParts[2])));
+                    request.setAttribute("usuario", usuarioDAO.find(Integer.parseInt(pathParts[2])));
                     dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuarios/editar-usuario.jsp");
 
                 } catch (NumberFormatException nfe) {
@@ -158,32 +158,26 @@ public class UsuariosServlet extends HttpServlet {
             UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
             Optional<Usuario> optUsuarioLogin = usuarioDAO.findName(request.getParameter("nombre"));
 
-            if (optUsuarioLogin.isPresent()) {
-                Usuario usuarioLogin = optUsuarioLogin.get();
+            try {
+                if (optUsuarioLogin.isPresent() &&
+                        optUsuarioLogin.get().getPassword().equals(Utilidades.hashPassword(request.getParameter("password")))) {
 
-                try {
-                    if (usuarioLogin.getPassword().equals(Utilidades.hashPassword(request.getParameter("password")))) {
-                        HttpSession session = request.getSession(true);
-                        session.setAttribute("user-login", usuarioLogin);
-                        response.sendRedirect(request.getContextPath());
-                    } else {
-                        request.setAttribute("error", "Usuario o contraseña incorrecto");
-                        dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuarios/login.jsp");
-                        dispatcher.forward(request, response);
-                    }
-                } catch (NoSuchAlgorithmException e) {
-                    throw new RuntimeException(e);
+                    HttpSession session = request.getSession(true);
+                    session.setAttribute("user-login", optUsuarioLogin.get());
+
+                    response.sendRedirect(request.getContextPath());
+                } else {
+                    request.setAttribute("error", "Usuario o contraseña incorrecto");
+                    dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuarios/login.jsp");
+                    dispatcher.forward(request, response);
                 }
-            } else {
-                request.setAttribute("error", "Usuario o contraseña incorrecto");
-                dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuarios/login.jsp");
-                dispatcher.forward(request, response);
+            } catch (NoSuchAlgorithmException e) {
+                throw new RuntimeException(e);
             }
             return;
 
         } else if (pathParts.length == 2 && "logout".equals(pathParts[1])) {
-            // NO SÉ LLEGAR AQUÍ POR POST
-            HttpSession session=request.getSession();
+            HttpSession session = request.getSession();
             session.invalidate();
 
             response.sendRedirect(request.getContextPath());
@@ -240,8 +234,7 @@ public class UsuariosServlet extends HttpServlet {
     }
 
     @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
-    {
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher dispatcher;
         UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
         String codigo = request.getParameter("codigo");

@@ -12,9 +12,7 @@
     <title>Editar Producto</title>
     <style>
         body {
-            padding: 0;
             background-color: lightcyan;
-            font-family: "Bookman Old Style";
         }
         .clearfix::after {
             content: "";

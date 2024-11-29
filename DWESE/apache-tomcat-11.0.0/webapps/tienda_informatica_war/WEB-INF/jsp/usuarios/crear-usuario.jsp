@@ -8,7 +8,6 @@
     <title>Crear Usuario</title>
     <style>
         body {
-            padding: 0;
             background-color: lightcyan;
         }
 
@@ -56,7 +55,7 @@
                 Password
             </div>
             <div style="float: none;width: auto;overflow: hidden;">
-                <input name="password"/>
+                <input type="password" name="password"/>
             </div>
         </div>
         <div style="margin-top: 6px;" class="clearfix">

@@ -8,7 +8,6 @@
     <title>Login</title>
     <style>
         body {
-            padding: 0;
             background-color: lightcyan;
         }
 

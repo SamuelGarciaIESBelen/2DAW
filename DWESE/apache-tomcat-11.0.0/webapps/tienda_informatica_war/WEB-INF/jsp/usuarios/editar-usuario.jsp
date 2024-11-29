@@ -10,7 +10,6 @@
     <title>Editar Usuario</title>
     <style>
         body {
-            padding: 0;
             background-color: lightcyan;
         }
         .clearfix::after {
@@ -70,7 +69,7 @@
                 <label>Password</label>
             </div>
             <div style="float: none;width: auto;overflow: hidden;">
-                <input name="password" value="<%= "..." + optUsuario.get().getPassword().substring(0, 8) + "..."%>"/>
+                <input type="password" name="password" value="<%= "..." + optUsuario.get().getPassword().substring(0, 8) + "..."%>"/>
             </div>
         </div>
         <div style="margin-top: 6px;" class="clearfix">

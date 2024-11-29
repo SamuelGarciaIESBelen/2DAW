@@ -1,5 +1,5 @@
 <%@ page import="org.iesbelen.model.Usuario" %>
-<%@ page import="java.util.Optional" %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
 <nav>
     <ul>
@@ -8,15 +8,29 @@
         <li><a href="<%=application.getContextPath()%>/tienda/productos">Productos</a></li>
         <li><a href="<%=application.getContextPath()%>/tienda/usuarios">Usuarios</a></li>
     </ul>
-    <% 	Optional<Usuario> userLogin = (Optional<Usuario>) session.getAttribute("user-login");
-        if (userLogin != null && userLogin.isPresent()) {
+    <% 	Usuario userLogin = (Usuario)session.getAttribute("user-login");
+        if (userLogin != null) {
     %>
-    <h4 style="text-align: end"><%= userLogin.get().getNombre() %></h4>
-    <a href="<%=application.getContextPath()%>">LOGOUT</a>
+    <div style="display: flex">
+        <h4 style="margin: auto; margin-right: 30px; font-weight:lighter">Hola, <%= userLogin.getNombre() %></h4>
+        <form style="display: inline; margin: auto" action="${pageContext.request.contextPath}/tienda/usuarios/logout/" method="post" >
+            <input type="hidden" name="__method__" value="logout" />
+            <div>
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <button style="color: midnightblue; font-weight: bold" type="submit">LOGOUT</button>
+            </div>
+        </form>
+    </div>
+
     <%
         } else {
     %>
-    <a href="<%=application.getContextPath()%>/tienda/usuarios/login">LOGIN</a>
+
+    <div>
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <a href="<%=application.getContextPath()%>/tienda/usuarios/login">LOGIN</a>
+    </div>
+
     <%
         }
     %>
