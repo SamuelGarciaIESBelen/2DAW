@@ -1,9 +1,7 @@
 package org.iesbelen.dao;
 
 import org.iesbelen.model.Usuario;
-import org.iesbelen.utilities.Utilidades;
 
-import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
