@@ -17,14 +17,14 @@ const fillAccordion = (provincias) => {
 		header.appendChild(comunidad);
 
 		// Añadir el contenido del acordeón
-		body.classList.add(c.label, "accordion-collapse", "collapse");
+		/* body.classList.add(c.label, "accordion-collapse", "collapse");
 		body.setAttribute("data-bs-parent", "#provincias");
 
 		let acbody = document.createElement("div");
 		acbody.classList.add("accordion.body");
 		acbody.textContent = "Prueba";
 
-		body.appendChild(acbody);
+		body.appendChild(acbody); */
 	}
 	div.appendChild(header);
 	div.appendChild(body);
