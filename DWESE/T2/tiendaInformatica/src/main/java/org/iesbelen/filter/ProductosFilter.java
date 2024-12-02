@@ -68,7 +68,7 @@ public class ProductosFilter extends HttpFilter implements Filter {
 
         if (session != null  //Seteo inline de usuario
                 && (usuario = (Usuario)session.getAttribute("user-login")) != null
-                && "Administrador".equals(usuario.getRol())) {
+                && rolAcceso.equals(usuario.getRol())) {
 
             //Si eres administrador acceso a cualquier página del filtro
             chain.doFilter(request, response);
