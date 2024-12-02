@@ -43,6 +43,9 @@ nav button {
     font-size: 25px;
     font-weight: bold;
 }
+nav button:hover {
+    cursor: pointer;
+}
 
 footer {
     margin: 0;

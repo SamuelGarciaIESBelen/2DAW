@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ejemplo Tailwind</title>
+	<link rel="stylesheet" href="./output.css">
+</head>
+<body>
+	<h1 class="bg-stone-700 text-amber-500 text-center mt-5 p-5 text-5xl animate-bounce">
+		Bienvenido, Samuel
+	</h1>
+	<h2 class="text-center mt-5 p-5 text-5xl text-purpura">
+		Técnica Imaginaria: Vacío Púrpura
+	</h2>
+	<h2 class="text-center mt-5 p-5 text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-red-600">
+		Expansión de Dominio: Vacío Inconmensurable
+	</h2>
+	<div class="caja m-auto mt-5 border-4 border-blue-500">
+		<p>Feliz Navidad</p>
+	</div>
+	<div class="m-auto mt-5 rounded-xl text-xl font-bold text-sky-500 text-center place-content-center
+		lg:bg-rose-300 lg:h-41 lg:w-41 lg:text-3xl md:bg-red-500 md:h-40 md:w-40 md:text-2xl sm:bg-green-400 sm:h-32 sm:w-32 sm:text-lg">
+		<p>Responsivo</p>
+	</div>
+
+	<form class="bg-sky-200 w-80 mx-auto mt-8 rounded-lg p-6">
+		<input type="text" name="username" id="username" placeholder="Nombre" disabled
+			class="border border-grey-300 w-full px-3 py-2 mb-4 rounded-lg disabled:bg-red-200">
+		
+			<input type="email" name="correo" id="correo" placeholder="Correo"
+			class="border border-grey-300 w-full px-3 py-2 mb-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 invalid:focus:ring-red-500 peer">
+		<p class="text-red-400 hidden peer-invalid:block">El correo es incorrecto</p>
+		
+		<input type="text" name="password" id="password" placeholder="Contraseña"
+			class="border border-grey-300 w-full px-3 py-2 mb-4 rounded-lg">
+		
+		<input class="bg-blue-500 w-full py-2 text-white rounded-md cursor-pointer hover:bg-blue-400" type="submit" value="Ingresar">
+	</form>
+
+	<div class="mt-10 mx-auto place-content-center text-center">
+		<button class="bg-red-500 w-32 p-3 rounded-md relative after:content-[''] after:absolute after:left-32
+			after:border-8 after:border-transparent after:border-l-red-500 after:top-4">
+			A rellenar:
+		</button>
+	</div>
+	
+	<div class="mx-5 mt-10">
+		<input type="file" class="file:bg-violet file:border-0 file:rounded-lg file:text-violet-700 file:font-semibold file:px-3
+			hover:file:bg-violet-300" placeholder="Fichero">
+		<p class="mt-10 text-2xl selection:bg-green-500 selection:text-white first-line:uppercase first-line:tracking-widest
+			first-letter:text-8xl first-letter:font-bold first-letter:mr-3 first-letter:float-left">
+			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta distinctio blanditiis repudiandae rerum
+			voluptate,
+			excepturi repellendus omnis quaerat obcaecati alias, molestiae at, quod ad laudantium voluptates culpa sed
+			veritatis
+			quas?
+		</p>
+	</div>
+
+	<h2 class="mt-20 mb-5 text-center text-2xl font-semibold">Flex</h2>
+	<div class="flex place-content-around flex-col h-[600px] mx-3 pt-5 px-5 bg-pink-200 rounded-xl">
+		<div class="caja basis-1/5">1</div>
+		<div class="caja basis-2/5 self-center">2</div>
+		<div class="caja basis-2/5 self-end">3</div>
+	</div>
+	
+	<h2 class="mt-20 mb-5 text-center text-2xl font-semibold">Grid</h2>
+	<div class="grid grid-cols-4 gap-5 h-[600px] mx-3 mb-5 pt-5 px-5 bg-amber-200 rounded-xl justify-center">
+		<div class="caja col-span-2 w-full m-auto">1</div>
+		<div class="caja row-span-2 m-auto">2</div>
+		<div class="caja m-auto">3</div>
+		<div class="caja m-auto">4</div>
+		<div class="caja m-auto">5</div>
+		<div class="caja m-auto">6</div>
+	</div>
+</body>
+</html>

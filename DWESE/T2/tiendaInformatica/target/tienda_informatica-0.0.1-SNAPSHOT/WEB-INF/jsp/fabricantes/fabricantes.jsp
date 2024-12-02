@@ -61,7 +61,6 @@
 			<div style="float: left;width: 25%"><%= fab.getIdFabricante()%></div>
 			<div style="float: left;width: 25%"><%= fab.getNombre()%></div>
 			<div style="float: left;width: 25%"><%= fab.getNumProductos()%></div>
-
 			<div style="float: none;width: auto;overflow: hidden;">
 				<form action="${pageContext.request.contextPath}/tienda/fabricantes/<%= fab.getIdFabricante()%>" style="display: inline;">
     				<input type="submit" value="Ver Detalle" />
@@ -76,9 +75,8 @@
 				</form>
 			</div>
 		</div>
-
 	<%
-            }
+			}
         } else { 
     %>
 		No hay registros de fabricante
