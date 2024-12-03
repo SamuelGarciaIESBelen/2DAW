@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contador</title>
+	<style>
+		body {
+			text-align: center;
+		}
+		h2 {
+			font-size: 60px;
+			color: crimson;
+		}
+	</style>
+</head>
+<body>
+	<h1>Contador</h1>
+	<h2 id="contador"></h2>
+
+	<script>
+	// Haz un contador desde 10 segundos y que salte una alerta cuando termine
+	let segundos = 10;
+
+	const contador = setInterval(() => {
+		segundos--;
+		document.querySelector("#contador").innerHTML = segundos;
+		if (segundos < 1) {
+			clearInterval(contador);
+			alert("Toki ga ugoki desu");
+		}
+	}, 1000);
+	
+	/* alert("¡ZA WARUDO! ¡TOKI WO TOMARE!");	
+	const alerta = setTimeout(() => {
+		alert("Toki ga ugoki desu");
+		}, 10000); */
+		
+	alert("¡ZA WARUDO! ¡TOKI WO TOMARE!");	
+	contador();
+	</script>
+</body>
+</html>

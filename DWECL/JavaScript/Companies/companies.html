@@ -13,12 +13,13 @@
 			<form class="d-flex align-items-center w-25">
 				<label for="selectContinents">Continents</label>
 				<select class="form-select mx-3" name="selectContinents" id="selectContinents">
+					<option value="">Select a continent</option>
 					<!-- Filled with script -->
 				</select>
 			</form>
-			<button class="btn bg-secondary text-white mx-2">Countries [3]</button>
-			<button class="btn bg-secondary text-white mx-2">Number of companies [4]</button>
-			<button class="btn bg-secondary text-white mx-2">Company names [5]</button>
+			<button class="btn bg-secondary text-white mx-2" id="btn-countries">Countries</button>
+			<button class="btn bg-secondary text-white mx-2" id="btn-companies-number">Number of companies</button>
+			<button class="btn bg-secondary text-white mx-2" id="btn-companies-names">Company names</button>
 		</div>
 
 		<table class="table table-bordered table-light mt-4">
@@ -29,7 +30,7 @@
 					<th>Companies</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="tableContinents">
 				<!-- Filled with script -->
 			</tbody>
 		</table>
