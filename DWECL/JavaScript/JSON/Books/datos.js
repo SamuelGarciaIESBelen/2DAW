@@ -1,5 +1,6 @@
 const libros = [
 	{
+		"id": 1,
 		"titulo": "Percy Jackson and the Lightning Thief",
 		"genero": ["Fantasía", "Aventura"],
 		"autor": ["Rick Riordan"],
@@ -9,6 +10,7 @@ const libros = [
 		"web": ""
 	},
 	{
+		"id": 2,
 		"titulo": "The Name of the Wind",
 		"genero": ["Fantasía", "Aventura"],
 		"autor": ["Patrick Rothfuss"],
@@ -18,6 +20,7 @@ const libros = [
 		"web": "www.patrickrothfuss.com"
 	},
 	{
+		"id": 3,
 		"titulo": "One Piece First Volume - Romance Dawn",
 		"genero": ["Manga", "Fantasía"],
 		"autor": ["Eiichiro Oda"],
@@ -27,6 +30,7 @@ const libros = [
 		"web": ""
 	},
 	{
+		"id": 4,
 		"titulo": "Fourth Wing",
 		"genero": ["Fantasía", "Romance"],
 		"autor": ["Rebecca Yarros"],
@@ -36,6 +40,7 @@ const libros = [
 		"web": ""
 	},
 	{
+		"id": 5,
 		"titulo": "Shadow and Bone",
 		"genero": ["Fantasía", "Romance"],
 		"autor": ["Leigh Bardugo"],
@@ -45,6 +50,7 @@ const libros = [
 		"web": ""
 	},
 	{
+		"id": 6,
 		"titulo": "Dungeons and Dragons",
 		"genero": ["Fantasía", "Rol"],
 		"autor": ["Patrick Rothfuss", "Wizards of the Coast"],

@@ -15,6 +15,7 @@ const fillTable = () => {
 	
 	for (let l of libros) {
 		let tr = document.createElement("tr");
+		tr.setAttribute("id", `${l.id}`)
 		Object.values(l).forEach(value => {
 			let td = document.createElement("td");
 			td.textContent = value;
@@ -25,17 +26,23 @@ const fillTable = () => {
 }
 fillTable();
 
+const clearHighlight = () => {
+	const rows = document.querySelectorAll("tr");
+	rows.forEach(r => r.classList.remove("table-info"));
+}
+
 const genres = () => {
+	clearHighlight();
 	let res = document.querySelector("#a1");
 	res.innerHTML = "";
 	const genres = [];
 
-	libros.map(libro => libro.genero).forEach(genre => {
-		for (let g of genre) {
+	libros.forEach(l => {
+		l.genero.forEach(g => {
 			if (!genres.includes(g)) {
 				genres.push(g);
 			}
-		}
+		});
 	});
 
 	// const genres = [...new Set(libros.flatMap(libro => libro.genero))];		
@@ -44,22 +51,35 @@ const genres = () => {
 }
 
 const moreThan300pages = () => {
+	clearHighlight();
 	let res = document.querySelector("#a2");
 	res.innerHTML = "";
+	let tr;
 
 	libros.filter(l => l.pags > 300)
-		.forEach(l => res.innerHTML += `<p>${l.titulo}</p>`);
+		.forEach(l => {
+			res.innerHTML += `<p>${l.titulo}</p>`
+			tr = document.getElementById(`${l.id}`);
+			tr.classList.add("table-info");
+		});
 }
 
 const moreThan2yearsAgo = () => {
+	clearHighlight();
 	let res = document.querySelector("#a3");
 	res.innerHTML = "";
+	let tr;
 
 	libros.filter(l => l.fecha < "2021")
-		.forEach(l => res.innerHTML += `<p>${l.titulo}</p>`);
+		.forEach(l => {
+			res.innerHTML += `<p>${l.titulo}</p>`;
+			tr = document.getElementById(`${l.id}`);
+			tr.classList.add("table-info");
+		});
 }
 
 const authors = () => {
+	clearHighlight();
 	let res = document.querySelector("#a4");
 	let autorNum = {};
 	res.innerHTML = "";
@@ -80,12 +100,18 @@ const authors = () => {
 }
 
 const booksRead = () => {
+	clearHighlight();
 	let res = document.querySelector("#a5");
 	res.innerHTML = "";
+	let tr;
 
 	libros.filter(l => l.leido)
 		.sort((a, b) => new Date(a.fecha) - new Date(b.fecha))
-		.forEach(l => res.innerHTML += `<p>${l.titulo} -- Published in ${l.fecha}</p>`)
+		.forEach(l => {
+			res.innerHTML += `<p>${l.titulo} -- Published in ${l.fecha}</p>`;
+			tr = document.getElementById(`${l.id}`);
+			tr.classList.add("table-info");
+		});
 }
 
 document.querySelector("#ba1").addEventListener("click", genres);
