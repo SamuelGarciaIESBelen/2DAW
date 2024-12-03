@@ -112,7 +112,7 @@ const fillCompaniesNames = () => {
 		let tdCountry = document.createElement("td");
 		let tdCompaniesNumber = document.createElement("td");
 		let tdCompaniesNames = document.createElement("td");
-		let companiesNames = c.companies.map(e => Object.keys(e)[0]);
+		let companiesNames = c.companies.map(e => Object.keys(e));
 		
 		tdCountry.textContent = c.name;
 		tdCompaniesNumber.textContent = c.companies.length;
