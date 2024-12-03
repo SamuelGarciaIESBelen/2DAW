@@ -46,7 +46,7 @@ const fillAccordion = (father, item, category) => {
 				</button>
 			</h2>
 			<div id="${category}${item.code}" class="accordion-collapse collapse">
-				<div class="accordion-body" id="${category}${item.code}">
+				<div class="accordion-body" id="${category}A${item.code}">
 				</div>
 			</div>
 		</div>`;
@@ -66,7 +66,7 @@ const fillAccordion = (father, item, category) => {
 				</button>
 			</h2>
 			<div id="${category}${item.code}" class="accordion-collapse collapse">
-				<div class="accordion-body" id="${category}${item.code}">
+				<div class="accordion-body" id="${category}A${item.code}">
 				</div>
 			</div>
 		</div>`;
@@ -82,12 +82,12 @@ const showAccordion = (order, direction) => {
 
 	provinces.forEach(community => {
 		fillAccordion(accordionCities, community, "community");
-		const provinceInt = document.querySelector("#community" + community.code);
+		const provinceInt = document.querySelector("#communityA" + community.code);
 		orderList(order, direction, community.provinces);
 
 		community.provinces.forEach(province => {
 			fillAccordion(provinceInt, province, "province");
-			const towns = document.querySelector("#province" + province.code);
+			const towns = document.querySelector("#provinceA" + province.code);
 			
 			const ul = document.createElement("ul");
 			towns.appendChild(ul);
