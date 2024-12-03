@@ -21,7 +21,7 @@ const libros = [
 		"titulo": "One Piece First Volume - Romance Dawn",
 		"genero": ["Manga", "Fantasía"],
 		"autor": ["Eiichiro Oda"],
-		"pags": "208",
+		"pags": 208,
 		"fecha": "1997-07-24",
 		"leido": true,
 		"web": ""

@@ -1,10 +1,21 @@
-let fillTable = (libros) => {
-	const tbody = document.querySelector("tbody");
-
-	for (let libro of libros) {
+const fillTable = () => {
+	// Rellenar thead
+	let thead = document.querySelector("thead");
+	let tr = document.createElement("tr");
+	
+	Object.keys(libros[0]).forEach(value => {
+		let th = document.createElement("th");
+		th.textContent = value.toLocaleUpperCase();
+		tr.appendChild(th);
+	});
+	thead.appendChild(tr);
+	
+	// Rellenar tbody
+	let tbody = document.querySelector("tbody");
+	
+	for (let l of libros) {
 		let tr = document.createElement("tr");
-		
-		Object.values(libro).forEach(value => {
+		Object.values(l).forEach(value => {
 			let td = document.createElement("td");
 			td.textContent = value;
 			tr.appendChild(td);
@@ -12,49 +23,49 @@ let fillTable = (libros) => {
 		tbody.appendChild(tr);
 	}
 }
+fillTable();
 
-// 1. Name of each of the genres
-let p1 = (libros) => {
-	const res = document.querySelector("#uno");
-	let genres = [];
+const genres = () => {
+	let res = document.querySelector("#a1");
 	res.innerHTML = "";
-	
-	libros.map(l => l.genero).forEach(genero => {
-		for (g of genero) {
+	const genres = [];
+
+	libros.map(libro => libro.genero).forEach(genre => {
+		for (let g of genre) {
 			if (!genres.includes(g)) {
 				genres.push(g);
 			}
 		}
-	})
-	
-	res.innerHTML = `<p>Genres are: ${genres}</p>`;
+	});
+
+	// const genres = [...new Set(libros.flatMap(libro => libro.genero))];		
+
+	res.innerHTML = genres.join(", ");
 }
 
-// 2. Title of books with more than 300 pages
-let p2 = (libros) => {
-	const res = document.querySelector("#dos");
+const moreThan300pages = () => {
+	let res = document.querySelector("#a2");
 	res.innerHTML = "";
-	
+
 	libros.filter(l => l.pags > 300)
 		.forEach(l => res.innerHTML += `<p>${l.titulo}</p>`);
 }
 
-// 3. Title of books published more than 2 years ago
-let p3 = (libros) => {
-	const res = document.querySelector("#tres");
+const moreThan2yearsAgo = () => {
+	let res = document.querySelector("#a3");
 	res.innerHTML = "";
 
-	libros.filter(l => l.fecha < "2022")
-		.forEach(l => res.innerHTML += `<p>${l.titulo} - Published in ${l.fecha}</p>`);
+	libros.filter(l => l.fecha < "2021")
+		.forEach(l => res.innerHTML += `<p>${l.titulo}</p>`);
 }
 
-// 4. Name of the authors and number of books they have written
-let p4 = (libros) => {
-	const res = document.querySelector("#cuatro");
+const authors = () => {
+	let res = document.querySelector("#a4");
 	let autorNum = {};
 	res.innerHTML = "";
 
-	libros.forEach(l => { l.autor.forEach(a => {
+	libros.forEach(l => {
+		l.autor.forEach(a => {
 			if (autorNum[a]) {
 				autorNum[a]++;
 			} else {
@@ -62,32 +73,23 @@ let p4 = (libros) => {
 			}
 		});
 	});
-	
-	for (autor in autorNum) {
-		res.innerHTML += `<p>${autor} - Books written: ${autorNum[autor]}</p>`;
+
+	for (a in autorNum) {
+		res.innerHTML += `<p>${a} -- Books written: ${autorNum[a]}</p>`;
 	}
 }
 
-
-// 5. Title of the books read, ordered by date of publishing
-let p5 = (libros) => {
-	let res = document.querySelector("#cinco");
+const booksRead = () => {
+	let res = document.querySelector("#a5");
 	res.innerHTML = "";
-	
-	libros.sort((a, b) => new Date(a.fecha) - new Date(b.fecha))
-		.filter(l => l.leido)
-		.forEach(l => res.innerHTML += `<p>${l.titulo} - Published in ${l.fecha}</p>`);
 
+	libros.filter(l => l.leido)
+		.sort((a, b) => new Date(a.fecha) - new Date(b.fecha))
+		.forEach(l => res.innerHTML += `<p>${l.titulo} -- Published in ${l.fecha}</p>`)
 }
 
-fillTable(libros);
-document.querySelector("#p1").onclick = () => p1(libros);
-document.querySelector("#h1").onclick = () => document.querySelector("#uno").innerHTML = "";
-document.querySelector("#p2").onclick = () => p2(libros);
-document.querySelector("#h2").onclick = () => document.querySelector("#dos").innerHTML = "";
-document.querySelector("#p3").onclick = () => p3(libros);
-document.querySelector("#h3").onclick = () => document.querySelector("#tres").innerHTML = "";
-document.querySelector("#p4").onclick = () => p4(libros);
-document.querySelector("#h4").onclick = () => document.querySelector("#cuatro").innerHTML = "";
-document.querySelector("#p5").onclick = () => p5(libros);
-document.querySelector("#h5").onclick = () => document.querySelector("#cinco").innerHTML = "";
+document.querySelector("#ba1").addEventListener("click", genres);
+document.querySelector("#ba2").addEventListener("click", moreThan300pages);
+document.querySelector("#ba3").addEventListener("click", moreThan2yearsAgo);
+document.querySelector("#ba4").addEventListener("click", authors);
+document.querySelector("#ba5").addEventListener("click", booksRead);
