@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Advanced Search</title>
+	<link rel="stylesheet" href="exam.css">
+</head>
+<body>
+	<form>
+		<fieldset>
+			<p><b>ADVANCED SEARCH</b> (in all selected fields)</p>
+
+			<label for="textInput">Text:</label>
+			<br>
+			<input type="text" name="textInput" id="textInput" required>
+			<br>
+			<input type="checkbox" name="textFilter" id="title" value="title">Title
+			<input type="checkbox" name="textFilter" id="director" value="director">Director
+			<input type="checkbox" name="textFilter" id="actor" value="actor">Actors
+
+			<br><br>
+
+			<label for="countrySelect">Country:</label>
+			<br>
+			<select name="countrySelect" id="countrySelect">
+				<option value="all">All countries</option>
+			</select>
+
+			<br><br>
+
+			<label for="genres">Gender:</label>
+			<br>
+			<div id="genresContainer">
+				<input type="checkbox" name="genres" id="all" value="all">All genders
+			</div>
+
+			<br>
+
+			<label for="yearSelect">Year:</label> from
+			<select name="yearSelect" id="yearBegin">
+				<option value="">- - - -</option>
+			</select> to
+			<select name="yearSelect" id="yearEnd">
+				<option value="">- - - -</option>
+			</select>
+
+			<br><br>
+
+			<button type="submit" id="search">Find</button>
+		</fieldset>
+	</form>
+	<span id="searchRes">500 results</span>
+	<div id="movies"></div>
+
+	<script src="filtrospelis.js"></script>
+	<script src="pelisList.js"></script>
+	<script src="exam.js"></script>
+</body>
+</html>
