@@ -1,0 +1,10 @@
+<header>
+    <h1>Empresa examen</h1>
+    <nav>
+        <ul>
+            <li><a href="<%=application.getContextPath()%>">HOME</a></li>
+            <li><a href="<%=application.getContextPath()%>/empresa/departamentos">Departamentos</a></li>
+            <li><a href="<%=application.getContextPath()%>/empresa/empleados">Empleados</a></li>
+        </ul>
+    </nav>
+</header>
