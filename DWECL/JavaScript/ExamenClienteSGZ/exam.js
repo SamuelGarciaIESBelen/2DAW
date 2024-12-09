@@ -22,21 +22,21 @@ const fillGenders = () => {
 
 const controlAllGenders = () => {
 	const genresContainer = document.getElementById("genresContainer");
-    const allCheckbox = document.getElementById("all");
+	const allCheckbox = document.getElementById("all");
 	const checkboxes = genresContainer.querySelectorAll("input[name='genres']:not(#all)");
 
-    allCheckbox.addEventListener("change", () => {
-        checkboxes.forEach(checkbox => {
-            checkbox.checked = allCheckbox.checked;
-        });
-    });
+	allCheckbox.addEventListener("change", () => {
+		checkboxes.forEach(checkbox => {
+			checkbox.checked = allCheckbox.checked;
+		});
+	});
 
-    genresContainer.addEventListener("change", (event) => {
-        if (event.target.name === "genres" && event.target.id !== "all") {
-            const allSelected = [...checkboxes].every(check => check.checked);
-            allCheckbox.checked = allSelected;
-        }
-    });
+	genresContainer.addEventListener("change", (event) => {
+		if (event.target.name === "genres" && event.target.id !== "all") {
+			const allSelected = [...checkboxes].every(check => check.checked);
+			allCheckbox.checked = allSelected;
+		}
+	});
 }
 
 const fillYears = (id) => {
@@ -56,8 +56,7 @@ const fillYears = (id) => {
 const filterMovies = () => {
 	const form = document.querySelector("form");
 	
-	form.addEventListener("submit", (event) => {
-		event.preventDefault();
+	form.addEventListener("submit", () => {
 
 		const textInput = document.querySelector("#textInput").value.toLowerCase();
 		const textFilters = [...document.querySelectorAll("input[name='textFilter']")].filter(check => check.checked).map(check => check.value);
@@ -86,33 +85,74 @@ const filterMovies = () => {
 	});
 }
 
-const createCards = () => {
+const createCards = (event) => {
+	event.preventDefault();
+
 	const searchRes = document.querySelector("#searchRes");
 	const moviesContainer = document.querySelector("#movies");
-	searchRes.textContent = `${pelis.length} results`;
+	searchRes.innerHTML = `<b>${pelis.length}</b> results`;
 	moviesContainer.innerHTML = "";
 
 	pelis.forEach(p => {
 		const card = document.createElement("div");
 		card.classList.add("card");
+		card.setAttribute("id", `${p.imdbID}`);
 
 		card.innerHTML = `
 		<h3>${p.Title}</h3>
 		<div>
-			<img src="${p.Images[0]}" height="150px">
-			<button id="details">Details</button>
+			<img src="${p.Images[1]}" height="200px">
 		</div>
-		<div>
-			<p>${p.Genre}</p>
+		<div><button id="details${p.imdbID}">Details</button></div>
+		<div id="cardGenres">
+			${p.Genre.split(',').map(g => `<p>${g.trim()}</p>`).join('')}
 		</div>
+		<div class="detailsContainer" id="detailsContainer${p.imdbID}"></div>
 		`;
 		
 		moviesContainer.appendChild(card);
+
+		document.querySelector(`#details${p.imdbID}`).addEventListener("click", () => {
+            showDetails(p);
+            card.style.backgroundColor = "skyblue";
+        });
 	});
 }
 
-const showDetails = () => {
+const showDetails = (p) => {
+	const btnDetails = document.querySelector(`#details${p.imdbID}`);
+	btnDetails.disabled = true;
 
+	const details = document.querySelector(`#detailsContainer${p.imdbID}`);
+
+	details.innerHTML = `
+	<div id="imdbR">
+		<h4>IMDb Rating</h4>
+		<button id="close${p.imdbID}">X</button>
+	</div>
+	<div id="imdbRInput">
+		<label for="imdbInput${p.imdbID}"> </label>
+		<input type="text" id="imdbInput${p.imdbID}" value="${p.imdbRating || ''}">
+		<button id="update${p.imdbID}">Update</button>
+	</div>
+	<div>
+		<pre>${JSON.stringify(p, null, 2)}</pre>
+	</div>
+	`;
+
+	const btnUpdate = document.querySelector(`#update${p.imdbID}`);
+	btnUpdate.addEventListener("click", () => {
+		const newRating = document.querySelector(`#imdbInput${p.imdbID}`).value;
+		p.imdbRating = newRating;
+		showDetails(p);
+	});
+
+	document.querySelector(`#close${p.imdbID}`).addEventListener("click", () => {
+		btnDetails.disabled = false;
+		details.innerHTML = "";
+		const card = document.querySelector(`#${p.imdbID}`);
+		card.style.backgroundColor = "white";
+	});
 }
 
 fillCountries();
@@ -120,5 +160,4 @@ fillGenders();
 controlAllGenders();
 fillYears("yearBegin");
 fillYears("yearEnd");
-filterMovies();
-createCards();
+document.querySelector("#search").addEventListener("click", createCards);

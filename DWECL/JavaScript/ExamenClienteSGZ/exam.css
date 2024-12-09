@@ -1,10 +1,66 @@
 body {
 	padding: 20px;
 }
+body button {
+	cursor: pointer;
+}
+
 form {
 	display: flex;
 	flex-direction: column;
+	margin-bottom: 5px;
 }
 fieldset {
 	border: 1px solid black;
+}
+
+#movies {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	margin-top: 20px;
+	
+}
+.card {
+	border: 1px solid black;
+	border-radius: 25px;
+	padding-inline: 10px;
+	margin-inline: 20px;
+	margin-bottom: 40px;
+	display: flex;
+	flex-direction: column;
+}
+.card h3 {
+	text-align: center;
+}
+.card div {
+	margin: auto;
+}
+.card img {
+	margin-bottom: 5px;
+}
+#cardGenres {
+	display: flex;
+}
+#cardGenres p {
+	background-color: rgb(30, 233, 108);
+	border-radius: 10px;
+	padding: 5px;
+	margin-inline: 5px;
+}
+
+.detailsContainer {
+	display: flex;
+	flex-direction: column;
+}
+#imdbR {
+	display: flex;
+	align-items: center;
+}
+#imdbR button {
+	margin-left: 200px;
+	background-color: red;
+	font-weight: bold;
+}
+#imdbRInput {
+	margin: auto;
 }
