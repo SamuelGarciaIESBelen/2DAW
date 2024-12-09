@@ -10,17 +10,17 @@ const fillCountries = () => {
 	});
 }
 
-const fillGenders = () => {
-	const gendersCont = document.querySelector("#genresContainer");
+const fillGenres = () => {
+	const genresCont = document.querySelector("#genresContainer");
 
 	genders.sort().forEach(elem => {
-		gendersCont.innerHTML += `
+		genresCont.innerHTML += `
 		<input type="checkbox" name="genres" id="${elem}" value="${elem}">${elem}
 		`
 	});
 }
 
-const controlAllGenders = () => {
+const controlAllGenres = () => {
 	const genresContainer = document.getElementById("genresContainer");
 	const allCheckbox = document.getElementById("all");
 	const checkboxes = genresContainer.querySelectorAll("input[name='genres']:not(#all)");
@@ -71,33 +71,87 @@ const filterMovies = () => {
 		console.log(selectedGenres);
 		console.log("From " + yearBegin + " to " + yearEnd);
 		
-		/* const filteredMovies = pelis.filter(p => {
-			for (let tf of textFilters) {
-				if (tf === "Title") {
-					
-				}
-			}
+		if (!textInput) {
+			alert("Text is required");
+		}
+
+		const filteredMovies = pelis.filter(p => {
+			const country = selectedCountry === "all" || p.Country.includes(selectedCountry);
+			const genres = selectedGenres.length === 0 || selectedGenres.some(g => p.Genre.includes(g));
+			const year = (!isNaN(yearBegin) ? parseInt(p.Year) >= yearBegin : true) &&
+				(!isNaN(yearEnd) ? parseInt(p.Year) <= yearEnd : true);
+	
+			let checkboxes = [];
+			const titleCB = document.getElementById("checkTitulo").checked;
+			const directorCB = document.getElementById("checkDirector").checked;
+			const actorCB = document.getElementById("checkActors").checked;
+	
+			if (titleCB) { checkboxes.push(p.Title.toLowerCase().includes(textInput)); }
+			if (directorCB) { checkboxes.push(p.Director.toLowerCase().includes(textInput)); }
+			if (actorCB) { checkboxes.push(p.Actors.toLowerCase().includes(textInput)); }
+	
+			const text = checkboxes.length === 0 || checkboxes.includes(true);
+	
+			return country && genres && year && text;
 		});
-		
-		console.log(filteredMovies);
-		
-		return filteredMovies; */
+		return filteredMovies;
 	});
 }
 
-const createCards = (event) => {
-	event.preventDefault();
-
-	const searchRes = document.querySelector("#searchRes");
+const createCards = () => {
 	const moviesContainer = document.querySelector("#movies");
-	searchRes.innerHTML = `<b>${pelis.length}</b> results`;
 	moviesContainer.innerHTML = "";
-
-	pelis.forEach(p => {
+			
+	const textInput = document.querySelector("#textInput").value.toLowerCase();
+	const textFilters = [...document.querySelectorAll("input[name='textFilter']")].filter(check => check.checked).map(check => check.value);
+	const selectedCountry = document.querySelector("#countrySelect").value;
+	const selectedGenres = [...document.querySelectorAll("input[name='genres']")].filter(check => check.checked).map(check => check.value);
+	const yearBegin = document.querySelector("#yearBegin").value;
+	const yearEnd = document.querySelector("#yearEnd").value;
+	
+	console.log(textInput);
+	console.log(textFilters);
+	console.log(selectedCountry);
+	console.log(selectedGenres);
+	console.log("From " + yearBegin + " to " + yearEnd);
+	
+	if (!textInput) {
+		alert("Text is required");
+		return;
+	}
+	
+	const filteredMovies = pelis.filter(p => {
+		const country = selectedCountry === "all" || (p.Country.includes(selectedCountry));
+		const genres = selectedGenres.length === 0 || selectedGenres.some(g => p.Genre.includes(g));
+		const year = (!isNaN(yearBegin) ? parseInt(p.Year) >= yearBegin : true) &&
+		(!isNaN(yearEnd) ? parseInt(p.Year) <= yearEnd : true);
+		
+		let checkboxes = [];
+		const titleCB = document.querySelector("#title").checked;
+		const directorCB = document.querySelector("#director").checked;
+		const actorCB = document.querySelector("#actor").checked;
+		
+		if (titleCB) { checkboxes.push(p.Title.toLowerCase().includes(textInput)); }
+		if (directorCB) { checkboxes.push(p.Director.toLowerCase().includes(textInput)); }
+		if (actorCB) { checkboxes.push(p.Actors.toLowerCase().includes(textInput)); }
+		
+		const text = checkboxes.length === 0
+        ? (p.Title && p.Title.toLowerCase().includes(textInput)) ||
+          (p.Director && p.Director.toLowerCase().includes(textInput)) ||
+          (p.Actors && p.Actors.toLowerCase().includes(textInput))
+        : checkboxes.includes(true);
+		
+		return country && genres && year && text;
+	});
+	
+	const searchRes = document.querySelector("#searchRes");
+	searchRes.innerHTML = `<b>${filteredMovies.length}</b> results`;
+	
+	filteredMovies.forEach(p => {
 		const card = document.createElement("div");
 		card.classList.add("card");
 		card.setAttribute("id", `${p.imdbID}`);
-
+		
 		card.innerHTML = `
 		<h3>${p.Title}</h3>
 		<div>
@@ -105,7 +159,7 @@ const createCards = (event) => {
 		</div>
 		<div><button id="details${p.imdbID}">Details</button></div>
 		<div id="cardGenres">
-			${p.Genre.split(',').map(g => `<p>${g.trim()}</p>`).join('')}
+			${p.Genre.split(",").map(g => `<p>${g.trim()}</p>`).join("")}
 		</div>
 		<div class="detailsContainer" id="detailsContainer${p.imdbID}"></div>
 		`;
@@ -113,9 +167,9 @@ const createCards = (event) => {
 		moviesContainer.appendChild(card);
 
 		document.querySelector(`#details${p.imdbID}`).addEventListener("click", () => {
-            showDetails(p);
-            card.style.backgroundColor = "skyblue";
-        });
+			showDetails(p);
+			card.style.backgroundColor = "skyblue";
+		});
 	});
 }
 
@@ -131,7 +185,7 @@ const showDetails = (p) => {
 		<button id="close${p.imdbID}">X</button>
 	</div>
 	<div id="imdbRInput">
-		<label for="imdbInput${p.imdbID}"> </label>
+		<label for="imdbInput${p.imdbID}"></label>
 		<input type="text" id="imdbInput${p.imdbID}" value="${p.imdbRating || ''}">
 		<button id="update${p.imdbID}">Update</button>
 	</div>
@@ -140,8 +194,16 @@ const showDetails = (p) => {
 	</div>
 	`;
 
-	const btnUpdate = document.querySelector(`#update${p.imdbID}`);
-	btnUpdate.addEventListener("click", () => {
+	document.querySelector(`#imdbInput${p.imdbID}`).addEventListener("input", (event) => {
+		const pattern = /^[0-9]?(\.[0-9]?)?$/;
+		const input = event.target;
+
+		if (!pattern.test(input.value)) {
+			input.value = input.value.slice(0, -1);
+		}
+	});
+
+	document.querySelector(`#update${p.imdbID}`).addEventListener("click", () => {
 		const newRating = document.querySelector(`#imdbInput${p.imdbID}`).value;
 		p.imdbRating = newRating;
 		showDetails(p);
@@ -156,8 +218,11 @@ const showDetails = (p) => {
 }
 
 fillCountries();
-fillGenders();
-controlAllGenders();
+fillGenres();
+controlAllGenres();
 fillYears("yearBegin");
 fillYears("yearEnd");
-document.querySelector("#search").addEventListener("click", createCards);
+document.querySelector("#search").addEventListener("click", (event) => {
+	event.preventDefault();
+	createCards();
+});
