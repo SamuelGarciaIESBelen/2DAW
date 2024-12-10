@@ -53,55 +53,11 @@ const fillYears = (id) => {
 	}
 }
 
-const filterMovies = () => {
-	const form = document.querySelector("form");
-	
-	form.addEventListener("submit", () => {
-
-		const textInput = document.querySelector("#textInput").value.toLowerCase();
-		const textFilters = [...document.querySelectorAll("input[name='textFilter']")].filter(check => check.checked).map(check => check.value);
-		const selectedCountry = document.querySelector("#countrySelect").value;
-		const selectedGenres = [...document.querySelectorAll("input[name='genres']")].filter(check => check.checked).map(check => check.value);
-		const yearBegin = document.querySelector("#yearBegin").value;
-		const yearEnd = document.querySelector("#yearEnd").value;
-
-		console.log(textInput);
-		console.log(textFilters);
-		console.log(selectedCountry);
-		console.log(selectedGenres);
-		console.log("From " + yearBegin + " to " + yearEnd);
-		
-		if (!textInput) {
-			alert("Text is required");
-		}
-
-		const filteredMovies = pelis.filter(p => {
-			const country = selectedCountry === "all" || p.Country.includes(selectedCountry);
-			const genres = selectedGenres.length === 0 || selectedGenres.some(g => p.Genre.includes(g));
-			const year = (!isNaN(yearBegin) ? parseInt(p.Year) >= yearBegin : true) &&
-				(!isNaN(yearEnd) ? parseInt(p.Year) <= yearEnd : true);
-	
-			let checkboxes = [];
-			const titleCB = document.getElementById("checkTitulo").checked;
-			const directorCB = document.getElementById("checkDirector").checked;
-			const actorCB = document.getElementById("checkActors").checked;
-	
-			if (titleCB) { checkboxes.push(p.Title.toLowerCase().includes(textInput)); }
-			if (directorCB) { checkboxes.push(p.Director.toLowerCase().includes(textInput)); }
-			if (actorCB) { checkboxes.push(p.Actors.toLowerCase().includes(textInput)); }
-	
-			const text = checkboxes.length === 0 || checkboxes.includes(true);
-	
-			return country && genres && year && text;
-		});
-		return filteredMovies;
-	});
-}
-
 const createCards = () => {
 	const moviesContainer = document.querySelector("#movies");
 	moviesContainer.innerHTML = "";
-			
+
+	// FILTER
 	const textInput = document.querySelector("#textInput").value.toLowerCase();
 	const textFilters = [...document.querySelectorAll("input[name='textFilter']")].filter(check => check.checked).map(check => check.value);
 	const selectedCountry = document.querySelector("#countrySelect").value;
@@ -122,7 +78,7 @@ const createCards = () => {
 	
 	const filteredMovies = pelis.filter(p => {
 		const country = selectedCountry === "all" || (p.Country.includes(selectedCountry));
-		const genres = selectedGenres.length === 0 || selectedGenres.some(g => p.Genre.includes(g));
+		const genres = selectedGenres.length === 0 || selectedGenres.every(g => p.Genre.includes(g));
 		const year = (!isNaN(yearBegin) ? parseInt(p.Year) >= yearBegin : true) &&
 		(!isNaN(yearEnd) ? parseInt(p.Year) <= yearEnd : true);
 		
@@ -143,6 +99,7 @@ const createCards = () => {
 		
 		return country && genres && year && text;
 	});
+	// END FILTER
 	
 	const searchRes = document.querySelector("#searchRes");
 	searchRes.innerHTML = `<b>${filteredMovies.length}</b> results`;
