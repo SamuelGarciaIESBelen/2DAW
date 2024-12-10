@@ -82,7 +82,7 @@
                 Departamento
             </div>
             <div style="float: none;width: auto;overflow: hidden;">
-                <select name="codFab">
+                <select name="codDep">
                     <%
                         if (request.getAttribute("listaDepartamentos") != null) {
                             List<Departamento> listaDepartamentos = (List<Departamento>) request.getAttribute("listaDepartamentos");

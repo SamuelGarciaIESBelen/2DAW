@@ -86,7 +86,8 @@
         <form action="${pageContext.request.contextPath}/tienda/departamentos">
             <input type="number" name="min-pres" min="0" placeholder="Presupuesto mínimo">
             <input type="number" name="max-pres" min="0" placeholder="Presupuesto máximo">
-            <input style="margin-left: 5px" type="submit" value="Buscar">
+            <%--<input style="margin-left: 5px" type="submit" value="Buscar">--%>
+            <%--Lo comento porque no he podido implementar el filtro así que el botón da error--%>
         </form>
     </div>
 </body>
