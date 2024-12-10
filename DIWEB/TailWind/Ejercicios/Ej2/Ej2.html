@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Ej2</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tailwind Ej2</title>
+	<link rel="stylesheet" href="output.css">
 </head>
-<body class="bg-cover bg-no-repeat bg-black bg-[url('./img/musica.png')]">
-    <!-- darkmode -->
-    
+<body class="bg-black">
+<!-- <body class="h-screen bg-cover bg-no-repeat bg-black bg-[url('./claveSol.jpg')]"> -->
+	<!-- darkmode -->
+
+	<form class="bg-white w-80 mx-auto mt-8 rounded-lg p-6">
+		<input type="text" name="username" id="username" placeholder="Nombre"
+			class="border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full px-3 py-2 mb-4 rounded-lg">
+		
+		<input type="email" name="email" id="email" placeholder="Correo"
+			class="border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full px-3 py-2 mb-4 rounded-lg">
+		
+		<input type="password" name="password" id="password" placeholder="Contraseña"
+			class="border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full px-3 py-2 mb-4 rounded-lg">
+		
+		<div class="w-full flex justify-between mb-3">
+			<input class="bg-yellow-500 py-2 px-10 text-white rounded-md cursor-pointer hover:bg-yellow-600" type="submit" value="Entrar">
+			<input class="bg-yellow-500 py-2 px-10 text-white rounded-md cursor-pointer hover:bg-yellow-600" type="reset" value="Borrar">
+		</div>
+		<a class="text-yellow-500 hover:text-yellow-600 font-semibold underline" href="">Nuevo usuario</a>
+	</form>
 </body>
 </html>
