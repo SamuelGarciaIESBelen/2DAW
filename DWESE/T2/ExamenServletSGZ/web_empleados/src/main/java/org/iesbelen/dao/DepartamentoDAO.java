@@ -1,7 +1,7 @@
 package org.iesbelen.dao;
 
 import org.iesbelen.model.Departamento;
-import org.iesbelen.model.DepartamentoDTO;
+import org.iesbelen.dto.DepartamentoDTO;
 
 import java.util.List;
 import java.util.Optional;

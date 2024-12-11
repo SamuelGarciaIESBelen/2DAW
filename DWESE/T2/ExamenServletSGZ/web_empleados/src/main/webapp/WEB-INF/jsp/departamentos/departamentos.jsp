@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@page import="org.iesbelen.model.Departamento" %>
-<%@page import="org.iesbelen.model.DepartamentoDTO" %>
+<%@page import="org.iesbelen.dto.DepartamentoDTO" %>
 <%@page import="java.util.List" %>
 
 <!DOCTYPE html>

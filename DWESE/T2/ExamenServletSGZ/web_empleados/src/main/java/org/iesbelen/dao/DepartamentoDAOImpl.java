@@ -1,7 +1,7 @@
 package org.iesbelen.dao;
 
 import org.iesbelen.model.Departamento;
-import org.iesbelen.model.DepartamentoDTO;
+import org.iesbelen.dto.DepartamentoDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -119,37 +119,40 @@ public class DepartamentoDAOImpl extends AbstractDAOImpl implements Departamento
     @Override
     public List<DepartamentoDTO> getAllDTO() {
         Connection conn = null;
-        PreparedStatement ps = null;
+        Statement s = null;
         ResultSet rs = null;
+
         List<DepartamentoDTO> listDep = new ArrayList<>();
 
         try {
             conn = connectDB();
 
+            s = conn.createStatement();
+
             String query = "SELECT d.codigo, d.nombre, d.presupuesto, d.gastos, count(e.codigo) " +
                     "FROM departamento d left join empleados e on d.codigo = e.codigo_departamento " +
                     "GROUP BY d.codigo";
 
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
-
-            int idx;
-
+            rs = s.executeQuery(query);
             while (rs.next()) {
-                idx = 1;
-                int codigo = rs.getInt(idx++);
-                String nombre = rs.getString(idx++);
-                int presupuesto = rs.getInt(idx++);
-                int gastos = rs.getInt(idx++);
-                int numEmp = rs.getInt(idx);
+                DepartamentoDTO dep = new DepartamentoDTO();
+                int idx = 1;
 
-                listDep.add(new DepartamentoDTO(codigo, nombre, presupuesto, gastos, numEmp));
+                dep.setCodigo(rs.getInt(idx++));
+                dep.setNombre(rs.getString(idx++));
+                dep.setPresupuesto(rs.getInt(idx++));
+                dep.setGastos(rs.getInt(idx++));
+                dep.setNumEmpleados(rs.getInt(idx));
+
+                listDep.add(dep);
             }
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            closeDb(conn, ps, rs);
+            closeDb(conn, s, rs);
         }
         return listDep;
     }

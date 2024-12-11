@@ -2,7 +2,6 @@ package org.iesbelen.servlet;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -14,7 +13,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.iesbelen.dao.DepartamentoDAO;
 import org.iesbelen.dao.DepartamentoDAOImpl;
 import org.iesbelen.model.Departamento;
-import org.iesbelen.model.DepartamentoDTO;
 
 @WebServlet(name = "departamentosServlet", value = "/empresa/departamentos/*")
 public class DepartamentosServlet extends HttpServlet {

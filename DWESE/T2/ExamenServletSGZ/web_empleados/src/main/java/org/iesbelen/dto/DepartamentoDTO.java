@@ -1,4 +1,6 @@
-package org.iesbelen.model;
+package org.iesbelen.dto;
+
+import org.iesbelen.model.Departamento;
 
 public class DepartamentoDTO extends Departamento {
     private int numEmpleados;
