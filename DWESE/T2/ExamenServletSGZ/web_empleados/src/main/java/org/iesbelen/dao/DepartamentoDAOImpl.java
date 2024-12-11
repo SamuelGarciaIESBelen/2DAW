@@ -130,7 +130,7 @@ public class DepartamentoDAOImpl extends AbstractDAOImpl implements Departamento
             s = conn.createStatement();
 
             String query = "SELECT d.codigo, d.nombre, d.presupuesto, d.gastos, count(e.codigo) " +
-                    "FROM departamento d left join empleados e on d.codigo = e.codigo_departamento " +
+                    "FROM departamento d left join empleado e on d.codigo = e.codigo_departamento " +
                     "GROUP BY d.codigo";
 
             rs = s.executeQuery(query);
@@ -158,27 +158,40 @@ public class DepartamentoDAOImpl extends AbstractDAOImpl implements Departamento
     }
 
     @Override
-    public List<Departamento> getAllFiltered(int min,int max) {
+    public List<DepartamentoDTO> getAllDTOFiltered(int min,int max) {
         Connection conn = null;
-        Statement s = null;
+        PreparedStatement ps = null;
         ResultSet rs = null;
 
-        List<Departamento> listDep = new ArrayList<>();
+        List<DepartamentoDTO> listDep = new ArrayList<>();
 
         try {
             conn = connectDB();
 
-            s = conn.createStatement();
 
-            rs = s.executeQuery("SELECT * FROM departamento where (presupuesto - gastos) > ? && (presupuesto - gastos) < ?");
+            String query = "SELECT d.codigo, d.nombre, d.presupuesto, d.gastos, count(e.codigo) " +
+                    "FROM departamento d left join empleado e on d.codigo = e.codigo_departamento " +
+                    "WHERE (presupuesto - gastos) > ? && (presupuesto - gastos) < ? GROUP BY d.codigo";
+
+            ps = conn.prepareStatement("SELECT d.codigo, d.nombre, d.presupuesto, d.gastos, count(e.codigo)" +
+                    "FROM departamento d left join empleado e on d.codigo = e.codigo_departamento" +
+                    "WHERE (presupuesto - gastos) > ? && (presupuesto - gastos) < ?" +
+                    "GROUP BY d.codigo");
+
+            int idx = 1;
+            ps.setInt(idx++, min);
+            ps.setInt(idx, max);
 
             while (rs.next()) {
-                Departamento dep = new Departamento();
-                int idx = 1;
+                DepartamentoDTO dep = new DepartamentoDTO();
+                idx = 1;
+
                 dep.setCodigo(rs.getInt(idx++));
                 dep.setNombre(rs.getString(idx++));
                 dep.setPresupuesto(rs.getInt(idx++));
-                dep.setGastos(rs.getInt(idx));
+                dep.setGastos(rs.getInt(idx++));
+                dep.setNumEmpleados(rs.getInt(idx));
+
                 listDep.add(dep);
             }
 
@@ -187,7 +200,7 @@ public class DepartamentoDAOImpl extends AbstractDAOImpl implements Departamento
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            closeDb(conn, s, rs);
+            closeDb(conn, ps, rs);
         }
         return listDep;
     }

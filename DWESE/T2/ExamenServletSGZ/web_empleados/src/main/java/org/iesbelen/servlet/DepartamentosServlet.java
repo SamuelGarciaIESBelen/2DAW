@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import org.iesbelen.dao.DepartamentoDAO;
 import org.iesbelen.dao.DepartamentoDAOImpl;
+import org.iesbelen.dto.DepartamentoDTO;
 import org.iesbelen.model.Departamento;
 
 @WebServlet(name = "departamentosServlet", value = "/empresa/departamentos/*")
@@ -44,11 +45,15 @@ public class DepartamentosServlet extends HttpServlet {
             String minPres = request.getParameter("min-pres");
             String maxPres = request.getParameter("max-pres");
 
-            List<Departamento> listaDepartamentos = depDAO.getAll();
-            // List<DepartamentoDTO> listaDepartamentosDTO = depDAO.getAllDTO();
-            // List<DepartamentoDTO> listaDepartamentosDTO = depDAO.getAllDTOFiltered();
+            List<DepartamentoDTO> listaDepartamentosDTO = null;
 
-            request.setAttribute("listaDepartamentosDTO", listaDepartamentos);
+            if (minPres != null && maxPres != null && !minPres.trim().isEmpty() && !maxPres.trim().isEmpty()) {
+                listaDepartamentosDTO = depDAO.getAllDTOFiltered(Integer.parseInt(minPres), Integer.parseInt(maxPres));
+            } else {
+                listaDepartamentosDTO = depDAO.getAllDTO();
+            }
+
+            request.setAttribute("listaDepartamentosDTO", listaDepartamentosDTO);
             dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/departamentos/departamentos.jsp");
 
         } else {

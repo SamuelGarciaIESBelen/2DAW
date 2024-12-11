@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@page import="org.iesbelen.model.Departamento" %>
-<%@page import="org.iesbelen.model.DepartamentoDTO" %>
+<%@page import="org.iesbelen.dto.DepartamentoDTO" %>
 <%@page import="java.util.List" %>
 
 <!DOCTYPE html>
@@ -36,8 +36,8 @@
         <hr/>
     </div>
     <div class="clearfix">
-        <div style="float: left; width: 15%;">Código</div>
-        <div style="float: left; width: 15%;">Nombre</div>
+        <div style="float: left; width: 10%;">Código</div>
+        <div style="float: left; width: 20%;">Nombre</div>
         <div style="float: left; width: 15%;">Presupuesto</div>
         <div style="float: left; width: 15%;">Gastos</div>
         <div style="float: left; width: 15%;">Empleados</div>
@@ -48,21 +48,21 @@
     </div>
     <%
         if (request.getAttribute("listaDepartamentosDTO") != null) {
-            List<Departamento> listaDep = (List<Departamento>) request.getAttribute("listaDepartamentosDTO");
+            List<DepartamentoDTO> listaDep = (List<DepartamentoDTO>) request.getAttribute("listaDepartamentosDTO");
 
-            for (Departamento dep : listaDep) {
+            for (DepartamentoDTO dep : listaDep) {
     %>
     <div style="margin-top: 6px;" class="clearfix">
-        <div style="float: left;width: 15%"><%= dep.getCodigo()%>
+        <div style="float: left;width: 10%"><%= dep.getCodigo()%>
         </div>
-        <div style="float: left;width: 15%"><%= dep.getNombre()%>
+        <div style="float: left;width: 20%"><%= dep.getNombre()%>
         </div>
         <div style="float: left;width: 15%"><%= dep.getPresupuesto()%>
         </div>
         <div style="float: left;width: 15%"><%= dep.getGastos()%>
         </div>
-        <%--<div style="float: left;width: 15%"><%= dep.getNumEmpleados()%>
-        </div>--%>
+        <div style="float: left;width: 15%"><%= dep.getNumEmpleados()%>
+        </div>
         <div style="float: none;width: auto;overflow: hidden;">
             <form style="display: inline;">
                 <input type="submit" value="Ver Detalles"/>
@@ -86,8 +86,7 @@
         <form action="${pageContext.request.contextPath}/tienda/departamentos">
             <input type="number" name="min-pres" min="0" placeholder="Presupuesto mínimo">
             <input type="number" name="max-pres" min="0" placeholder="Presupuesto máximo">
-            <%--<input style="margin-left: 5px" type="submit" value="Buscar">--%>
-            <%--Lo comento porque no he podido implementar el filtro así que el botón da error--%>
+            <input style="margin-left: 5px" type="submit" value="Buscar">
         </form>
     </div>
 </body>

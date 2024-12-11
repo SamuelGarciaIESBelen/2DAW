@@ -17,6 +17,6 @@ public interface DepartamentoDAO {
 	*/
 
 	public List<DepartamentoDTO> getAllDTO();
-	public List<Departamento> getAllFiltered(int min,int max);
+	public List<DepartamentoDTO> getAllDTOFiltered(int min,int max);
 
 }
