@@ -168,19 +168,19 @@ public class DepartamentoDAOImpl extends AbstractDAOImpl implements Departamento
         try {
             conn = connectDB();
 
-
             String query = "SELECT d.codigo, d.nombre, d.presupuesto, d.gastos, count(e.codigo) " +
-                    "FROM departamento d left join empleado e on d.codigo = e.codigo_departamento " +
-                    "WHERE (presupuesto - gastos) > ? && (presupuesto - gastos) < ? GROUP BY d.codigo";
-
-            ps = conn.prepareStatement("SELECT d.codigo, d.nombre, d.presupuesto, d.gastos, count(e.codigo)" +
-                    "FROM departamento d left join empleado e on d.codigo = e.codigo_departamento" +
-                    "WHERE (presupuesto - gastos) > ? && (presupuesto - gastos) < ?" +
-                    "GROUP BY d.codigo");
+                            "FROM departamento d left join empleado e on d.codigo = e.codigo_departamento " +
+                            "WHERE (presupuesto - gastos) >= ? AND (presupuesto - gastos) <= ? " +
+                            "GROUP BY d.codigo";
 
             int idx = 1;
+
+            ps = conn.prepareStatement(query);
+
             ps.setInt(idx++, min);
             ps.setInt(idx, max);
+
+            rs = ps.executeQuery();
 
             while (rs.next()) {
                 DepartamentoDTO dep = new DepartamentoDTO();

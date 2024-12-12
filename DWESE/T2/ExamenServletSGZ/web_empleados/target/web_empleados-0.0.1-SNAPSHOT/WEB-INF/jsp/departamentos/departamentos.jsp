@@ -83,9 +83,9 @@
     <% } %>
     </div>
     <div style="margin-left: 50%; margin-top: 75px">
-        <form action="${pageContext.request.contextPath}/tienda/departamentos">
-            <input type="number" name="min-pres" min="0" placeholder="Presupuesto mínimo">
-            <input type="number" name="max-pres" min="0" placeholder="Presupuesto máximo">
+        <form action="${pageContext.request.contextPath}/empresa/departamentos">
+            <input type="number" name="min-pres" min="0" placeholder="Presupuesto mínimo" required>
+            <input type="number" name="max-pres" min="0" placeholder="Presupuesto máximo" required>
             <input style="margin-left: 5px" type="submit" value="Buscar">
         </form>
     </div>
