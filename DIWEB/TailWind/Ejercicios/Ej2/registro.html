@@ -6,21 +6,21 @@
 	<title>Tailwind Ej2 Register</title>
 	<link rel="stylesheet" href="output.css">
 </head>
-<body class="bg-black">
-	<form class="bg-white w-fit mx-auto mt-8 rounded-lg p-6 grid grid-cols-2 grid-rows-6 text-orange-600">
-		<label class="font-semibold" for="username">Nombre completo:</label>
+<body class="bg-cover bg-no-repeat bg-black bg-[url('./claveSol.jpeg')]">
+	<form class="bg-white w-fit mx-auto mt-8 rounded-lg p-6 grid grid-cols-5 grid-rows-6 text-orange-600">
+		<label class="col-span-2 font-semibold" for="username">Nombre completo:</label>
 		<input type="text" name="username" id="username" placeholder="Nombre"
-			class="border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full px-3 py-2 h-10 rounded-lg text-black">
+			class="col-span-3 border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full px-3 py-2 h-10 rounded-lg text-black">
 		
-		<label class="font-semibold" for="email">Correo:</label>
+		<label class="col-span-2 font-semibold" for="email">Correo:</label>
 		<input type="email" name="email" id="email" placeholder="Correo"
-			class="border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full px-3 py-2 h-10 rounded-lg text-black">
+			class="col-span-3 border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full px-3 py-2 h-10 rounded-lg text-black">
 		
-		<label class="font-semibold" for="email2">Confirmar correo:</label>
+		<label class="col-span-2 font-semibold" for="email2">Confirmar correo:</label>
 		<input type="email" name="email2" id="email2" placeholder="Correo"
-			class="border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full px-3 py-2 h-10 rounded-lg text-black">
+			class="col-span-3 border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full px-3 py-2 h-10 rounded-lg text-black">
 		
-		<div>
+		<div class="col-span-2">
 			<label class="font-semibold" for="sexo">Sexo:</label>
 			<br>
 			<input class="mx-4" type="radio" name="sexo" value="Hombre">Hombre
@@ -29,7 +29,7 @@
 		</div>
 
 		<select name="instrumentos" id="instrumentos"
-				class="border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full px-3 py-2 h-10 rounded-lg text-black">
+				class="col-span-3 border border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full px-3 py-2 h-10 rounded-lg text-black">
 			<option value="">Instrumento</option>
 			<option value="Guitarra">Guitarra</option>
 			<option value="Piano">Piano</option>
@@ -38,13 +38,15 @@
 			<option value="Batería">Batería</option>
 		</select>
 
-		<label class="font-semibold mt-5" for="file">Elija una imagen:</label>
-		<input type="file" name="file" id="file" class="mt-5 bg-yellow-200 h-fit">
+		<label class="col-span-2 font-semibold mt-5" for="file">Elija una imagen:</label>
+		<input class="col-span-3 mt-5 bg-yellow-200 h-fit" type="file" name="file" id="file">
 		
-		<a class="col-span-2 bg-yellow-500 my-3 mx-40 text-white rounded-md cursor-pointer hover:bg-yellow-600 font-semibold text-center content-center"
-				href="nuevoUsuario.html">
-			<input type="submit" value="Registrar">
-		</a>
+		<div class="col-start-2 col-span-3 text-center content-center">
+			<button>
+				<a class="bg-yellow-500 py-2 px-3 text-white rounded-md hover:bg-yellow-600 font-semibold text-center content-center"
+					href="nuevoUsuario.html">Registrar</a>
+			</button>
+		</div>
 	</form>
 </body>
 </html>
