@@ -1,0 +1,5 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* npx tailwindcss -i .\Ejercicios\Ej3\input.css -o .\Ejercicios\Ej3\output.css --watch */

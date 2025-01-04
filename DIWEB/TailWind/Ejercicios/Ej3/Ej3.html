@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tailwind Ej3</title>
+	<link rel="stylesheet" href="output.css">
+</head>
+<body>
+	<header class="flex justify-between py-5 px-5 lg:px-36 bg-gradient-to-r from-blue-500 to-purple-400">
+		<h3 class="text-xl font-bold">Mi Página Web</h3>
+		<ul class="flex gap-5">
+			<li><a class="hover:underline hover:font-semibold" href="#inicio">Inicio</a></li>
+			<li><a class="hover:underline hover:font-semibold" href="#servicios">Servicios</a></li>
+			<li><a class="hover:underline hover:font-semibold" href="#contacto">Contacto</a></li>
+		</ul>
+	</header>
+	
+	<main>
+		<div class="text-center p-16 bg-cover bg-[url('./Luna.jpg')] lg:bg-[url('./Cielo.jpg')] text-orange-500" id="inicio">
+			<h2 class="text-2xl font-bold mb-3">Bienvenido a nuestra página</h2>
+			<p class="mb-5">Explora nuestros servicios y descubre cómo podemos ayudarte a alcanzar tus objetivos.</p>
+			<button class="py-2 px-5 bg-gradient-to-r from-orange-600 to-orange-400 text-white rounded-lg
+					hover:from-orange-700 hover:to-orange-500 transition-transform hover:scale-110 hover:shadow-2xl">
+				Comienza ahora
+			</button>
+		</div>
+
+		<div class="grid grid-cols-1 lg:grid-cols-3 p-10" id="servicios">
+			<h2 class="lg:col-span-3 text-center text-2xl font-bold mb-10">Nuestros servicios</h2>
+			<div class="flex lg:justify-end">
+				<div class="bg-blue-300 p-4 w-96 m-auto lg:m-0 mb-10 lg:mb-0 rounded-lg cursor-pointer hover:bg-blue-400 transition-transform hover:scale-110 hover:shadow-2xl">
+					<h3 class="text-lg font-bold">Diseño Web</h3>
+					<p class="text-stone-600">Creamos sitios web modernos y funcionales adaptados a tus necesidades.</p>
+				</div>
+			</div>
+			<div class="bg-blue-300 p-4 w-96 m-auto mb-10 lg:mb-0 rounded-lg cursor-pointer hover:bg-blue-400 transition-transform hover:scale-110 hover:shadow-2xl">
+				<h3 class="text-lg font-bold">Marketing Digital</h3>
+				<p class="text-stone-600">Te ayudamos a crecer online con estrategias efectivas y personalizadas.</p>
+			</div>
+			<div class="bg-blue-300 p-4 w-96 m-auto lg:m-0 rounded-lg cursor-pointer hover:bg-blue-400 transition-transform hover:scale-110 hover:shadow-2xl">
+				<h3 class="text-lg font-bold">Consultoría</h3>
+				<p class="text-stone-600">Obtén orientación profesional para tus proyectos tecnológicos.</p>
+			</div>
+		</div>
+
+		<div class="bg-sky-200 p-10" id="contacto">
+			<h2 class="lg:col-span-3 text-center text-2xl font-bold mb-10">Contacta con nosotros</h2>
+			<p class="text-stone-700 text-center mb-3 hidden lg:block">Formato vídeo (16/9)</p>
+			<p class="text-stone-700 text-center mb-3 hidden sm:block lg:hidden">Formato 3/4</p>
+			<p class="text-stone-700 text-center mb-3 block sm:hidden">Formato cuadrado</p>
+			<iframe class="w-full aspect-square sm:aspect-[4/3] lg:aspect-video rounded-3xl shadow-2xl shadow-black" src="https://www.youtube.com/embed/SwVTnJIA4qw"></iframe>
+		</div>
+	</main>
+	
+	<footer class="text-center font-semibold bg-gradient-to-r p-5 from-blue-500 to-purple-400">
+		<p>&copy; 2025 Mi Página Web. Todos los derechos reservados.</p>
+	</footer>
+</body>
+</html>
