@@ -6,13 +6,16 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.sgames.dao.CategoriaDAOImpl;
 import org.sgames.dao.ProductoDAO;
 import org.sgames.dao.ProductoDAOImpl;
 import org.sgames.model.Producto;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "productoServlet", value = "/sgames/productos/*")
 public class ProductoServlet extends HttpServlet {
@@ -121,7 +124,7 @@ public class ProductoServlet extends HttpServlet {
 		if (__method__ == null) {
 			// Crear uno nuevo
 			ProductoDAO prodDAO = new ProductoDAOImpl();
-			
+
 			String nombre = request.getParameter("nombre");
 			String desc = request.getParameter("desc");
 			String precio = request.getParameter("precio");
@@ -135,8 +138,34 @@ public class ProductoServlet extends HttpServlet {
 			nuevoProd.setIdCategoria(Integer.parseInt(idCat));
 
 			prodDAO.create(nuevoProd);
-			
-		} else if (__method__ != null && "put".equalsIgnoreCase(__method__)) {			
+		} else if (__method__ != null && "buy".equalsIgnoreCase(__method__)) {
+			// Añadir al carrito
+			HttpSession session = request.getSession();
+
+			int idProd = Integer.parseInt(request.getParameter("idProd"));
+			int cantidad = Integer.parseInt(request.getParameter("cantidad"));
+			int idCat = Integer.parseInt(request.getParameter("idCat"));
+
+			Map<Integer, Integer> carrito = (Map<Integer, Integer>) session.getAttribute("carrito");
+
+			if (carrito == null) {
+				carrito = new HashMap<>();
+			}
+
+			if (carrito.containsKey(idProd)) {
+				int cantidadActual = carrito.get(idProd);
+				carrito.put(idProd, cantidadActual + cantidad);
+			} else {
+				carrito.put(idProd, cantidad);
+			}
+			session.setAttribute("carrito", carrito);
+
+			if (idCat > 0 ) {
+				response.sendRedirect(request.getContextPath() + "/sgames/productos/" + idCat);
+			} else {
+				response.sendRedirect(request.getContextPath() + "/sgames/productos");
+			}
+		} else if (__method__ != null && "put".equalsIgnoreCase(__method__)) {
 			// Actualizar uno existente
 			// Dado que los forms de html sólo soportan method GET y POST utilizo parámetro oculto para indicar la operación de actulización PUT.
 			doPut(request, response);

@@ -13,12 +13,31 @@
 <body class="bg-light">
 	<%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
 
+	<%
+		if (userLogin != null && "Admin".equals(userLogin.getRol())) {
+	%>
+
 	<div class="container p-5 w-50">
+
+	<% } else { %>
+
+	<div class="container p-5 w-25">
+
+	<% } %>
+
 		<div class="d-flex justify-content-between">
 			<h2>CATEGORIAS</h2>
+
+			<%
+				if (userLogin != null && "Admin".equals(userLogin.getRol())) {
+			%>
+
 			<form action="${pageContext.request.contextPath}/sgames/categorias/crear">
 				<input class="btn btn-primary" type="submit" value="CREAR" />
 			</form>
+
+			<% } %>
+			
 		</div>
 		<table class="table table-striped table-hover text-center align-middle mt-3 mx-auto mb-5">
 			<thead class="table-dark">
@@ -26,7 +45,14 @@
 					<th>ID</th>
 					<th>NOMBRE</th>
 					<th>PRODUCTOS</th>
+
+					<%
+						if (userLogin != null && "Admin".equals(userLogin.getRol())) {
+					%>
+
 					<th>ACCIONES</th>
+
+					<% } %>
 				</tr>
 			</thead>
 			<tbody class="table-primary">
@@ -42,6 +68,11 @@
 					<td><%= cat.getIdCategoria()%></td>
 					<td class="text-start"><%= cat.getNombre()%></td>
 					<td><%= cat.getNumProductos()%></td>
+
+					<%
+						if (userLogin != null && "Admin".equals(userLogin.getRol())) {
+					%>
+
 					<td>
 						<div class="d-flex justify-content-center">
 							<form class="me-3" action="${pageContext.request.contextPath}/sgames/categorias/<%= cat.getIdCategoria()%>">
@@ -57,6 +88,9 @@
 							</form>
 						</div>
 					</td>
+
+					<% } %>
+
 				</tr>
 
 			<%

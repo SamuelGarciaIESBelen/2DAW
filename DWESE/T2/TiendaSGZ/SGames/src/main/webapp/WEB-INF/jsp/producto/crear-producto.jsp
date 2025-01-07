@@ -15,10 +15,10 @@
 
     <div class="container p-5 d-flex flex-column">
         <h2 class="text-center">CREAR PRODUCTO</h2>
-        <form class="form my-5 mx-auto w-25" action="${pageContext.request.contextPath}/sgames/productos/crear/" method="post">
+        <form class="form my-5 mx-auto w-50" action="${pageContext.request.contextPath}/sgames/productos/crear/" method="post">
             <div class="d-flex justify-content-between mb-5">
                 <label class="my-auto fs-5 fw-semibold">Nombre</label>
-                <input class="form-control ms-3" type="text" name="nombre" required>
+                <input class="form-control ms-3 w-50" type="text" name="nombre" required>
             </div>
             <div class="d-flex justify-content-between mb-5">
                 <label class="my-auto fs-5 fw-semibold">Descripcion</label>
@@ -26,11 +26,11 @@
             </div>
             <div class="d-flex justify-content-between mb-5">
                 <label class="my-auto fs-5 fw-semibold">Precio</label>
-                <input class="form-control ms-3 w-25" type="number" step="0.01" name="precio" placeholder="€" required>
+                <input class="form-control ms-3 w-25" type="number" step="0.01" min="0" name="precio" placeholder="€" required>
             </div>
             <div class="d-flex justify-content-between mb-5">
                 <label class="my-auto fs-5 fw-semibold">Categoria</label>
-                <select class="form-control ms-3" name="idCat">
+                <select class="form-control ms-3 w-50" name="idCat">
 
                     <%
                         if (request.getAttribute("cats") != null) {

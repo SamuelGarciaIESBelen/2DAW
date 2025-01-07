@@ -17,11 +17,15 @@
         <form class="form my-5 mx-auto w-25" action="${pageContext.request.contextPath}/sgames/pedidos/crear/" method="post">
             <div class="d-flex justify-content-between mb-5">
                 <label class="my-auto fs-5 fw-semibold">ID Usuario</label>
-                <input class="form-control ms-3 w-25" type="number" name="idUsuario" min="0" required>
+                <input class="form-control ms-3 w-25" type="number" name="idUsuario" min="1" required>
             </div>
             <div class="d-flex justify-content-between mb-5">
                 <label class="my-auto fs-5 fw-semibold">Fecha</label>
                 <input class="form-control ms-3 w-50" type="date" value="<%= LocalDate.now() %>" name="fecha">
+            </div>
+            <div class="d-flex justify-content-between mb-5">
+                <label class="my-auto fs-5 fw-semibold">Total</label>
+                <input class="form-control ms-3 w-50" type="number" name="total" step="0.01" min="0.01" placeholder="€" required>
             </div>
             <div class="m-auto text-center">
                 <button class="btn btn-dark">

@@ -13,6 +13,10 @@
 <body class="bg-light">
     <%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
 
+    <%
+        if (userLogin != null && "Admin".equals(userLogin.getRol())) {
+    %>
+
     <div class="container p-5">
         <form action="${pageContext.request.contextPath}/sgames/productos/">
             <div class="d-flex mb-3 w-50">
@@ -20,11 +24,31 @@
                 <input class="btn btn-info" type="submit" value="Filtrar">
             </div>
         </form>
+
+    <% } else { %>
+
+    <div class="container p-5 w-75">
+        <form action="${pageContext.request.contextPath}/sgames/productos/">
+            <div class="d-flex mb-3 w-75">
+                <input class="form-control w-25 me-3" type="text" name="filter" placeholder="Por nombre...">
+                <input class="btn btn-info" type="submit" value="Filtrar">
+            </div>
+        </form>
+    <% } %>
+
         <div class="d-flex justify-content-between">
             <h2>PRODUCTOS</h2>
+
+            <%
+                if (userLogin != null && "Admin".equals(userLogin.getRol())) {
+            %>
+
             <form action="${pageContext.request.contextPath}/sgames/productos/crear">
                 <input class="btn btn-primary" type="submit" value="CREAR" />
             </form>
+
+            <% } %>
+
         </div>
         <table class="table table-striped table-hover text-center align-middle mt-3 mx-auto mb-5">
             <thead class="table-dark">
@@ -35,7 +59,15 @@
                 <th>CATEGORIA</th>
                 <th>PRECIO</th>
                 <th>COMPRAR</th>
+
+                <%
+                    if (userLogin != null && "Admin".equals(userLogin.getRol())) {
+                %>
+
                 <th>ACCIONES</th>
+
+                <% } %>
+
             </tr>
             </thead>
             <tbody class="table-primary">
@@ -56,11 +88,21 @@
                 <td>
                     <form action="">
                         <div class="d-flex justify-content-center">
-                            <input class="form-control me-2 w-50" type="number" name="cantidad" min="0" max="99" value="1">
-                            <input class="btn btn-primary" type="submit" value="AÑADIR">
+                            <form class="d-flex" action="${pageContext.request.contextPath}/sgames/pedidos" method="post">
+                                <input type="hidden" name="__method__" value="buy"/>
+                                <input type="hidden" name="idProd" value="<%=prod.getIdProducto()%>"/>
+                                <input type="hidden" name="idCat" value="<%=prod.getIdCategoria()%>"/>
+                                <input class="form-control me-2 w-50" type="number" name="cantidad" min="0" max="99" value="1">
+                                <input class="btn btn-primary" type="submit" value="AÑADIR">
+                            </form>
                         </div>
                     </form>
                 </td>
+
+                <%
+                    if (userLogin != null && "Admin".equals(userLogin.getRol())) {
+                %>
+
                 <td>
                     <div class="d-flex justify-content-center">
                         <form class="me-3" action="${pageContext.request.contextPath}/sgames/productos/<%= prod.getIdProducto()%>">
@@ -76,6 +118,9 @@
                         </form>
                     </div>
                 </td>
+
+                <% } %>
+
             </tr>
 
             <%

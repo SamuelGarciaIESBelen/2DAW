@@ -8,7 +8,7 @@
     <title>Login</title>
     <%@ include file="/WEB-INF/jsp/fragmentos/bootstrap.jspf" %>
 </head>
-<body>
+<body class="bg-light">
     <%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
 
     <div class="container p-5 d-flex flex-column">

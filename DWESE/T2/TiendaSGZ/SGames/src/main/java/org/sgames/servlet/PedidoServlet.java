@@ -11,6 +11,7 @@ import org.sgames.dao.PedidoDAOImpl;
 import org.sgames.model.Pedido;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -74,6 +75,8 @@ public class PedidoServlet extends HttpServlet {
 					Optional<Pedido> ped = pedDAO.find(id);
 
 					request.setAttribute("ped", ped);
+					request.setAttribute("prods", pedDAO.getProductos(id));
+					request.setAttribute("cants", pedDAO.getCantidades(id));
 					dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/pedido/detalle-pedido.jsp");
 
 				} catch (NumberFormatException nfe) {
@@ -113,10 +116,12 @@ public class PedidoServlet extends HttpServlet {
 			
 			String idUsuario = request.getParameter("idUsuario");
 			String fecha = request.getParameter("fecha");
+			String total = request.getParameter("total");
 
 			Pedido nuevoPed = new Pedido();
 			nuevoPed.setIdUsuario(Integer.parseInt(idUsuario));
-			nuevoPed.setFecha(fecha);
+			nuevoPed.setFecha(LocalDate.parse(fecha));
+			nuevoPed.setTotal(Double.parseDouble(total));
 			pedDAO.create(nuevoPed);
 			
 		} else if (__method__ != null && "put".equalsIgnoreCase(__method__)) {			
@@ -142,12 +147,14 @@ public class PedidoServlet extends HttpServlet {
 		String codigo = request.getParameter("codigo");
 		String idUsuario = request.getParameter("idUsuario");
 		String fecha = request.getParameter("fecha");
+		String total = request.getParameter("total");
 		Pedido ped = new Pedido();
-		
+
 		try {
 			ped.setIdPedido(Integer.parseInt(codigo));
 			ped.setIdUsuario(Integer.parseInt(idUsuario));
-			ped.setFecha(fecha);
+			ped.setFecha(LocalDate.parse(fecha));
+			ped.setTotal(Double.parseDouble(total));
 			pedDAO.update(ped);
 			
 		} catch (NumberFormatException nfe) {

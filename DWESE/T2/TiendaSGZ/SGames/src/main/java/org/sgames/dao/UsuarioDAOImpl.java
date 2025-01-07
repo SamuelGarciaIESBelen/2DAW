@@ -1,5 +1,6 @@
 package org.sgames.dao;
 
+import org.sgames.model.Pedido;
 import org.sgames.model.Usuario;
 
 import java.sql.*;
@@ -151,10 +152,18 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
+        PedidoDAO pDAO = new PedidoDAOImpl();
 
         try {
             conn = connectDB();
 
+            // Pedidos
+            List<Pedido> peds = pDAO.getPedidosByCliente(id);
+            for (Pedido p : peds) {
+                pDAO.delete(p.getIdPedido());
+            }
+
+            // Usuario
             ps = conn.prepareStatement("DELETE FROM usuario WHERE idUsuario = ?");
             int idx = 1;
             ps.setInt(idx, id);

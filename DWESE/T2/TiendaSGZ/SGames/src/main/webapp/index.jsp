@@ -10,7 +10,8 @@
     <div class="container d-flex py-5 mb-5 text-center">
         <div class="m-auto w-50">
             <p class="fs-4 mb-5">En esta web podemos encontrar videojuegos divididos en diferentes categorías y podemos hacer pedidos con distintos usuarios.</p>
-            <p class="fs-4 mb-5">Las opciones del back solo son accesibles por los administradores.</p>
+            <p class="fs-4 mb-5">Solo se puede acceder al carrito con la sesion iniciada.</p>
+            <p class="fs-4 mb-5">Las opciones relacionadas con el back, usuarios o pedidos solo son accesibles por los administradores.</p>
             <p class="fs-4 mb-5">No se pueden eliminar las categorias que tengan productos.</p>
             <p class="fs-4">La contraseña de todos los usuarios es 1234.</p>
         </div>

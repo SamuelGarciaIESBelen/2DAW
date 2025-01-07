@@ -38,7 +38,7 @@
             </div>
             <div class="d-flex justify-content-between mb-5">
                 <label class="my-auto fs-5 fw-semibold">Precio</label>
-                <input class="form-control ms-3 w-25" type="number" step="0.01" name="precio" value="<%= optProd.get().getPrecio() %>" placeholder="€" required>
+                <input class="form-control ms-3 w-25" type="number" step="0.01" min="0" name="precio" value="<%= optProd.get().getPrecio() %>" placeholder="€" required>
             </div>
             <div class="d-flex justify-content-between mb-5">
                 <label class="my-auto fs-5 fw-semibold">Categoria</label>

@@ -1,15 +1,15 @@
 package org.sgames.model;
 
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.Map;
 import java.util.Objects;
 
 public class Pedido {
     private int idPedido;
     private int idUsuario;
-    private String fecha;
-    private List<Producto> productos;
-    private Double total;
+    private LocalDate fecha;
+    private double total;
+    private Map<Integer, Integer> productos;
 
     public void setIdPedido(int idPedido) { this.idPedido = idPedido; }
 
@@ -19,28 +19,32 @@ public class Pedido {
 
     public int getIdUsuario() { return idUsuario; }
 
-    public void setFecha(String fecha) { this.fecha = fecha; }
+    public void setFecha(LocalDate fecha) { this.fecha = fecha; }
 
-    public String getFecha() { return fecha; }
+    public LocalDate getFecha() { return fecha; }
 
-    public void setProductos(List<Producto> productos) { this.productos = productos; }
+    public void setTotal(double total) { this.total = total; }
 
-    public List<Producto> getProductos() { return productos; }
+    public double getTotal() { return total; }
 
-    public void setTotal(Double total) { this.total = total; }
+    public void setProductos(Map<Integer, Integer> productos) { this.productos = productos; }
 
-    public Double getTotal() { return total; }
+    public Map<Integer, Integer> getProductos() { return productos; }
+
+    public void agregarProducto (int idProducto, int cantidad){
+        productos.put(idProducto, cantidad);
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pedido pedido = (Pedido) o;
-        return idPedido == pedido.idPedido && idUsuario == pedido.idUsuario && Objects.equals(fecha, pedido.fecha) && Objects.equals(productos, pedido.productos) && Objects.equals(total, pedido.total);
+        return idPedido == pedido.idPedido && idUsuario == pedido.idUsuario && Double.compare(total, pedido.total) == 0 && Objects.equals(fecha, pedido.fecha) && Objects.equals(productos, pedido.productos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idPedido, idUsuario, fecha, productos, total);
+        return Objects.hash(idPedido, idUsuario, fecha, total, productos);
     }
 }

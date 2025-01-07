@@ -8,20 +8,32 @@
             <a class="me-3 fs-4 fw-semibold text-light link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>">HOME</a>
             <a class="me-3 fs-4 fw-semibold text-light link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/categorias">CATEGORIAS</a>
             <a class="me-3 fs-4 fw-semibold text-light link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/productos">PRODUCTOS</a>
+
+            <%
+                Usuario userLogin = (Usuario)session.getAttribute("user-login");
+                if (userLogin != null && "Admin".equals(userLogin.getRol())) {
+            %>
+
+            <a class="me-3 fs-4 fw-semibold text-light link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/pedidos">PEDIDOS</a>
             <a class="me-3 fs-4 fw-semibold text-light link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/usuarios">USUARIOS</a>
-            <a class="fs-4 fw-semibold text-light link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/pedidos">PEDIDOS</a>
+
+            <% } %>
+
         </div>
 
-        <% 	Usuario userLogin = (Usuario)session.getAttribute("user-login");
-            if (userLogin != null) {
-        %>
-
         <div class="d-flex">
-            <p class="my-auto me-3 fs-5">Hola, <%= userLogin.getNombre() %></p>
-            <form class="d-flex m-auto" action="${pageContext.request.contextPath}/sgames/usuarios/logout/" method="post" >
-                <input type="hidden" name="__method__" value="logout" />
-                <button class="btn bg-none fs-4 fw-semibold text-light" type="submit">LOGOUT</button>
-            </form>
+            <%
+                if (userLogin != null) {
+            %>
+
+            <a class="my-auto fs-4 me-4 fw-semibold text-primary link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/carrito">CARRITO</a>
+            <div class="d-flex">
+                <p class="my-auto me-3 fs-5">Hola, <%= userLogin.getNombre() %></p>
+                <form class="d-flex m-auto" action="${pageContext.request.contextPath}/sgames/usuarios/logout/" method="post" >
+                    <input type="hidden" name="__method__" value="logout" />
+                    <button class="btn bg-none fs-4 fw-semibold text-light" type="submit">LOGOUT</button>
+                </form>
+            </div>
         </div>
 
         <%

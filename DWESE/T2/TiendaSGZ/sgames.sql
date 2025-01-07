@@ -30,12 +30,13 @@ DROP TABLE IF EXISTS pedido;
 CREATE TABLE pedido (
     idPedido	INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     idUsuario	INT NOT NULL,
-    fecha		VARCHAR(10) NOT NULL,
+    fecha		DATE NOT NULL,
+    total		DECIMAL(6,2) NOT NULL,
     FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
 );
 
-DROP TABLE IF EXISTS detalles_pedido;
-CREATE TABLE  detalles_pedido (
+DROP TABLE IF EXISTS productos_pedido;
+CREATE TABLE  productos_pedido (
     idPedido	INT NOT NULL,
     idProducto	INT NOT NULL,
     cantidad	INT NOT NULL,
@@ -80,5 +81,4 @@ INSERT INTO producto (nombre, descripcion, precio, idCategoria) VALUES
 -- La contraseña es 1234 --
 INSERT INTO usuario (nombre, password, rol) VALUES
 ('Samuel', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'Admin'),
-('Ricardo', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'Admin'),
-('Juan', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'Cliente');
+('Ricardo', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'Cliente')
