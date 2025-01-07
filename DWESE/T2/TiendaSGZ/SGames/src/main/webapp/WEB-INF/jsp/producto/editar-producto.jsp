@@ -1,104 +1,78 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@page import="org.iesbelen.model.Producto"%>
-<%@page import="java.util.Optional"%>
-<%@ page import="org.iesbelen.model.FabricanteDTO" %>
+         pageEncoding="UTF-8" %>
+<%@page import="java.util.Optional" %>
+<%@ page import="org.sgames.model.CategoriaDTO" %>
 <%@ page import="java.util.List" %>
+<%@ page import="org.sgames.model.Producto" %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Editar Producto</title>
-    <style>
-        body {
-            background-color: lightcyan;
-        }
-        .clearfix::after {
-            content: "";
-            display: block;
-            clear: both;
-        }
-        <%@ include file="/WEB-INF/jsp/fragmentos/estilos.jspf" %>
-    </style>
+    <%@ include file="/WEB-INF/jsp/fragmentos/bootstrap.jspf" %>
 </head>
-<body>
-<%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
-<%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
+<body class="bg-light">
+    <%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
 
-<div id="contenedora" style="float:none; margin: 0 auto;width: 900px;" >
-    <form action="${pageContext.request.contextPath}/tienda/productos/editar/" method="post" >
-        <input type="hidden" name="__method__" value="put" />
-        <div class="clearfix">
-            <div style="float: left; width: 50%">
-                <h1>Editar Producto</h1>
-            </div>
-            <div style="float: none;width: auto;overflow: hidden;min-height: 80px;position: relative;">
+    <div class="container p-5 d-flex flex-column">
+        <h2 class="text-center">EDITAR PRODUCTO</h2>
 
-                <div style="position: absolute; left: 39%; top : 39%;">
-                    <input type="submit" value="Guardar" />
-                </div>
-
-            </div>
-        </div>
-
-        <div class="clearfix">
-            <hr/>
-        </div>
-
-        <% 	Optional<Producto> optFab = (Optional<Producto>)request.getAttribute("producto");
-            if (optFab.isPresent()) {
+        <% 	Optional<Producto> optProd = (Optional<Producto>)request.getAttribute("prod");
+            if (optProd.isPresent()) {
         %>
 
-        <div style="margin-top: 6px;" class="clearfix">
-            <div style="float: left;width: 50%">
-                <label>Código</label>
+        <form class="form my-5 mx-auto w-50" action="${pageContext.request.contextPath}/sgames/productos/crear/" method="post">
+            <input type="hidden" name="__method__" value="put" />
+            <div class="d-flex justify-content-between mb-5">
+                <label class="my-auto fs-5 fw-semibold">ID</label>
+                <input class="form-control ms-3 w-25" type="text" name="codigo" value="<%= optProd.get().getIdProducto() %>" readonly>
             </div>
-            <div style="float: none;width: auto;overflow: hidden;">
-                <input name="codigo" value="<%= optFab.get().getIdProducto() %>" readonly="readonly"/>
+            <div class="d-flex justify-content-between mb-5">
+                <label class="my-auto fs-5 fw-semibold">Nombre</label>
+                <input class="form-control ms-3 w-50" type="text" name="nombre" value="<%= optProd.get().getNombre() %>" required>
             </div>
-        </div>
-        <div style="margin-top: 6px;" class="clearfix">
-            <div style="float: left;width: 50%">
-                <label>Nombre</label>
+            <div class="d-flex justify-content-between mb-5">
+                <label class="my-auto fs-5 fw-semibold">Descripcion</label>
+                <input class="form-control ms-3" type="text" name="desc" value="<%= optProd.get().getDescripcion() %>">
             </div>
-            <div style="float: none;width: auto;overflow: hidden;">
-                <input name="nombre" value="<%= optFab.get().getNombre() %>"/>
+            <div class="d-flex justify-content-between mb-5">
+                <label class="my-auto fs-5 fw-semibold">Precio</label>
+                <input class="form-control ms-3 w-25" type="number" step="0.01" name="precio" value="<%= optProd.get().getPrecio() %>" placeholder="€" required>
             </div>
-        </div>
-        <div style="margin-top: 6px;" class="clearfix">
-            <div style="float: left;width: 50%">
-                <label>Precio</label>
-            </div>
-            <div style="float: none;width: auto;overflow: hidden;">
-                <input name="precio" value="<%= optFab.get().getPrecio() %>"/>
-            </div>
-        </div>
-        <div style="margin-top: 6px;" class="clearfix">
-            <div style="float: left;width: 50%">
-                <label>Fabricante</label>
-            </div>
-            <div style="float: none;width: auto;overflow: hidden;">
-                <select name="codFab">
+            <div class="d-flex justify-content-between mb-5">
+                <label class="my-auto fs-5 fw-semibold">Categoria</label>
+                <select class="form-control ms-3 w-50" name="idCat">
+
                     <%
-                        if (request.getAttribute("listaFabricantes") != null) {
-                            List<FabricanteDTO> listaFabricantes = (List<FabricanteDTO>) request.getAttribute("listaFabricantes");
-                            for (FabricanteDTO fab : listaFabricantes) {
+                        if (request.getAttribute("cats") != null) {
+                            List<CategoriaDTO> cats = (List<CategoriaDTO>) request.getAttribute("cats");
+                            for (CategoriaDTO cat : cats) {
+
                     %>
-                    <option value="<%= fab.getIdFabricante() %>"><%= fab.getNombre() %></option>
+
+                    <option value="<%= cat.getIdCategoria() %>"><%= cat.getNombre() %></option>
+
                     <% } } %>
+
                 </select>
             </div>
-        </div>
 
-        <% 	} else { %>
+            <div class="m-auto text-center">
+                <button class="btn btn-dark">
+                    <a class="text-light link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/productos">VOLVER</a>
+                </button>
+                <input class="btn btn-primary ms-3" type="submit" value="EDITAR">
+            </div>
+        </form>
+    </div>
 
-        request.sendRedirect("productos/");
+    <% 	} else { %>
 
-        <% 	} %>
-    </form>
-</div>
+    request.sendRedirect("productos/");
 
-<%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>
+    <% 	} %>
+
+    <%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>
 </body>
 </html>

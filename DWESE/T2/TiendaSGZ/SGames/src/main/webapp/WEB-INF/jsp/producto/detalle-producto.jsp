@@ -1,95 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@page import="org.iesbelen.model.Producto"%>
-<%@page import="java.util.Optional"%>
+         pageEncoding="UTF-8" %>
+<%@page import="org.sgames.model.Producto" %>
+<%@page import="java.util.Optional" %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Detalle Producto</title>
-    <style>
-        body {
-            background-color: lightcyan;
-        }
-        .clearfix::after {
-            content: "";
-            display: block;
-            clear: both;
-        }
-        <%@ include file="/WEB-INF/jsp/fragmentos/estilos.jspf" %>
-    </style>
+    <title>Detalles Producto</title>
+    <%@ include file="/WEB-INF/jsp/fragmentos/bootstrap.jspf" %>
 </head>
-<body>
-<%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
-<%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
+<body class="bg-light">
+    <%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
 
-<div id="contenedora" style="float:none; margin: 0 auto;width: 900px;" >
-    <div class="clearfix">
-        <div style="float: left; width: 50%">
-            <h1>Detalle Producto</h1>
-        </div>
-        <div style="float: none;width: auto;overflow: hidden;min-height: 80px;position: relative;">
+    <div class="container p-5 d-flex flex-column w-50">
+        <h2 class="text-center">DETALLES PRODUCTO</h2>
 
-            <div style="position: absolute; left: 39%; top : 39%;">
+        <% 	Optional<Producto> optProd = (Optional<Producto>)request.getAttribute("prod");
+            if (optProd.isPresent()) {
+        %>
 
-                <form action="${pageContext.request.contextPath}/tienda/productos" >
-                    <input type="submit" value="Volver" />
-                </form>
+        <div class="mt-5 fs-5">
+            <div class="d-flex justify-content-between mb-3">
+                <p class="fw-semibold">ID</p>
+                <p><%= optProd.get().getIdProducto() %></p>
             </div>
-
+            <div class="d-flex justify-content-between mb-3">
+                <p class="fw-semibold">Nombre</p>
+                <p><%= optProd.get().getNombre() %></p>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+                <p class="fw-semibold">Descripcion</p>
+                <p><%= optProd.get().getDescripcion() %></p>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+                <p class="fw-semibold">Precio</p>
+                <p><%= optProd.get().getPrecio() %> €</p>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+                <p class="fw-semibold">Categoria</p>
+                <p><%= optProd.get().getIdCategoria() %></p>
+            </div>
         </div>
+
+        <a class="btn btn-dark w-25 m-auto" href="<%=application.getContextPath()%>/sgames/productos">VOLVER</a>
+
+        <% 	} else { %>
+
+        request.sendRedirect("productos/");
+
+        <% 	} %>
+
     </div>
 
-    <div class="clearfix">
-        <hr/>
-    </div>
-
-    <% 	Optional<Producto> optFab = (Optional<Producto>)request.getAttribute("producto");
-        if (optFab.isPresent()) {
-    %>
-
-    <div style="margin-top: 6px;" class="clearfix">
-        <div style="float: left;width: 50%">
-            <label>Código</label>
-        </div>
-        <div style="float: none;width: auto;overflow: hidden;">
-            <input value="<%= optFab.get().getIdProducto() %>" readonly="readonly"/>
-        </div>
-    </div>
-    <div style="margin-top: 6px;" class="clearfix">
-        <div style="float: left;width: 50%">
-            <label>Nombre</label>
-        </div>
-        <div style="float: none;width: auto;overflow: hidden;">
-            <input value="<%= optFab.get().getNombre() %>" readonly="readonly"/>
-        </div>
-    </div>
-    <div style="margin-top: 6px;" class="clearfix">
-        <div style="float: left;width: 50%">
-            <label>Precio</label>
-        </div>
-        <div style="float: none;width: auto;overflow: hidden;">
-            <input value="<%= optFab.get().getPrecio() %>" readonly="readonly"/>
-        </div>
-    </div>
-    <div style="margin-top: 6px;" class="clearfix">
-        <div style="float: left;width: 50%">
-            <label>Código Fabricante</label>
-        </div>
-        <div style="float: none;width: auto;overflow: hidden;">
-            <input value="<%= optFab.get().getCodigo_fabricante() %>" readonly="readonly"/>
-        </div>
-    </div>
-
-    <% 	} else { %>
-
-    request.sendRedirect("productos/");
-
-    <% 	} %>
-
-</div>
-
-<%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>
+    <%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>
 </body>
 </html>

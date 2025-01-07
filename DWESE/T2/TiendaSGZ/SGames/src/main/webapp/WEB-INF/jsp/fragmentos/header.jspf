@@ -1,14 +1,15 @@
 <%@ page import="org.sgames.model.Usuario" %>
 
-<header class="p-5 text-center">
-    <h1 class="text-dark"><span class="text-primary fw-bold">SG</span>AMES</h1>
+<header class="pt-5 px-5 pb-3 text-center bg-dark text-light">
+    <h1><span class="text-primary fw-bold">SG</span>AMES</h1>
     <p class="fw-semibold">Encuentra los mejores videojuegos al mejor precio, hecha por fans para fans</p>
     <nav class="d-flex justify-content-between">
         <div>
-            <a class="me-3 fs-4 fw-semibold text-dark link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/categorias">CATEGORIAS</a>
-            <a class="me-3 fs-4 fw-semibold text-dark link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/productos">PRODUCTOS</a>
-            <a class="me-3 fs-4 fw-semibold text-dark link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/usuarios">USUARIOS</a>
-            <a class="fs-4 fw-semibold text-dark link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/pedidos">PEDIDOS</a>
+            <a class="me-3 fs-4 fw-semibold text-light link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>">HOME</a>
+            <a class="me-3 fs-4 fw-semibold text-light link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/categorias">CATEGORIAS</a>
+            <a class="me-3 fs-4 fw-semibold text-light link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/productos">PRODUCTOS</a>
+            <a class="me-3 fs-4 fw-semibold text-light link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/usuarios">USUARIOS</a>
+            <a class="fs-4 fw-semibold text-light link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/pedidos">PEDIDOS</a>
         </div>
 
         <% 	Usuario userLogin = (Usuario)session.getAttribute("user-login");
@@ -16,10 +17,10 @@
         %>
 
         <div class="d-flex">
-            <p class="me-3 fw-lighter">Hola, <%= userLogin.getNombre() %></p>
-            <form class="d-inline m-auto" action="${pageContext.request.contextPath}/tienda/usuarios/logout/" method="post" >
+            <p class="my-auto me-3 fs-5">Hola, <%= userLogin.getNombre() %></p>
+            <form class="d-flex m-auto" action="${pageContext.request.contextPath}/sgames/usuarios/logout/" method="post" >
                 <input type="hidden" name="__method__" value="logout" />
-                <button type="submit">LOGOUT</button>
+                <button class="btn bg-none fs-4 fw-semibold text-light" type="submit">LOGOUT</button>
             </form>
         </div>
 
@@ -27,7 +28,7 @@
         } else {
         %>
 
-        <a class="fs-4 fw-semibold text-dark link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/tienda/usuarios/login">LOGIN</a>
+        <a class="fs-4 fw-semibold text-light link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/usuarios/login">LOGIN</a>
 
         <%
             }

@@ -1,95 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@page import="org.iesbelen.model.Usuario"%>
-<%@page import="java.util.Optional"%>
+         pageEncoding="UTF-8" %>
+<%@page import="org.sgames.model.Usuario" %>
+<%@page import="java.util.Optional" %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Detalle Usuario</title>
-    <style>
-        body {
-            background-color: lightcyan;
-        }
-        .clearfix::after {
-            content: "";
-            display: block;
-            clear: both;
-        }
-        <%@ include file="/WEB-INF/jsp/fragmentos/estilos.jspf" %>
-    </style>
+    <title>Detalles Usuario</title>
+    <%@ include file="/WEB-INF/jsp/fragmentos/bootstrap.jspf" %>
 </head>
-<body>
-<%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
-<%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
+<body class="bg-light">
+    <%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
 
-<div id="contenedora" style="float:none; margin: 0 auto;width: 900px;" >
-    <div class="clearfix">
-        <div style="float: left; width: 50%">
-            <h1>Detalle Usuario</h1>
-        </div>
-        <div style="float: none;width: auto;overflow: hidden;min-height: 80px;position: relative;">
+    <div class="container p-5 d-flex flex-column w-25">
+        <h2 class="text-center">DETALLES USUARIO</h2>
 
-            <div style="position: absolute; left: 39%; top : 39%;">
+        <% 	Optional<Usuario> optUsuario = (Optional<Usuario>)request.getAttribute("usuario");
+            if (optUsuario.isPresent()) {
+        %>
 
-                <form action="${pageContext.request.contextPath}/tienda/usuarios" >
-                    <input type="submit" value="Volver" />
-                </form>
+        <div class="mt-5 fs-5">
+            <div class="d-flex justify-content-between mb-3">
+                <p class="fw-semibold">ID</p>
+                <p><%= optUsuario.get().getIdUsuario() %></p>
             </div>
-
+            <div class="d-flex justify-content-between mb-3">
+                <p class="fw-semibold">Nombre</p>
+                <p><%= optUsuario.get().getNombre() %></p>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+                <p class="fw-semibold">Password</p>
+                <p><%= optUsuario.get().getPassword().substring(0, 8) + "..."%></p>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+                <p class="fw-semibold">Rol</p>
+                <p><%= optUsuario.get().getRol() %></p>
+            </div>
         </div>
+
+        <a class="btn btn-dark w-25 m-auto" href="<%=application.getContextPath()%>/sgames/usuarios">VOLVER</a>
+
+        <% 	} else { %>
+
+        request.sendRedirect("usuarios/");
+
+        <% 	} %>
+
     </div>
 
-    <div class="clearfix">
-        <hr/>
-    </div>
-
-    <% 	Optional<Usuario> optUsuario = (Optional<Usuario>)request.getAttribute("usuario");
-        if (optUsuario.isPresent()) {
-    %>
-
-    <div style="margin-top: 6px;" class="clearfix">
-        <div style="float: left;width: 50%">
-            <label>Código</label>
-        </div>
-        <div style="float: none;width: auto;overflow: hidden;">
-            <input value="<%= optUsuario.get().getIdUsuario() %>" readonly="readonly"/>
-        </div>
-    </div>
-    <div style="margin-top: 6px;" class="clearfix">
-        <div style="float: left;width: 50%">
-            <label>Nombre</label>
-        </div>
-        <div style="float: none;width: auto;overflow: hidden;">
-            <input value="<%= optUsuario.get().getNombre() %>" readonly="readonly"/>
-        </div>
-    </div>
-    <div style="margin-top: 6px;" class="clearfix">
-        <div style="float: left;width: 50%">
-            <label>Password</label>
-        </div>
-        <div style="float: none;width: auto;overflow: hidden;">
-            <input value="<%= optUsuario.get().getPassword().substring(0, 8) + "..."%>" readonly="readonly"/>
-        </div>
-    </div>
-    <div style="margin-top: 6px;" class="clearfix">
-        <div style="float: left;width: 50%">
-            <label>Rol</label>
-        </div>
-        <div style="float: none;width: auto;overflow: hidden;">
-            <input value="<%= optUsuario.get().getRol() %>" readonly="readonly"/>
-        </div>
-    </div>
-
-    <% 	} else { %>
-
-    request.sendRedirect("usuarios/");
-
-    <% 	} %>
-
-</div>
-
-<%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>
+    <%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>
 </body>
 </html>

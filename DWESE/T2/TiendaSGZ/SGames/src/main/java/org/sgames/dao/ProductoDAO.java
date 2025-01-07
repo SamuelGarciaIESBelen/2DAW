@@ -1,6 +1,5 @@
 package org.sgames.dao;
 
-import org.sgames.model.CategoriaDTO;
 import org.sgames.model.Producto;
 
 import java.util.List;

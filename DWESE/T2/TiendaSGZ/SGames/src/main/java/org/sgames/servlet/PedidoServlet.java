@@ -6,27 +6,26 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.sgames.dao.CategoriaDAO;
-import org.sgames.dao.CategoriaDAOImpl;
-import org.sgames.model.Categoria;
-import org.sgames.model.CategoriaDTO;
+import org.sgames.dao.PedidoDAO;
+import org.sgames.dao.PedidoDAOImpl;
+import org.sgames.model.Pedido;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-@WebServlet(name = "categoriaServlet", value = "/sgames/categorias/*")
-public class CategoriaServlet extends HttpServlet {
+@WebServlet(name = "pedidoServlet", value = "/sgames/pedidos/*")
+public class PedidoServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * HTTP Method: GET
 	 * Paths: 
-	 * 		/categorias/
-	 * 		/categorias/{id}
-	 * 		/categorias/editar{id}
-	 * 		/categorias/crear
+	 * 		/pedidos/
+	 * 		/pedidos/{id}
+	 * 		/pedidos/editar{id}
+	 * 		/pedidos/crear
 	 */		
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -37,25 +36,25 @@ public class CategoriaServlet extends HttpServlet {
 		String pathInfo = request.getPathInfo(); //
 			
 		if (pathInfo == null || "/".equals(pathInfo)) {
-			CategoriaDAO catDAO = new CategoriaDAOImpl();
+			PedidoDAO pedDAO = new PedidoDAOImpl();
 			
 			// GET
-			//	/categorias/
-			//	/categorias
+			//	/pedidos/
+			//	/pedidos
 
-			List<CategoriaDTO> catsDTO = catDAO.getAllDTO();
+			List<Pedido> peds = pedDAO.getAll();
 
-			request.setAttribute("catsDTO", catsDTO);
-			dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/categoria/categorias.jsp");
+			request.setAttribute("peds", peds);
+			dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/pedido/pedidos.jsp");
 
 		} else {
 			// GET
-			// 		/categorias/{id}
-			// 		/categorias/{id}/
-			// 		/categorias/edit/{id}
-			// 		/categorias/edit/{id}/
-			// 		/categorias/crear
-			// 		/categorias/crear/
+			// 		/pedidos/{id}
+			// 		/pedidos/{id}/
+			// 		/pedidos/edit/{id}
+			// 		/pedidos/edit/{id}/
+			// 		/pedidos/crear
+			// 		/pedidos/crear/
 			
 			pathInfo = pathInfo.replaceAll("/$", "");
 			String[] pathParts = pathInfo.split("/");
@@ -63,41 +62,39 @@ public class CategoriaServlet extends HttpServlet {
 			if (pathParts.length == 2 && "crear".equals(pathParts[1])) {
 				
 				// GET
-				// /categorias/crear
-				dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/categoria/crear-categoria.jsp");
+				// /pedidos/crear
+				dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/pedido/crear-pedido.jsp");
 
 			} else if (pathParts.length == 2) {
-				CategoriaDAO catDAO = new CategoriaDAOImpl();
+				PedidoDAO pedDAO = new PedidoDAOImpl();
 				// GET
-				// /categorias/{id}
+				// /pedidos/{id}
 				try {
 					int id = Integer.parseInt(pathParts[1]);
-					Optional<Categoria> cat = catDAO.find(id);
-					Optional<CategoriaDTO> catDTO = cat.map(c -> new CategoriaDTO(c, catDAO.getCountProductos(id).orElse(0)));
+					Optional<Pedido> ped = pedDAO.find(id);
 
-					request.setAttribute("cat", catDTO);
-					dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/categoria/detalle-categoria.jsp");
+					request.setAttribute("ped", ped);
+					dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/pedido/detalle-pedido.jsp");
 
 				} catch (NumberFormatException nfe) {
 					nfe.printStackTrace();
-					dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/categoria/categorias.jsp");
+					dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/pedido/pedidos.jsp");
 				}
 			} else if (pathParts.length == 3 && "editar".equals(pathParts[1]) ) {
-				CategoriaDAO catDAO = new CategoriaDAOImpl();
-				
+				PedidoDAO pedDAO = new PedidoDAOImpl();
 				// GET
-				// /categorias/editar/{id}
+				// /pedidos/editar/{id}
 				try {
-					request.setAttribute("cat",catDAO.find(Integer.parseInt(pathParts[2])));
-					dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/categoria/editar-categoria.jsp");
-					        								
+					request.setAttribute("ped",pedDAO.find(Integer.parseInt(pathParts[2])));
+					dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/pedido/editar-pedido.jsp");
+
 				} catch (NumberFormatException nfe) {
 					nfe.printStackTrace();
-					dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/categoria/categorias.jsp");
+					dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/pedido/pedidos.jsp");
 				}
 			} else {
 				System.out.println("Opción POST no soportada.");
-				dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/categoria/categorias.jsp");
+				dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/pedido/pedidos.jsp");
 			}
 		}
 		dispatcher.forward(request, response);
@@ -112,12 +109,15 @@ public class CategoriaServlet extends HttpServlet {
 		
 		if (__method__ == null) {
 			// Crear uno nuevo
-			CategoriaDAO catDAO = new CategoriaDAOImpl();
+			PedidoDAO pedDAO = new PedidoDAOImpl();
 			
-			String nombre = request.getParameter("nombre");
-			Categoria nuevaCat = new Categoria();
-			nuevaCat.setNombre(nombre);
-			catDAO.create(nuevaCat);
+			String idUsuario = request.getParameter("idUsuario");
+			String fecha = request.getParameter("fecha");
+
+			Pedido nuevoPed = new Pedido();
+			nuevoPed.setIdUsuario(Integer.parseInt(idUsuario));
+			nuevoPed.setFecha(fecha);
+			pedDAO.create(nuevoPed);
 			
 		} else if (__method__ != null && "put".equalsIgnoreCase(__method__)) {			
 			// Actualizar uno existente
@@ -131,23 +131,24 @@ public class CategoriaServlet extends HttpServlet {
 		} else {
 			System.out.println("Opción POST no soportada.");
 		}
-		response.sendRedirect(request.getContextPath() + "/sgames/categorias");
+		response.sendRedirect(request.getContextPath() + "/sgames/pedidos");
 	}
 
 	@Override
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		CategoriaDAO catDAO = new CategoriaDAOImpl();
+		PedidoDAO pedDAO = new PedidoDAOImpl();
 		String codigo = request.getParameter("codigo");
-		String nombre = request.getParameter("nombre");
-		Categoria cat = new Categoria();
+		String idUsuario = request.getParameter("idUsuario");
+		String fecha = request.getParameter("fecha");
+		Pedido ped = new Pedido();
 		
 		try {
-			int id = Integer.parseInt(codigo);
-			cat.setIdCategoria(id);
-			cat.setNombre(nombre);
-			catDAO.update(cat);
+			ped.setIdPedido(Integer.parseInt(codigo));
+			ped.setIdUsuario(Integer.parseInt(idUsuario));
+			ped.setFecha(fecha);
+			pedDAO.update(ped);
 			
 		} catch (NumberFormatException nfe) {
 			nfe.printStackTrace();
@@ -158,12 +159,12 @@ public class CategoriaServlet extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
 	{
 		RequestDispatcher dispatcher;
-		CategoriaDAO catDAO = new CategoriaDAOImpl();
+		PedidoDAO pedDAO = new PedidoDAOImpl();
 		String codigo = request.getParameter("codigo");
 		
 		try {
 			int id = Integer.parseInt(codigo);
-			catDAO.delete(id);
+			pedDAO.delete(id);
 			
 		} catch (NumberFormatException nfe) {
 			nfe.printStackTrace();

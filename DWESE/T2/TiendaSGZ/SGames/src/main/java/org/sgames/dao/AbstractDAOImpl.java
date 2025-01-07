@@ -13,7 +13,7 @@ public abstract class AbstractDAOImpl {
 	protected static String password;
 	
 	static {
-		ResourceBundle bundle = ResourceBundle.getBundle("org.iesbelen.dao.database");
+		ResourceBundle bundle = ResourceBundle.getBundle("org.sgames.dao.database");
 		driverClassName = bundle.getString("jdbc.driverClassName");
 		dbUrl = bundle.getString("jdbc.url");
 		schema = bundle.getString("jdbc.schema");

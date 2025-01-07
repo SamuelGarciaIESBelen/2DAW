@@ -1,63 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@page import="org.iesbelen.model.Fabricante" %>
-<%@page import="java.util.Optional" %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Crear Fabricante</title>
-    <style>
-        body {
-            padding: 0;
-            background-color: lightcyan;
-            font-family: "Bookman Old Style";
-        }
-
-        .clearfix::after {
-            content: "";
-            display: block;
-            clear: both;
-        }
-        <%@ include file="/WEB-INF/jsp/fragmentos/estilos.jspf" %>
-    </style>
+    <title>Crear Categoria</title>
+    <%@ include file="/WEB-INF/jsp/fragmentos/bootstrap.jspf" %>
 </head>
-<body>
-<%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
-<%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
+<body class="bg-light">
+    <%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
 
-<div id="contenedora" style="float:none; margin: 0 auto;width: 900px;">
-    <form action="${pageContext.request.contextPath}/tienda/fabricantes/crear/" method="post">
-        <div class="clearfix">
-            <div style="float: left; width: 50%">
-                <h1>Crear Fabricante</h1>
+    <div class="container p-5 d-flex flex-column">
+        <h2 class="text-center">CREAR CATEGORIA</h2>
+        <form class="form my-5 mx-auto w-25" action="${pageContext.request.contextPath}/sgames/categorias/crear/" method="post">
+            <div class="d-flex justify-content-between mb-5">
+                <label class="my-auto fs-5 fw-semibold">Nombre</label>
+                <input class="form-control ms-3" type="text" name="nombre" required>
             </div>
-            <div style="float: none;width: auto;overflow: hidden;min-height: 80px;position: relative;">
-
-                <div style="position: absolute; left: 39%; top : 39%;">
-                    <input type="submit" value="Crear"/>
-                </div>
-
+            <div class="m-auto text-center">
+                <button class="btn btn-dark">
+                    <a class="text-light link-underline link-underline-opacity-0" href="<%=application.getContextPath()%>/sgames/categorias">VOLVER</a>
+                </button>
+                <input class="btn btn-primary ms-3" type="submit" value="CREAR">
             </div>
-        </div>
+        </form>
+    </div>
 
-        <div class="clearfix">
-            <hr/>
-        </div>
-
-        <div style="margin-top: 6px;" class="clearfix">
-            <div style="float: left;width: 50%">
-                Nombre
-            </div>
-            <div style="float: none;width: auto;overflow: hidden;">
-                <input name="nombre"/>
-            </div>
-        </div>
-
-    </form>
-</div>
-
-<%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>
+    <%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>
 </body>
 </html>

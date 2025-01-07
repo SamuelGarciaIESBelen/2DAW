@@ -53,7 +53,7 @@ public class ProductoServlet extends HttpServlet {
 
 			request.setAttribute("prods", prods);
 			dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/producto/productos.jsp");
-			        		       
+
 		} else {
 			// GET
 			// 		/productos/{id}
@@ -125,7 +125,6 @@ public class ProductoServlet extends HttpServlet {
 			String nombre = request.getParameter("nombre");
 			String desc = request.getParameter("desc");
 			String precio = request.getParameter("precio");
-			String imagen = request.getParameter("imagen");
 			String idCat = request.getParameter("idCat");
 
 			Producto nuevoProd = new Producto();
@@ -133,7 +132,6 @@ public class ProductoServlet extends HttpServlet {
 			nuevoProd.setNombre(nombre);
 			nuevoProd.setDescripcion(desc);
 			nuevoProd.setPrecio(Double.parseDouble(precio));
-			nuevoProd.setImagen(imagen);
 			nuevoProd.setIdCategoria(Integer.parseInt(idCat));
 
 			prodDAO.create(nuevoProd);
@@ -151,7 +149,7 @@ public class ProductoServlet extends HttpServlet {
 		} else {
 			System.out.println("Opción POST no soportada.");
 		}
-		response.sendRedirect(request.getContextPath() + "/tienda/productos");
+		response.sendRedirect(request.getContextPath() + "/sgames/productos");
 	}
 
 	@Override
@@ -164,7 +162,6 @@ public class ProductoServlet extends HttpServlet {
 		String nombre = request.getParameter("nombre");
 		String desc = request.getParameter("desc");
 		String precio = request.getParameter("precio");
-		String imagen = request.getParameter("imagen");
 		String idCat = request.getParameter("idCat");
 		Producto prod = new Producto();
 		
@@ -176,7 +173,6 @@ public class ProductoServlet extends HttpServlet {
 			prod.setNombre(nombre);
 			prod.setDescripcion(desc);
 			prod.setPrecio(Double.parseDouble(precio));
-			prod.setImagen(imagen);
 			prod.setIdCategoria(Integer.parseInt(idCat));
 
 			prodDAO.update(prod);

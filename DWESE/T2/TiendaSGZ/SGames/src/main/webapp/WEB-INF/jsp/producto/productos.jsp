@@ -1,105 +1,95 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%@page import="org.iesbelen.model.Fabricante" %>
-<%@page import="java.util.List" %>
-<%@ page import="org.iesbelen.model.Producto" %>
-<%@ page import="org.iesbelen.dao.FabricanteDAOImpl" %>
+         pageEncoding="UTF-8"%>
+<%@page import="org.sgames.model.Producto"%>
+<%@page import="java.util.List"%>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Productos</title>
-    <style>
-        body {
-            background-color: lightcyan;
-        }
-        .clearfix::after {
-            content: "";
-            display: block;
-            clear: both;
-        }
-        <%@ include file="/WEB-INF/jsp/fragmentos/estilos.jspf" %>
-    </style>
+    <%@ include file="/WEB-INF/jsp/fragmentos/bootstrap.jspf" %>
 </head>
-<body>
-<%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
-<%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
+<body class="bg-light">
+    <%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
 
-<div id="contenedora" style="float:none; margin: 0 auto;width: 900px;">
-    <div class="clearfix">
-        <div style="float: left; width: 50%">
-            <h1>Productos</h1>
-        </div>
-        <div style="float: none;width: auto;overflow: hidden;min-height: 80px;position: relative;">
-
-            <div style="position: absolute; left: 39%; top : 39%; display: flex">
-                <form style="margin-right: 35px" action="${pageContext.request.contextPath}/tienda/productos/">
-                    <input type="text" name="filter" size="10" placeholder="Por nombre...">
-                    <input type="submit" value="Filtrar">
-                </form>
-
-                <form action="${pageContext.request.contextPath}/tienda/productos/crear">
-                    <input type="submit" value="Crear">
-                </form>
+    <div class="container p-5">
+        <form action="${pageContext.request.contextPath}/sgames/productos/">
+            <div class="d-flex mb-3 w-50">
+                <input class="form-control w-25 me-3" type="text" name="filter" placeholder="Por nombre...">
+                <input class="btn btn-info" type="submit" value="Filtrar">
             </div>
-
-        </div>
-    </div>
-    <div class="clearfix">
-        <hr/>
-    </div>
-    <div class="clearfix">
-        <div style="float: left;width: 10%">Código</div>
-        <div style="float: left;width: 30%">Nombre</div>
-        <div style="float: left;width: 10%">Precio</div>
-        <div style="float: left;width: 15%">Fabricante</div>
-        <div style="float: left;width: 20%;overflow: hidden;">Acción</div>
-    </div>
-    <div class="clearfix">
-        <hr/>
-    </div>
-    <%
-        if (request.getAttribute("listaProductos") != null) {
-            List<Producto> listaProducto = (List<Producto>) request.getAttribute("listaProductos");
-
-            for (Producto producto : listaProducto) {
-    %>
-
-    <div style="margin-top: 6px;" class="clearfix">
-        <div style="float: left;width: 10%"><%= producto.getIdProducto()%>
-        </div>
-        <div style="float: left;width: 30%"><%= producto.getNombre()%>
-        </div>
-        <div style="float: left;width: 10%"><%= producto.getPrecio()%>
-        </div>
-        <div style="float: left;width: 15%"><%= producto.getCodigo_fabricante()%>
-        </div>
-        <div style="float: none;width: auto;overflow: hidden;">
-            <form action="${pageContext.request.contextPath}/tienda/productos/<%= producto.getIdProducto()%>"
-                  style="display: inline;">
-                <input type="submit" value="Ver Detalle"/>
-            </form>
-            <form action="${pageContext.request.contextPath}/tienda/productos/editar/<%= producto.getIdProducto()%>"
-                  style="display: inline;">
-                <input type="submit" value="Editar"/>
-            </form>
-            <form action="${pageContext.request.contextPath}/tienda/productos/borrar/" method="post"
-                  style="display: inline;">
-                <input type="hidden" name="__method__" value="delete"/>
-                <input type="hidden" name="codigo" value="<%= producto.getIdProducto()%>"/>
-                <input type="submit" value="Eliminar"/>
+        </form>
+        <div class="d-flex justify-content-between">
+            <h2>PRODUCTOS</h2>
+            <form action="${pageContext.request.contextPath}/sgames/productos/crear">
+                <input class="btn btn-primary" type="submit" value="CREAR" />
             </form>
         </div>
-    </div>
-    <%
-        }
-    } else {
-    %>
-    No hay registros de producto
-    <% } %>
-</div>
+        <table class="table table-striped table-hover text-center align-middle mt-3 mx-auto mb-5">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>DESCRIPCION</th>
+                <th>CATEGORIA</th>
+                <th>PRECIO</th>
+                <th>COMPRAR</th>
+                <th>ACCIONES</th>
+            </tr>
+            </thead>
+            <tbody class="table-primary">
 
-<%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>
+            <%
+                if (request.getAttribute("prods") != null) {
+                    List<Producto> prods = (List<Producto>)request.getAttribute("prods");
+
+                    for (Producto prod : prods) {
+            %>
+
+            <tr>
+                <td><%= prod.getIdProducto()%></td>
+                <td class="text-start"><%= prod.getNombre()%></td>
+                <td class="text-start"><%= prod.getDescripcion()%></td>
+                <td><%= prod.getIdCategoria()%></td>
+                <td><%= prod.getPrecio()%> €</td>
+                <td>
+                    <form action="">
+                        <div class="d-flex justify-content-center">
+                            <input class="form-control me-2 w-50" type="number" name="cantidad" min="0" max="99" value="1">
+                            <input class="btn btn-primary" type="submit" value="AÑADIR">
+                        </div>
+                    </form>
+                </td>
+                <td>
+                    <div class="d-flex justify-content-center">
+                        <form class="me-3" action="${pageContext.request.contextPath}/sgames/productos/<%= prod.getIdProducto()%>">
+                            <input class="btn btn-info" type="submit" value="DETALLES" />
+                        </form>
+                        <form class="me-3" action="${pageContext.request.contextPath}/sgames/productos/editar/<%= prod.getIdProducto()%>">
+                            <input class="btn btn-warning" type="submit" value="EDITAR" />
+                        </form>
+                        <form action="${pageContext.request.contextPath}/sgames/productos/borrar/" method="post">
+                            <input type="hidden" name="__method__" value="delete"/>
+                            <input type="hidden" name="codigo" value="<%= prod.getIdProducto()%>"/>
+                            <input class="btn btn-danger" type="submit" value="ELIMINAR" />
+                        </form>
+                    </div>
+                </td>
+            </tr>
+
+            <%
+                }
+            } else {
+            %>
+
+            <p>No hay registros de producto</p>
+
+            <% } %>
+
+            </tbody>
+        </table>
+    </div>
+    <%@ include file="/WEB-INF/jsp/fragmentos/footer.jspf" %>
 </body>
 </html>

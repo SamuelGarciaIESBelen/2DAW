@@ -106,7 +106,7 @@ public class UsuarioServlet extends HttpServlet {
                 }
             } else {
                 System.out.println("Opción POST no soportada.");
-                dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuarios/usuarios.jsp");
+                dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuario/usuarios.jsp");
             }
         }
         dispatcher.forward(request, response);
@@ -161,7 +161,7 @@ public class UsuarioServlet extends HttpServlet {
                     response.sendRedirect(request.getContextPath());
                 } else {
                     request.setAttribute("error", "Usuario o contraseña incorrecto");
-                    dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuarios/login.jsp");
+                    dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usuario/login.jsp");
                     dispatcher.forward(request, response);
                 }
             } catch (NoSuchAlgorithmException e) {
@@ -191,7 +191,7 @@ public class UsuarioServlet extends HttpServlet {
         } else {
             System.out.println("Opción POST no soportada.");
         }
-        response.sendRedirect(request.getContextPath() + "/tienda/usuarios");
+        response.sendRedirect(request.getContextPath() + "/sgames/usuarios");
     }
 
     @Override
