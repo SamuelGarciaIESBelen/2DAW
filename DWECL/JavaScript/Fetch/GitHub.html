@@ -24,7 +24,6 @@
 			e.preventDefault();
 
 			const user = document.querySelector("#user").value;
-			// const user = "SamuelGarciaIESBelen";
 			if (!user) {
 				alert("No puede estar vacío");
 				location.reload();
@@ -32,9 +31,17 @@
 			const url = `https://api.github.com/users/${user}`;
 			const res = document.querySelector("#res");
 
-			async function weatherReport() {
+			async function displayUser() {
 				await fetch(url)
-				.then(response => { return response.json(); })
+				.then(response => {
+					if (response.ok) {
+						return response.json();
+					} else {
+						return response.json().then(res => {
+							throw new Error(response.status + ": " + res.message);
+						})
+					}
+				})
 				.then(data => {
 					console.log(data);
 
@@ -59,10 +66,11 @@
 				})
 				.catch(error => {
 					res.classList.add("text-danger");
-					res.innerHTML = "El usuario no existe";
+					// res.innerHTML = "El usuario no existe";
+					res.innerHTML = error;
 				})
 			}
-			weatherReport();
+			displayUser();
 		})
 	</script>
 </body>
