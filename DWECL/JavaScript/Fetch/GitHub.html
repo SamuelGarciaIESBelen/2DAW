@@ -23,41 +23,48 @@
 		document.querySelector("form").addEventListener("submit", (e) => {
 			e.preventDefault();
 
-			const user = document.querySelector("#user").value;
-			if (!user) {
+			const username = document.querySelector("#user").value;
+			if (!username) {
 				alert("No puede estar vacío");
 				location.reload();
 			}
-			const url = `https://api.github.com/users/${user}`;
+			const url = `https://api.github.com/users/${username}`;
 			const res = document.querySelector("#res");
 
 			async function displayUser() {
 				await fetch(url)
 				.then(response => {
-					if (response.ok) {
-						return response.json();
-					} else {
+					if (!response.ok) {
 						return response.json().then(res => {
 							throw new Error(response.status + ": " + res.message);
-						})
+						});
 					}
+					return response.json();
 				})
-				.then(data => {
-					console.log(data);
+				.then(async user => {
+					console.log(user);
 
-					let login = data.login
-					let link = data.html_url
-					let fechaCreacion = data.created_at;
-					let repos = data.public_repos;
-					let numSeguidores = data.followers;
-					let listaSeguidores;
+					let login = user.login
+					let link = user.html_url
+					let bio = user.bio;
+					let fechaCreacion = user.created_at;
+					let repos = user.public_repos;
+					let numSeguidores = user.followers;
 					
-					let numSeguidos = data.following;
-					let listaSeguidos;
+					let fetchSeguidores = await fetch(user.followers_url)
+					if (!fetchSeguidores.ok) {
+						throw new Error("No se ha podido obtener la lista de seguidores")
+					}
+					let listaSeguidores = await fetchSeguidores.json();
+					console.log(listaSeguidores);
+					
+					let numSeguidos = user.following;
+					let fetchSeguidos;
 
 					res.classList.remove("text-danger");
 					res.innerHTML = `
-					<p>Login: ${login} - Link: ${link}<p/>
+					<p>Login: ${login} - Link: <a href="${link}" target="_blank">${link}<a><p/>
+					<p>Bio: ${bio}<p/>
 					<p>Created at: ${fechaCreacion}<p/>
 					<p>Repositories: ${repos}<p/>
 					<p>Followers: ${numSeguidores}<p/>

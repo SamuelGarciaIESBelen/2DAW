@@ -34,16 +34,14 @@
 			async function weatherReport() {
 				await fetch(url)
 				.then(response => {
-					if (response.ok) {
-						return response.json();
-					} else {
+					if (!response.ok) {
 						return response.json().then(res => {
 							throw new Error(response.status + ": " + res.error.message);
 						})
 					}
+					return response.json();
 				})
-				.then(data => {
-					let weather = data;
+				.then(weather => {
 					console.log(weather);
 
 					let img = weather.current.condition.icon;
