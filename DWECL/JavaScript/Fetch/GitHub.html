@@ -49,18 +49,27 @@
 					let bio = user.bio;
 					let fechaCreacion = user.created_at;
 					let repos = user.public_repos;
+
+					// Lista seguidores
 					let numSeguidores = user.followers;
-					
-					let fetchSeguidores = await fetch(user.followers_url)
+					let fetchSeguidores = await fetch(user.followers_url);
 					if (!fetchSeguidores.ok) {
-						throw new Error("No se ha podido obtener la lista de seguidores")
+						throw new Error("No se ha podido obtener la lista de seguidores");
 					}
 					let listaSeguidores = await fetchSeguidores.json();
 					console.log(listaSeguidores);
 					
+					// Lista seguidos
 					let numSeguidos = user.following;
-					let fetchSeguidos;
+					const urlSeguidos = url + "/following";
+					let fetchSeguidos = await fetch(urlSeguidos);
+					if (!fetchSeguidos.ok) {
+						throw new Error("No se ha podido obtener la lista de seguidos");
+					}
+					let listaSeguidos = await fetchSeguidos.json();
+					console.log(listaSeguidos);
 
+					// Renderizar datos
 					res.classList.remove("text-danger");
 					res.innerHTML = `
 					<p>Login: ${login} - Link: <a href="${link}" target="_blank">${link}<a><p/>
@@ -68,8 +77,14 @@
 					<p>Created at: ${fechaCreacion}<p/>
 					<p>Repositories: ${repos}<p/>
 					<p>Followers: ${numSeguidores}<p/>
+					${listaSeguidores.map(s => 
+						`<p>&ensp;&ensp;${s.login} <a href="${s.html_url}" target="_blank">${s.html_url}</a><p/>`
+					).join("")}
 					<p>Following: ${numSeguidos}<p/>
-					`;					
+					${listaSeguidos.map(s => 
+						`<p>&ensp;&ensp;${s.login} <a href="${s.html_url}" target="_blank">${s.html_url}</a><p/>`
+					).join("")}
+					`;
 				})
 				.catch(error => {
 					res.classList.add("text-danger");
