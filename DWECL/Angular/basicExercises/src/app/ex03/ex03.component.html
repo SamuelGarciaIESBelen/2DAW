@@ -1,4 +1,12 @@
 <h1>Exercice 3</h1>
-<p>
-  Random between 1 and 10: {{ n }}
-</p>
+  <!-- <p>Random between 1 and 10: <b [ngClass]="getClassOf(n)">{{ n }}</b></p> -->
+ 
+  <ng-container *ngIf="n < 5">
+    <p>Random between 1 and 10: <b class="text-danger">{{ n }}</b></p>
+  </ng-container>
+  <ng-container *ngIf="n >= 5 && n < 9">
+    <p>Random between 1 and 10: <b class="text-success">{{ n }}</b></p>
+  </ng-container>
+  <ng-container *ngIf="n >= 9">
+    <p>Random between 1 and 10: <b class="text-primary">{{ n }}</b></p>
+  </ng-container>

@@ -24,6 +24,7 @@ export class Ex04Component {
   }
 
   decNumber() {
-    this.n--;
+    if (this.n > 0)
+      this.n--;
   }
 }
