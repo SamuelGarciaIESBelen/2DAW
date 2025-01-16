@@ -1,9 +1,9 @@
 <h1>Exercice 6</h1>
-<h2>Fahrenheit/Celsius conversion</h2>
+<h2 class="mb-3">Fahrenheit / Celsius conversion</h2>
 Celcius:
-<input [(ngModel)]="celcius" (keyup)="converToFahrenheit()">
+<input type="number" step="0.01" [(ngModel)]="celsius" (input)="converToFahrenheit()">
 <br>
 Fahrenheit:
-<input [(ngModel)]="fahrenheit" (keyup)="convertToCelcius()">
+<input class="mt-3" type="number" step="0.01" [(ngModel)]="fahrenheit" (input)="convertToCelsius()">
 <br>
-<button (click)="clear()">Reset</button>
+<button class="mt-3" (click)="clear()">Reset</button>

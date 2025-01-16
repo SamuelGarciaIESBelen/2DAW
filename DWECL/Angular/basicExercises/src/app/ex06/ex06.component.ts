@@ -11,8 +11,8 @@ import {FormsModule} from "@angular/forms";
  // styleUrl: './ex06.component.css'
 })
 export class Ex06Component {
-  celcius: number = 0;
-  fahrenheit: number = 0;
+  celsius: number | null = null;
+  fahrenheit: number | null = null;
 
   constructor() {
   }
@@ -21,15 +21,21 @@ export class Ex06Component {
   }
 
   clear() {
-    this.celcius = 0;
-    this.fahrenheit = 0;
+    this.celsius = null;
+    this.fahrenheit = null;
   }
 
-  convertToCelcius() {
-    this.celcius = (this.fahrenheit - 32) * 5 / 9;
+  // /^\d+.?\d*$/ Expresión regular para el input
+
+  convertToCelsius() {
+    if (this.fahrenheit != null) {
+      this.celsius = (this.fahrenheit - 32) * 5 / 9;
+    }
   }
 
   converToFahrenheit() {
-    this.fahrenheit = this.celcius * 9 / 5 + 32;
+    if (this.celsius != null) {
+      this.fahrenheit = this.celsius * 9 / 5 + 32;
+    }
   }
 }

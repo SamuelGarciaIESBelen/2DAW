@@ -20,7 +20,8 @@ export class Ex04Component {
   }
 
   incNumber() {
-    this.n++;
+    if (this.n < 10)
+      this.n++;
   }
 
   decNumber() {

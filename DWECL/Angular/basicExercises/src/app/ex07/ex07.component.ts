@@ -19,4 +19,19 @@ export class Ex07Component {
     this.numbers = [1, 5, 8, 24, 32, 11, 55];
     this.fruits = ["pear", "apple", "mango", "watermelon", "kiwi"];
   }
+  
+  // Cómo le paso el value del select
+  orderList(value: string) {
+    if (value === "nasc")
+      this.numbers.sort((a, b) => a - b);
+    
+    if (value === "ndesc")
+      this.numbers.sort((a, b) => b - a);
+    
+    if (value === "fasc")
+      this.fruits.sort();
+    
+    if (value === "fdesc")
+      this.fruits.sort().reverse;
+  }
 }
