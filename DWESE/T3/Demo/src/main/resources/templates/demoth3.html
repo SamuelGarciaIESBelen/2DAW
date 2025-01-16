@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DemoTH3</title>
+</head>
+<body>
+    <h1>DEMO ThymeLeaf 3</h1>
+    <p th:text="${variable}">Variable</p>
+    <p th:text="${variableSesion}">Variable de sesión</p>
+
+    <!-- Acceso a atributos de sesión mediante el objeto implícito session
+        y el uso del identificador de atributo quijote con acceso a método de getAutor
+        por autor directamente -->
+    <p th:text="${quijote.autor}">Autor del Quijote</p>
+</body>
+</html>
