@@ -23,9 +23,9 @@ public class DemoController {
     @GetMapping("/demoth2")
     public String demoTH2(Model model) {
         List<Libro> libros = new ArrayList<>();
-        libros.add(new Libro("El Quijote", "Miguel Cervantes", "Anaya"));
-        libros.add(new Libro("Crimen y Castigo", "Fedor Dostoievski", "Santillana"));
-        libros.add(new Libro("Oliver Twist", "Charles Dickens", "Tusquests"));
+        libros.add(new Libro(1, "El Quijote", "Miguel Cervantes", "Anaya"));
+        libros.add(new Libro(2, "Crimen y Castigo", "Fedor Dostoievski", "Santillana"));
+        libros.add(new Libro(3, "Oliver Twist", "Charles Dickens", "Tusquests"));
 
         model.addAttribute(libros); // Es equivalente a :
         // model.addAttribute("libroList", libros);
@@ -41,10 +41,46 @@ public class DemoController {
         String variableSesion = "Esto es una variable de sesión";
         session.setAttribute("variableSesion", variableSesion);
 
-        Libro libro = new Libro("El Quijote", "Miguel Cervantes", "Anaya");
+        Libro libro = new Libro(1, "El Quijote", "Miguel Cervantes", "Anaya");
         session.setAttribute("quijote", libro);
 
         return "demoth3";
     }
 
+    @GetMapping("/demoth4")
+    public String demoTH4(Model model) {
+        Libro libro = new Libro(1, "El Quijote", "Miguel Cervantes", "Anaya");
+        model.addAttribute("libro", libro);
+
+        return "demoth4";
+    }
+
+    @GetMapping("/demoth5")
+    public String demoTH5(Model model) {
+        Libro libro = new Libro(1, "El Quijote", "Miguel Cervantes", "Anaya");
+        model.addAttribute("libro", libro);
+
+        return "demoth5";
+    }
+
+    @GetMapping("/demoth6")
+    public String demoTH6(Model model) {
+        Libro libro = new Libro(1, "El Quijote", "Miguel Cervantes", "Anaya");
+        model.addAttribute("libro", libro);
+
+        return "demoth6";
+    }
+
+    @GetMapping("/demoth7")
+    public String demoTH7(Model model) { return "demoth7"; }
+
+    @GetMapping("/demoth8")
+    public String demoTH8(Model model) { return "demoth8"; }
+
+    @GetMapping("/demoth9")
+    public String demoTH9(Model model) { return "demoth9"; }
+
+    @GetMapping("/demoth10")
+    public String demoTH10(Model model) { return "demoth10"; }
+    
 }

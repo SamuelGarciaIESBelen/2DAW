@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>DemoTH8</title>
+</head>
+<body>
+  <h1>DEMO ThymeLeaf 8</h1>
+  <header th:insert="fragments/general.html :: header"> </header>
+  <div th:replace="fragments/general.html :: aside"></div>
+  <!-- Selector css div.another para seleccionar el fragmento a cargar -->
+  <div th:replace="fragments/general.html :: div.otro"></div>
+  <div class="mt-5" th:replace="fragments/general.html :: footer"></div>
+</body>
+</html>

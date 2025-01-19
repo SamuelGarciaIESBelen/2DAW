@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>DemoTH6</title>
+</head>
+<body>
+  <h1>DEMO ThymeLeaf 6</h1>
+  <div th:with="tit = ${libro.titulo}, au = ${libro.autor}">
+    <!-- La variable solo es válida en el ámbito de la etiquta sobre la que se define en este caso sólo dentro de div -->
+    <p th:text="${tit} + ', escrito por ' + ${au}"></p>
+  </div>
+</body>
+</html>

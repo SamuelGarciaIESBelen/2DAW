@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>DemoTH7</title>
+</head>
+<body>
+  <h1>DEMO ThymeLeaf 7</h1>
+  <header th:insert="fragments/general.html :: header"></header>
+  <p>Fragmentos en acción...</p>
+  <!-- replace reemplaza la etiqueta por la que tiene th:fragment="footer" -->
+  <div class="mt-5" th:replace="fragments/general.html :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>DemoTH4</title>
+</head>
+<body>
+  <h1>DEMO ThymeLeaf 4</h1>
+  <div th:object="${libro}">
+    <span th:text="'Título: ' + *{titulo}"></span>
+    <br/>
+    <span th:text="'Autor: ' + *{autor}"></span>
+  </div>
+</body>
+</html>

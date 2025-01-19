@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>DemoTH9</title>
+</head>
+<body>
+  <h1>DEMO ThymeLeaf 9</h1>
+  <header th:insert="fragments/general.html :: header"> </header>
+  <div th:replace="fragments/formulario.html
+      :: formField(field='Nombre', value='Samuel García',size='20')">
+  </div>
+  <div class="mt-5" th:replace="fragments/general.html :: footer"></div>
+</body>
+</html>

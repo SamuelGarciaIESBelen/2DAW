@@ -7,11 +7,11 @@
 <body>
     <h1>DEMO ThymeLeaf 3</h1>
     <p th:text="${variable}">Variable</p>
-    <p th:text="${variableSesion}">Variable de sesión</p>
+    <p th:text="${session.variableSesion}">Variable de sesión</p>
 
     <!-- Acceso a atributos de sesión mediante el objeto implícito session
         y el uso del identificador de atributo quijote con acceso a método de getAutor
         por autor directamente -->
-    <p th:text="${quijote.autor}">Autor del Quijote</p>
+    <p th:text="${session.quijote.autor}">Autor del Quijote</p>
 </body>
 </html>
