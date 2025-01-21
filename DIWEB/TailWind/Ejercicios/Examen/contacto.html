@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body class="bg-sky-300">
+    <header>
+        <nav class="p-5 bg-gradient-to-r from-azulado to-morado flex justify-between">
+          <div><img class="md:w-44 pm:w-32 rounded-full hover:cursor-pointer hover:border-2 hover:border-morado hover:animate-spin" src="barco.jpg"></div>
+          <ul class="my-auto mr-20 flex pm:text-white md:text-azulado text-2xl font-semibold">
+            <li><a class="mr-10 hover:text-3xl" href="Amejorar.html">Inicio</a></li>
+            <li><a class="mr-10 hover:text-3xl" href="servicios.html">Servicios</a></li>
+            <li><a class="hover:text-3xl" href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="flex mb-40">
+        <div class="mx-auto mt-20 md:flex">
+            <div class="py-10 px-5 text-center text-white bg-morado md:rounded-l-2xl pm:rounded-t-2xl md:rounded-r-none">
+                <img class="mx-auto mb-5 rounded-2xl" src="barco.jpg">
+                <p class="text-xl font-bold">Súbete a nuestro barco</p>
+                <p class="font-semibold">Esto solo tomará unos minutos de su tiempo</p>
+            </div>
+            <form class="grid grid-cols-6 grid-rows-6 p-6 md:gap-5 pm:gap-3 bg-slate-200 md:rounded-r-2xl pm:rounded-b-2xl md:rounded-l-none">
+                <label class="md:col-span-2 pm:col-span-6 font-semibold my-auto" for="nombre">Nombre</label>
+                <input class="md:col-span-4 pm:col-span-6 border focus:ring-black rounded-lg px-3 py-1" type="text" name="nombre" id="nombre">
+
+                <label class="md:col-span-2 pm:col-span-6 font-semibold my-auto" for="sexo">Sexo</label>
+                <div class="md:col-span-4 pm:col-span-6 my-auto">
+                    <input type="radio" name="sexo" id="hombre">
+                    <label class="me-3" for="hombre">Hombre</label>
+                    <input type="radio" name="sexo" id="mujer">
+                    <label class="me-3" for="mujer">Mujer</label>
+                    <input type="radio" name="sexo" id="otro">
+                    <label for="otro">Otro</label>
+                </div>
+                
+                <label class="md:col-span-2 pm:col-span-6 font-semibold my-auto" for="fechaNac">Fecha Nacimiento</label>
+                <input class="md:col-span-4 pm:col-span-6 border focus:ring-black rounded-lg px-3 py-1" type="date" name="fechaNac" id="fechaNac">
+                
+                <label class="md:col-span-2 pm:col-span-6 font-semibold my-auto" for="email">Email</label>
+                <input class="md:col-span-4 pm:col-span-6 border focus:ring-black rounded-lg px-3 py-1" type="email" name="email" id="email">
+                
+                <!-- No se pone en rojo el borde -->
+                <label class="md:col-span-2 pm:col-span-6 font-semibold my-auto" for="telefono">Teléfono</label>
+                <input class="md:col-span-4 pm:col-span-6 border focus:ring-black invalid:focus:ring-red-500 peer rounded-lg px-3 py-1" type="text" name="telefono" id="telefono" pattern="[0-9]{9}">
+                <p class="col-span-6 text-red-500 hidden peer-invalid:block text-right">El número de teléfono es incorrecto</p>
+
+                <div class="col-span-6 content-center text-center">
+                    <button class="bg-stone-300 px-3 py-2 rounded-xl font-semibold me-5" type="reset">Cancelar</button>
+                    <button class="bg-green-400 px-3 py-2 rounded-xl font-semibold" type="submit"><a href="Amejorar.html">Guardar</a></button>
+                </div>
+            </form>
+        </div>
+      </main>
+
+      <footer class="fixed bottom-0 w-screen p-5 md:bg-gradient-to-r pm:bg-gradient-to-l from-morado to-azulado">
+        <ul class="flex justify-around text-2xl font-semibold">
+          <li><a class="md:text-azulado pm:text-morado" href="#">Política de Privacidad</a></li>
+          <li><a class="md:text-morado pm:text-azulado" href="#">Términos de Uso</a></li>
+        </ul>
+      </footer>
+</body>
+</html>

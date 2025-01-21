@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* npx tailwindcss -i .\Examen\input.css -o .\Examen\output.css --watch */
+
+@Layer components {
+    .rectangulo {
+        @apply bg-azulado md:rounded-2xl pm:rounded text-red-500 mx-auto md:mb-3 pm:mb-6 md:h-36 md:w-72 pm:h-28 pm:w-56 text-3xl text-center place-content-center font-semibold hover:cursor-pointer hover:bg-morado;
+    }
+    .texto {
+        @apply text-azulado underline md:text-3xl pm:text-2xl font-extrabold
+    }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body class="md:bg-purple-300 pm:bg-pink-300">
+    <header>
+        <nav class="p-5 bg-gradient-to-r from-azulado to-morado flex justify-between">
+          <div><img class="md:w-44 pm:w-32 rounded-full hover:cursor-pointer hover:border-2 hover:border-morado hover:animate-spin" src="barco.jpg"></div>
+          <ul class="my-auto mr-20 flex pm:text-white md:text-azulado text-2xl font-semibold">
+            <li><a class="mr-10 hover:text-3xl" href="Amejorar.html">Inicio</a></li>
+            <li><a class="mr-10 hover:text-3xl" href="servicios.html">Servicios</a></li>
+            <li><a class="hover:text-3xl" href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="px-10">
+        <h1 class="text-center mt-5 p-5 text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r md:from-azulado md:to-morado pm:from-white pm:to-sky-500">Bienvenido a bordo</h1>
+        <p class="texto">Elige barco:</p>
+        <!-- Las transformaciones las pongo aquí porque en la definición del componente en el input no le hace caso -->
+        <div class="rectangulo hover:scale-90"><p>VELERO</p></div>
+        <div class="rectangulo md:hover:translate-x-96 pm:hover:translate-x-52"><p>YATE</p></div>
+        <div class="rectangulo hover:scale-90"><p>CATAMARÁN</p></div>
+      </main>
+
+      <footer class="fixed bottom-0 w-screen p-5 md:bg-gradient-to-r pm:bg-gradient-to-l from-morado to-azulado">
+        <ul class="flex justify-around text-2xl font-semibold">
+          <li><a class="md:text-azulado pm:text-morado" href="#">Política de Privacidad</a></li>
+          <li><a class="md:text-morado pm:text-azulado" href="#">Términos de Uso</a></li>
+        </ul>
+      </footer>
+</body>
+</html>

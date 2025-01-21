@@ -1,0 +1,154 @@
+/* Variables de colores */
+:root {
+    --main-green: #136f63;
+    --dark-green: #0b3d33;
+    --background-pale: #e4f9f5;
+    --highlight-orange: #ffa726;
+  }
+  
+  /* Configuración de fuente y estilo general */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'open sans', 'light 300';
+  }
+  
+  body {
+    background-color: var(--background-pale);
+    color: var(--dark-green);
+    line-height: 1.6;
+  }
+  
+  /* Header */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: linear-gradient(90deg,var(--highlight-orange),var(--main-green));
+  }
+  
+  .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+  }
+  
+  .logo:hover {
+    transform: rotate(360deg);
+  }
+  
+  .menu {
+    display: flex;
+    list-style: none;
+  }
+  
+  .menu li a {
+    color: var(--highlight-orange);
+    margin: 0 1rem;
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  
+  .menu li a:hover {
+    color: var(--background-pale);
+    cursor: pointer;
+  }
+  
+  /* Hero Section */
+  .hero {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    text-shadow: 6px 3px 4px var(--highlight-orange);
+  }
+  
+  .cta-container {
+    margin-top: 1.5rem;
+    padding: 2rem;
+    background-image: url('Flor-del-olivo.png'); /* Cambia por la imagen deseada */
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    filter: sepia(20%);
+  }
+  
+  /* Search Section */
+  .search-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+  .search-section input {
+    padding: 0.5rem;
+    border: 1px solid var(--dark-green);
+    border-radius: 4px;
+    transition: transform 0.25s;
+  }
+  
+  .search-section input:hover {
+    transform: scale(1.1);
+  }
+  
+  .search-btn {
+    margin-left: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--background-pale);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.25s;
+  }
+  
+  .search-btn:hover {
+    transform: scale(1.05);
+    background-color: var(--highlight-orange);
+  }
+  
+  /* Footer */
+  footer {
+    padding: 1rem;
+    text-align: center;
+    background-color: var(--main-green);
+  }
+  
+  .footer-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer-menu li a {
+    color: var(--highlight-orange);
+    margin: 0 0.5rem;
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  
+  .footer-menu li a:hover {
+    color: var(--highlight-orange);
+    cursor: pointer;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    .navbar, .menu, .footer-menu {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .hero h1 {
+      font-size: 2rem;
+    }
+    
+    .cta-container {
+      padding: 1rem;
+    }
+  }
