@@ -1,6 +1,7 @@
 package org.iesbelen.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.iesbelen.dao.ClienteDAO;
 import org.iesbelen.modelo.Cliente;
@@ -23,7 +24,31 @@ public class ClienteService {
 		return clienteDAO.getAll();
 		
 	}
-	
-	
+
+	public Cliente one(Integer id) {
+		Optional<Cliente> optCli = clienteDAO.find(id);
+		if (optCli.isPresent())
+			return optCli.get();
+		else
+			return null;
+	}
+
+	public void newCliente(Cliente fabricante) {
+
+		clienteDAO.create(fabricante);
+
+	}
+
+	public void updateCliente(Cliente fabricante) {
+
+		clienteDAO.update(fabricante);
+
+	}
+
+	public void deleteCliente(int id) {
+
+		clienteDAO.delete(id);
+
+	}
 
 }

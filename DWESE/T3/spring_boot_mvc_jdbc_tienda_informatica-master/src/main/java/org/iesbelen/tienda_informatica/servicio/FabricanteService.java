@@ -24,7 +24,7 @@ public class FabricanteService {
 		Optional<Fabricante> optFab = fabricanteDAO.find(id);
 		if (optFab.isPresent())
 			return optFab.get();
-		else 
+		else
 			return null;
 	}
 	

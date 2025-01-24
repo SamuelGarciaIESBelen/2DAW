@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title th:text="#{detCli.titulo}">Detalles Cliente</title>
+	<style>
+		.clearfix::after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<div id="contenedora" style="float:none; margin: 0 auto;width: 900px;" >
+		<form th:action="@{/clientes/detalles}" th:object="${cliente}" method="post">
+			<div class="clearfix">
+				<div style="float: left; width: 50%">
+					<h1 th:text="#{detCli.titulo}">Detalles Cliente</h1>
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<hr/>
+			</div>
+
+			<div style="margin-top: 6px;" class="clearfix">
+				<div th:text="#{nombre}" style="float: left;width: 50%">
+					Nombre
+				</div>
+				<div style="float: none;width: auto;overflow: hidden;">
+					<input th:field="*{nombre}" readonly />
+				</div>
+			</div>
+			<div style="margin-top: 6px;" class="clearfix">
+				<div th:text="#{apellido1}" style="float: left;width: 50%">
+					Primer apellido
+				</div>
+				<div style="float: none;width: auto;overflow: hidden;">
+					<input th:field="*{apellido1}" readonly />
+				</div>
+			</div>
+			<div style="margin-top: 6px;" class="clearfix">
+				<div th:text="#{apellido2}" style="float: left;width: 50%">
+					Segundo apellido
+				</div>
+				<div style="float: none;width: auto;overflow: hidden;">
+					<input th:field="*{apellido2}" readonly />
+				</div>
+			</div>
+			<div style="margin-top: 6px;" class="clearfix">
+				<div th:text="#{ciudad}" style="float: left;width: 50%">
+					Ciudad
+				</div>
+				<div style="float: none;width: auto;overflow: hidden;">
+					<input th:field="*{ciudad}" readonly />
+				</div>
+			</div>
+			<div style="margin-top: 6px;" class="clearfix">
+				<div th:text="#{categoria}" style="float: left;width: 50%">
+					Categoria
+				</div>
+				<div style="float: none;width: auto;overflow: hidden;">
+					<input type="number" th:field="*{categoria}" readonly />
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

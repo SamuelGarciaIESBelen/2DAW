@@ -12,5 +12,6 @@ public class Comercial {
 	private String apellido1;
 	private String apellido2;
 	private float comision;
-	
+
+	public Comercial() { }
 }

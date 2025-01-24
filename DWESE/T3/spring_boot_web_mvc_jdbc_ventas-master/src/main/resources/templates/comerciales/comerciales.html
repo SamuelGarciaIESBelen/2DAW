@@ -12,19 +12,18 @@
 	</style>
 </head>
 <body>
+	<button style="margin: 5px"><a th:text="#{volver}" th:href="@{/}">Volver</a></button>
 	<div id="contenedora" style="float:none; margin: 0 auto;width: 95%;" >
 		<div class="clearfix">
 			<div style="float: left; width: 50%">
 				<h1 th:text="#{com.titulo}">Comerciales</h1>
 			</div>
 			<div style="float: none;width: auto;overflow: hidden;min-height: 80px;position: relative;">
-				
 				<div style="position: absolute; left: 39%; top : 39%;">
-					
-						<form action="/comerciales/crear">
-							<input th:value="#{crearBtn}" type="submit" value="Crear">
-						</form>
-					</div>
+					<form action="/comerciales/crear">
+						<input th:value="#{crearBtn}" type="submit" value="Crear">
+					</form>
+				</div>
 				
 			</div>
 		</div>
