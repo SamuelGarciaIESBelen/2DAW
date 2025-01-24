@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title th:text="#{cli.titulo}">Clientes</title>
-<style>
-.clearfix::after {
-	content: "";
-	display: block;
-	clear: both;
-}
-
-</style>
+	<meta charset="UTF-8">
+	<title th:text="#{cli.titulo}">Clientes</title>
+	<style>
+		.clearfix::after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+	</style>
 </head>
 <body>
 	<div id="contenedora" style="float:none; margin: 0 auto;width: 95%;" >
 		<div class="clearfix">
 			<div style="float: left; width: 50%">
-				<h1 th:text="#{cli.h1}">Clientes</h1>
+				<h1 th:text="#{cli.titulo}">Clientes</h1>
 			</div>
 			<div style="float: none;width: auto;overflow: hidden;min-height: 80px;position: relative;">
 				
@@ -34,11 +33,11 @@
 		</div>
 		<div class="clearfix">
 			<div style="float: left;width: 14%">ID</div>
-			<div th:text="#{nombre} "style="float: left;width: 14%">Nombre</div>
-			<div th:text="#{apellido1}" style="float: left;width: 14%">Apellido 1</div>
-			<div th:text="#{apellido2}" style="float: left;width: 14%">Apellido 2</div>
-			<div th:text="#{cli.ciudad}" style="float: left;width: 14%">Ciudad</div>
-			<div th:text="#{cli.categoria}" style="float: left;width: 14%">Categoría</div>
+			<div th:text="#{nombre}" style="float: left;width: 14%">Nombre</div>
+			<div th:text="#{apellido1}" style="float: left;width: 14%">Primer apellido</div>
+			<div th:text="#{apellido2}" style="float: left;width: 14%">Segundo apellido</div>
+			<div th:text="#{ciudad}" style="float: left;width: 14%">Ciudad</div>
+			<div th:text="#{categoria}" style="float: left;width: 14%">Categoría</div>
 			<div th:text="#{acciones}" style="float: none;width: auto;overflow: hidden;">Acciones</div>
 		</div>
 		<div class="clearfix">
@@ -54,7 +53,7 @@
 			<div style="float: left;width: 14%" th:text="${cliente.categoria}">categoría</div>
 			<div style="float: none;width: auto;overflow: hidden;">
 				<form th:action="@{/clientes/__${cliente.id}__}" style="display: inline;">
-    				<input th:value="#{detalles}" type="submit" value="Ver Detalle" />
+    				<input th:value="#{detalles}" type="submit" value="Detalles" />
 				</form>
 				<form th:action="@{/clientes/editar/} + ${cliente.id} " style="display: inline;">
     				<input th:value="#{editar}" type="submit" value="Editar" />
