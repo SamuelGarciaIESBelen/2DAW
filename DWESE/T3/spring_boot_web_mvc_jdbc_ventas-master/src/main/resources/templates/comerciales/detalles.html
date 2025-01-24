@@ -56,16 +56,19 @@
 					<input type="number" th:field="*{comision}" readonly />
 				</div>
 			</div>
+
 			<div style="margin-top: 6px;" class="clearfix">
 				<div th:text="#{detCom.pedidos}" style="float: left;width: 50%">
 					Pedidos
 				</div>
 				<div style="float: none;width: auto;overflow: hidden;">
-					<div th:each="pedido : ${pedidos}">
-						<p th:text="${pedido.getFecha()} + ' - ' + ${pedido.getTotal()} + ' € - ' + ${pedido.getId_cliente()}">Pedido</p>
+					<div style="border: solid 1px black; margin-bottom: 5px; padding: 5px" th:each="pedidoDTO : ${pedidosDTO}">
+						<p th:text="${pedidoDTO.getFecha()}">Fecha</p>
+						<p th:text="${pedidoDTO.getTotal()} + ' €'">Total</p>
+						<a th:text="${pedidoDTO.getNombreCliente()}">Cliente</a>
 					</div>
 				</div>
-				<div th:if="${pedidos.isEmpty()}" style="float: none;width: auto;overflow: hidden;">
+				<div th:if="${pedidosDTO.isEmpty()}" style="float: none;width: auto;overflow: hidden;">
 					<p th:text="#{detCom.noHayPedidos}">No hay pedidos</p>
 				</div>
 			</div>

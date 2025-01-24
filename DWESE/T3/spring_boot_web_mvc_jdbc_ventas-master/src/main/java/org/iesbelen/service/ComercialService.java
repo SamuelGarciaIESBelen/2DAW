@@ -1,11 +1,18 @@
 package org.iesbelen.service;
 
+import org.iesbelen.dao.ClienteDAO;
 import org.iesbelen.dao.ComercialDAO;
 import org.iesbelen.dao.PedidoDAO;
+import org.iesbelen.dto.PedidoDTO;
+import org.iesbelen.modelo.Cliente;
 import org.iesbelen.modelo.Comercial;
 import org.iesbelen.modelo.Pedido;
+import org.iesbelen.mapstruct.PedidoMapper;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,13 +21,18 @@ public class ComercialService {
 
 	private ComercialDAO comercialDAO;
 	private PedidoDAO pedidoDAO;
+	private ClienteDAO clienteDAO;
+
+	@Autowired
+	private PedidoMapper pedidoMapper;
 
 	//Se utiliza inyección automática por constructor del framework Spring.
 	//Por tanto, se puede omitir la anotación Autowired
 	//@Autowired
-	public ComercialService(ComercialDAO comercialDAO, PedidoDAO pedidoDAO) {
+	public ComercialService(ComercialDAO comercialDAO, PedidoDAO pedidoDAO, ClienteDAO clienteDAO) {
 		this.comercialDAO = comercialDAO;
 		this.pedidoDAO = pedidoDAO;
+		this.clienteDAO = clienteDAO;
 	}
 	
 	public List<Comercial> listAll() {
@@ -55,12 +67,33 @@ public class ComercialService {
 
 	}
 
-	public List<Pedido> listPedidos(int id) {
+	public List<Pedido> listPedidos(int idComercial) {
 
-		List<Pedido> pedidos = pedidoDAO.getAllByComercial(id);
+		List<Pedido> pedidos = pedidoDAO.getAllByComercial(idComercial);
 		pedidos.sort((a, b) -> b.getFecha().compareTo(a.getFecha()));
 
 		return pedidos;
+	}
+
+	public List<PedidoDTO> listPedidosDTO(int idComercial) {
+
+		List<Cliente> clientes = clienteDAO.getAll();
+		List<Pedido> pedidos = pedidoDAO.getAllByComercial(idComercial);
+		pedidos.sort((a, b) -> b.getFecha().compareTo(a.getFecha()));
+
+		List<PedidoDTO> pedidosDTO = new ArrayList<>();
+
+		for (Pedido p : pedidos) {
+			int idC = p.getIdCliente();
+			for (Cliente c : clientes) {
+				if (c.getId() == idC) {
+					pedidosDTO.add(pedidoMapper.pedidoAPedidoDTO(p, c.getNombre() + " " + c.getApellido1()
+							+ " " + (c.getApellido2() != null ? c.getApellido2() : "")));
+				}
+			}
+		}
+		System.out.println("Pasa por aquí" + pedidosDTO);
+		return pedidosDTO;
 	}
 
 }

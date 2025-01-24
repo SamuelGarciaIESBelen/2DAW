@@ -33,15 +33,15 @@ public class ClienteService {
 			return null;
 	}
 
-	public void newCliente(Cliente fabricante) {
+	public void newCliente(Cliente cliente) {
 
-		clienteDAO.create(fabricante);
+		clienteDAO.create(cliente);
 
 	}
 
-	public void updateCliente(Cliente fabricante) {
+	public void updateCliente(Cliente cliente) {
 
-		clienteDAO.update(fabricante);
+		clienteDAO.update(cliente);
 
 	}
 

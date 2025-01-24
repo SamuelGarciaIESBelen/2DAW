@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div id="contenedora" style="float:none; margin: 0 auto;width: 900px;" >
-		<form th:action="@{/clientes/editar}" th:object="${cliente}" method="post">
+		<form th:action="@{/clientes/editar/__${cliente.getId()}__}" th:object="${cliente}" method="post">
 			<div class="clearfix">
 				<div style="float: left; width: 50%">
 					<h1 th:text="#{editarCli.titulo}">Editar Cliente</h1>

@@ -1,5 +1,6 @@
 package org.iesbelen.controlador;
 
+import org.iesbelen.dto.PedidoDTO;
 import org.iesbelen.modelo.Comercial;
 import org.iesbelen.modelo.Pedido;
 import org.iesbelen.service.ComercialService;
@@ -49,8 +50,8 @@ public class ComercialController {
 		Comercial comercial = comercialService.one(id);
 		model.addAttribute("comercial", comercial);
 
-		List<Pedido> pedidos = comercialService.listPedidos(id);
-		model.addAttribute("pedidos", pedidos);
+		List<PedidoDTO> pedidosDTO = comercialService.listPedidosDTO(id);
+		model.addAttribute("pedidosDTO", pedidosDTO);
 
 		return "comerciales/detalles";
 	}
