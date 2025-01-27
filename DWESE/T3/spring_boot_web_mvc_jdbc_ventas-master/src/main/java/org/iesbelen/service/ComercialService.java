@@ -62,17 +62,15 @@ public class ComercialService {
 	}
 
 	public void deleteComercial(int id) {
+		// ¿Está seguro de que quiere eliminar al comercial? Se borrarán también todos sus pedidos
 
+		// Sí
+		List<Pedido> pedidos = pedidoDAO.getAllByComercial(id);
+		pedidos.forEach(p -> pedidoDAO.delete(p.getId()));
 		comercialDAO.delete(id);
 
-	}
-
-	public List<Pedido> listPedidos(int idComercial) {
-
-		List<Pedido> pedidos = pedidoDAO.getAllByComercial(idComercial);
-		pedidos.sort((a, b) -> b.getFecha().compareTo(a.getFecha()));
-
-		return pedidos;
+		// No
+		// Borrado cancelado
 	}
 
 	public List<PedidoDTO> listPedidosDTO(int idComercial) {
@@ -83,16 +81,16 @@ public class ComercialService {
 
 		List<PedidoDTO> pedidosDTO = new ArrayList<>();
 
+		// Esto es para añadir el nombre del cliente a cada pedido, es mejor hacerlo directamente por SQL
 		for (Pedido p : pedidos) {
 			int idC = p.getIdCliente();
 			for (Cliente c : clientes) {
 				if (c.getId() == idC) {
 					pedidosDTO.add(pedidoMapper.pedidoAPedidoDTO(p, c.getNombre() + " " + c.getApellido1()
-							+ " " + (c.getApellido2() != null ? c.getApellido2() : "")));
+							+ " " + (c.getApellido2() != null ? c.getApellido2() : ""), ""));
 				}
 			}
 		}
-		System.out.println("Pasa por aquí" + pedidosDTO);
 		return pedidosDTO;
 	}
 

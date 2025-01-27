@@ -15,4 +15,5 @@ public class PedidoDTO {
     private int idComercial;
 
     private String nombreCliente;
+    private String nombreComercial;
 }

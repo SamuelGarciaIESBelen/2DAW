@@ -64,6 +64,24 @@
 					<input type="number" th:field="*{categoria}" readonly />
 				</div>
 			</div>
+
+			<div style="margin-top: 6px" class="clearfix">
+				<div th:text="#{det.pedidos}" style="float: left;width: 50%">
+					Pedidos
+				</div>
+				<div style="float: none;width: auto;overflow: hidden;">
+					<div style="border: solid 1px grey; border-radius: 15px; margin-top: 10px; padding: 5px 10px 10px 10px; width: 200px"
+						 th:each="pedidoDTO : ${pedidosDTO}">
+
+						<p th:text="${pedidoDTO.getFecha()}">Fecha</p>
+						<p th:text="${pedidoDTO.getTotal()} + ' €'">Total</p>
+						<a th:href="@{/comerciales/__${pedidoDTO.getIdComercial()}__}" th:text="${pedidoDTO.getNombreComercial()}" target="_blank">Comercial</a>
+					</div>
+				</div>
+				<div th:if="${pedidosDTO.isEmpty()}" style="float: none;width: auto;overflow: hidden;">
+					<p th:text="#{det.noHayPedidos}">No hay pedidos</p>
+				</div>
+			</div>
 		</form>
 	</div>
 </body>

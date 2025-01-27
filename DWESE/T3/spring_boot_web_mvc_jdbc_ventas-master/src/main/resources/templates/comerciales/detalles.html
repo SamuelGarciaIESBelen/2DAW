@@ -57,22 +57,27 @@
 				</div>
 			</div>
 
-			<div style="margin-top: 6px;" class="clearfix">
-				<div th:text="#{detCom.pedidos}" style="float: left;width: 50%">
+			<div style="margin-top: 6px" class="clearfix">
+				<div th:text="#{det.pedidos}" style="float: left;width: 50%">
 					Pedidos
 				</div>
 				<div style="float: none;width: auto;overflow: hidden;">
-					<div style="border: solid 1px black; margin-bottom: 5px; padding: 5px" th:each="pedidoDTO : ${pedidosDTO}">
+					<div style="border: solid 1px grey; border-radius: 15px; margin-top: 10px; padding: 5px 10px 10px 10px; width: 200px"
+						 th:each="pedidoDTO : ${pedidosDTO}">
+
 						<p th:text="${pedidoDTO.getFecha()}">Fecha</p>
 						<p th:text="${pedidoDTO.getTotal()} + ' €'">Total</p>
-						<a th:text="${pedidoDTO.getNombreCliente()}">Cliente</a>
+						<a th:href="@{/clientes/__${pedidoDTO.getIdCliente()}__}" th:text="${pedidoDTO.getNombreCliente()}" target="_blank">Cliente</a>
 					</div>
 				</div>
 				<div th:if="${pedidosDTO.isEmpty()}" style="float: none;width: auto;overflow: hidden;">
-					<p th:text="#{detCom.noHayPedidos}">No hay pedidos</p>
+					<p th:text="#{det.noHayPedidos}">No hay pedidos</p>
 				</div>
 			</div>
 		</form>
+	</div>
+	<div style="display: flex; margin-top: 50px; margin-bottom: 50px">
+		<button style="margin: auto"><a th:text="#{volver}" th:href="@{/comerciales}">Volver</a></button>
 	</div>
 </body>
 </html>

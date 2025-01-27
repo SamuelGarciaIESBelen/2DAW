@@ -2,6 +2,7 @@ package org.iesbelen.controlador;
 
 import java.util.List;
 
+import org.iesbelen.dto.PedidoDTO;
 import org.iesbelen.modelo.Cliente;
 import org.iesbelen.service.ClienteService;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import org.springframework.web.servlet.view.RedirectView;
 public class ClienteController {
 	
 	private ClienteService clienteService;
-	
+
 	//Se utiliza inyección automática por constructor del framework Spring.
 	//Por tanto, se puede omitir la anotación Autowired
 	//@Autowired
@@ -47,6 +48,9 @@ public class ClienteController {
 
 		Cliente cliente = clienteService.one(id);
 		model.addAttribute("cliente", cliente);
+
+		List<PedidoDTO> pedidosDTO = clienteService.listPedidosDTO(id);
+		model.addAttribute("pedidosDTO", pedidosDTO);
 
 		return "clientes/detalles";
 
