@@ -1,0 +1,93 @@
+[  {
+    "id": 1,
+    "textoEnigma": "Soy pequeño y redondo, a veces dulce, a veces agrio. ¿Qué soy?",
+    "respuesta": "una fruta",
+    "pistas": ["Es comestible", "Puede ser una uva, una cereza..."],
+    "dificultad": "fácil"
+  },
+  {
+    "id": 2,
+    "textoEnigma": "¿Qué sube y baja pero siempre está en el mismo sitio?",
+    "respuesta": "las escaleras",
+    "pistas": ["Casa, escalones...", "Se usa para cambiar de piso"],
+    "dificultad": "media"
+  },
+  {
+    "id": 3,
+    "textoEnigma": "Camino sin moverme, lloro sin tristeza, echo humo sin fuego. ¿Quién soy?",
+    "respuesta": "una nube",
+    "pistas": ["Está en el cielo", "Produce lluvia"],
+    "dificultad": "difícil"
+  },
+    {
+      "id": 4,
+      "textoEnigma": "No tengo vida, pero puedo morir. ¿Qué soy?",
+      "respuesta": "una batería",
+      "pistas": ["Se usa en dispositivos", "Es recargable"],
+      "dificultad": "media"
+    },
+    {
+      "id": 5,
+      "textoEnigma": "Cuanto más quitas, más grande me vuelvo. ¿Qué soy?",
+      "respuesta": "un agujero",
+      "pistas": ["Se encuentra en el suelo", "Algo vacío"],
+      "dificultad": "difícil"
+    },
+    {
+      "id": 6,
+      "textoEnigma": "Tengo ciudades, pero no casas; ríos, pero no agua; bosques, pero no árboles. ¿Qué soy?",
+      "respuesta": "un mapa",
+      "pistas": ["Es plano", "Se usa para orientarse"],
+      "dificultad": "media"
+    },
+    {
+      "id": 7,
+      "textoEnigma": "Todos me tienen, pero nadie puede perderme. ¿Qué soy?",
+      "respuesta": "una sombra",
+      "pistas": ["Aparece con luz", "Siempre está contigo"],
+      "dificultad": "fácil"
+    },
+    {
+      "id": 8,
+      "textoEnigma": "Entre más seco, más mojo. ¿Qué soy?",
+      "respuesta": "una toalla",
+      "pistas": ["Se usa después de bañarse", "Absorbe agua"],
+      "dificultad": "fácil"
+    },
+    {
+      "id": 9,
+      "textoEnigma": "Cuatro patas tengo, pero no puedo correr. ¿Qué soy?",
+      "respuesta": "una mesa",
+      "pistas": ["Se encuentra en casas", "Sirve para comer o trabajar"],
+      "dificultad": "fácil"
+    },
+    {
+      "id": 10,
+      "textoEnigma": "Cuanto más crece, menos se ve. ¿Qué soy?",
+      "respuesta": "la oscuridad",
+      "pistas": ["Ocurre en la noche", "Se relaciona con la falta de luz"],
+      "dificultad": "difícil"
+    },
+    {
+      "id": 11,
+      "textoEnigma": "Tengo cuello pero no cabeza. ¿Qué soy?",
+      "respuesta": "una botella",
+      "pistas": ["Puede contener líquidos", "Es de vidrio o plástico"],
+      "dificultad": "media"
+    },
+    {
+      "id": 12,
+      "textoEnigma": "Vengo al mundo roto, pero a algunos les gusta arreglarme. ¿Qué soy?",
+      "respuesta": "un huevo",
+      "pistas": ["Es comestible", "Se usa para cocinar"],
+      "dificultad": "media"
+    },
+    {
+      "id": 13,
+      "textoEnigma": "Vuelo sin alas, lloro sin ojos. ¿Qué soy?",
+      "respuesta": "el viento",
+      "pistas": ["Está en el aire", "Se siente pero no se ve"],
+      "dificultad": "difícil"
+    }
+  ]
+  

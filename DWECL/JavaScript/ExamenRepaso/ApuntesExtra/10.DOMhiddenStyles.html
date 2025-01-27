@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM: Hidden, Styles y Clases</title>
+    <style>
+        .oculto {
+            display: none;
+        }
+        .resaltado {
+            color: red;
+            font-weight: bold;
+        }
+        #elemento-con-estilo {
+            background-color: lightblue;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Uso del atributo "hidden" y manipulación de estilos y clases en el DOM</h2>
+
+    <div id="elemento-oculto" hidden>Este div tiene el atributo "hidden" en el HTML.</div>
+    <div id="elemento-dinamico">Este div tendrá su propiedad "hidden" manipulada con JavaScript.</div>
+
+    <h3>Manipulación de Estilos y Clases</h3>
+    <div id="elemento-con-estilo">Este div tiene estilos aplicados directamente desde CSS.</div>
+    <div id="elemento-con-clases">Este div será manipulado para agregar, quitar y alternar clases con JavaScript.</div>
+
+    <script>
+        // =====================
+        // **JAVASCRIPT - ATRIBUTO HIDDEN Y MANIPULACIÓN DE ESTILOS Y CLASES**
+        // =====================
+
+        // **Uso del atributo 'hidden'**
+        const elementoDinamico = document.querySelector("#elemento-dinamico");
+        elementoDinamico.hidden = true; // Ocultar el elemento dinámicamente
+
+        setTimeout(() => {
+            elementoDinamico.hidden = false; // Mostrar el elemento después de 2 segundos
+        }, 2000);
+
+        // =====================
+        // **ESTILOS Y CLASES**
+        // =====================
+
+        // **Añadir Estilos Directamente**
+        const elementoEstiloDirecto = document.querySelector("#elemento-con-estilo");
+        elementoEstiloDirecto.style.border = "2px solid black";
+        elementoEstiloDirecto.style.padding = "15px";
+
+        // **Manipulación de Clases con classList**
+        const elementoConClases = document.querySelector("#elemento-con-clases");
+
+        // Añadir una clase
+        elementoConClases.classList.add("resaltado");
+
+        // Quitar una clase después de 3 segundos
+        setTimeout(() => {
+            elementoConClases.classList.remove("resaltado");
+        }, 3000);
+
+        // Alternar una clase (añadir si no está, quitar si está)
+        setInterval(() => {
+            elementoConClases.classList.toggle("oculto"); // Oculta y muestra cada 2 segundos
+        }, 2000);
+
+        // Comprobar si un elemento contiene una clase
+        console.log("¿El elemento tiene la clase 'resaltado'?", elementoConClases.classList.contains("resaltado"));
+    </script>
+</body>
+</html>

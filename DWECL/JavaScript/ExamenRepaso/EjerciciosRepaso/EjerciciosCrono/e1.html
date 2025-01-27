@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 hora 5 min</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                Continents:
+            </div>
+            <div class="col">
+                <select class="form-select" name="continentes" id="continentes">
+
+                </select>
+            </div>
+            <div class="col">
+                <button class="btn btn-secondary countries">Countries</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-secondary number">Number of companies</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-secondary companies">Names of companies</button>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <td>Countries</td>
+            <td>Num</td>
+            <td>Companies</td>
+        </thead>
+        <tbody>
+            <td class="tdCountries"></td>
+            <td class="tdNumber"></td>
+            <td class="tdCompanies"></td>
+        </tbody>
+
+
+    </table>
+
+
+    <!-- Motrar nombre de todos los paises ordenados alfabeticamente
+     Select con las opciones es el nombre de cada uno de los continentes y al seleccionarlos
+        -se mostrán los paises del contienente, ordenados alfabeticamente (solo los de ese continente)
+        -junto al pais se mostran LA CANTIDAD las compñaias aereas que operan en ese pais
+        - NOMBRES de las compañias que operan -->
+</body>
+<script src="companies.js"></script>
+<script>
+
+    const tdCountries = document.querySelector(".tdCountries");
+    const tdCompanies = document.querySelector(".tdCompanies");
+    const tdNumber = document.querySelector(".tdNumber");
+    const formSelect = document.querySelector(".form-select");
+    let continente = "all";
+    let arrayPaises = [];
+
+    const rellenaSelect = () => {
+        const option = document.createElement("option");
+        option.textContent = "Seleccione un contienente";
+        option.value = "all";
+        formSelect.appendChild(option);
+        companies.forEach(c => {
+            const option = document.createElement("option");
+            option.textContent = c.continent;
+            option.value = c.continent;
+            formSelect.appendChild(option);
+        })
+    }
+
+    const pintaPaises = (continente) => {
+        tdCountries.innerHTML = "";
+        tdNumber.innerHTML = "";
+        tdCompanies.innerHTML = "";
+        if (continente == "all") {
+            arrayPaises = companies.flatMap(c => c.countries);
+        } else {
+            arrayPaises = companies.find(c => c.continent == continente).countries
+        }
+        console.log(arrayPaises);
+        arrayPaises.sort((a, b) => a.name.localeCompare(b.name));
+        arrayPaises.forEach(co => {
+            const tr = document.createElement("tr");
+            tr.textContent = co.name;
+            tdCountries.appendChild(tr);
+        });
+    }
+    const pintaNumber = (continente) => {
+        if (continente == "all") {
+            arrayPaises = companies.flatMap(c => c.countries);
+        } else {
+            arrayPaises = companies.find(c => c.continent == continente).countries
+        }
+        console.log(arrayPaises);
+        arrayPaises.sort((a, b) => a.name.localeCompare(b.name));
+        arrayPaises.forEach(co => {
+            const tr = document.createElement("tr");
+            tr.textContent = co.companies.length;
+            tdNumber.appendChild(tr);
+        });
+    }
+    const pintaCompanies = (continente) => {
+        if (continente == "all") {
+            arrayPaises = companies.flatMap(c => c.countries);
+        } else {
+            arrayPaises = companies.find(c => c.continent == continente).countries
+        }
+        console.log(arrayPaises);
+        arrayPaises.sort((a, b) => a.name.localeCompare(b.name));
+        arrayPaises.forEach(co => {
+            const tr = document.createElement("tr");
+            co.companies.forEach (c => {
+                tr.textContent += Object.keys(c)+", ";                
+            })
+            tr.textContent = tr.textContent.slice(0, (tr.textContent.length-2));
+            tdCompanies.appendChild(tr);
+        });
+    }
+
+
+    formSelect.addEventListener("change", (event) => {
+        continente = event.target.value;
+        console.log(continente);
+
+    })
+
+    rellenaSelect();
+    pintaPaises(continente);
+    document.querySelector(".countries").addEventListener("click", (event) => {
+        event.preventDefault();
+        pintaPaises(continente);
+    });
+    document.querySelector(".number").addEventListener("click", () => {
+        event.preventDefault();
+        pintaPaises(continente);
+        pintaNumber(continente);
+
+    });
+    document.querySelector(".companies").addEventListener("click", () => {
+        event.preventDefault();
+        pintaPaises(continente);
+        pintaNumber(continente);
+        pintaCompanies(continente);
+
+
+    });
+
+    // let select = document.querySelector("select");
+
+    // const createCountriesOptions = () =>{
+    //     let option = document.createElement("option");
+    //         option.textContent= "choose a Continent";
+    //         option.value="";
+    //         select.appendChild(option);
+    //     companies.forEach(c=> {
+    //         let option = document.createElement("option");
+    //         option.textContent= c.continent;
+    //         option.value=c.continent;
+    //         select.appendChild(option);
+    //     });
+
+    // }
+    // const displayInfo = (event) =>{
+    //     document.querySelector(".table").innerHTML= `
+    //             <thead>
+    //             <td>Countries</td>
+    //             <td>Num</td>
+    //             <td>Companies</td>
+    //         </thead>
+    //     `
+    //     let contName = event.target.value;
+    //     let contArray = companies.filter(c=> c.continent==contName);
+    //     contArray[0].countries.forEach (c=>{
+    //         let row = document.createElement("tr");
+    //         let country = document.createElement("td");
+    //         country.textContent=c.name;
+    //         row.appendChild(country);
+    //         document.querySelector(".table").appendChild(row);
+    //         displayCompanies(c, row);
+    //     })
+    // }
+    // const displayCompanies = (countries, row)=>{
+    //     let companies = countries.companies;
+    //     let td = document.createElement("td");
+    //     let compString ="";
+    //     let cont =0;
+    //     for (let i = 0; i < companies.length; i++) {
+    //         let companyName = Object.keys(companies[i])[0];
+    //         compString += companyName + ", ";
+    //         cont++;
+    //     }
+
+    //     compString = compString.slice(0, -2);
+
+    //     let tdNum = document.createElement("td");
+    //     tdNum.textContent = cont;
+    //     row.appendChild(tdNum);
+
+    //     console.log(compString);
+    //     td.textContent=compString;
+    //     row.appendChild(td);
+
+    // }
+    // createCountriesOptions();
+    //     select.addEventListener("change", displayInfo);
+</script>
+
+</html>

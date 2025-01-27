@@ -1,0 +1,83 @@
+[
+    {
+      "id": 1,
+      "nombre": "Orco Berserker",
+      "nivel": 5,
+      "habilidades": ["Golpe brutal", "Rugido aterrador"],
+      "tipo": "humanoide",
+      "debilidades": ["luz", "fuego"]
+    },
+    {
+      "id": 2,
+      "nombre": "Dragón Rojo",
+      "nivel": 15,
+      "habilidades": ["Aliento ígneo", "Vuelo"],
+      "tipo": "dragon",
+      "debilidades": ["hielo"]
+    },
+    {
+      "id": 3,
+      "nombre": "Espectro Nocturno",
+      "nivel": 10,
+      "habilidades": ["Desvanecerse", "Toque gélido"],
+      "tipo": "undead",
+      "debilidades": ["luz sagrada", "plata"]
+    },
+    {
+      "id": 4,
+      "nombre": "Elemental de Agua",
+      "nivel": 8,
+      "habilidades": ["Golpe de marea", "Escudo líquido"],
+      "tipo": "elemental",
+      "debilidades": ["rayo", "hielo"]
+    },
+    {
+      "id": 5,
+      "nombre": "Gólem de Piedra",
+      "nivel": 12,
+      "habilidades": ["Puño aplastante", "Defensa pétrea"],
+      "tipo": "constructo",
+      "debilidades": ["ácido", "magia arcana"]
+    },
+    {
+      "id": 6,
+      "nombre": "Hidra de Pantano",
+      "nivel": 14,
+      "habilidades": ["Regeneración", "Mordiscos múltiples"],
+      "tipo": "bestia",
+      "debilidades": ["fuego", "veneno"]
+    },
+    {
+      "id": 7,
+      "nombre": "Harpía Seductora",
+      "nivel": 7,
+      "habilidades": ["Canto hipnótico", "Ataque aéreo"],
+      "tipo": "humanoide",
+      "debilidades": ["fuego", "flechas"]
+    },
+    {
+      "id": 8,
+      "nombre": "Demonio Infernal",
+      "nivel": 20,
+      "habilidades": ["Ráfaga infernal", "Corrupción del alma"],
+      "tipo": "demonio",
+      "debilidades": ["agua bendita", "magia celestial"]
+    },
+    {
+      "id": 9,
+      "nombre": "Hombre Lobo Alfa",
+      "nivel": 9,
+      "habilidades": ["Furia lunar", "Velocidad sobrenatural"],
+      "tipo": "bestia",
+      "debilidades": ["plata", "fuego"]
+    },
+    {
+      "id": 10,
+      "nombre": "Liche Necromante",
+      "nivel": 18,
+      "habilidades": ["Resurrección oscura", "Lanza de sombras"],
+      "tipo": "undead",
+      "debilidades": ["fuego sagrado", "luz pura"]
+    }
+  ]
+  

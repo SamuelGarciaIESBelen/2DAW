@@ -1,0 +1,212 @@
+[
+    {
+        "destino": "París",
+        "fechas": {
+            "inicio": "2025-03-15",
+            "fin": "2025-03-20"
+        },
+        "notas": "Visitar la Torre Eiffel y el Louvre.",
+        "img": "./assets/img/paris.jpg",
+        "checklist": [
+            "Pasaporte",
+            "Reserva de hotel",
+            "Cámara"
+        ]
+    },
+    {
+        "destino": "Tokio",
+        "fechas": {
+            "inicio": "2025-04-01",
+            "fin": "2025-04-10"
+        },
+        "notas": "Explorar Akihabara y probar sushi auténtico.",
+        "img": "./assets/img/tokio.jpg",
+        "checklist": [
+            "Guía de viaje",
+            "Traductor offline",
+            "Tarjeta de transporte"
+        ]
+    },
+    {
+        "destino": "Nueva York",
+        "fechas": {
+            "inicio": "2025-05-05",
+            "fin": "2025-05-12"
+        },
+        "notas": "Ver una obra en Broadway y recorrer Central Park.",
+        "img": "./assets/img/nueva_york.jpg",
+        "checklist": [
+            "Itinerario",
+            "Dinero en efectivo",
+            "Zapatos cómodos"
+        ]
+    },
+    {
+        "destino": "Roma",
+        "fechas": {
+            "inicio": "2025-06-10",
+            "fin": "2025-06-17"
+        },
+        "notas": "Hacer un tour por el Coliseo y la Ciudad del Vaticano.",
+        "img": "./assets/img/roma.jpg",
+        "checklist": [
+            "Mapa turístico",
+            "Reserva de entradas",
+            "Sombrero"
+        ]
+    },
+    {
+        "destino": "El Cairo",
+        "fechas": {
+            "inicio": "2025-07-01",
+            "fin": "2025-07-08"
+        },
+        "notas": "Visitar las pirámides de Giza y el Museo Egipcio.",
+        "img": "./assets/img/el_cairo.jpg",
+        "checklist": [
+            "Protector solar",
+            "Agua embotellada",
+            "Guía local"
+        ]
+    },
+    {
+        "destino": "Sídney",
+        "fechas": {
+            "inicio": "2025-08-15",
+            "fin": "2025-08-25"
+        },
+        "notas": "Disfrutar de la ópera y las playas.",
+        "img": "./assets/img/sidney.jpg",
+        "checklist": [
+            "Visa",
+            "Sombrero",
+            "Protector solar"
+        ]
+    },
+    {
+        "destino": "Berlín",
+        "fechas": {
+            "inicio": "2025-09-05",
+            "fin": "2025-09-12"
+        },
+        "notas": "Visitar la Puerta de Brandeburgo y el Muro de Berlín.",
+        "img": "./assets/img/berlin.jpg",
+        "checklist": [
+            "Adaptador de corriente",
+            "Ropa de abrigo",
+            "Mapa de metro"
+        ]
+    },
+    {
+        "destino": "Bangkok",
+        "fechas": {
+            "inicio": "2025-10-01",
+            "fin": "2025-10-08"
+        },
+        "notas": "Explorar los templos y probar la comida callejera.",
+        "img": "./assets/img/bangkok.jpg",
+        "checklist": [
+            "Sombrero",
+            "Zapatos cómodos",
+            "Guía de templos"
+        ]
+    },
+    {
+        "destino": "Ciudad del Cabo",
+        "fechas": {
+            "inicio": "2025-11-10",
+            "fin": "2025-11-18"
+        },
+        "notas": "Visitar Table Mountain y hacer un safari cercano.",
+        "img": "./assets/img/ciudad_del_cabo.jpg",
+        "checklist": [
+            "Binoculares",
+            "Protector solar",
+            "Cámara"
+        ]
+    },
+    {
+        "destino": "Reikiavik",
+        "fechas": {
+            "inicio": "2025-12-15",
+            "fin": "2025-12-22"
+        },
+        "notas": "Ver la aurora boreal y relajarse en la Laguna Azul.",
+        "img": "./assets/img/reikiavik.jpg",
+        "checklist": [
+            "Abrigo térmico",
+            "Botas de nieve",
+            "Linterna"
+        ]
+    },
+    {
+        "destino": "Machu Picchu",
+        "fechas": {
+            "inicio": "2026-01-05",
+            "fin": "2026-01-12"
+        },
+        "notas": "Hacer un recorrido guiado por las ruinas y explorar el Valle Sagrado.",
+        "img": "./assets/img/machu_picchu.jpg",
+        "checklist": [
+            "Bastones de senderismo",
+            "Protector solar",
+            "Agua embotellada"
+        ]
+    },
+    {
+        "destino": "Kioto",
+        "fechas": {
+            "inicio": "2026-02-20",
+            "fin": "2026-02-28"
+        },
+        "notas": "Visitar los jardines zen y el bosque de bambú de Arashiyama.",
+        "img": "./assets/img/kioto.jpg",
+        "checklist": [
+            "Guía de templos",
+            "Cámara",
+            "Tarjeta de transporte"
+        ]
+    },
+    {
+        "destino": "Dubrovnik",
+        "fechas": {
+            "inicio": "2026-03-10",
+            "fin": "2026-03-17"
+        },
+        "notas": "Recorrer las murallas medievales y disfrutar del mar Adriático.",
+        "img": "./assets/img/dubrovnik.jpg",
+        "checklist": [
+            "Zapatos cómodos",
+            "Sombrero",
+            "Guía local"
+        ]
+    },
+    {
+        "destino": "San Francisco",
+        "fechas": {
+            "inicio": "2026-04-05",
+            "fin": "2026-04-12"
+        },
+        "notas": "Cruzar el Golden Gate y explorar Alcatraz.",
+        "img": "./assets/img/san_francisco.jpg",
+        "checklist": [
+            "Cámara",
+            "Ropa cómoda",
+            "Tarjeta de transporte"
+        ]
+    },
+    {
+        "destino": "El Amazonas",
+        "fechas": {
+            "inicio": "2026-05-15",
+            "fin": "2026-05-22"
+        },
+        "notas": "Realizar un recorrido por la selva y observar la fauna local.",
+        "img": "./assets/img/amazonas.jpg",
+        "checklist": [
+            "Repelente de insectos",
+            "Ropa ligera",
+            "Botas impermeables"
+        ]
+    }
+]

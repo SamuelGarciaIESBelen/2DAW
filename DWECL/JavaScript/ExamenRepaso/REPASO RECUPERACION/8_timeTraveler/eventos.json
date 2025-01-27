@@ -1,0 +1,100 @@
+[  {
+    "eventoHistorico": "Construcción de las Pirámides",
+    "anio": -2560,
+    "ubicacion": "Giza, Egipto",
+    "riesgoTemporal": "medio",
+    "notas": "Podría asustar a los constructores..."
+  },
+  {
+    "eventoHistorico": "Primera Computadora Personal",
+    "anio": 1975,
+    "ubicacion": "Albuquerque, Nuevo México",
+    "riesgoTemporal": "bajo",
+    "notas": ""
+  },
+  {
+    "eventoHistorico": "Nacimiento de la imprenta",
+    "anio": 1440,
+    "ubicacion": "Mainz, Alemania",
+    "riesgoTemporal": "medio",
+    "notas": ""
+  },
+  {
+    "eventoHistorico": "Revolución IA masiva",
+    "anio": 2050,
+    "ubicacion": "Futuro incierto",
+    "riesgoTemporal": "alto",
+    "notas": "Posibles paradoxas existenciales"
+  },
+    {
+      "eventoHistorico": "Caída del Imperio Romano",
+      "anio": 476,
+      "ubicacion": "Roma, Italia",
+      "riesgoTemporal": "alto",
+      "notas": "Podría haber disturbios o saqueos."
+    },
+    {
+      "eventoHistorico": "Descubrimiento de América",
+      "anio": 1492,
+      "ubicacion": "San Salvador, Bahamas",
+      "riesgoTemporal": "medio",
+      "notas": "Interacciones con los nativos deben ser cuidadosas."
+    },
+    {
+      "eventoHistorico": "Revolución Francesa",
+      "anio": 1789,
+      "ubicacion": "París, Francia",
+      "riesgoTemporal": "alto",
+      "notas": "Evitar las ejecuciones públicas."
+    },
+    {
+      "eventoHistorico": "Invención del Teléfono",
+      "anio": 1876,
+      "ubicacion": "Boston, Estados Unidos",
+      "riesgoTemporal": "bajo",
+      "notas": "Gran oportunidad para conocer a Alexander Graham Bell."
+    },
+    {
+      "eventoHistorico": "Llegada del Hombre a la Luna",
+      "anio": 1969,
+      "ubicacion": "Cabo Cañaveral, Estados Unidos",
+      "riesgoTemporal": "bajo",
+      "notas": "Presenciar el lanzamiento del Apolo 11."
+    },
+    {
+      "eventoHistorico": "Gran Incendio de Londres",
+      "anio": 1666,
+      "ubicacion": "Londres, Inglaterra",
+      "riesgoTemporal": "alto",
+      "notas": "Evitar quedar atrapado en el fuego."
+    },
+    {
+      "eventoHistorico": "Independencia de la India",
+      "anio": 1947,
+      "ubicacion": "Nueva Delhi, India",
+      "riesgoTemporal": "medio",
+      "notas": "Podrían ocurrir manifestaciones o disturbios."
+    },
+    {
+      "eventoHistorico": "Invención de la Electricidad Moderna",
+      "anio": 1880,
+      "ubicacion": "Menlo Park, Estados Unidos",
+      "riesgoTemporal": "bajo",
+      "notas": "Interactuar con Thomas Edison y sus experimentos."
+    },
+    {
+      "eventoHistorico": "Hundimiento del Titanic",
+      "anio": 1912,
+      "ubicacion": "Océano Atlántico Norte",
+      "riesgoTemporal": "alto",
+      "notas": "Se recomienda evitar abordar el barco."
+    },
+    {
+      "eventoHistorico": "Protestas de Tiananmén",
+      "anio": 1989,
+      "ubicacion": "Beijing, China",
+      "riesgoTemporal": "alto",
+      "notas": "Situación política sensible, mantener bajo perfil."
+    }
+  ]
+  

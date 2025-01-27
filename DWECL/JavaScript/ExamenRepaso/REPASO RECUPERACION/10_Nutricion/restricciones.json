@@ -1,0 +1,27 @@
+{
+    "intolerancias": {
+      "gluten": true,
+      "lactosa": true
+    },
+    "dietas": {
+      "fodmap": {
+        "permitidos": ["bajo"],
+        "prohibidos": ["alto"]
+      },
+      "vegetariana": {
+        "excluirOrigenAnimal": true
+      },
+      "vegana": {
+        "excluirOrigenAnimal": true,
+        "excluirLacteos": true
+      },
+      "antiinflamatoria": {
+        "requeridoAntiinflamatorio": true
+      },
+      "sinAzúcar": {
+        "permitidos": ["bajo", "nulo"],
+        "prohibidos": ["alto"]
+      }
+    }
+  }
+  

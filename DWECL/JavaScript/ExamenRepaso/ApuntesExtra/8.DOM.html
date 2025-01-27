@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación del DOM con JavaScript</title>
+    <style>
+        .mi-clase {
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <!-- Contenido original -->
+        <p>Este es el contenido inicial dentro del contenedor.</p>
+    </div>
+
+    <div id="elem">Este elemento se ocultará con JavaScript</div>
+
+    <button id="btnAddElement">Añadir Elemento</button>
+
+    <script>
+        // =====================
+        // **JAVASCRIPT - DOCUMENT OBJECT MODEL (DOM)**
+        // =====================
+
+        // **¿Qué es el DOM?**
+        // - El HTML DOM define una forma estándar de acceder y manipular documentos HTML mediante JavaScript.
+        // - Representa todo el contenido de la página como objetos que pueden ser modificados.
+        // - Todos los elementos HTML, junto con su contenido de texto y atributos, se pueden acceder y manipular a través del DOM.
+        // - El contenido puede ser modificado o eliminado y se pueden crear nuevos elementos.
+        // - El DOM es independiente de la plataforma y del lenguaje.
+
+        // **El Árbol del DOM y los Nodos**
+        // - Un documento HTML se representa como un árbol de nodos, donde cada nodo es un objeto que representa una parte del documento.
+        // - Cada nodo del árbol puede ser un elemento, un texto o un comentario, y juntos forman la estructura completa del documento HTML.
+
+        // **Jerarquía del DOM**
+        // - El DOM está enraizado en `window.document` y sigue la estructura del documento HTML.
+        // - `window.document.head` hace referencia a la sección `<head>` del documento.
+        // - `window.document.body` hace referencia a la sección `<body>` del documento.
+        // - Cada etiqueta HTML es un objeto.
+        // - Las etiquetas anidadas son "hijas" de la etiqueta que las contiene.
+        // - El texto dentro de una etiqueta también es un nodo.
+
+        // **Tipos de Nodos en el DOM**
+        // - Todos los elementos del DOM se definen como nodos.
+        // - Los tres tipos de nodos más comunes son:
+        //   1. **Nodos de elemento**: Representan una etiqueta HTML.
+        //   2. **Nodos de texto**: Contienen solo una cadena de texto. Siempre son hojas del árbol, ya que no pueden tener hijos.
+        //   3. **Nodos de comentario**: Representan comentarios en el HTML.
+
+        // **Propiedades y Métodos de los Nodos del DOM**
+
+        // - Para todos los nodos:
+        //   - **parentNode**: Devuelve el nodo padre del nodo actual.
+        //   - **childNodes**: Devuelve una colección de los nodos hijos, incluyendo elementos, texto y comentarios.
+        //   - **firstChild** y **lastChild**: Devuelven el primer y último hijo, respectivamente, que puede ser un nodo de cualquier tipo (texto, comentario, elemento).
+        //   - **previousSibling** y **nextSibling**: Devuelven los nodos hermanos (anteriores y siguientes) que pueden ser de cualquier tipo de nodo.
+
+        // - Para nodos de elemento:
+        //   - **parentElement**: Devuelve el elemento padre del nodo actual.
+        //   - **children**: Devuelve una colección de los elementos hijos (solo nodos de tipo elemento).
+        //   - **firstElementChild** y **lastElementChild**: Devuelven el primer y último hijo que sea un elemento.
+        //   - **previousElementSibling** y **nextElementSibling**: Devuelven los elementos hermanos (anteriores y siguientes) que sean nodos de tipo elemento.
+
+        // **Ejemplo: Manipulación del DOM**
+        const container = document.querySelector("#container");
+        container.innerHTML = '<p>Nuevo contenido dentro del contenedor</p>';
+        console.log(container.textContent); // 'Nuevo contenido dentro del contenedor'
+
+        // **Atributos HTML**
+        const elementoOculto = document.querySelector("#elem");
+        elementoOculto.hidden = true; // Oculta el elemento
+
+        // **Crear y Manipular Elementos**
+        document.querySelector("#btnAddElement").addEventListener("click", () => {
+            const nuevoParrafo = document.createElement("p");
+            nuevoParrafo.textContent = "Este es un nuevo párrafo creado dinámicamente.";
+            container.appendChild(nuevoParrafo);
+        });
+
+        // **Métodos de Inserción**
+        // - **append, prepend, before, after, replaceWith, remove**
+        const nuevoDiv = document.createElement("div");
+        nuevoDiv.textContent = "Este es un div creado con el método prepend.";
+        container.prepend(nuevoDiv);
+        // Crear un nuevo div para cada ejemplo
+        let nuevoDiv = document.createElement("div");
+        nuevoDiv.textContent = "Este es un div creado con el método append.";
+        container.append(nuevoDiv); // Inserta al final de los hijos del container
+
+        nuevoDiv = document.createElement("div");
+        nuevoDiv.textContent = "Este es un div creado con el método prepend.";
+        container.prepend(nuevoDiv); // Inserta al principio de los hijos del container
+
+        nuevoDiv = document.createElement("div");
+        nuevoDiv.textContent = "Este es un div creado con el método before.";
+        container.before(nuevoDiv); // Inserta justo antes del container
+
+        nuevoDiv = document.createElement("div");
+        nuevoDiv.textContent = "Este es un div creado con el método after.";
+        container.after(nuevoDiv); // Inserta justo después del container
+
+        nuevoDiv = document.createElement("div");
+        nuevoDiv.textContent = "Este es un div creado con el método replaceWith.";
+        container.replaceWith(nuevoDiv); // Reemplaza el container con el nuevo div
+        
+        // Eliminar un elemento del DOM
+        nuevoDiv.remove(); // Elimina el div recién creado
+
+        // **Métodos de Inserción con insertAdjacentHTML**
+        // Inserta un HTML al final del container 
+        container.insertAdjacentHTML('beforeend', '<p>Elemento insertado con insertAdjacentHTML</p>');
+        // Inserta un HTML antes de container
+        container.insertAdjacentHTML('beforebegin', '<p>Elemento insertado con beforebegin</p>');
+        // Inserta un HTML al principio de container
+        container.insertAdjacentHTML('afterbegin', '<p>Elemento insertado con afterbegin</p>');
+        // Inserta un HTML después de container
+        container.insertAdjacentHTML('afterend', '<p>Elemento insertado con afterend</p>');
+
+        // **Estilos y Clases**
+        nuevoDiv.classList.add("mi-clase");
+        console.log(nuevoDiv.classList.contains("mi-clase")); // true
+        nuevoDiv.classList.remove("mi-clase");
+        nuevoDiv.classList.toggle("mi-clase");
+
+        // **Buscar Elementos en el DOM**
+        // - Los métodos modernos para buscar elementos incluyen `querySelector` y `querySelectorAll`
+        const parrafoEncontrado = document.querySelector("#container p");
+        console.log(parrafoEncontrado.textContent); // 'Nuevo contenido dentro del contenedor'
+
+        // - **querySelector** devuelve el primer elemento que coincide con el selector CSS dado.
+        // - **querySelectorAll** devuelve todos los elementos que coinciden con el selector CSS dado.
+        const todosLosParrafos = document.querySelectorAll("#container p");
+        todosLosParrafos.forEach(p => console.log(p.textContent));
+
+        // **Navegación entre Nodos**
+        // - **Navegación con Todos los Nodos**
+        console.log("Navegación con Todos los Nodos (childNodes):");
+        container.childNodes.forEach((node) => {
+            console.log(node); // Incluye nodos de texto, elementos y comentarios
+        });
+        console.log(container.firstChild); // Puede ser un nodo de texto o un elemento
+        console.log(container.lastChild);  // Último nodo hijo (puede ser texto, comentario o elemento)
+        console.log(container.previousSibling); // Nodo anterior al container (puede ser de cualquier tipo)
+        console.log(container.nextSibling); // Nodo siguiente al container (puede ser de cualquier tipo)
+
+        // - **Navegación Solo entre Nodos de Elemento**
+        console.log("Navegación Solo entre Nodos de Elemento (children):");
+        [...container.children].forEach((element) => {
+            console.log(element); // Solo incluye nodos de tipo elemento
+        });
+        console.log(container.firstElementChild); // Primer elemento hijo
+        console.log(container.lastElementChild);  // Último elemento hijo
+        console.log(container.previousElementSibling); // Nodo anterior que sea un elemento
+        console.log(container.nextElementSibling); // Nodo siguiente que sea un elemento
+
+        // **Atributos HTML - Métodos**
+        // - Para manejar los atributos HTML, se pueden usar métodos como, hasAttribute, `getAttribute`, `setAttribute`, y `removeAttribute`
+        const boton = document.querySelector("#btnAddElement");
+        boton.setAttribute("title", "Clic para añadir un nuevo párrafo");
+        console.log(boton.getAttribute("title")); // 'Clic para añadir un nuevo párrafo'
+        boton.removeAttribute("title");
+
+        // **Uso de data-* Atributos y dataset**
+        // - Los atributos `data-*` son útiles para pasar datos personalizados desde HTML a JavaScript.
+        const elementoConData = document.createElement("div");
+        elementoConData.setAttribute("data-info", "12345");
+        container.appendChild(elementoConData);
+        console.log(elementoConData.dataset.info); // '12345'
+    </script>
+</body>
+
+</html>

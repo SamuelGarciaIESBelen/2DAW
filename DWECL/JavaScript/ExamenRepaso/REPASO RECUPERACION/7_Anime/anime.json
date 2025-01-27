@@ -1,0 +1,108 @@
+[
+    {
+      "titulo": "Fullmetal Alchemist: Brotherhood",
+      "temporadas": 1,
+      "capitulos": 64,
+      "genero": "shounen",
+      "imagen": "images/fma.jpg",
+      "sinopsis": "Dos hermanos que... (bla bla)"
+    },
+    {
+      "titulo": "Attack on Titan",
+      "temporadas": 4,
+      "capitulos": 87,
+      "genero": "shounen",
+      "imagen": "images/aot.jpg",
+      "sinopsis": "La humanidad vive encerrada... (bla bla)"
+    },
+    {
+      "titulo": "Violet Evergarden",
+      "temporadas": 1,
+      "capitulos": 13,
+      "genero": "shojo",
+      "imagen": "images/violet.jpg",
+      "sinopsis": "Una chica autómata que... (bla bla)"
+    },
+  
+    {
+      "titulo": "Naruto",
+      "temporadas": 5,
+      "capitulos": 220,
+      "genero": "shounen",
+      "imagen": "images/naruto.jpg",
+      "sinopsis": "Un joven ninja busca convertirse en Hokage para ganar el reconocimiento de su aldea."
+    },
+    {
+      "titulo": "One Piece",
+      "temporadas": 20,
+      "capitulos": 1000,
+      "genero": "shounen",
+      "imagen": "images/onepiece.jpg",
+      "sinopsis": "Un grupo de piratas busca el legendario tesoro conocido como One Piece."
+    },
+    {
+      "titulo": "Demon Slayer",
+      "temporadas": 2,
+      "capitulos": 44,
+      "genero": "shounen",
+      "imagen": "images/demonslayer.jpg",
+      "sinopsis": "Un joven lucha contra demonios para vengar a su familia y salvar a su hermana."
+    },
+    {
+      "titulo": "Death Note",
+      "temporadas": 1,
+      "capitulos": 37,
+      "genero": "suspenso",
+      "imagen": "images/deathnote.jpg",
+      "sinopsis": "Un estudiante encuentra un cuaderno que puede matar a cualquier persona cuyo nombre se escriba en él."
+    },
+    {
+      "titulo": "My Hero Academia",
+      "temporadas": 6,
+      "capitulos": 138,
+      "genero": "shounen",
+      "imagen": "images/mha.jpg",
+      "sinopsis": "En un mundo donde la mayoría de las personas tienen superpoderes, un joven sin habilidades sueña con ser un héroe."
+    },
+    {
+      "titulo": "Sword Art Online",
+      "temporadas": 4,
+      "capitulos": 97,
+      "genero": "aventura",
+      "imagen": "images/sao.jpg",
+      "sinopsis": "Jugadores atrapados en un videojuego de realidad virtual deben luchar para sobrevivir."
+    },
+    {
+      "titulo": "Tokyo Ghoul",
+      "temporadas": 4,
+      "capitulos": 48,
+      "genero": "terror",
+      "imagen": "images/tokyoghoul.jpg",
+      "sinopsis": "Un joven se convierte en mitad ghoul y debe aprender a convivir con su nueva naturaleza."
+    },
+    {
+      "titulo": "Steins;Gate",
+      "temporadas": 1,
+      "capitulos": 24,
+      "genero": "ciencia ficción",
+      "imagen": "images/steinsgate.jpg",
+      "sinopsis": "Un grupo de amigos descubre una forma de enviar mensajes al pasado, alterando la línea temporal."
+    },
+    {
+      "titulo": "Haikyuu!!",
+      "temporadas": 4,
+      "capitulos": 85,
+      "genero": "deportes",
+      "imagen": "images/haikyuu.jpg",
+      "sinopsis": "Un joven apasionado por el voleibol busca llegar a lo más alto junto a su equipo."
+    },
+    {
+      "titulo": "Code Geass",
+      "temporadas": 2,
+      "capitulos": 50,
+      "genero": "mecha",
+      "imagen": "images/codegeass.jpg",
+      "sinopsis": "Un exiliado príncipe obtiene el poder de controlar a las personas y busca derrocar un imperio."
+    }
+  ]
+  

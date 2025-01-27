@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript: setInterval, setTimeout y Manejo de Tiempo</title>
+    <style>
+        .mensaje {
+            font-size: 20px;
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Utilidades de JavaScript para el Manejo de Tiempo: setInterval, setTimeout, etc.</h2>
+
+    <div id="mensaje-timeout" class="mensaje">Este mensaje será manipulado con setTimeout.</div>
+    <div id="mensaje-contador" class="mensaje">Este mensaje mostrará el contador simple.</div>
+    <div id="mensaje-play-pause" class="mensaje">Este mensaje mostrará el contador Play/Pause.</div>
+    <div id="mensaje-reinicio" class="mensaje">Este mensaje mostrará el contador con stop/reiniciar.</div>
+    <div id="mensaje-adelante" class="mensaje">Este mensaje mostrará el conteo hacia adelante.</div>
+    <div id="mensaje-atras" class="mensaje">Este mensaje mostrará el conteo hacia atrás.</div>
+    <div id="mensaje-parpadeo" class="mensaje">Este mensaje parpadea cada 500ms.</div>
+
+    <button id="iniciar-temporizador">Iniciar Temporizador</button>
+    <button id="detener-temporizador">Detener Temporizador</button>
+    <button id="play-pause">Play/Pause</button>
+    <button id="stop-reiniciar">Stop/Reiniciar</button>
+
+    <script>
+        // =====================
+        // **setTimeout**: Ejecuta una función después de un tiempo específico (en milisegundos).
+        // =====================
+        setTimeout(() => {
+            document.querySelector("#mensaje-timeout").textContent = "Este mensaje cambió después de 3 segundos";
+        }, 3000);
+
+        // =====================
+        // **setInterval**: Contador que se incrementa cada 1 segundo
+        // =====================
+        let contador = 0;
+        const mensajeContador = document.querySelector("#mensaje-contador");
+        let intervaloID = null;
+
+        function iniciarContador() {
+            if (!intervaloID) {
+                intervaloID = setInterval(() => {
+                    contador++;
+                    mensajeContador.textContent = `Contador: ${contador}`;
+                }, 1000);
+            }
+        }
+
+        function detenerContador() {
+            if (intervaloID) {
+                clearInterval(intervaloID);
+                intervaloID = null;
+                mensajeContador.textContent = `Contador detenido en: ${contador}`;
+            }
+        }
+
+        document.querySelector("#iniciar-temporizador").addEventListener("click", iniciarContador);
+        document.querySelector("#detener-temporizador").addEventListener("click", detenerContador);
+
+        // =====================
+        // **Play/Pause y Stop/Reiniciar**
+        // =====================
+        let intervaloPlayPauseID = null;
+        let pausado = true;
+        let contadorPlayPause = 0;
+        const mensajePlayPause = document.querySelector("#mensaje-play-pause");
+
+        function playPauseContador() {
+            if (pausado) {
+                intervaloPlayPauseID = setInterval(() => {
+                    contadorPlayPause++;
+                    mensajePlayPause.textContent = `Play/Pause Contador: ${contadorPlayPause}`;
+                }, 1000);
+                pausado = false;
+            } else {
+                clearInterval(intervaloPlayPauseID);
+                intervaloPlayPauseID = null;
+                pausado = true;
+            }
+        }
+
+        function stopReiniciarContador() {
+            if (intervaloPlayPauseID) {
+                clearInterval(intervaloPlayPauseID);
+                intervaloPlayPauseID = null;
+            }
+            contadorPlayPause = 0;
+            mensajePlayPause.textContent = `Contador Reiniciado: ${contadorPlayPause}`;
+            pausado = true;
+        }
+
+        document.querySelector("#play-pause").addEventListener("click", playPauseContador);
+        document.querySelector("#stop-reiniciar").addEventListener("click", stopReiniciarContador);
+
+        // =====================
+        // **Conteo hacia Adelante y hacia Atrás**
+        // =====================
+        let conteoAdelanteID = null;
+        let conteoAtrasID = null;
+        let tiempoRestante = 10;
+        const mensajeAdelante = document.querySelector("#mensaje-adelante");
+        const mensajeAtras = document.querySelector("#mensaje-atras");
+
+        function iniciarConteoAdelante() {
+            let contadorAdelante = 0;
+            conteoAdelanteID = setInterval(() => {
+                contadorAdelante++;
+                mensajeAdelante.textContent = `Contando hacia adelante: ${contadorAdelante}`;
+            }, 1000);
+        }
+
+        function iniciarConteoAtras() {
+            mensajeAtras.textContent = `Contando hacia atrás: ${tiempoRestante}`;
+            conteoAtrasID = setInterval(() => {
+                tiempoRestante--;
+                mensajeAtras.textContent = `Contando hacia atrás: ${tiempoRestante}`;
+                if (tiempoRestante <= 0) {
+                    clearInterval(conteoAtrasID);
+                    conteoAtrasID = null;
+                    mensajeAtras.textContent = "¡Tiempo agotado!";
+                }
+            }, 1000);
+        }
+
+        setTimeout(() => {
+            iniciarConteoAdelante();
+        }, 6000);
+
+        setTimeout(() => {
+            iniciarConteoAtras();
+        }, 12000);
+
+        // =====================
+        // **Parpadeo de un Elemento**
+        // =====================
+        const mensajeParpadeo = document.querySelector("#mensaje-parpadeo");
+        let visible = true;
+        setInterval(() => {
+            visible = !visible;
+            mensajeParpadeo.style.visibility = visible ? "visible" : "hidden";
+        }, 500);
+    </script>
+</body>
+</html>

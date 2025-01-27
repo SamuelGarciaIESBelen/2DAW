@@ -1,0 +1,93 @@
+[
+    {
+      "id": "h1",
+      "nombre": "Bola de Fuego",
+      "nivel": 3,
+      "escuela": "Evocación",
+      "descripcion": "Lanza una bola de fuego que explota en área...",
+      "costeMana": 10,
+      "afectaA": ["dragon", "humanoide", "bestia"]
+    },
+    {
+      "id": "h2",
+      "nombre": "Curar Heridas",
+      "nivel": 1,
+      "escuela": "Curación",
+      "descripcion": "Restaura puntos de vida al objetivo...",
+      "costeMana": 5,
+      "afectaA": ["humanoide", "bestia"]
+    },
+    {
+      "id": "h3",
+      "nombre": "Relámpago Fulminante",
+      "nivel": 4,
+      "escuela": "Evocación",
+      "descripcion": "Un relámpago que atraviesa múltiples objetivos...",
+      "costeMana": 12,
+      "afectaA": ["elemental", "bestia", "humanoide"]
+    },
+    {
+      "id": "h4",
+      "nombre": "Escudo Arcano",
+      "nivel": 2,
+      "escuela": "Abjuración",
+      "descripcion": "Crea un escudo que absorbe daño mágico...",
+      "costeMana": 8,
+      "afectaA": ["humanoide"]
+    },
+    {
+      "id": "h5",
+      "nombre": "Invocar Elemental de Agua",
+      "nivel": 5,
+      "escuela": "Conjuración",
+      "descripcion": "Invoca un elemental de agua para luchar a tu lado...",
+      "costeMana": 15,
+      "afectaA": ["undead", "demonio"]
+    },
+    {
+      "id": "h6",
+      "nombre": "Flecha Ácida",
+      "nivel": 2,
+      "escuela": "Evocación",
+      "descripcion": "Lanza una flecha de ácido que corroe al objetivo...",
+      "costeMana": 7,
+      "afectaA": ["constructo", "undead", "humanoide"]
+    },
+    {
+      "id": "h7",
+      "nombre": "Desintegrar",
+      "nivel": 6,
+      "escuela": "Transmutación",
+      "descripcion": "Reduce al polvo al objetivo si no supera su resistencia...",
+      "costeMana": 20,
+      "afectaA": ["constructo", "bestia", "demonio"]
+    },
+    {
+      "id": "h8",
+      "nombre": "Caminar en las Sombras",
+      "nivel": 3,
+      "escuela": "Ilusión",
+      "descripcion": "Permite al lanzador volverse invisible durante un tiempo limitado...",
+      "costeMana": 9,
+      "afectaA": ["humanoide", "undead"]
+    },
+    {
+      "id": "h9",
+      "nombre": "Luz Divina",
+      "nivel": 4,
+      "escuela": "Evocación",
+      "descripcion": "Emite un rayo de luz que inflige daño a criaturas oscuras...",
+      "costeMana": 11,
+      "afectaA": ["undead", "demonio"]
+    },
+    {
+      "id": "h10",
+      "nombre": "Resurrección Menor",
+      "nivel": 5,
+      "escuela": "Necromancia",
+      "descripcion": "Restaura la vida a un aliado recientemente caído...",
+      "costeMana": 18,
+      "afectaA": ["humanoide"]
+    }
+  ]
+  

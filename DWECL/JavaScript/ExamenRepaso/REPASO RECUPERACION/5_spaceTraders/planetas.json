@@ -1,0 +1,88 @@
+[
+    {
+      "nombre": "Zargon Prime",
+      "productos": [
+        { "nombre": "Crystal", "precio": 100, "stock": 50 },
+        { "nombre": "Fuel", "precio": 200, "stock": 20 },
+        { "nombre": "Food Packs", "precio": 20, "stock": 100 }
+      ]
+    },
+    {
+      "nombre": "Nova Terra",
+      "productos": [
+        { "nombre": "Fuel", "precio": 180, "stock": 10 },
+        { "nombre": "Medicine", "precio": 300, "stock": 5 }
+      ]
+    },
+    {
+      "nombre": "Kepler X",
+      "productos": [
+        { "nombre": "Water", "precio": 10, "stock": 100 },
+        { "nombre": "Crystal", "precio": 150, "stock": 15 }
+      ]
+    },
+      {
+        "nombre": "Lunar Haven",
+        "productos": [
+          { "nombre": "Oxygen Tanks", "precio": 250, "stock": 30 },
+          { "nombre": "Solar Panels", "precio": 500, "stock": 10 },
+          { "nombre": "Food Packs", "precio": 25, "stock": 200 }
+        ]
+      },
+      {
+        "nombre": "Vulcanis",
+        "productos": [
+          { "nombre": "Lava Rocks", "precio": 400, "stock": 50 },
+          { "nombre": "Fuel", "precio": 220, "stock": 25 },
+          { "nombre": "Crystal", "precio": 120, "stock": 40 }
+        ]
+      },
+      {
+        "nombre": "Aqua Sphere",
+        "productos": [
+          { "nombre": "Water", "precio": 8, "stock": 500 },
+          { "nombre": "Medicine", "precio": 350, "stock": 20 },
+          { "nombre": "Fish", "precio": 50, "stock": 150 }
+        ]
+      },
+      {
+        "nombre": "Celestara",
+        "productos": [
+          { "nombre": "Star Dust", "precio": 1000, "stock": 5 },
+          { "nombre": "Fuel", "precio": 190, "stock": 30 },
+          { "nombre": "Crystal", "precio": 130, "stock": 60 }
+        ]
+      },
+      {
+        "nombre": "Orbitix",
+        "productos": [
+          { "nombre": "Microchips", "precio": 600, "stock": 15 },
+          { "nombre": "Water", "precio": 12, "stock": 300 },
+          { "nombre": "Food Packs", "precio": 22, "stock": 150 }
+        ]
+      },
+      {
+        "nombre": "Solara",
+        "productos": [
+          { "nombre": "Solar Panels", "precio": 520, "stock": 8 },
+          { "nombre": "Oxygen Tanks", "precio": 270, "stock": 20 },
+          { "nombre": "Fuel", "precio": 210, "stock": 18 }
+        ]
+      },
+      {
+        "nombre": "Terra Nova",
+        "productos": [
+          { "nombre": "Seeds", "precio": 15, "stock": 500 },
+          { "nombre": "Water", "precio": 9, "stock": 700 },
+          { "nombre": "Medicine", "precio": 320, "stock": 25 }
+        ]
+      },
+      {
+        "nombre": "Nebulon",
+        "productos": [
+          { "nombre": "Nebula Gas", "precio": 800, "stock": 10 },
+          { "nombre": "Star Dust", "precio": 950, "stock": 7 },
+          { "nombre": "Crystal", "precio": 140, "stock": 35 }
+        ]
+      }       
+  ]

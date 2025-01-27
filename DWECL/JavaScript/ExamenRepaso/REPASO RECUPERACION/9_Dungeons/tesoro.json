@@ -1,0 +1,108 @@
+[
+    {
+      "id": "t1",
+      "nombre": "Espada Rúnica",
+      "rareza": "épico",
+      "valorMonedas": 300,
+      "tipo": "arma"
+    },
+    {
+      "id": "t2",
+      "nombre": "Poción de Invulnerabilidad",
+      "rareza": "raro",
+      "valorMonedas": 150,
+      "tipo": "pocion"
+    },
+    {
+      "id": "t3",
+      "nombre": "Amuleto de Protección",
+      "rareza": "raro",
+      "valorMonedas": 200,
+      "tipo": "accesorio"
+    },
+    {
+      "id": "t4",
+      "nombre": "Escudo del Guardián",
+      "rareza": "épico",
+      "valorMonedas": 400,
+      "tipo": "arma"
+    },
+    {
+      "id": "t5",
+      "nombre": "Pergamino de Teletransporte",
+      "rareza": "raro",
+      "valorMonedas": 250,
+      "tipo": "consumible"
+    },
+    {
+      "id": "t6",
+      "nombre": "Anillo de Regeneración",
+      "rareza": "épico",
+      "valorMonedas": 500,
+      "tipo": "accesorio"
+    },
+    {
+      "id": "t7",
+      "nombre": "Botas de Velocidad",
+      "rareza": "raro",
+      "valorMonedas": 180,
+      "tipo": "ropa"
+    },
+    {
+      "id": "t8",
+      "nombre": "Capa de Invisibilidad",
+      "rareza": "legendario",
+      "valorMonedas": 1000,
+      "tipo": "ropa"
+    },
+    {
+      "id": "t9",
+      "nombre": "Elixir de Sabiduría",
+      "rareza": "común",
+      "valorMonedas": 50,
+      "tipo": "pocion"
+    },
+    {
+      "id": "t10",
+      "nombre": "Casco del Guerrero",
+      "rareza": "común",
+      "valorMonedas": 75,
+      "tipo": "arma"
+    },
+    {
+      "id": "t11",
+      "nombre": "Guantelete del Dragón",
+      "rareza": "épico",
+      "valorMonedas": 600,
+      "tipo": "arma"
+    },
+    {
+      "id": "t12",
+      "nombre": "Colgante del Clérigo",
+      "rareza": "raro",
+      "valorMonedas": 300,
+      "tipo": "accesorio"
+    },
+    {
+      "id": "t13",
+      "nombre": "Poción de Salud Mayor",
+      "rareza": "común",
+      "valorMonedas": 30,
+      "tipo": "pocion"
+    },
+    {
+      "id": "t14",
+      "nombre": "Tomo de Magia Arcana",
+      "rareza": "legendario",
+      "valorMonedas": 1200,
+      "tipo": "consumible"
+    },
+    {
+      "id": "t15",
+      "nombre": "Báculo del Invocador",
+      "rareza": "épico",
+      "valorMonedas": 800,
+      "tipo": "arma"
+    }
+  ]
+  

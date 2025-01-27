@@ -1,0 +1,111 @@
+[
+    {
+      "nombre": "Brócoli",
+      "categoria": "verdura",
+      "fodmap": "alto",
+      "azucar": "bajo",
+      "calorias": 34,
+      "micronutrientes": ["Vitamina C", "Vitamina K"],
+      "antiinflamatorio": true,
+      "origenAnimal": false,
+      "gluten": false,
+      "lactosa": false
+    },
+    {
+      "nombre": "Arroz Blanco",
+      "categoria": "cereal",
+      "fodmap": "bajo",
+      "azucar": "bajo",
+      "calorias": 130,
+      "micronutrientes": ["Hierro"],
+      "antiinflamatorio": false,
+      "origenAnimal": false,
+      "gluten": false,
+      "lactosa": false
+    },
+    {
+      "nombre": "Pollo",
+      "categoria": "proteína",
+      "fodmap": "bajo",
+      "azucar": "nulo",
+      "calorias": 165,
+      "micronutrientes": ["Proteínas", "Vitamina B3"],
+      "antiinflamatorio": false,
+      "origenAnimal": true,
+      "gluten": false,
+      "lactosa": false
+    },
+    {
+      "nombre": "Manzana",
+      "categoria": "fruta",
+      "fodmap": "alto",
+      "azucar": "alto",
+      "calorias": 52,
+      "micronutrientes": ["Vitamina C", "Fibra"],
+      "antiinflamatorio": false,
+      "origenAnimal": false,
+      "gluten": false,
+      "lactosa": false
+    },
+    {
+      "nombre": "Salmón",
+      "categoria": "proteína",
+      "fodmap": "bajo",
+      "azucar": "nulo",
+      "calorias": 208,
+      "micronutrientes": ["Omega-3", "Vitamina D"],
+      "antiinflamatorio": true,
+      "origenAnimal": true,
+      "gluten": false,
+      "lactosa": false
+    },
+    {
+      "nombre": "Leche Entera",
+      "categoria": "lácteos",
+      "fodmap": "alto",
+      "azucar": "medio",
+      "calorias": 60,
+      "micronutrientes": ["Calcio", "Vitamina D"],
+      "antiinflamatorio": false,
+      "origenAnimal": true,
+      "gluten": false,
+      "lactosa": true
+    },
+    {
+      "nombre": "Quinoa",
+      "categoria": "cereal",
+      "fodmap": "bajo",
+      "azucar": "bajo",
+      "calorias": 120,
+      "micronutrientes": ["Proteínas", "Magnesio"],
+      "antiinflamatorio": true,
+      "origenAnimal": false,
+      "gluten": false,
+      "lactosa": false
+    },
+    {
+      "nombre": "Huevos",
+      "categoria": "proteína",
+      "fodmap": "bajo",
+      "azucar": "nulo",
+      "calorias": 155,
+      "micronutrientes": ["Proteínas", "Colina"],
+      "antiinflamatorio": false,
+      "origenAnimal": true,
+      "gluten": false,
+      "lactosa": false
+    },
+    {
+      "nombre": "Frambuesas",
+      "categoria": "fruta",
+      "fodmap": "bajo",
+      "azucar": "medio",
+      "calorias": 52,
+      "micronutrientes": ["Vitamina C", "Fibra"],
+      "antiinflamatorio": true,
+      "origenAnimal": false,
+      "gluten": false,
+      "lactosa": false
+    }
+  ]
+  

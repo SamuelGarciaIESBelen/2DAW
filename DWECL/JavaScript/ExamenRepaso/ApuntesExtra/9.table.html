@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creación y Manipulación de Tablas en el DOM</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>Tabla Preexistente</h2>
+    <table id="tabla-preexistente">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Manzanas</td>
+                <td>2.50</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>Naranjas</td>
+                <td>3.00</td>
+                <td>15</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Tabla Creada Dinámicamente</h2>
+    <div id="contenedor-tabla"></div>
+
+    <script>
+        // =====================
+        // **JAVASCRIPT - CREACIÓN Y MANIPULACIÓN DE TABLAS EN EL DOM**
+        // =====================
+
+        // **Manipulación de una Tabla Preexistente**
+        // - Vamos a agregar una nueva fila a una tabla ya existente en el HTML
+        const tablaPreexistente = document.querySelector("#tabla-preexistente");
+        const nuevaFila = tablaPreexistente.insertRow(); // Crear una nueva fila al final del tbody
+        
+        // Añadir celdas y contenido a la nueva fila
+        let celdaNueva = nuevaFila.insertCell();
+        celdaNueva.textContent = "Plátanos";
+
+        celdaNueva = nuevaFila.insertCell();
+        celdaNueva.textContent = "1.20";
+
+        celdaNueva = nuevaFila.insertCell();
+        celdaNueva.textContent = "25";
+
+        // Podemos acceder a propiedades de la tabla
+        console.log("Filas en la tabla preexistente:", tablaPreexistente.rows); // Incluye todas las filas, incluyendo encabezados
+        console.log("Celdas de la nueva fila:", nuevaFila.cells); // Devuelve las celdas de la fila recién añadida
+
+        // **Crear una Tabla Dinámicamente desde Cero**
+        // - Creamos una tabla desde cero y la añadimos al DOM.
+        const contenedorDeTabla = document.querySelector("#contenedor-tabla");
+
+        // Crear la tabla y el cuerpo de la tabla
+        const tabla = document.createElement("table");
+        const cuerpoDeTabla = document.createElement("tbody");
+
+        // Añadir encabezados a la tabla
+        const encabezadoDeTabla = document.createElement("thead");
+        const filaDeEncabezado = document.createElement("tr");
+
+        const encabezados = ["Nombre", "Edad", "País"];
+        encabezados.forEach(textoEncabezado => {
+            const th = document.createElement("th");
+            th.textContent = textoEncabezado;
+            filaDeEncabezado.appendChild(th);
+        });
+        encabezadoDeTabla.appendChild(filaDeEncabezado);
+        tabla.appendChild(encabezadoDeTabla);
+
+        // Añadir filas de datos a la tabla
+        const datos = [
+            ["Juan", 30, "España"],
+            ["María", 25, "México"],
+            ["Carlos", 35, "Argentina"]
+        ];
+
+        datos.forEach(datosFila => {
+            const fila = document.createElement("tr");
+            datosFila.forEach(datoCelda => {
+                const celda = document.createElement("td");
+                celda.textContent = datoCelda;
+                fila.appendChild(celda);
+            });
+            cuerpoDeTabla.appendChild(fila);
+        });
+
+        // Añadir el cuerpo de la tabla a la tabla
+        tabla.appendChild(cuerpoDeTabla);
+
+        // Añadir la tabla al contenedor
+        contenedorDeTabla.appendChild(tabla);
+
+        // **Propiedades Específicas de Elementos <table>**
+        // - Una vez creada la tabla, podemos acceder a varias propiedades específicas de las tablas.
+        
+        // **tabla.rows**: Obtiene todas las filas de la tabla, incluyendo encabezados y cuerpo.
+        console.log("Filas de la tabla dinámica:", tabla.rows); // Devuelve una HTMLCollection con todas las filas
+
+        // **tabla.tBodies**: Devuelve una colección con los cuerpos de la tabla.
+        console.log("Cuerpos de la tabla dinámica:", tabla.tBodies); // Devuelve una HTMLCollection con todos los <tbody>
+
+        // **fila.cells**: Para una fila específica, podemos obtener todas las celdas.
+        const primeraFila = tabla.rows[1]; // Primera fila de datos (índice 0 es la fila de encabezado)
+        console.log("Celdas de la primera fila de datos en la tabla dinámica:", primeraFila.cells); // Devuelve una HTMLCollection con todas las celdas de la fila
+
+        // **celda.cellIndex**: Obtiene el índice de una celda dentro de su fila.
+        const primeraCelda = primeraFila.cells[0];
+        console.log("Índice de la primera celda en la fila de la tabla dinámica:", primeraCelda.cellIndex); // Devuelve 0, ya que es la primera celda
+
+        // =====================
+        // **FUNCIONES PARA INSERTAR FILAS Y COLUMNAS**
+        // =====================
+
+        // **insertarFilaAlInicio**: Añade una nueva fila al inicio de la tabla (justo después del encabezado).
+        function insertarFilaAlInicio(tabla) {
+            const nuevaFila = tabla.insertRow(1); // Índice 1 para agregar justo después del encabezado
+            for (let i = 0; i < tabla.rows[0].cells.length; i++) {
+                const nuevaCelda = nuevaFila.insertCell(i);
+                nuevaCelda.textContent = `Nueva Fila Inicio - Columna ${i + 1}`;
+            }
+        }
+
+        // **insertarFilaAlFinal**: Añade una nueva fila al final del cuerpo de la tabla.
+        function insertarFilaAlFinal(tabla) {
+            const nuevaFila = tabla.insertRow(-1); // Índice -1 para agregar al final
+            for (let i = 0; i < tabla.rows[0].cells.length; i++) {
+                const nuevaCelda = nuevaFila.insertCell(i);
+                nuevaCelda.textContent = `Nueva Fila Final - Columna ${i + 1}`;
+            }
+        }
+
+        // **insertarColumnaIzquierda**: Añade una nueva columna al principio de cada fila.
+        function insertarColumnaIzquierda(tabla) {
+            for (let i = 0; i < tabla.rows.length; i++) {
+                const nuevaCelda = tabla.rows[i].insertCell(0); // Insertar al principio de la fila
+                nuevaCelda.textContent = i === 0 ? 'Nueva Columna Izquierda' : `Fila ${i} - Columna Izquierda`;
+            }
+        }
+
+        // **insertarColumnaDerecha**: Añade una nueva columna al final de cada fila.
+        function insertarColumnaDerecha(tabla) {
+            for (let i = 0; i < tabla.rows.length; i++) {
+                const nuevaCelda = tabla.rows[i].insertCell(-1); // Insertar al final de la fila
+                nuevaCelda.textContent = i === 0 ? 'Nueva Columna Derecha' : `Fila ${i} - Columna Derecha`;
+            }
+        }
+
+        // Ejemplos de uso
+        insertarFilaAlInicio(tabla);
+        insertarFilaAlFinal(tabla);
+        insertarColumnaIzquierda(tabla);
+        insertarColumnaDerecha(tabla);
+
+        // =====================
+        // **FUNCIONES PARA ELIMINAR FILAS Y COLUMNAS**
+        // =====================
+
+        // **eliminarFila**: Elimina una fila en la posición indicada.
+        function eliminarFila(tabla, indice) {
+            if (indice >= 0 && indice < tabla.rows.length) {
+                tabla.deleteRow(indice);
+            } else {
+                console.log("Índice de fila fuera de rango");
+            }
+        }
+
+        // **eliminarColumna**: Elimina una columna en la posición indicada.
+        function eliminarColumna(tabla, indice) {
+            for (let i = 0; i < tabla.rows.length; i++) {
+                if (indice >= 0 && indice < tabla.rows[i].cells.length) {
+                    tabla.rows[i].deleteCell(indice);
+                } else {
+                    console.log("Índice de columna fuera de rango");
+                    break;
+                }
+            }
+        }
+
+        // Ejemplos de uso para eliminar
+        // eliminarFila(tabla, 2); // Elimina la tercera fila (índice 2)
+        // eliminarColumna(tabla, 1); // Elimina la segunda columna (índice 1)
+    </script>
+</body>
+</html>
