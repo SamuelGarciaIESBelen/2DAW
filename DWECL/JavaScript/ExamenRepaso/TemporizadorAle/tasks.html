@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Tareas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .buttons {
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Gestión de Tareas</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th id="contador" colspan="3">00:00</th>
+            </tr>
+            <tr id="encabezado"></tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+
+    <div class="buttons">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <button id="pause">Pause</button>
+    </div>
+
+    <script src="taskAll.js"></script>
+    <script src="tareas.js"></script>
+
+</body>
+
+</html>
