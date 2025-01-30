@@ -82,7 +82,7 @@ public class ComercialService {
 		List<PedidoDTO> pedidosDTO = new ArrayList<>();
 
 		// Esto es para añadir el nombre del cliente a cada pedido, es mejor hacerlo directamente por SQL
-		for (Pedido p : pedidos) {
+		/*for (Pedido p : pedidos) {
 			int idC = p.getIdCliente();
 			for (Cliente c : clientes) {
 				if (c.getId() == idC) {
@@ -90,8 +90,26 @@ public class ComercialService {
 							+ " " + (c.getApellido2() != null ? c.getApellido2() : ""), ""));
 				}
 			}
-		}
+		}*/
+
+		pedidos.forEach(p -> {
+			int idC = p.getIdCliente();
+			String nombre = clientes.stream()
+					.filter(c -> c.getId() == idC)
+					.map(c -> c.getNombre() + " " + c.getApellido1() + " " + (c.getApellido2() != null ? c.getApellido2() : ""))
+					.findFirst().orElse("");
+
+			pedidosDTO.add(pedidoMapper.pedidoAPedidoDTO(p, nombre, ""));
+		});
+
 		return pedidosDTO;
 	}
 
+	public int getTotalPedidos() {
+		return pedidoDAO.getTotalPedidos();
+	}
+
+	public double getPorcentajePedidos(int idComercial) {
+		return (double)listPedidosDTO(idComercial).size() / getTotalPedidos() * 100;
+	}
 }

@@ -53,6 +53,12 @@ public class ComercialController {
 		List<PedidoDTO> pedidosDTO = comercialService.listPedidosDTO(id);
 		model.addAttribute("pedidosDTO", pedidosDTO);
 
+		int totalPedidos = comercialService.getTotalPedidos();
+		model.addAttribute("totalPedidos", totalPedidos);
+
+		double porcentajePedidos = comercialService.getPorcentajePedidos(id);
+		model.addAttribute("porcentajePedidos", porcentajePedidos);
+
 		return "comerciales/detalles";
 	}
 

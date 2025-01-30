@@ -62,7 +62,7 @@
 					Pedidos
 				</div>
 				<div style="float: none;width: auto;overflow: hidden;">
-					<div style="border: solid 1px grey; border-radius: 15px; margin-top: 10px; padding: 5px 10px 10px 10px; width: 200px"
+					<div style="border: solid 1px darkblue; border-radius: 15px; margin-top: 10px; padding: 5px 10px 10px 10px; width: 200px"
 						 th:each="pedidoDTO : ${pedidosDTO}">
 
 						<p th:text="${pedidoDTO.getFecha()}">Fecha</p>
@@ -75,6 +75,7 @@
 				</div>
 			</div>
 		</form>
+		<p>Aquí va el mensaje</p>
 	</div>
 	<div style="display: flex; margin-top: 50px; margin-bottom: 50px">
 		<button style="margin: auto"><a th:text="#{volver}" th:href="@{/comerciales}">Volver</a></button>

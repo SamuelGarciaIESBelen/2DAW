@@ -82,15 +82,15 @@ public class ClienteService {
 
 		List<PedidoDTO> pedidosDTO = new ArrayList<>();
 
-		for (Pedido p : pedidos) {
-			int idC = p.getIdComercial();
-			for (Comercial c : comerciales) {
-				if (c.getId() == idC) {
-					pedidosDTO.add(pedidoMapper.pedidoAPedidoDTO(p, "", c.getNombre() + " " + c.getApellido1()
-							+ " " + (c.getApellido2() != null ? c.getApellido2() : "")));
-				}
-			}
-		}
+		pedidos.forEach(p -> {
+			int idC = p.getIdCliente();
+			String nombre = comerciales.stream()
+					.filter(c -> c.getId() == idC)
+					.map(c -> c.getNombre() + " " + c.getApellido1() + " " + (c.getApellido2() != null ? c.getApellido2() : ""))
+					.findFirst().orElse("");
+
+			pedidosDTO.add(pedidoMapper.pedidoAPedidoDTO(p, "", nombre));
+		});
 		return pedidosDTO;
 	}
 

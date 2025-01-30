@@ -72,4 +72,9 @@ public class PedidoDAOImpl implements PedidoDAO {
 
         log.info("Delete de Pedido con {} registros eliminados.", rows);
     }
+
+    @Override
+    public int getTotalPedidos() {
+        return jdbcTemplate.queryForObject("SELECT count(*) FROM pedido", Integer.class);
+    }
 }
