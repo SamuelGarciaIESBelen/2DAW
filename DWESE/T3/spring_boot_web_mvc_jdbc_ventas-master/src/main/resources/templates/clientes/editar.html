@@ -37,6 +37,7 @@
 				</div>
 				<div style="float: none;width: auto;overflow: hidden;">
 					<input th:field="*{nombre}" required />
+					<p style="color:red;" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
 				</div>
 			</div>
 			<div style="margin-top: 6px;" class="clearfix">
@@ -45,6 +46,7 @@
 				</div>
 				<div style="float: none;width: auto;overflow: hidden;">
 					<input th:field="*{apellido1}" required />
+					<p style="color:red;" th:if="${#fields.hasErrors('apellido1')}" th:errors="*{apellido1}"></p>
 				</div>
 			</div>
 			<div style="margin-top: 6px;" class="clearfix">
@@ -53,6 +55,7 @@
 				</div>
 				<div style="float: none;width: auto;overflow: hidden;">
 					<input th:field="*{apellido2}" />
+					<p style="color:red;" th:if="${#fields.hasErrors('apellido2')}" th:errors="*{apellido2}"></p>
 				</div>
 			</div>
 			<div style="margin-top: 6px;" class="clearfix">
@@ -61,6 +64,7 @@
 				</div>
 				<div style="float: none;width: auto;overflow: hidden;">
 					<input th:field="*{ciudad}" required />
+					<p style="color:red;" th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></p>
 				</div>
 			</div>
 			<div style="margin-top: 6px;" class="clearfix">
@@ -69,6 +73,7 @@
 				</div>
 				<div style="float: none;width: auto;overflow: hidden;">
 					<input type="number" th:field="*{categoria}" required />
+					<p style="color:red;" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></p>
 				</div>
 			</div>
 		</form>
