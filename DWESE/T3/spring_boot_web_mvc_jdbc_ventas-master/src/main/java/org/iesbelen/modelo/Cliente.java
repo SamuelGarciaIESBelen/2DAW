@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.iesbelen.validator.RangoCategoriaValidator;
+import org.iesbelen.validator.RangoCategoriaPlusValidator;
 
 //La anotación @Data de lombok proporcionará el código de:
 //getters/setters, toString, equals y hashCode
@@ -14,17 +14,8 @@ import org.iesbelen.validator.RangoCategoriaValidator;
 @Data
 //Para generar un constructor con lombok con todos los args
 @AllArgsConstructor
+@Builder
 public class Cliente {
-
-	/*
-	@Builder
-	Person.builder()
-		.name("Adam Savage")
-		.city("San Francisco")
-		.job("Mythbusters")
-		.job("Unchained Reaction")
-		.build();
-	*/
 
 	private long id;
 
@@ -43,7 +34,7 @@ public class Cliente {
 	@Size(max = 50, message = "{ciudadMax}")
 	private String ciudad;
 
-	@RangoCategoriaValidator
+	@RangoCategoriaPlusValidator(min = 100, max = 1000, values = {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000})
 	private int categoria;
 
 	public Cliente() { }

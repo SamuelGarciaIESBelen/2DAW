@@ -21,9 +21,9 @@ import lombok.extern.slf4j.Slf4j;
 @Repository
 public class ClienteDAOImpl implements ClienteDAO {
 
-	 //Plantilla jdbc inyectada automáticamente por el framework Spring, gracias a la anotación @Autowired.
-	 @Autowired
-	 private JdbcTemplate jdbcTemplate;
+	//Plantilla jdbc inyectada automáticamente por el framework Spring, gracias a la anotación @Autowired.
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 	
 	/**
 	 * Inserta en base de datos el nuevo Cliente, actualizando el id en el bean Cliente.
@@ -65,20 +65,21 @@ public class ClienteDAOImpl implements ClienteDAO {
 	}
 
 	/**
-	 * Devuelve lista con todos loa Clientes.
+	 * Devuelve lista con todos los Clientes.
 	 */
 	@Override
 	public List<Cliente> getAll() {
 		
 		List<Cliente> listCliente = jdbcTemplate.query(
                 "SELECT * FROM cliente",
-                (rs, rowNum) -> new Cliente(rs.getInt("id"),
-                						 	rs.getString("nombre"),
-                						 	rs.getString("apellido1"),
-                						 	rs.getString("apellido2"),
-                						 	rs.getString("ciudad"),
-                						 	rs.getInt("categoría")
-                						 	)
+                (rs, rowNum) -> Cliente.builder()
+						.id(rs.getInt("id"))
+						.nombre(rs.getString("nombre"))
+						.apellido1(rs.getString("apellido1"))
+						.apellido2(rs.getString("apellido2"))
+						.ciudad(rs.getString("ciudad"))
+						.categoria(rs.getInt("categoría"))
+						.build()
         );
 		
 		log.info("Devueltos {} registros.", listCliente.size());
@@ -94,12 +95,14 @@ public class ClienteDAOImpl implements ClienteDAO {
 		
 		Cliente fab =  jdbcTemplate
 				.queryForObject("SELECT * FROM cliente WHERE id = ?"														
-								, (rs, rowNum) -> new Cliente(rs.getInt("id"),
-            						 						rs.getString("nombre"),
-            						 						rs.getString("apellido1"),
-            						 						rs.getString("apellido2"),
-            						 						rs.getString("ciudad"),
-            						 						rs.getInt("categoría")) 
+								, (rs, rowNum) -> Cliente.builder()
+											.id(rs.getInt("id"))
+											.nombre(rs.getString("nombre"))
+											.apellido1(rs.getString("apellido1"))
+											.apellido2(rs.getString("apellido2"))
+											.ciudad(rs.getString("ciudad"))
+											.categoria(rs.getInt("categoría"))
+											.build()
 								, id
 								);
 		
@@ -110,6 +113,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 			return Optional.empty(); }
         
 	}
+
 	/**
 	 * Actualiza Cliente con campos del bean Cliente según ID del mismo.
 	 */
