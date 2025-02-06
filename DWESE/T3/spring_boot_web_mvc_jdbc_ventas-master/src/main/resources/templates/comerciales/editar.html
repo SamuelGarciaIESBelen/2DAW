@@ -36,7 +36,7 @@
 					Nombre
 				</div>
 				<div style="float: none;width: auto;overflow: hidden;">
-					<input th:field="*{nombre}" required />
+					<input th:field="*{nombre}" />
 					<p style="color:red;" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
 				</div>
 			</div>
@@ -45,7 +45,7 @@
 					Primer apellido
 				</div>
 				<div style="float: none;width: auto;overflow: hidden;">
-					<input th:field="*{apellido1}" required />
+					<input th:field="*{apellido1}" />
 					<p style="color:red;" th:if="${#fields.hasErrors('apellido1')}" th:errors="*{apellido1}"></p>
 				</div>
 			</div>
@@ -63,7 +63,7 @@
 					Comision
 				</div>
 				<div style="float: none;width: auto;overflow: hidden;">
-					<input th:field="*{comision}" type="number" step="0.01" required />
+					<input th:field="*{comision}" type="number" step="0.01" />
 					<p style="color:red;" th:if="${#fields.hasErrors('comision')}" th:errors="*{comision}"></p>
 				</div>
 			</div>

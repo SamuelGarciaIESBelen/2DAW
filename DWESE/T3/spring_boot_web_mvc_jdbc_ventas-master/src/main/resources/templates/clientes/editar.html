@@ -36,7 +36,7 @@
 					Nombre
 				</div>
 				<div style="float: none;width: auto;overflow: hidden;">
-					<input th:field="*{nombre}" required />
+					<input th:field="*{nombre}" />
 					<p style="color:red;" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
 				</div>
 			</div>
@@ -45,7 +45,7 @@
 					Primer apellido
 				</div>
 				<div style="float: none;width: auto;overflow: hidden;">
-					<input th:field="*{apellido1}" required />
+					<input th:field="*{apellido1}" />
 					<p style="color:red;" th:if="${#fields.hasErrors('apellido1')}" th:errors="*{apellido1}"></p>
 				</div>
 			</div>
@@ -63,7 +63,7 @@
 					Ciudad
 				</div>
 				<div style="float: none;width: auto;overflow: hidden;">
-					<input th:field="*{ciudad}" required />
+					<input th:field="*{ciudad}" />
 					<p style="color:red;" th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></p>
 				</div>
 			</div>
@@ -72,7 +72,7 @@
 					Categoria
 				</div>
 				<div style="float: none;width: auto;overflow: hidden;">
-					<input type="number" th:field="*{categoria}" required />
+					<input type="number" th:field="*{categoria}" />
 					<p style="color:red;" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></p>
 				</div>
 			</div>
