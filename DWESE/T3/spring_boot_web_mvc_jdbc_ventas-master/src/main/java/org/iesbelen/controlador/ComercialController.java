@@ -36,7 +36,7 @@ public class ComercialController {
 
 	//@RequestMapping(value = "/comercialles", method = RequestMethod.GET)
 	//equivalente a la siguiente anotación
-	@GetMapping() //Al no tener ruta base para el controlador, cada método tiene que tener la ruta completa
+	@GetMapping({"", "/"}) //Al no tener ruta base para el controlador, cada método tiene que tener la ruta completa
 	public String listar(Model model) {
 		
 		List<Comercial> listaComerciales =  comercialService.listAll();

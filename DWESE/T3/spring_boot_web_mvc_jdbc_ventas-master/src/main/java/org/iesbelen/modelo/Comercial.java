@@ -1,9 +1,6 @@
 package org.iesbelen.modelo;
 
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -26,6 +23,7 @@ public class Comercial {
 	@Size(max = 30, message = "{ape2Max}")
 	private String apellido2;
 
+	@NotNull(message = "{comiVacia}")
 	@DecimalMin(value = "0.276", inclusive = true, message = "{comisionError}")
 	@DecimalMax(value = "0.946", inclusive = true, message = "{comisionError}")
 	private BigDecimal comision;

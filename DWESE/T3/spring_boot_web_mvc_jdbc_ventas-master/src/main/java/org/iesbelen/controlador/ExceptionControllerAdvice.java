@@ -12,13 +12,13 @@ public class ExceptionControllerAdvice {
     public String handleMiException(Model model, MiExcepcion ex) {
 
         model.addAttribute("traza", ex.getMessage());
-        return "excepciones/errorMiException";
+        return "error";
     }
 
     @ExceptionHandler(RuntimeException.class)
     public String handleRuntimeException(Model model, RuntimeException ex) {
         model.addAttribute("traza", ex.getMessage());
-        return "excepciones/errorRunTimeException";
+        return "error";
     }
 
 }
