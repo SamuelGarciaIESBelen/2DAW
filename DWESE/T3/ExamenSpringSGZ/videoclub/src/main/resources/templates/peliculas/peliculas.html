@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Películas</title>
+	<style>
+		.clearfix::after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<button style="margin: 5px"><a th:href="@{/}">Volver</a></button>
+	<div id="contenedora" style="float:none; margin: 0 auto;width: 95%;" >
+		<div class="clearfix">
+			<div style="float: left; width: 50%">
+				<h1>Películas</h1>
+			</div>
+			<div style="float: none;width: auto;overflow: hidden;min-height: 80px;position: relative;">
+				<div style="position: absolute; left: 39%; top : 39%;">
+					<form action="/peliculas/crear">
+						<input type="submit" value="Crear">
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<hr/>
+		</div>
+		<div class="clearfix">
+			<div style="float: left;width: 7%">ID</div>
+			<div style="float: left;width: 14%">Título</div>
+			<div style="float: left;width: 24%">Descripción</div>
+			<div style="float: left;width: 14%; margin-left: 100px">Año lanzamiento</div>
+			<div style="float: left;width: 14%">Idioma</div>
+			<div style="float: left;width: 7%">Duración</div>
+			<div style="float: none;width: auto;overflow: hidden;">Acciones</div>
+		</div>
+		<div class="clearfix">
+			<hr/>
+		</div>
+
+		<div th:each="peli : ${listaPeliculas}" style="margin-top: 6px;" class="clearfix">
+			<div style="float: left;width: 7%" th:text="${peli.id_pelicula}">ID</div>
+			<div style="float: left;width: 14%" th:text="${peli.titulo}">Nombre</div>
+			<div style="float: left;width: 24%" th:text="${peli.descripcion}">Descripción</div>
+			<div style="float: left;width: 14%; margin-left: 100px" th:text="${peli.anyo_lanzamiento}">Año lanzamiento</div>
+			<div style="float: left;width: 14%" th:text="${peli.nombreIdioma}">Idioma</div>
+			<div style="float: left;width: 7%" th:text="${peli.duracion}">Duracion</div>
+
+			<div style="float: none;width: auto;overflow: hidden;">
+				<form style="display: inline;">
+					<input type="button" value="Detalles" />
+				</form>
+				<form style="display: inline;">
+					<input type="button" value="Editar" />
+				</form>
+				<form style="display: inline;">
+					<input type="button" value="Eliminar" />
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

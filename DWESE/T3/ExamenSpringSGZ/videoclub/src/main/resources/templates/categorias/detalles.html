@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Detalles Categoría</title>
+	<style>
+		.clearfix::after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<div id="contenedora" style="float:none; margin: 0 auto;width: 900px;" >
+		<form th:action="@{/categorias/detalles}" th:object="${categoria}" method="post">
+			<div class="clearfix">
+				<div style="float: left; width: 50%">
+					<h1>Detalles Categoría</h1>
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<hr/>
+			</div>
+
+			<div style="margin-top: 6px;" class="clearfix">
+				<div style="float: left;width: 50%">
+					ID
+				</div>
+				<div style="float: none;width: auto;overflow: hidden;">
+					<input th:field="*{id_categoria}" readonly />
+				</div>
+			</div>
+			<div style="margin-top: 6px;" class="clearfix">
+				<div style="float: left;width: 50%">
+					Nombre
+				</div>
+				<div style="float: none;width: auto;overflow: hidden;">
+					<input th:field="*{nombre}" readonly />
+				</div>
+			</div>
+		</form>
+	</div>
+	<div style="display: flex; margin-top: 50px">
+		<button style="margin: auto"><a th:href="@{/categorias}">Volver</a></button>
+	</div>
+</body>
+</html>
