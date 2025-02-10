@@ -45,7 +45,7 @@
 		<div th:each="peli : ${listaPeliculas}" style="margin-top: 6px;" class="clearfix">
 			<div style="float: left;width: 7%" th:text="${peli.id_pelicula}">ID</div>
 			<div style="float: left;width: 14%" th:text="${peli.titulo}">Nombre</div>
-			<div style="float: left;width: 24%" th:text="${peli.descripcion}">Descripción</div>
+			<div style="float: left;width: 24%" th:text="${peli.descripcion ?: '&nbsp;'}">Descripción</div>
 			<div style="float: left;width: 14%; margin-left: 100px" th:text="${peli.anyo_lanzamiento}">Año lanzamiento</div>
 			<div style="float: left;width: 14%" th:text="${peli.nombreIdioma}">Idioma</div>
 			<div style="float: left;width: 7%" th:text="${peli.duracion}">Duracion</div>

@@ -63,7 +63,7 @@
 					Idioma
 				</div>
 				<div style="float: none;width: auto;overflow: hidden;">
-					<select>
+					<select th:field="*{id_idioma}">
 						<option th:each="i : ${idiomas}" th:text="${i.getNombre()}" th:value="${i.id_idioma}"></option>
 					</select>
 				</div>

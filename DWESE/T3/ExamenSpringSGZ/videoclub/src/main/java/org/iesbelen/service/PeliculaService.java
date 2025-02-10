@@ -32,6 +32,8 @@ public class PeliculaService {
     public List<PeliculaDTO> listAllDTO() {
         List<Idioma> idiomas = idiomaDAO.getAll();
         List<Pelicula> peliculas = peliculaDAO.getAll();
+
+        // Esto es para ver mejor las que creo, porque hay más de 1000
         peliculas.sort((a, b) -> b.getId_pelicula() - a.getId_pelicula());
 
         List<PeliculaDTO> peliculasDTO = new ArrayList<>();
