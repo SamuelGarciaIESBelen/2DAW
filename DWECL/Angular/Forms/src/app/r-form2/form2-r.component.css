@@ -1,0 +1,25 @@
+/*
+.ng-pristine{
+  border-color: red;
+}
+
+.ng-dirty{
+  border-color: violet;
+}
+*/
+
+
+/*.ng-touched{
+  border-color: green;
+}
+.ng-untouched{
+  border-color: sandybrown;
+}*/
+
+.ng-valid {
+  border-color: aqua;
+}
+
+.ng-invalid {
+  border-color: chartreuse;
+}

@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Template-driven Form Example 2</h1>
+  <h2>bi-directional data binding</h2>
+  <h2 class="text-info">(form data)</h2>
+  <form #myForm2="ngForm" (ngSubmit)="onSubmitTemplateFormData(myForm2.value)">
+    <p>
+      <label>First Name:</label>
+      <input type="text"
+             [(ngModel)]="user.firstName" name="user" required>
+    </p>
+    <p>
+      <label>Password:</label>
+      <input type="password"
+             [(ngModel)]="user.password" name="password" required>
+    </p>
+    <p>
+      <label>Otra cosa:</label>
+      <input type="text" [(ngModel)]="otro" name="otraa" required>
+    </p>
+    <p>
+      <button type="submit" [disabled]="!myForm2.valid">Submit</button>
+    </p>
+  </form>
+</div>
+<div>
+  {{ user | json }}
+  <br>
+  {{ otro }}
+</div>

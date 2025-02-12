@@ -1,0 +1,17 @@
+<section class="sample-app-content">
+  <h1>Reactive Form Example 1:</h1>
+  <h2 class="text-info" >FormGroup and FormControl</h2>
+  <form [formGroup]="myForm1" (ngSubmit)="onSubmitModelBased()">
+    <p>
+      <label>First Name:</label>
+      <input type="text" formControlName="firstName">
+    </p>
+    <p>
+      <label>Password:</label>
+      <input type="password" formControlName="password">
+    </p>
+    <p>
+      <button type="submit" [disabled]="!myForm1.valid">Submit</button>
+    </p>
+  </form>
+</section>

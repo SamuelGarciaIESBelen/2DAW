@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>Reactive Form Example 2:</h1>
+  <h2 class="text-info">FormBuilder API</h2>
+  <div>It is used a simplified array notation for defining the form model, which is a bit more concise</div>
+  <h2 class="text-info">Custom validation</h2>
+  <div>ng-pristine, ng-dirty... classes</div>
+  <div class="m-1 p-2 border border-light-subtle">
+    <form [formGroup]="rForm" (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="mobile">Mobile</label>
+        <input formControlName="mobile" id="mobile" type="text" class="form-control">
+        <!--      <div *ngIf="f.mobile.touched && f.mobile.invalid" class="alert alert-danger">
+                <div *ngIf="f.mobile.errors.required">mobile is required.</div>
+                <div *ngIf="f.mobile.errors.pattern">Enter only number.</div>
+              </div>-->
+      </div>
+      <div class="form-group">
+        <label for="num">Number</label>
+        <input formControlName="num" id="num" type="text" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="passwd">Password</label>
+        <input formControlName="passwd" id="passwd" type="text" class="form-control">
+      </div>
+      <button class="mt-2 btn btn-primary" type="submit" [disabled]="!rForm.valid">Submit</button>
+    </form>
+    Controls and values: {{ rForm.value | json }}
+  </div>
+</div>`
+<!--  <input type="text" id="tx1" required formControlName="">
+  <input type="text" id="tx2" formControlName="tx2">-->
+<!--    <div *ngIf="tx1.errors?.['required']">Name is required.</div>-->
+<!--    <div *ngIf="name.errors?.['minlength']">
+      Name must be at least 4 characters long.
+    </div>
+    <div *ngIf="name.errors?.['forbiddenName']">
+      Name cannot be Bob.
+    </div>-->
