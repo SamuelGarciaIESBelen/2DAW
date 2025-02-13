@@ -1,31 +1,32 @@
 package org.iesbelen.videoclub.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.HashSet;
-import java.util.Set;
+import org.hibernate.annotations.NaturalId;
 
 @Entity
-@Table(name = "categoria")
+@Table(name="socio")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Categoria {
+public class Socio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_categoria")
-    private long id;
+    private int id;
+
+    @NaturalId
+    private String dni;
+
     private String nombre;
 
-    @ManyToMany(
-            mappedBy = "categorias")
-    @JsonIgnore
-    Set<Pelicula> peliculas = new HashSet<>();
+    private String apellidos;
+
+    @OneToOne
+    @JoinColumn(name = "tarjeta_id", referencedColumnName = "id")
+    private Tarjeta tarjeta;
 }
