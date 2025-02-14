@@ -1,6 +1,4 @@
-export interface Categoria {
-
+export interface Idioma {
   id: number;
-
   nombre: string;
 }

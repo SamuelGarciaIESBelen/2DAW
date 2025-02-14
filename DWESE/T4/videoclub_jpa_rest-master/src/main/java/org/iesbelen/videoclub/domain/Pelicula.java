@@ -2,6 +2,7 @@ package org.iesbelen.videoclub.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,6 +38,7 @@ public class Pelicula {
 
     private int duracion;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "pelicula_categoria",
                 joinColumns = @JoinColumn(name = "id_pelicula", referencedColumnName = "id_pelicula"),

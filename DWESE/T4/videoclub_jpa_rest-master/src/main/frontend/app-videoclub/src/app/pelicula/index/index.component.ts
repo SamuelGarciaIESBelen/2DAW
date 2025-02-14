@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import { Categoria} from "../categoria";
-import {CategoriaService} from "../categoria.service";
+import { Pelicula} from "../pelicula";
+import {PeliculaService} from "../pelicula.service";
 
 @Component({
   selector: 'app-index',
@@ -9,12 +9,12 @@ import {CategoriaService} from "../categoria.service";
 })
 export class IndexComponent implements OnInit {
 
-  categorias: Categoria[] = [];
+  categorias: Pelicula[] = [];
 
-  constructor(public categoriaService:CategoriaService) { }
+  constructor(public categoriaService:PeliculaService) { }
 
   ngOnInit(): void {
-    this.categoriaService.getAll().subscribe((data: Categoria[])=>{
+    this.categoriaService.getAll().subscribe((data: Pelicula[])=>{
       this.categorias= data;
       console.log(this.categorias);
     })
