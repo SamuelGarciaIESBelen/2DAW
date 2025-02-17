@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -31,4 +32,16 @@ public class Categoria {
             mappedBy = "categorias")
     @JsonIgnore
     Set<Pelicula> peliculas = new HashSet<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Categoria categoria)) return false;
+        return id == categoria.id && Objects.equals(nombre, categoria.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nombre);
+    }
 }
