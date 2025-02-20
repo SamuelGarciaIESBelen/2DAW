@@ -1,0 +1,17 @@
+# version: '1.0'
+
+networks:
+  tomcat-network:
+    driver: bridge
+
+services:
+  tomcat:
+    image: tomcat:11-jdk21
+    container_name: examen
+    restart: always
+    ports:
+      - "8081:8080"
+    volumes:
+      - "./sample.war:/usr/local/tomcat/webapps/Ejercicio2-1.war"
+    networks:
+      - tomcat-network
