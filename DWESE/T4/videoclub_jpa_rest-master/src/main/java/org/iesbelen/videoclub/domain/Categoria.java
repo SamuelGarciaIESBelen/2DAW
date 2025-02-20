@@ -3,10 +3,8 @@ package org.iesbelen.videoclub.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.NaturalId;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -17,6 +15,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = "nombre") // Para que funcione la colección Set<Categoria> en Pelicula
 @Builder
 public class Categoria {
 
@@ -25,12 +24,13 @@ public class Categoria {
     @Column(name = "id_categoria")
     private long id;
 
+    @NaturalId
     @NotBlank
     private String nombre;
 
-    @ManyToMany(
-            mappedBy = "categorias")
+    @ManyToMany(mappedBy = "categorias")
     @JsonIgnore
+    @ToString.Exclude
     Set<Pelicula> peliculas = new HashSet<>();
 
     @Override

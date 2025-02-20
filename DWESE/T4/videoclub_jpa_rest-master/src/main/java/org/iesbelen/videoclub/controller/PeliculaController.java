@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -19,10 +20,25 @@ public class PeliculaController {
         this.peliculaService = peliculaService;
     }
 
-    @GetMapping({"","/"})
+    @GetMapping(value = {"","/"}, params = {"!buscar", "!ordenar"})
     public List<Pelicula> all() {
         log.info("Accediendo a todas las películas");
         return this.peliculaService.all();
+    }
+
+    @GetMapping(value = {"/order"})
+    public List<Pelicula> allOrdered() {
+        log.info("Accediendo a todas las películas ordenadas");
+        return this.peliculaService.findAllByOrderByTituloAsc();
+    }
+
+    @GetMapping(value = {"","/"}, params = {"!buscar", "!ordenar"})
+    public List<Pelicula> all(@RequestParam("buscar") Optional<String> buscarOptional,
+                              @RequestParam("ordenar") Optional<String> ordenarOptional) {
+        log.info("Accediendo a todas las películas con filtro buscar: %s y ordenar: %s",
+                buscarOptional.orElse(""),
+                ordenarOptional.orElse(""));
+        return this.peliculaService.findAllByQueryFilters(buscarOptional, ordenarOptional);
     }
 
     @PostMapping({"","/"})

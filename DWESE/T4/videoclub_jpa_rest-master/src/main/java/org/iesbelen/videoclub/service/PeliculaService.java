@@ -1,16 +1,22 @@
 package org.iesbelen.videoclub.service;
 
 import org.iesbelen.videoclub.exception.PeliculaNotFoundException;
+import org.iesbelen.videoclub.repository.PeliculaCustomRepository;
 import org.iesbelen.videoclub.repository.PeliculaRepository;
 import org.iesbelen.videoclub.domain.Pelicula;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PeliculaService {
 
     private final PeliculaRepository peliculaRepository;
+
+    @Autowired
+    private PeliculaCustomRepository peliculaCustomRepository;
 
     public PeliculaService(PeliculaRepository peliculaRepository) {
         this.peliculaRepository = peliculaRepository;
@@ -39,5 +45,13 @@ public class PeliculaService {
         this.peliculaRepository.findById(id).map(p -> { this.peliculaRepository.delete(p);
                                                         return p; })
                 .orElseThrow(() -> new PeliculaNotFoundException(id));
+    }
+
+    public List<Pelicula> findAllByOrderByTituloAsc() {
+        return this.peliculaRepository.findAllByOrderByTituloAsc();
+    }
+
+    public List<Pelicula> findAllByQueryFilters(Optional<String> buscarOptional, Optional<String> ordenarOptional) {
+        return this.peliculaCustomRepository.queryCustomPelicula(buscarOptional, ordenarOptional);
     }
 }
