@@ -203,7 +203,7 @@
 					"response": []
 				},
 				{
-					"name": "Ver películas query",
+					"name": "Ver películas buscar y ordenar",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -225,6 +225,35 @@
 								{
 									"key": "ordenar",
 									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver películas paginadas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/peliculas?pagina&tamanio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"peliculas"
+							],
+							"query": [
+								{
+									"key": "pagina",
+									"value": null
+								},
+								{
+									"key": "tamanio",
+									"value": null
 								}
 							]
 						}
