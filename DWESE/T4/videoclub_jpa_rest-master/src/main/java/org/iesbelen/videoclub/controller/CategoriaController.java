@@ -35,6 +35,11 @@ public class CategoriaController {
         return this.categoriaService.one(id);
     }
 
+    @GetMapping("/{id}/numPeliculas")
+    public int getNumPeliculas(@PathVariable("id") Long id) {
+        return this.categoriaService.one(id).getPeliculas().size();
+    }
+
     @PutMapping("/{id}")
     public Categoria replaceCategoria(@PathVariable("id") Long id, @RequestBody Categoria categoria) {
         return this.categoriaService.replace(id, categoria);

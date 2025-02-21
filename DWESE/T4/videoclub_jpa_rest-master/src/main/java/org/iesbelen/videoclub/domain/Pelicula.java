@@ -40,7 +40,7 @@ public class Pelicula {
 
     private int duracion;
 
-    @JsonIgnore
+    // @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "pelicula_categoria",
                 joinColumns = @JoinColumn(name = "id_pelicula", referencedColumnName = "id_pelicula"),

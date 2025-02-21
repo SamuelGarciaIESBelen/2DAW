@@ -33,6 +33,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"nombre\": \"Comedia\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/categorias",
 							"protocol": "http",
@@ -127,6 +136,27 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Número de películas de la categoría",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias/3/numPeliculas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								"3",
+								"numPeliculas"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -153,13 +183,62 @@
 					"response": []
 				},
 				{
+					"name": "Ver películas ordenadas alfabéticamente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/peliculas/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"peliculas",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver películas query",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/peliculas?buscar=man&ordenar=desc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"peliculas"
+							],
+							"query": [
+								{
+									"key": "buscar",
+									"value": "man"
+								},
+								{
+									"key": "ordenar",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Crear película",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"titulo\": \"Shanshui\",\r\n    \"descripcion\": \"El Chino Gachapón\",\r\n    \"duracion\": 90,\r\n    \"idioma\": {\"id\": 1},\r\n    \"anyoLanzamiento\": \"2005\"\r\n}",
+							"raw": "{\r\n    \"titulo\": \"Superman\",\r\n    \"duracion\": 90,\r\n    \"idioma\": {\"id\": 1},\r\n    \"anyoLanzamiento\": \"2005\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -186,7 +265,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/peliculas/7",
+							"raw": "http://localhost:8080/peliculas/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -194,7 +273,7 @@
 							"port": "8080",
 							"path": [
 								"peliculas",
-								"7"
+								"3"
 							]
 						}
 					},
@@ -207,7 +286,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idPelicula\": 8,\r\n    \"titulo\": \"Batman\",\r\n    \"descripcion\": \"El Caballero Oscuro\",\r\n    \"anyoLanzamiento\": \"2001\",\r\n    \"idioma\": { \"id\": 1 },\r\n    \"duracion\": 120\r\n}",
+							"raw": "{\r\n    \"idPelicula\": 3,\r\n    \"titulo\": \"Batman\",\r\n    \"descripcion\": \"El Caballero Oscuro\",\r\n    \"anyoLanzamiento\": \"2005\",\r\n    \"idioma\": {\r\n        \"id\": 1,\r\n        \"nombre\": \"Spanish\"\r\n    },\r\n    \"duracion\": 90,\r\n    \"categorias\": [\r\n        {\r\n            \"id\": 2,\r\n            \"nombre\": \"Aventuras\"\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -215,7 +294,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/peliculas/8",
+							"raw": "http://localhost:8080/peliculas/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -223,7 +302,7 @@
 							"port": "8080",
 							"path": [
 								"peliculas",
-								"8"
+								"3"
 							]
 						}
 					},
@@ -235,7 +314,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/peliculas/1",
+							"raw": "http://localhost:8080/peliculas/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -243,7 +322,29 @@
 							"port": "8080",
 							"path": [
 								"peliculas",
-								"1"
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Añadir categoría",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/peliculas/6/addCategoria/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"peliculas",
+								"6",
+								"addCategoria",
+								"3"
 							]
 						}
 					},

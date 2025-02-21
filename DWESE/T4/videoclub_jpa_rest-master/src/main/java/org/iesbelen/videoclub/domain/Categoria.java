@@ -28,8 +28,8 @@ public class Categoria {
     @NotBlank
     private String nombre;
 
-    @ManyToMany(mappedBy = "categorias")
     @JsonIgnore
+    @ManyToMany(mappedBy = "categorias")
     @ToString.Exclude
     Set<Pelicula> peliculas = new HashSet<>();
 
