@@ -75,8 +75,8 @@ public class PeliculaService {
         return save(pelicula);
     }
 
-    public Map<String, Object> all(int pagina, int tamanio) {
-        Pageable paginado = PageRequest.of(pagina, tamanio, Sort.by("idPelicula").ascending());
+    public Map<String, Object> all(int pagina, int tamanio, List<Sort.Order> ordenes) {
+        Pageable paginado = PageRequest.of(pagina, tamanio, ordenes.isEmpty() ? Sort.by("idPelicula").ascending() : Sort.by(ordenes));
 
         Page<Pelicula> pageAll = this.peliculaRepository.findAll(paginado);
 

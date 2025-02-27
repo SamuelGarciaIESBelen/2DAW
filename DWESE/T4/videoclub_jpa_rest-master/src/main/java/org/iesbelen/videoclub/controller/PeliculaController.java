@@ -5,14 +5,12 @@ import org.iesbelen.videoclub.domain.Pelicula;
 import org.iesbelen.videoclub.service.CategoriaService;
 import org.iesbelen.videoclub.service.PeliculaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Slf4j
 @RestController
@@ -50,12 +48,45 @@ public class PeliculaController {
         return this.peliculaService.findAllByQueryFilters(buscarOptional, ordenarOptional);
     }
 
-    @GetMapping(value = {"","/"}, params = {"!buscar", "!ordenar"})
+    // Versión antigua
+    /*@GetMapping(value = {"","/"}, params = {"!buscar", "!ordenar"})
     public ResponseEntity<Map<String, Object>> all(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
                                                    @RequestParam(value = "tamanio", defaultValue = "3") int tamanio) {
         log.info("Accediendo a todas las películas con paginación");
 
         Map<String, Object> responseAll = this.peliculaService.all(pagina, tamanio);
+
+        return ResponseEntity.ok(responseAll);
+    }*/
+
+    @GetMapping(value = {"", "/"}, params = {"!buscar", "!ordenar"})
+    public ResponseEntity<Map<String, Object>> all(@RequestParam(value = "paginado", required = false) String[] paginado,
+                                                   @RequestParam(value = "orden", required = false) String[] orden) {
+        log.info("Accediendo a todas las películas con paginación y ordenación");
+
+        int pagina = 0;
+        int tamanio = 3;
+        if (paginado != null && paginado.length == 2) {
+            try {
+                pagina = Integer.parseInt(paginado[0]);
+                tamanio = Integer.parseInt(paginado[1]);
+            } catch (NumberFormatException e) {
+                return ResponseEntity.badRequest().body(Map.of("error", "Parámetros de paginación inválidos"));
+            }
+        }
+
+        List<Sort.Order> ordenes = new ArrayList<>();
+        if (orden != null) {
+            for (String ordenStr : orden) {
+                String[] partes = ordenStr.split(",");
+                if (partes.length == 2) {
+                    Sort.Direction direccion = "desc".equalsIgnoreCase(partes[1]) ? Sort.Direction.DESC : Sort.Direction.ASC;
+                    ordenes.add(new Sort.Order(direccion, partes[0]));
+                }
+            }
+        }
+
+        Map<String, Object> responseAll = this.peliculaService.all(pagina, tamanio, ordenes);
 
         return ResponseEntity.ok(responseAll);
     }
