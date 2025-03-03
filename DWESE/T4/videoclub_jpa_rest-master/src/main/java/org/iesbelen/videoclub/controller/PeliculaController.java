@@ -27,7 +27,7 @@ public class PeliculaController {
         this.peliculaService = peliculaService;
     }
 
-    @GetMapping(value = {"","/"}, params = {"!buscar", "!ordenar", "!pagina", "!tamanio"})
+    @GetMapping(value = {"","/"}, params = {"!buscar", "!ordenar", "!paginado", "!orden"})
     public List<Pelicula> all() {
         log.info("Accediendo a todas las películas");
         return this.peliculaService.all();
@@ -39,54 +39,30 @@ public class PeliculaController {
         return this.peliculaService.findAllByOrderByTituloAsc();
     }
 
-    @GetMapping(value = {"","/"}, params = {"!pagina", "!tamanio"})
+    @GetMapping(value = {"","/"}, params = {"!paginado", "!orden"})
     public List<Pelicula> all(@RequestParam("buscar") Optional<String> buscarOptional,
                               @RequestParam("ordenar") Optional<String> ordenarOptional) {
+
         log.info("Accediendo a todas las películas con filtro buscar: %s y ordenar: %s",
                 buscarOptional.orElse(""),
                 ordenarOptional.orElse(""));
         return this.peliculaService.findAllByQueryFilters(buscarOptional, ordenarOptional);
     }
 
-    // Versión antigua
-    /*@GetMapping(value = {"","/"}, params = {"!buscar", "!ordenar"})
-    public ResponseEntity<Map<String, Object>> all(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
-                                                   @RequestParam(value = "tamanio", defaultValue = "3") int tamanio) {
+    @GetMapping(value = {"","/"}, params = {"!buscar", "!ordenar", "!paginado"})
+    public ResponseEntity<List<Pelicula>> allbyColumn(@RequestParam(value = "orden", required = false) String[] orden) {
+        log.info("Accediendo a todas las películas con ordenación por columnas: " + orden[0]);
+
+        List<Pelicula> peliculas = this.peliculaService.findAllOrderByCol(orden);
+
+        return ResponseEntity.ok(peliculas);
+    }
+
+    @GetMapping(value = {"","/"}, params = {"!buscar", "!ordenar", "!orden"})
+    public ResponseEntity<Map<String, Object>> all(@RequestParam(value = "paginado", defaultValue = "0") String[] paginacion) {
         log.info("Accediendo a todas las películas con paginación");
 
-        Map<String, Object> responseAll = this.peliculaService.all(pagina, tamanio);
-
-        return ResponseEntity.ok(responseAll);
-    }*/
-
-    @GetMapping(value = {"", "/"}, params = {"!buscar", "!ordenar"})
-    public ResponseEntity<Map<String, Object>> all(@RequestParam(value = "paginado", required = false) String[] paginado,
-                                                   @RequestParam(value = "orden", required = false) String[] orden) {
-        log.info("Accediendo a todas las películas con paginación y ordenación");
-
-        int pagina = 0;
-        int tamanio = 3;
-        if (paginado != null && paginado.length == 2) {
-            try {
-                pagina = Integer.parseInt(paginado[0]);
-                tamanio = Integer.parseInt(paginado[1]);
-            } catch (NumberFormatException e) {
-                return ResponseEntity.badRequest().body(Map.of("error", "Parámetros de paginación inválidos"));
-            }
-        }
-
-        List<Sort.Order> ordenes = new ArrayList<>();
-        if (orden != null) {
-            for (String ordenStr : orden) {
-                String[] partes = ordenStr.split(",");
-                if (partes.length == 2) {
-                    Sort.Direction direccion = "desc".equalsIgnoreCase(partes[1]) ? Sort.Direction.DESC : Sort.Direction.ASC;
-                    ordenes.add(new Sort.Order(direccion, partes[0]));
-                }
-            }
-        }
-
-        Map<String, Object> responseAll = this.peliculaService.all(pagina, tamanio, ordenes);
+        Map<String, Object> responseAll = this.peliculaService.all(paginacion);
 
         return ResponseEntity.ok(responseAll);
     }

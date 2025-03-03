@@ -65,6 +65,10 @@ public class PeliculaService {
         return this.peliculaCustomRepository.queryCustomPelicula(buscarOptional, ordenarOptional);
     }
 
+    public List<Pelicula> findAllOrderByCol(String[] orden) {
+        return this.peliculaCustomRepository.pelisOrderbyCols(Optional.of(orden));
+    }
+
     public Pelicula addCategoria(Long id, Long idCategoria) {
         Pelicula pelicula = one(id);
         Categoria categoria = categoriaService.one(idCategoria);
@@ -75,8 +79,8 @@ public class PeliculaService {
         return save(pelicula);
     }
 
-    public Map<String, Object> all(int pagina, int tamanio, List<Sort.Order> ordenes) {
-        Pageable paginado = PageRequest.of(pagina, tamanio, ordenes.isEmpty() ? Sort.by("idPelicula").ascending() : Sort.by(ordenes));
+    public Map<String, Object> all(String[] paginacion) {
+        Pageable paginado = PageRequest.of(Integer.parseInt(paginacion[0]),Integer.parseInt(paginacion[1]), Sort.by("idPelicula").ascending());
 
         Page<Pelicula> pageAll = this.peliculaRepository.findAll(paginado);
 
