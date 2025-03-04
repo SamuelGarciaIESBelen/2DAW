@@ -51,12 +51,22 @@ public class PeliculaController {
 
     @GetMapping(value = {"","/"}, params = {"!buscar", "!ordenar", "!paginado"})
     public ResponseEntity<List<Pelicula>> allbyColumn(@RequestParam(value = "orden", required = false) String[] orden) {
-        log.info("Accediendo a todas las películas con ordenación por columnas: " + orden[0]);
+        log.info("Accediendo a todas las películas con ordenación por columna: " + orden[0]);
 
         List<Pelicula> peliculas = this.peliculaService.findAllOrderByCol(orden);
 
         return ResponseEntity.ok(peliculas);
     }
+
+    // Para ordenar por dos columnas
+    /*@GetMapping(value = {"","/"}, params = {"!buscar", "!ordenar", "!paginado"})
+    public ResponseEntity<List<Pelicula>> allbyColumn(@RequestParam(value = "orden", required = false) String[] orden) {
+        log.info("Accediendo a todas las películas con ordenación por columnas: " + orden[0]);
+
+        List<Pelicula> peliculas = this.peliculaService.findAllOrderByCols(orden);
+
+        return ResponseEntity.ok(peliculas);
+    }*/
 
     @GetMapping(value = {"","/"}, params = {"!buscar", "!ordenar", "!orden"})
     public ResponseEntity<Map<String, Object>> all(@RequestParam(value = "paginado", defaultValue = "0") String[] paginacion) {

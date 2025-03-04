@@ -66,6 +66,21 @@ public class PeliculaService {
     }
 
     public List<Pelicula> findAllOrderByCol(String[] orden) {
+        Sort sort = null;
+        if (orden.length == 2) {
+            String columna = orden[0], sentido = orden[1];
+            if ("desc".equalsIgnoreCase(sentido)) { sort = Sort.by(columna).descending(); }
+            if ("asc".equalsIgnoreCase(sentido)) { sort = Sort.by(columna).ascending(); }
+        }
+        if (orden.length == 1) {
+            String columna = orden[0];
+            sort = Sort.by(columna).ascending();
+        }
+        return peliculaRepository.findAll(sort);
+    }
+
+    // Para ordenar por dos columnas
+    public List<Pelicula> findAllOrderByCols(String[] orden) {
         return this.peliculaCustomRepository.pelisOrderbyCols(Optional.of(orden));
     }
 
