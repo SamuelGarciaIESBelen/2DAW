@@ -208,7 +208,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/peliculas?orden=duracion,desc",
+							"raw": "http://localhost:8080/peliculas?orden=anyoLanzamiento,desc",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -220,7 +220,7 @@
 							"query": [
 								{
 									"key": "orden",
-									"value": "duracion,desc"
+									"value": "anyoLanzamiento,desc"
 								}
 							]
 						}
@@ -262,7 +262,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/peliculas?buscar=man&ordenar=desc",
+							"raw": "http://localhost:8080/peliculas?buscar=anyoLanzamiento&ordenar=desc",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -274,7 +274,7 @@
 							"query": [
 								{
 									"key": "buscar",
-									"value": "man"
+									"value": "anyoLanzamiento"
 								},
 								{
 									"key": "ordenar",
@@ -545,6 +545,127 @@
 							"path": [
 								"idiomas",
 								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Actor",
+			"item": [
+				{
+					"name": "Ver actores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/actores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear actor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"nombre\": \"Batman\", \"apellidos\": \"Señor de la Noche\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/actores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver actor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/actores/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actores",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar autor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"nombre\": \"Ale\",\r\n    \"apellidos\": \"Counter Strike\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/actores/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actores",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar actor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/actores/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actores",
+								"3"
 							]
 						}
 					},
