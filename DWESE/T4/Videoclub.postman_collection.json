@@ -208,7 +208,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/peliculas?orden=titulo,desc",
+							"raw": "http://localhost:8080/peliculas?orden=duracion,desc",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -220,7 +220,7 @@
 							"query": [
 								{
 									"key": "orden",
-									"value": "titulo,desc"
+									"value": "duracion,desc"
 								}
 							]
 						}
@@ -291,7 +291,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/peliculas?paginado=2,1",
+							"raw": "http://localhost:8080/peliculas?paginado=1,1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -303,7 +303,7 @@
 							"query": [
 								{
 									"key": "paginado",
-									"value": "2,1"
+									"value": "1,1"
 								}
 							]
 						}
@@ -365,7 +365,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idPelicula\": 4,\r\n    \"titulo\": \"Batman\",\r\n    \"descripcion\": \"The Batman\",\r\n    \"anyoLanzamiento\": \"2005\",\r\n    \"idioma\": {\r\n        \"id\": 1,\r\n        \"nombre\": \"Spanish\"\r\n    },\r\n    \"duracion\": 120,\r\n    \"categorias\": [\r\n        { \"id\": 2 }\r\n    ]\r\n}",
+							"raw": "{\r\n        \"idPelicula\": 2,\r\n        \"titulo\": \"Batman\",\r\n        \"descripcion\": \"El Caballero\",\r\n        \"anyoLanzamiento\": \"2007\",\r\n        \"idioma\": {\r\n            \"id\": 1,\r\n            \"nombre\": \"English\"\r\n        },\r\n        \"duracion\": 100,\r\n        \"categorias\": [\r\n            {\r\n                \"id\": 2,\r\n                \"nombre\": \"Acción\"\r\n            }\r\n        ]\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -373,7 +373,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/peliculas/4",
+							"raw": "http://localhost:8080/peliculas/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -381,7 +381,7 @@
 							"port": "8080",
 							"path": [
 								"peliculas",
-								"4"
+								"2"
 							]
 						}
 					},
@@ -536,7 +536,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/idiomas/3",
+							"raw": "http://localhost:8080/idiomas/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -544,7 +544,7 @@
 							"port": "8080",
 							"path": [
 								"idiomas",
-								"3"
+								"2"
 							]
 						}
 					},

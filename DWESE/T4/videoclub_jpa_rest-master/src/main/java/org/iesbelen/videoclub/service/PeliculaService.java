@@ -69,8 +69,7 @@ public class PeliculaService {
         Sort sort = null;
         if (orden.length == 2) {
             String columna = orden[0], sentido = orden[1];
-            if ("desc".equalsIgnoreCase(sentido)) { sort = Sort.by(columna).descending(); }
-            if ("asc".equalsIgnoreCase(sentido)) { sort = Sort.by(columna).ascending(); }
+            sort = ("asc".equalsIgnoreCase(sentido)) ? Sort.by(columna).ascending() : Sort.by(columna).descending() ;
         }
         if (orden.length == 1) {
             String columna = orden[0];
