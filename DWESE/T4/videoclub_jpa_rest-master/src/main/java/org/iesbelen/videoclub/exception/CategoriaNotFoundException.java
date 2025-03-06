@@ -1,7 +1,5 @@
 package org.iesbelen.videoclub.exception;
 
 public class CategoriaNotFoundException extends RuntimeException {
-    public CategoriaNotFoundException(Long id) {
-        super("Not found Pelicula with id: " + id);
-    }
+    public CategoriaNotFoundException(Long id) { super("Not found Pelicula with id: " + id); }
 }
